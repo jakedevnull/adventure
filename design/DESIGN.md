@@ -1,9 +1,11 @@
-# 99 — Game Design Document
+# Everwyn — Game Design Document
 
-*Working title: **99**. A multiplayer, ever-expanding, online text adventure.*
+*Working title: **Everwyn** (developed under the codename *99*). A multiplayer,
+ever-expanding, online text adventure.*
 
 > Status: **Draft for review.** This is a design, not an implementation plan. Nothing here
-> is canon until agreed by @jake. Open questions are collected at the end.
+> is canon until agreed by @jake. Decisions so far and remaining questions are collected
+> at the end.
 
 Companion documents:
 
@@ -15,17 +17,17 @@ Companion documents:
 
 ## 1. The pitch
 
-**99** is a command-line text adventure that lives in the browser. It reads like Zork —
-terse, dry, second person — but it is multiplayer, it never stops growing, and its most
-distinctive feature is that **time travel is as easy as walking north**.
+**Everwyn** is a command-line text adventure that lives in the browser. It reads like
+Zork — terse, dry, second person — but it is multiplayer, it never stops growing, and its
+most distinctive feature is that **time travel is as easy as walking north**.
 
 Every player is a member of the Travelers, a rare kind of person for whom the millennia
 are just another compass direction. Type `EAST` and you cross a meadow. Type `FUTURE` and
 you cross a thousand years. The room stays put; the world around it does not.
 
-The game is set in Everwhen (provisional name — see the universe bible), an other-worldly
-land with a western-European flavor: not Earth, not Europe, but something a reader of
-Tolkien or Narnia would recognize in their bones.
+The game shares its name with its world: Everwyn, an other-worldly land with a
+western-European flavor — not Earth, not Europe, but something a reader of Tolkien or
+Narnia would recognize in their bones.
 
 ## 2. Design pillars
 
@@ -34,12 +36,13 @@ proposed feature fights one of them, the feature loses.
 
 1. **It reads like Infocom.** The writing is the graphics. Terse, concrete, dryly funny.
    The writing guide is law.
-2. **Time is a direction.** One mechanic, two commands, no fiddliness. The depth comes
-   from what the mechanic does to the world, not from the mechanic itself.
+2. **Time is a direction.** An exit like any other — present where an author put one,
+   absent where they didn't, and never fiddly. The depth comes from what the mechanic
+   does to the world, not from the mechanic itself.
 3. **One universe, many hands.** Anyone can build rooms, quests, even whole realms — but
    only we define the universe. Consistency is our product.
 4. **Wonder is rationed.** Visual "Illuminations" are rare on purpose. A gem you find in
-   one room in twelve is a gem; a gem in every room is wallpaper.
+   one room in twenty is a gem; a gem in every room is wallpaper.
 5. **A terminal, kindly.** It must feel like a classic command line and still be a
    pleasure on a phone.
 
@@ -73,12 +76,13 @@ personality moments and are specified in the writing guide.
 
 Two verbs are new to the genre and central to ours:
 
-- `PAST` — step one millennium toward Before.
-- `FUTURE` — step one millennium toward After.
+- `PAST` — step one stride toward Before.
+- `FUTURE` — step one stride toward After.
 
-They are listed with the exits, because that is what they are:
+They are exits, and like any exit a room either has them or hasn't (see §4.3). Where
+they exist, they are listed with the others:
 
-> There are doors to the north and west. The years, as ever, run both ways.
+> There are doors to the north and west. Here, the years run both ways.
 
 ### 3.3 Multiplayer
 
@@ -100,7 +104,7 @@ script.**
 Multiplayer is deliberately thin at launch — presence, talk, trade, co-op mechanisms.
 It is a text adventure you happen to share, not a MUD with combat and levels.
 
-## 4. Time: the 99 mechanic
+## 4. Time: the turning years
 
 ### 4.1 The rule
 
@@ -108,57 +112,72 @@ History pivots on the **Awakening**, the event at year 0 that no one can reach a
 one remembers (see the universe bible). Years count down toward it (*Before Awakening*,
 BA) and up from it (*After Awakening*, AA).
 
-Travelers cannot land just anywhere. There are exactly **twelve landings**, and every
-one of them falls in a year ending in 99 — hence the game's name:
+Travelers cannot land just anywhere. They land only in the **turning years** — years
+ending in 99 — and at launch the world spans **six landings**:
 
 ```
-5099 BA — 4099 BA — 3099 BA — 2099 BA — 1099 BA — 99 BA
-                                                    |
-                                              [ the Gap ]
-                                                    |
-  99 AA — 1099 AA — 2099 AA — 3099 AA — 4099 AA — 5099 AA
+2099 BA — 1099 BA — 99 BA
+                      |
+                 [ the Gap ]
+                      |
+2099 AA — 1099 AA — 99 AA
 ```
 
-`PAST` and `FUTURE` move you one step along this chain. No arguments, no date entry, no
-"jump ahead 3 days." Eleven of the twelve steps are exactly a millennium; the step
-between 99 BA and 99 AA is the **Long Step** — 198 years, straight over the Awakening.
-The two centuries around year 0 are veiled. No Traveler has ever landed inside them,
-and what actually happened at the Awakening is the standing mystery of the entire game.
+`PAST` and `FUTURE` move you one stride along this chain — from 99 BA, `FUTURE` lands
+you in 99 AA, and from 99 AA, `PAST` returns you to 99 BA, straight over the Gap. No
+arguments, no date entry, no "jump ahead 3 days."
+
+**Every stride is exactly one thousand years — including the one that crosses the Gap.**
+The calendars claim otherwise: on paper, 99 BA to 99 AA is 198 years. The calendars are
+wrong. The After-reckoning was rebuilt from ruined records by post-Awakening scholars,
+and they anchored their year 1 badly — by how much, nobody can prove, because the proof
+lies inside the Gap, where no Traveler can land and every document is damaged. In-world
+this discrepancy is the **Miscount**, the politest scandal in scholarship, argued about
+in every lettered age. Travelers themselves can testify only that every stride feels
+exactly like every other. *(Proposed reconciliation — alternates offered in the PR for
+@jake to choose from.)*
+
+The Awakening itself is **permanently unreachable and permanently unexplained**. That is
+settled canon, not a puzzle awaiting a finale: mystery is the universe's renewable
+resource, and it is ours alone (see §7).
 
 ### 4.2 Why this shape
 
-- **Meaningful but not finicky.** A millennium is long enough that every step lands in
+- **Meaningful but not finicky.** A millennium is long enough that every stride lands in
   a genuinely different world — forests become kingdoms become ruins — and coarse enough
-  that there is nothing to fuss over. Twelve landings is a number a player can hold in
-  their head, like the twelve verbs they know by heart.
-- **The name does work.** Every year you can ever stand in ends in 99. Signs, gravestones
-  and ledgers in-world quietly agree. Players notice; noticing feels like finding a
-  secret.
+  that there is nothing to fuss over. Six landings is a number a player holds in their
+  head without a chart.
+- **The turning years do quiet work.** Every year a player can ever stand in ends in 99.
+  Signs, gravestones and ledgers in-world quietly agree. Players notice; noticing feels
+  like finding a secret. (This motif is where the project's codename came from.)
 - **The Gap is a story engine.** An unreachable event that reshaped the world gives every
-  contributor a shared mystery to orbit without ever being allowed to solve it. (Only we
-  can touch the Awakening. See §7.)
+  contributor a shared mystery to orbit without ever being allowed to solve it — and the
+  Miscount means even the *size* of the mystery is mysterious.
+- **The chain can grow.** Opening a farther millennium (3099 BA, 3099 AA, …) is held in
+  reserve as a possible epochal, world-wide event in the game's later life. Deliberately
+  not decided now.
 
-### 4.3 Travel texture
+### 4.3 Time is an exit
 
-Time travel is seamless, but it should never be *bland*. Stepping has a one-line
-signature, always brief, era-flavored, written per-room where it matters:
+Not every room supports time travel. `PAST` and `FUTURE` are **optional, per-room
+directions**, authored exactly like a door: a given place may offer both, one, or
+neither. A crypt might be reachable in every era but let you stride only from its
+antechamber; a mountaintop might be the one spot in the realm where the far Future can
+be reached at all. Where the years run, the room says so; where they don't, the parser
+declines in voice ("The years hold firm here.").
 
-> \> FUTURE
->
-> The years pour past like a river over a weir. The mill is gone. The millpond,
-> patient, is not.
-
-Mechanically: `PAST`/`FUTURE` may be barred in specific rooms for specific story reasons
-(a warded vault, open sky during a storm of years) exactly the way a door can be locked —
-never as a global cooldown, cost, or resource. Time travel is free. That is the premise.
+Rooms may also bar a normally-open temporal exit for story reasons — a warded vault, a
+storm of years — exactly the way a door can be locked. What the design forbids is
+*friction as a system*: no global cooldowns, costs, or resources. For a Traveler,
+walking the years is free. That is the premise.
 
 ### 4.4 Place persists, time varies
 
-The map is a single spatial lattice threaded through all twelve eras. A room is a
-*place*; each era gives it a different face, different objects, different people —
-sometimes no face at all (the tower is not built yet; the tower is rubble). Where a
-place doesn't exist in an era, arriving there resolves sensibly (you stand in the
-meadow where the tower will be).
+The map is a single spatial lattice threaded through the eras. A room is a *place*; each
+era gives it a different face, different objects, different people — sometimes no face
+at all (the tower is not built yet; the tower is rubble). Where a place doesn't exist in
+an era, arriving there resolves sensibly (you stand in the meadow where the tower will
+be).
 
 This makes the signature puzzle grammar of the game nearly free to author:
 
@@ -178,16 +197,16 @@ dynamics to put water in a bottle.
 ### 5.1 Realms
 
 The world divides into **realms** — contiguous geographic regions of, roughly, 30–150
-places, threaded through all twelve eras (an author may leave eras sparse: "in 5099 BA
-this whole valley is under the ice" is one sentence and perfectly good content). We
-author the founding realm; contributors propose new ones at the edges of the map (§7).
+places, threaded through the six eras (an author may leave eras sparse: "in 2099 BA this
+whole valley is under the ice" is one sentence and perfectly good content). We author
+the founding realm; contributors propose new ones at the edges of the map (§7).
 
 ### 5.2 Threads (quests)
 
 A **Thread** is a storyline: a braid of scenes, characters, and puzzles, usually spanning
 several eras, with a beginning and at least one ending. There is no single "winning" of
-99 — the game accretes Threads the way a long-running universe accretes tales. Threads
-can be small (one room, one ghost, one kindness) or realm-spanning epics.
+Everwyn — the game accretes Threads the way a long-running universe accretes tales.
+Threads can be small (one room, one ghost, one kindness) or realm-spanning epics.
 
 Threads declare their dependencies (places, items, canon facts) and may *reference* other
 Threads' outcomes, which is how seemingly distant stories come to connect — the
@@ -202,17 +221,16 @@ Traveler's record (`THREADS` lists tales begun, abandoned, and finished).
 
 ### 5.4 Cross-time cooperation
 
-The multiplayer flourish unique to 99: two players in the *same place, different eras*
-cooperating. One player holds the sluice open in 2099 BA; the streambed is dry for her
-partner in 1099 AA, ten centuries downstream, for as long as she holds it. Used sparingly,
-in authored moments — never required for a Thread's only ending (a lone player must
-always have a path).
+The multiplayer flourish unique to Everwyn: two players in the *same place, different
+eras* cooperating. One player holds the sluice open in 2099 BA; the streambed is dry for
+her partner in 1099 AA, four strides of time downstream, for as long as she holds it. Used sparingly, in authored moments — never required
+for a Thread's only ending (a lone player must always have a path).
 
 ## 6. Illuminations (the visual system)
 
 ### 6.1 The idea
 
-A small minority of rooms — the target is **fewer than one room in ten** — contain an
+A small minority of rooms — the target is **fewer than one room in twenty** — contain an
 **Illumination**: a visual element that scrolls into the transcript the way text does,
 line by line, as if the terminal itself were printing it. The name is from illuminated
 manuscripts: most pages of the codex are ink; a rare page has gold leaf. Finding one
@@ -290,26 +308,36 @@ deputized to review the second and third gates; the universe gate stays with us.
 
 ## 8. Naming and technology notes
 
-- Names used here — *Everwhen*, *the Awakening*, *the Gap*, *the Long Step*,
-  *Travelers*, *Threads*, *Illuminations*, *the Foundry* — are proposals. The universe
-  bible marks which are load-bearing.
+- **Everwyn** is the agreed name of the world and, for now, of the game itself. Other
+  proper nouns used here — *the Awakening*, *the Gap*, *the Miscount*, *Travelers*,
+  *Threads*, *Illuminations*, *the Foundry*, *the Turning House* — remain proposals; the
+  universe bible marks which are load-bearing.
 - Technology is out of scope for this document by design. The only constraints the
   design imposes on any future implementation: browser-based; a real shared world with
   per-player story state; content (places, Threads, Illuminations) as reviewable
   declarative data; playable on a phone without ceasing to be a terminal.
 
-## 9. Open questions for @jake
+## 9. Decision log and open questions
 
-1. **Name of the game.** Is **99** the title, or a codename to beat?
-2. **World name.** *Everwhen* — keep, or workshop? (Alternatives in the bible's margin.)
-3. **Twelve landings.** Comfortable with 5099 BA … 5099 AA as the full span forever, or
-   should the design leave room to someday widen the chain (e.g., 6099) as an epochal
-   community event?
-4. **The Long Step.** Confirm: the Awakening stays permanently unreachable and
-   unexplained — mystery as a renewable resource — vs. someday being the finale of a
-   flagship Thread authored by us.
-5. **Temporal verbs.** `PAST` / `FUTURE` as primary. Any appetite for flavored aliases
-   (`AGO`, `ANON`)?
-6. **Illumination density.** Is <10% the right scarcity, or rarer still?
-7. **Multiplayer thinness.** Sign off on launch scope = presence, talk, trade, co-op
-   mechanisms; no PvP, no combat, no economy.
+Settled in review (2026-08-17, @jake):
+
+1. **Name.** *Everwyn* — world name and, unless a better title appears, game name.
+   *99* is retired to codename; the turning-years motif stays in the world.
+2. **Launch span.** Six landings, 2099 BA – 2099 AA. Widening the chain is deferred,
+   held as a possible future epochal event.
+3. **The Awakening.** Permanently unreachable, permanently unexplained. Settled canon.
+4. **Temporal verbs.** `PAST` / `FUTURE`, no aliases.
+5. **Time travel is per-room.** `PAST`/`FUTURE` are optional directions a room may or
+   may not have, like any exit.
+6. **Illumination density.** Fewer than one room in twenty.
+7. **Multiplayer launch scope.** Presence, talk, trade, co-op mechanisms; no PvP, no
+   combat, no economy.
+
+Open:
+
+1. **The Gap arithmetic.** The **Miscount** (§4.1) is the proposed reconciliation of
+   "every stride is a millennium" with "the calendars put 99 BA and 99 AA only 198 years
+   apart" — awaiting @jake's choice among the proposal and its alternates (offered in
+   the PR discussion).
+2. **Provisional proper nouns.** *Turning House*, *Threads*, *Illuminations*,
+   *Foundry*, *Apocrypha* — standing unless vetoed.

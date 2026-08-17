@@ -4,7 +4,7 @@
 > ours and contributors'. Review gate #2 in [DESIGN.md](./DESIGN.md) is this document
 > applied with a red pen.
 
-The style of 99 is learned from Infocom, and above all from Zork. Source text studied:
+The style of Everwyn is learned from Infocom, and above all from Zork. Source text studied:
 the [Zork transcript at pr-if.org](https://pr-if.org/event/play-zork/transcript-zork/).
 The rules below are that style, extracted and made teachable.
 
@@ -54,7 +54,7 @@ never a wink at the camera.
 > A skeleton, probably the remains of a luckless adventurer, lies here.
 
 "Probably" is the funniest word in that sentence. Trust the reader. No jokes that break
-the world, no memes, no references to our Earth (which, in Everwhen, does not exist).
+the world, no memes, no references to our Earth (which, in Everwyn, does not exist).
 
 ### Rule 5 — Menace is stated calmly
 
@@ -81,7 +81,7 @@ Never blame the player for the parser's limits; never break voice to explain mec
 
 Description implies history in passing — Zork's paintings were "stolen by vandals with
 exceptional taste"; its tables "seem to have been used recently." Rooms are found
-mid-story, not staged for arrival. In 99 this rule is doctrine: nearly every place has a
+mid-story, not staged for arrival. In Everwyn this rule is doctrine: nearly every place has a
 thousand-year past and future, and one clause of it may show:
 
 > The road is older than the kingdom that repaired it.
@@ -93,8 +93,8 @@ review.
 
 Room titles are terse and locative: *West of House. Kitchen. The Troll Room. Ferry
 Landing. Under the Stones.* Two or three words, no articles unless earned, and never a
-pun. In 99 a place keeps its name across eras when possible — the continuity is the
-poetry.
+pun. In Everwyn a place keeps its name across eras when possible — the continuity is
+the poetry.
 
 ### Rule 9 — Only what you can act on
 
@@ -146,14 +146,14 @@ what changed (persistence is the theme; see the universe bible):
 | ERROR: invalid command. Type HELP for a list of commands. | That's not a verb I recognise. |
 | You feel terrified as the huge, scary troll attacks you viciously! | A troll blocks the way, holding his axe the way you'd hold an argument he intends to win. |
 
-## 4. Era inflection (99-specific)
+## 4. Era inflection (Everwyn-specific)
 
-One voice, twelve accents. The narrator never changes; the *nouns* do. A landing's
-flavor comes from what there is to notice — ring-forts and oaths in 3099 BA, brass and
-glass in 4099 AA — not from pastiche spelling, archaic grammar, or dialect ("thee,"
-"'twas" and all cod-medievalism fail review). NPC dialogue may carry era color a little
-further; the narration keeps its one dry voice from 5099 BA to 5099 AA. That constancy
-*is* the Traveler's point of view.
+One voice, an accent per age. The narrator never changes; the *nouns* do. A landing's
+flavor comes from what there is to notice — unmortared masonry in 2099 BA, print and
+canal locks in 1099 AA — not from pastiche spelling, archaic grammar, or dialect
+("thee," "'twas" and all cod-medievalism fail review). NPC dialogue may carry era color
+a little further; the narration keeps its one dry voice from the first landing to the
+last. That constancy *is* the Traveler's point of view.
 
 ## 5. The reviewer's checklist
 
