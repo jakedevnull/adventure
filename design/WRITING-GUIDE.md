@@ -130,8 +130,7 @@ exits woven in; then listed objects.*
 what changed (persistence is the theme; see the universe bible):
 
 > \> FUTURE
-> The years pour past like a river over a weir. The mill is gone. The millpond,
-> patient, is not.
+> The years pour past like a river over a weir. The mill is gone. The millpond is not.
 
 **Another Traveler arrives** — event lines for multiplayer are the same voice, one line:
 
@@ -143,8 +142,8 @@ what changed (persistence is the theme; see the universe bible):
 |---|---|
 | You enter an ancient, mysterious chamber filled with an eerie sense of forgotten history. Dust motes dance in shafts of light. | **The Undercroft.** Stone vaults, a swept floor. Someone keeps this place, and is not here. |
 | The mighty oak tree towers majestically above you, its gnarled branches reaching toward the heavens! | An oak stands here. In a younger year, you planted it. |
-| ERROR: invalid command. Type HELP for a list of commands. | That's not a verb I recognise. |
-| You feel terrified as the huge, scary troll attacks you viciously! | A troll blocks the way, holding his axe the way you'd hold an argument he intends to win. |
+| ERROR: invalid command. Type HELP for a list of commands. | I don't know the word "frotz". |
+| You feel terrified as the huge, scary troll attacks you viciously! | A troll blocks the way. He looks pleased to see you, which is worse. |
 
 ## 4. Era inflection (Everwyn-specific)
 
