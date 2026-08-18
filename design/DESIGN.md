@@ -132,10 +132,9 @@ The calendars claim otherwise: on paper, 99 BA to 99 AA is 198 years. The calend
 wrong. The After-reckoning was rebuilt from ruined records by post-Awakening scholars,
 and they anchored their year 1 badly — by how much, nobody can prove, because the proof
 lies inside the Gap, where no Traveler can land and every document is damaged. In-world
-this discrepancy is the **Miscount**, the politest scandal in scholarship, argued about
+this discrepancy is the **Lapse**, the politest scandal in scholarship, argued about
 in every lettered age. Travelers themselves can testify only that every stride feels
-exactly like every other. *(Proposed reconciliation — alternates offered in the PR for
-@jake to choose from.)*
+exactly like every other.
 
 The Awakening itself is **permanently unreachable and permanently unexplained**. That is
 settled canon, not a puzzle awaiting a finale: mystery is the universe's renewable
@@ -152,7 +151,7 @@ resource, and it is ours alone (see §7).
   like finding a secret. (This motif is where the project's codename came from.)
 - **The Gap is a story engine.** An unreachable event that reshaped the world gives every
   contributor a shared mystery to orbit without ever being allowed to solve it — and the
-  Miscount means even the *size* of the mystery is mysterious.
+  Lapse means even the *size* of the mystery is mysterious.
 - **The chain can grow.** Opening a farther millennium (3099 BA, 3099 AA, …) is held in
   reserve as a possible epochal, world-wide event in the game's later life. Deliberately
   not decided now.
@@ -309,7 +308,7 @@ deputized to review the second and third gates; the universe gate stays with us.
 ## 8. Naming and technology notes
 
 - **Everwyn** is the agreed name of the world and, for now, of the game itself. Other
-  proper nouns used here — *the Awakening*, *the Gap*, *the Miscount*, *Travelers*,
+  proper nouns used here — *the Awakening*, *the Gap*, *the Lapse*, *Travelers*,
   *Threads*, *Illuminations*, *the Foundry*, *the Turning House* — remain proposals; the
   universe bible marks which are load-bearing.
 - Technology is out of scope for this document by design. The only constraints the
@@ -332,12 +331,10 @@ Settled in review (2026-08-17, @jake):
 6. **Illumination density.** Fewer than one room in twenty.
 7. **Multiplayer launch scope.** Presence, talk, trade, co-op mechanisms; no PvP, no
    combat, no economy.
+8. **The Gap arithmetic — the Lapse** (§4.1). Every stride is a millennium, the Gap
+   included; the calendars that say otherwise are wrong, and the proof is out of reach.
 
 Open:
 
-1. **The Gap arithmetic.** The **Miscount** (§4.1) is the proposed reconciliation of
-   "every stride is a millennium" with "the calendars put 99 BA and 99 AA only 198 years
-   apart" — awaiting @jake's choice among the proposal and its alternates (offered in
-   the PR discussion).
-2. **Provisional proper nouns.** *Turning House*, *Threads*, *Illuminations*,
+1. **Provisional proper nouns.** *Turning House*, *Threads*, *Illuminations*,
    *Foundry*, *Apocrypha* — standing unless vetoed.

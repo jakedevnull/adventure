@@ -44,21 +44,20 @@ and nobody, anywhere, in any century, knows what it was.
   at least one important way.
 - **The Awakening is permanently unreachable and permanently unexplained.** This is
   settled canon, not a pending reveal. Mystery is this universe's renewable resource.
-- **The Miscount** *[proposed — pending @jake's approval among alternates]*: a
-  Traveler's stride is always exactly one thousand years, including the stride over the
-  Gap — yet the calendars put 99 BA and 99 AA just 198 years apart. The calendars are
-  wrong. The After-reckoning was rebuilt from ruined records by post-Awakening scholars
-  who anchored their year 1 badly; by how much, nobody can prove, because the proof lies
-  inside the Gap. So even the *width* of the Gap is unknown — on paper two veiled
-  centuries, in truth at least an age. The Miscount is argued about wherever there are
-  scholars, politely and forever.
+- **The Lapse**: a Traveler's stride is always exactly one thousand years, including
+  the stride over the Gap — yet the calendars put 99 BA and 99 AA just 198 years apart.
+  The calendars are wrong. The After-reckoning was rebuilt from ruined records by
+  post-Awakening scholars who anchored their year 1 badly; by how much, nobody can
+  prove, because the proof lies inside the Gap. So even the *width* of the Gap is
+  unknown — on paper two veiled centuries, in truth at least an age. The Lapse is
+  argued about wherever there are scholars, politely and forever.
 - Whatever the Awakening was, the world *before* it and *after* it differ in ways that
   are felt rather than catalogued: the Before is wilder, vaster, thick with things that
   have no names yet; the After is a world that seems to have *woken up* — hence the
   name — more peopled, more self-aware, and haunted by the sense of having forgotten
   something enormous.
 - **The mystery is load-bearing and is ours alone.** Contributors may add theories,
-  cults, songs, and wrong answers about the Awakening (the Miscount included). They may
+  cults, songs, and wrong answers about the Awakening (the Lapse included). They may
   never add evidence.
 
 ## 3. The Travelers
@@ -98,7 +97,7 @@ are canon in *mood*, not in every particular.
 | — | **THE GAP** — |
 | 99 AA | The Morning Country. Survivors' villages among ruins nobody can read, including their own. |
 | 1099 AA | The Rekindling. Guilds, canals, printing; history rewritten by people guessing. |
-| 2099 AA | The Lettered Age. Universities, museums, the first scholars of the Awakening and of the Miscount (all wrong). |
+| 2099 AA | The Lettered Age. Universities, museums, the first scholars of the Awakening and of the Lapse (all wrong). |
 
 The ages beyond the launch span — deeper Before, farther After — happened and will
 happen; their ruins, roads, and prophecies may be *referenced* from within the span, but
