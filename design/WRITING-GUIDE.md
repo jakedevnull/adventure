@@ -143,7 +143,7 @@ what changed (persistence is the theme; see the universe bible):
 | You enter an ancient, mysterious chamber filled with an eerie sense of forgotten history. Dust motes dance in shafts of light. | **The Undercroft.** Stone vaults, a swept floor. Someone keeps this place, and is not here. |
 | The mighty oak tree towers majestically above you, its gnarled branches reaching toward the heavens! | An oak stands here. In a younger year, you planted it. |
 | ERROR: invalid command. Type HELP for a list of commands. | I don't know the word "frotz". |
-| You feel terrified as the huge, scary troll attacks you viciously! | A troll blocks the way. He looks pleased to see you, which is worse. |
+| You feel terrified as the huge, scary troll attacks you viciously! | A troll blocks the way. Worse, he looks pleased to see you. |
 
 ## 4. Era inflection (Everwyn-specific)
 
@@ -154,7 +154,32 @@ canal locks in 1099 AA — not from pastiche spelling, archaic grammar, or diale
 a little further; the narration keeps its one dry voice from the first landing to the
 last. That constancy *is* the Traveler's point of view.
 
-## 5. The reviewer's checklist
+## 5. Machine tells (AI writing anomalies)
+
+Some of Everwyn's text will be drafted with AI assistance, and models write with an
+accent. The accent is detectable, and it fails review. Known tells:
+
+- **Consultant vocabulary.** *Load-bearing, leverage, robust, delve, tapestry,
+  landscape, elevate, resonate, testament to, at its core.* If a word belongs in a
+  strategy deck, it does not belong in Everwyn. These join Rule 3's banned list.
+- **Em-dash addiction.** Models reach for the em-dash constantly. Ration it: at most
+  one per passage, and only where a comma or period genuinely cannot do the job.
+- **The reversal tic.** "It isn't just an inn — it's a promise." Say what a thing is.
+  Never define by negation for drama.
+- **Rule-of-three rhythm.** Triplets in every list, every sentence, every paragraph.
+  Vary the count: two is often funnier, one is often stronger.
+- **The punchy fragment.** Closing every paragraph with a two-word sentence for effect.
+  Once a realm, at most.
+- **Summing up.** "In the end, the village had learned…" The narrator reports; it never
+  concludes on the reader's behalf (Rule 10 again).
+- **Symmetry for its own sake.** Balanced clause pairs, mirrored sentence shapes,
+  antithesis on autopilot. Prose should be built like a drystone wall: irregular stones
+  that fit.
+
+The test is Rule 3's, applied to style: every word must be information. A machine tell
+is decoration with a recognizable manufacturer.
+
+## 6. The reviewer's checklist
 
 - [ ] Second person, present tense throughout.
 - [ ] Rooms ≤ 4 sentences; objects ≤ 1; no adjective stacks; banned words absent.
@@ -165,4 +190,6 @@ last. That constancy *is* the Traveler's point of view.
 - [ ] Failure messages short, in voice, blame-free.
 - [ ] Time-step lines present where the place merits them, ≤ 2 lines.
 - [ ] No Earth, no memes, no fourth wall, no pastiche grammar.
+- [ ] No machine tells (§5): banned vocabulary absent, em-dashes rationed, no reversal
+      tic, no closing summary.
 - [ ] Read it aloud. If you didn't almost smile once, revise.

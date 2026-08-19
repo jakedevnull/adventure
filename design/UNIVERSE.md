@@ -11,7 +11,7 @@
 
 ## 1. The world
 
-The world is called **Everwyn**, and so — for now — is the game. It is not Earth and
+The world is called **Everwyn**, and so is the game. It is not Earth and
 never was, but it rhymes with one corner of it: the temperate, rain-soft,
 castle-and-hedgerow country of western Europe — Tolkien's Shire and Eriador, Narnia's
 lantern wastes — without being any of them. Oak and beech, barley and bells, drystone
@@ -56,7 +56,7 @@ and nobody, anywhere, in any century, knows what it was.
   have no names yet; the After is a world that seems to have *woken up* — hence the
   name — more peopled, more self-aware, and haunted by the sense of having forgotten
   something enormous.
-- **The mystery is load-bearing and is ours alone.** Contributors may add theories,
+- **The mystery holds the universe up, and it is ours alone.** Contributors may add theories,
   cults, songs, and wrong answers about the Awakening (the Lapse included). They may
   never add evidence.
 

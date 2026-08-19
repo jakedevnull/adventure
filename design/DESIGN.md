@@ -307,10 +307,10 @@ deputized to review the second and third gates; the universe gate stays with us.
 
 ## 8. Naming and technology notes
 
-- **Everwyn** is the agreed name of the world and, for now, of the game itself. Other
-  proper nouns used here — *the Awakening*, *the Gap*, *the Lapse*, *Travelers*,
-  *Threads*, *Illuminations*, *the Foundry*, *the Turning House* — remain proposals; the
-  universe bible marks which are load-bearing.
+- **Everwyn** is the name of the world and of the game. Other proper nouns used
+  here — *the Awakening*, *the Gap*, *the Lapse*, *Travelers*, *Threads*,
+  *Illuminations*, *the Foundry*, *the Turning House* — remain proposals; the
+  universe bible brackets the ones still open to change.
 - Technology is out of scope for this document by design. The only constraints the
   design imposes on any future implementation: browser-based; a real shared world with
   per-player story state; content (places, Threads, Illuminations) as reviewable
@@ -320,8 +320,8 @@ deputized to review the second and third gates; the universe gate stays with us.
 
 Settled in review (2026-08-17, @jake):
 
-1. **Name.** *Everwyn* — world name and, unless a better title appears, game name.
-   *99* is retired to codename; the turning-years motif stays in the world.
+1. **Name.** *Everwyn* — the name of the world and of the game. *99* is retired to
+   codename; the turning-years motif stays in the world.
 2. **Launch span.** Six landings, 2099 BA – 2099 AA. Widening the chain is deferred,
    held as a possible future epochal event.
 3. **The Awakening.** Permanently unreachable, permanently unexplained. Settled canon.
