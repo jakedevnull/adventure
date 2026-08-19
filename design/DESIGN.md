@@ -100,6 +100,12 @@ script.**
   each other's puzzles.
 - **Griefing posture:** you cannot take another player's held items, block an exit, or
   spoil a puzzle state. The worst a stranger can do is talk at you. (Mute exists.)
+- **Sparseness:** Everwyn must never feel crowded. Travelers are few and the years are
+  wide, so two players in the same room and the same year do not automatically meet:
+  the world surfaces at most a handful of fellow Travelers at a time, chosen quietly
+  (a companion you have traveled with before, a stranger whose Thread brushes yours).
+  Meeting someone should feel like meeting a walker on a mountain road, not entering
+  a lobby.
 
 Multiplayer is deliberately thin at launch — presence, talk, trade, co-op mechanisms.
 It is a text adventure you happen to share, not a MUD with combat and levels.
@@ -307,10 +313,10 @@ deputized to review the second and third gates; the universe gate stays with us.
 
 ## 8. Naming and technology notes
 
-- **Everwyn** is the name of the world and of the game. Other proper nouns used
-  here — *the Awakening*, *the Gap*, *the Lapse*, *Travelers*, *Threads*,
-  *Illuminations*, *the Foundry*, *the Turning House* — remain proposals; the
-  universe bible brackets the ones still open to change.
+- **Everwyn** is the name of the world and of the game, and *the Lapse* and *the
+  Turning House* were approved in review. Other proper nouns used here — *the
+  Awakening*, *the Gap*, *Travelers*, *Threads*, *Illuminations*, *the Foundry* —
+  remain proposals; the universe bible brackets the ones still open to change.
 - Technology is out of scope for this document by design. The only constraints the
   design imposes on any future implementation: browser-based; a real shared world with
   per-player story state; content (places, Threads, Illuminations) as reviewable
@@ -336,5 +342,5 @@ Settled in review (2026-08-17, @jake):
 
 Open:
 
-1. **Provisional proper nouns.** *Turning House*, *Threads*, *Illuminations*,
-   *Foundry*, *Apocrypha* — standing unless vetoed.
+1. **Provisional proper nouns.** *Threads*, *Illuminations*, *Foundry*, *Apocrypha* —
+   standing unless vetoed. (*Turning House* was approved in review.)

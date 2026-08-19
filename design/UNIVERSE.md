@@ -25,10 +25,13 @@ and a rare few people can walk between them.
 
 - No Earth. No Earth languages, nations, or religions by name. No characters from our
   world falling into this one (this is not a portal fantasy — there is no wardrobe).
-- Technology across all eras stays within a pre-industrial-to-early-mechanical band —
-  waterwheels, clockwork, printing, canal locks, at the latest ages' edge strange
-  glass-and-brass instruments — never gunpowder armies, never electronics. The future is
-  *stranger*, not more modern. *[Confirm this band.]*
+- Technology is other-worldly, never a replica of our own. The everyday band runs
+  pre-industrial to early-mechanical: waterwheels, clockwork, printing, canal locks.
+  The latest ages add instruments with no Earth equivalent — glass that remembers,
+  brass that listens — relics that do one uncanny thing and cannot be mass-made.
+  Think artifact, not appliance. What Everwyn never has is our 21st century by another
+  name: no gunpowder armies, no engines of war, nothing a player could mistake for
+  home. The future is *stranger*, not more modern.
 - Magic exists the way weather exists: real, ambient, mostly unexplained, never a
   rulebook. Named wonders are singular, not systems.
 
@@ -64,11 +67,11 @@ and nobody, anywhere, in any century, knows what it was.
 
 - A small fraction of people are born **Travelers**: for them, moving through time is as
   natural as walking, and exactly as easy — a step Before, a step After. Every player is
-  one. A rare handful of NPCs are too; most people are not, live one era, and regard
-  Travelers with era-appropriate awe, suspicion, commerce, or bureaucracy.
+  one, and so are a rare handful of NPCs. Everyone else lives and dies inside a single
+  era, and treats Travelers with whatever their age teaches: awe, suspicion, commerce,
+  or paperwork.
 - Travelers always land in years ending **99**. Nobody knows why, Travelers least of
-  all. In-world, folk call these the **Ninety-Nines** or the **turning years**. *[The
-  project's codename came from here.]*
+  all. In-world, folk call these the **Ninety-Nines** or the **turning years**.
 - Time does not run everywhere alike: in most places the years hold firm, and a Traveler
   can stride only where the world is *loose* — certain rooms, thresholds, hilltops.
   Finding where the years run is part of the craft of traveling.
@@ -77,17 +80,20 @@ and nobody, anywhere, in any century, knows what it was.
 - Travelers recognize one another on sight — described in text as something unplaceable,
   like recognizing an accent from home. This is the fictional footing for multiplayer:
   every other player in the room is unmistakably one of *us*.
-- There is no Traveler government, academy, or uniform. At most there are customs:
-  waymarks scratched near loose ground, a courtesy of shared fires, the habit of
-  leaving inns tipped well. *[Keep them institution-less? I recommend yes — orders and
-  academies are what contributors will constantly propose, and refusing all of them is
-  simpler than adjudicating some.]*
+- Travelers are few, and the years are wide. Meeting another is an event, not a
+  certainty: even two Travelers standing in the same room in the same year may pass
+  without crossing. Everwyn must never feel crowded (the design doc says how presence
+  is kept sparse).
+- There is no Traveler government, academy, or uniform, and there never will be.
+  Orders, guilds, and academies of Travelers are the first thing contributors will
+  propose; the answer is no. At most there are customs: waymarks scratched near loose
+  ground, a courtesy of shared fires, the habit of leaving inns tipped well.
 
 ## 4. The landings
 
-At launch the walkable world spans **six landings**, 2099 BA to 2099 AA. One line of
-character per landing, deliberately loose; realms fill in local detail. These sketches
-are canon in *mood*, not in every particular.
+At launch the walkable world spans **six landings**, 2099 BA to 2099 AA. The table
+below sketches the mood of each age in a sentence; realms fill in local detail. These
+sketches are canon in *mood*, not in every particular.
 
 | Year | Character of the age |
 |---|---|
@@ -105,18 +111,20 @@ no one can land there. Opening a farther millennium is reserved as a possible ep
 event in the game's later life, and the sketches for those ages stay in our drawer, not
 in this bible.
 
-**Fixed points** (events later Threads may reference but never alter): the laying of
-the High Roads (2099 BA), the Hush (99 BA), the founding of the Turning House (see §5).
-We add fixed points over time; contributors petition for them, we grant them.
+**Fixed points.** A fixed point is a piece of history that is settled forever: an
+event that any story may reference and build on, but that no story — ours or a
+contributor's — may change, undo, or contradict. Three are fixed so far: the laying of
+the High Roads (2099 BA), the Hush (99 BA), and the founding of the Turning House
+(see §5). We add fixed points sparingly; contributors petition for them, we grant them.
 
 ## 5. The Turning House
 
-One place exists in every landing and is the game's front door: the **Turning House**
-*[provisional]*, an inn at a crossroads, kept in every age by someone of the same
-stubborn family line. In 2099 BA it is already old, and the landlady will not say how
-old. In 2099 AA it is still open, still warm, lamps lit for someone expected to return.
-It is the White House of Everwyn: the first room, the safe hearth, the place every
-tutorial breath happens, and living proof of the universe's favorite theme —
+One place exists in every landing and is the game's front door: the **Turning House**,
+an inn at a crossroads, kept in every age by someone of the same stubborn family line.
+In 2099 BA it is already old, and the landlady will not say how old. In 2099 AA it is
+still open, still warm, lamps lit for someone expected to return. It is the White House
+of Everwyn: the first room, the safe hearth, the place every player draws their first
+breath, and living proof of persistence, the universe's favorite theme.
 
 ## 6. Themes (what every story is secretly about)
 
