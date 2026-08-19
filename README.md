@@ -1,7 +1,5 @@
 # Everwyn
 
-*(codename: 99)*
-
 A multiplayer, ever-expanding, online text adventure game — a browser terminal in the
 Infocom tradition, set in a world where time travel is as easy as walking north.
 
