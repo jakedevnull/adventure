@@ -115,7 +115,8 @@ in this bible.
 event that any story may reference and build on, but that no story — ours or a
 contributor's — may change, undo, or contradict. Three are fixed so far: the laying of
 the High Roads (2099 BA), the Hush (99 BA), and the founding of the Turning House
-(see §5). We add fixed points sparingly; contributors petition for them, we grant them.
+(see §5). We add fixed points sparingly; contributors petition for them, we rarely
+grant them.
 
 ## 5. The Turning House
 
