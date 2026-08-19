@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Long Gallery — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('lettered', 'the coin from the well, 1099 AA · glass glints · museum greys and brass');
+
+var ART = {
+  cols: 40, rows: 17,
+  palette: 'lettered',
+  layers: [
+    { name: 'room', rows: [
+      '────────────────────────────────────────',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '    │                                  │',
+      '───┬──────┴───────┬─────────┴──────┬───',
+      '   │      │       │         │      │'
+      ],
+      legend: { '─': 2, '│': 2, '┬': 3, '┴': 3 }
+    },
+    { name: 'case', rows: [
+      '', '', '',
+      '            ┌──────────────────┐',
+      '            │                  │',
+      '            │                  │',
+      '            │        ◉         │',
+      '            │      ▂▂▂▂▂       │',
+      '            │                  │',
+      '            └──────────────────┘',
+      '             ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄',
+      '             ▌                ▐',
+      '             ▌    ░░░░░░░░    ▐',
+      '             ▌                ▐',
+      '             ▌                ▐'
+      ],
+      legend: {
+        '┌': 8, '─': 8, '┐': 8, '│': 8, '└': 8, '┘': 8,
+        '◉': { frames: '◉◉✦◉', ink: 14 },
+        '▂': 11,
+        '▄': 5, '▌': 5, '▐': 5,
+        '░': 9
+      }
+    },
+    { name: 'glint', rows: [
+      '', '', '', '',
+      '               g          g',
+      '                 g          g',
+      '                   g          g',
+      '              g',
+      '                g'
+      ],
+      legend: { 'g': { frames: '╲   ', ink: 12, stagger: 'diag' } }
+    },
+    { name: 'barrier', rows: [
+      '', '', '', '', '', '', '', '', '', '', '', '',
+      '        o                          o',
+      '        │╲                        ╱│',
+      '        │ ________________________ │'
+      ],
+      legend: { 'o': 7, '│': 7, '╲': 13, '╱': 13, '_': 13 }
+    }
+  ],
+  hotspots: [
+    { x: 19, y: 5, w: 5, h: 3, command: 'EXAMINE COIN' },
+    { x: 17, y: 12, w: 10, h: 1, command: 'READ PLACARD' },
+    { x: 12, y: 3, w: 20, h: 7, command: 'EXAMINE CASE' }
+  ]
+};
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('The Long Gallery', 'title');
+term.print('A gallery in the Guildhall of Marle, floored in boards that answer every step. One case has a rope in front of it, and a keeper in sight of it. In the case is a small coin.');
+term.illuminate(art);
+term.print('[spike: try EXAMINE COIN, READ PLACARD, TAKE COIN. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'EXAMINE COIN' || cmd === 'X COIN') {
+    return 'A quarter-mark of the Hush, milled in 99 BA. It looks new. It would. You remember the sound it made going down the well.';
+  }
+  if (cmd === 'READ PLACARD' || cmd === 'EXAMINE PLACARD' || cmd === 'X PLACARD') {
+    return 'COIN OF THE LAST YEAR BEFORE. Raised from the Old Well at Marle. Its giving was witnessed by the miller’s daughter, Wynn, then six, whose account, set down in her ninetieth year, is the only record. Lent by the Turning House.\n\nYou remember her. She had to stand on the well-stones to see over.';
+  }
+  if (cmd === 'EXAMINE CASE' || cmd === 'X CASE') {
+    return 'Plate glass, new enough to be proud of itself. Your reflection stands in it like a second exhibit.';
+  }
+  if (cmd === 'OPEN CASE') return 'Locked, and the keeper has the look of a woman who counts.';
+  if (cmd === 'TAKE COIN') return 'It was yours once. The case, the placard, and the law of the Rekindling say otherwise now.';
+  if (cmd === 'EXAMINE ROPE' || cmd === 'X ROPE') return 'Woven to hold back a politer crowd than any crowd actually is.';
+  if (cmd === 'EXAMINE KEEPER' || cmd === 'X KEEPER') return 'She is watching a schoolboy the way a heron watches a fish. You are next on the rota.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'The gallery runs long and quiet. The case with the coin waits where it always waits.';
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

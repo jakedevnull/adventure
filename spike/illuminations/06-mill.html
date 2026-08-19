@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mill on the Wend — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('riverlight', 'the animation stress test · wheel, fall, weir, spray · water inks');
+
+var ART = {
+  cols: 52, rows: 18,
+  palette: 'riverlight',
+  layers: [
+    { name: 'scene', rows: [
+      '', '', '',
+      '   ▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜',
+      '   ▌    ▪          ▐          ~~~~~~~~~~~~~~~~~~~~~~',
+      '   ▌               ▐          ══════════════════════',
+      '   ▌               ▐   ╭────╮',
+      '   ▌               ▐  ╱      ╲',
+      '   ▌               ▐ ╱        ╲',
+      '   ▌               ▐ │        │',
+      '   ▌  ╭─╮          ▐ │        │',
+      '   ▌  │ │          ▐ ╲        ╱',
+      '   ▌  │∙│   ◎      ▐  ╰──────╯',
+      '   ▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟',
+      '▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
+      '                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',
+      '', ''
+      ],
+      legend: {
+        '▛': 14, '▀': 14, '▜': 14, '▌': 14, '▐': 14, '▙': 14, '▄': 14, '▟': 14,
+        '▪': 3, '╭': 13, '╮': 13, '│': 13, '╰': 13, '╯': 13, '─': 13,
+        '╱': 13, '╲': 13, '∙': 12, '◎': 14,
+        '═': 13, '▁': 10,
+        '~': { frames: '~≈~-', inks: [5, 6, 5, 4], stagger: 'diag' }
+      }
+    },
+    { name: 'weir', rows: [
+      '', '', '', '', '',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              ffffff',
+      '                                              pppppp'
+      ],
+      legend: {
+        'f': { frames: '│╎┆╎', ink: 5, stagger: 'grid' },
+        'p': { frames: '⠁⠈⠂⠄', ink: 8, stagger: 'grid' }
+      }
+    },
+    { name: 'feed', rows: [
+      '', '', '', '',
+      '                             w',
+      '                             w',
+      '                             w',
+      '                             pp',
+      '', '', '', '', '',
+      '                     pppppppp'
+      ],
+      legend: {
+        'w': { frames: '│╎┆╎', ink: 6, stagger: 'diag' },
+        'p': { frames: '⠁⠈⠂⠄', ink: 8, stagger: 'grid' }
+      }
+    },
+    { name: 'wheel-run', rows: [
+      '', '', '', '', '', '', '', '', '',
+      '                        abc',
+      '                        d●e',
+      ''
+      ],
+      legend: {
+        'a': { frames: '╲│╱─', ink: 14 },
+        'b': { frames: '│╱─╲', ink: 14 },
+        'c': { frames: '╱─╲│', ink: 14 },
+        'd': { frames: '─╲│╱', ink: 14 },
+        'e': { frames: '╱─╲│', ink: 14, phase: 2 },
+        '●': 13
+      }
+    },
+    { name: 'wheel-still', visible: false, rows: [
+      '', '', '', '', '', '', '', '', '',
+      '                        ╲│╱',
+      '                        ─●─',
+      ''
+      ],
+      legend: { '╲': 14, '│': 14, '╱': 14, '─': 14, '●': 13 }
+    },
+    { name: 'gate', visible: false, rows: [
+      '', '', '', '',
+      '                             ▓',
+      '                             ▓'
+      ],
+      legend: { '▓': 13 }
+    },
+    { name: 'lever-up', rows: [
+      '', '', '',
+      '                                 ╱',
+      '                                 │'
+      ],
+      legend: { '╱': 12, '│': 12 }
+    },
+    { name: 'lever-down', visible: false, rows: [
+      '', '', '', '',
+      '                                  ╲'
+      ],
+      legend: { '╲': 12 }
+    }
+  ],
+  hotspots: [
+    { x: 31, y: 3, w: 5, h: 3, command: 'PULL LEVER' },
+    { x: 21, y: 6, w: 10, h: 7, command: 'EXAMINE WHEEL' },
+    { x: 44, y: 5, w: 8, h: 9, command: 'EXAMINE WEIR' }
+  ]
+};
+
+var running = true;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('Mill on the Wend', 'title');
+term.print("The mill sits with its shoulder to the weir, taking the Wend's tithe. The wheel turns the way it has turned since before the maps. A sluice lever stands over the headrace.");
+term.illuminate(art);
+term.print('[spike: try PULL LEVER, EXAMINE WHEEL. Tapping works too. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'PULL LEVER' || cmd === 'PULL' || cmd === 'PUSH LEVER') {
+    running = !running;
+    art.setLayer('feed', running);
+    art.setLayer('wheel-run', running);
+    art.setLayer('wheel-still', !running);
+    art.setLayer('gate', !running);
+    art.setLayer('lever-up', running);
+    art.setLayer('lever-down', !running);
+    return running
+      ? 'You haul the lever back. The gate lifts, the fall finds its voice, and the wheel takes up its argument with the axle mid-sentence.'
+      : "You haul the lever over. The gate drops, the fall thins to a drip, and the wheel walks itself to a stop. Somewhere downstream of here, and four strides after now, a streambed has gone quietly dry.";
+  }
+  if (cmd === 'EXAMINE WHEEL' || cmd === 'X WHEEL') {
+    return running
+      ? 'Elm and iron, furred green at the rim. It has worn three channels into its own stone bed and is starting a fourth.'
+      : 'Stopped. Water drips off the buckets, embarrassed.';
+  }
+  if (cmd === 'EXAMINE WEIR' || cmd === 'X WEIR') return 'The Wend steps down it without looking. A thousand years of practice.';
+  if (cmd === 'EXAMINE LEVER' || cmd === 'X LEVER') return running ? 'Upright. The grip is polished by palms.' : 'Hauled over. The mechanism holds it without effort.';
+  if (cmd === 'EXAMINE MILL' || cmd === 'X MILL') return 'Stone below, flour dust above. The door is the only thing here younger than you.';
+  if (cmd === 'EXAMINE WATER' || cmd === 'X WATER') return 'The Wend, doing two jobs at once and complaining about neither.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'Mill, wheel, weir. ' + (running ? 'The wheel turns.' : 'The wheel stands.');
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

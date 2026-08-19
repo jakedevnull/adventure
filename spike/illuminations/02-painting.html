@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Stair Landing — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('loom', 'hidden clue in a painting · raking-light layer · dyed-wool inks');
+
+var ART = {
+  cols: 46, rows: 16,
+  palette: 'loom',
+  layers: [
+    { name: 'painting', rows: [
+      '◆══════════════════════════════════════◆',
+      '║                                      ║',
+      '║       ☼                              ║',
+      '║     %&&&%                            ║',
+      '║    &&&&%&&&                          ║',
+      '║     &%&&&&                 █▀█       ║',
+      '║       t                    █▪█       ║',
+      '║       t                    ███       ║',
+      "║ ──'──,───'──,────,──▄▄█████▄▄──,──── ║",
+      "║  /   '   /    /   '    /   '   /     ║",
+      "║     /   '   /    '   /    '     /    ║",
+      "║  '    /    '   /   /    '   /    '   ║",
+      "║    /    '   /    '    /   '   /      ║",
+      "║  /   '    /   /    '    /    '   /   ║",
+      '║                                      ║',
+      '◆══════════════════════════════════════◆'
+      ],
+      legend: {
+        '◆': 8, '═': 8, '║': 8,
+        '☼': 7,
+        '&': 9, '%': 10, 't': { glyph: '║', ink: 3 },
+        '█': 3, '▀': 3, '▄': 3, '▪': 4,
+        '─': 2, ',': 2, "'": 2,
+        '/': 8
+      }
+    },
+    { name: 'raking', visible: false, rows: [
+      '', '', '', '', '', '',
+      '                             W',
+      '', '',
+      '          9              9         9',
+      '      9              9',
+      '           9                  9',
+      '                9        9          9',
+      '       9              9',
+      ''
+      ],
+      legend: {
+        '9': 1,
+        'W': { glyph: '▓', frames: '▓█▓▓', inks: [7, 7, 8, 7] }
+      }
+    },
+    { name: 'candle', rows: [
+      '', '', '', '', '',
+      '                                          ▲',
+      '                                          │',
+      '                                          │',
+      '                                         ─╨─'
+      ],
+      legend: {
+        '▲': { frames: '▲▴▲▵', inks: [6, 7, 6, 7] },
+        '│': 1,
+        '─': 3, '╨': 3
+      }
+    }
+  ],
+  hotspots: [
+    { x: 41, y: 5, w: 4, h: 4, command: 'MOVE CANDLE' },
+    { x: 1,  y: 1, w: 38, h: 14, command: 'EXAMINE PAINTING' }
+  ]
+};
+
+var raked = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('The Stair Landing', 'title');
+term.print('Halfway up the stair hangs a painting of the vale, varnished to the color of tea. A candle burns in a bracket beside it, which is a fire risk somebody accepted long ago.');
+term.illuminate(art);
+term.print('[spike: try EXAMINE PAINTING, MOVE CANDLE. Tapping works too. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'EXAMINE PAINTING' || cmd === 'X PAINTING' || cmd === 'LOOK AT PAINTING') {
+    return raked
+      ? 'Noon over the vale. The stubble is numerals; the window is lit. You are not sure you can see it the old way again.'
+      : 'Noon over the vale: the elm, the tower on its hill, stubble in the near field. The brushwork in the stubble is hurried. Or not hurried. Deliberate.';
+  }
+  if (cmd === 'MOVE CANDLE' || cmd === 'TAKE CANDLE' || cmd === 'RAISE CANDLE') {
+    if (raked) return 'The candle is as close as wax and canvas should ever be.';
+    raked = true;
+    art.setLayer('raking', true);
+    return 'You lift the candle along the canvas. Raked sideways, the varnish gives it up: the stubble strokes are numerals, 9 after 9 after 9. And the tower window is lit, which it was not a moment ago. Probably it always was.';
+  }
+  if (cmd === 'LOOK BEHIND PAINTING' || cmd === 'TILT PAINTING' || cmd === 'MOVE PAINTING') {
+    return 'It is fixed to the wall (perhaps to foil any attempt to look behind it).';
+  }
+  if (cmd === 'EXAMINE TOWER' || cmd === 'X TOWER') {
+    return raked
+      ? 'The window is lit. Someone very small is painted there, looking out. Toward the elm, you decide.'
+      : 'A watchtower on the far hill, the kind built to see one particular thing coming.';
+  }
+  if (cmd === 'EXAMINE ELM' || cmd === 'X ELM') return 'Painted with affection. Its roots would fall about where the strokes crowd thickest.';
+  if (cmd === 'EXAMINE CANDLE' || cmd === 'X CANDLE') return 'Tallow, half spent. Somebody renews it.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'The painting hangs at the turn of the stair. The candle burns beside it.';
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

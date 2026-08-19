@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Under the Stones — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('goldleaf', 'a locked door · layers swap with state · gold border');
+
+var ART = {
+  cols: 42, rows: 18,
+  palette: 'goldleaf',
+  layers: [
+    { name: 'wall', rows: [
+      '◆════════════════════════════════════════◆',
+      '║                                        ║',
+      '║                                        ║',
+      '║           ▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜           ║',
+      '║           ▌                ▐           ║',
+      '║   ·       ▌                ▐      ·    ║',
+      '║           ▌                ▐           ║',
+      '║           ▌                ▐           ║',
+      '║       ·   ▌                ▐           ║',
+      '║           ▌                ▐   ·       ║',
+      '║           ▌                ▐           ║',
+      '║           ▌                ▐           ║',
+      '║   ·       ▌                ▐       ·   ║',
+      '║           ▌                ▐           ║',
+      '║           ▌                ▐           ║',
+      '║           ▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟           ║',
+      '║                                        ║',
+      '◆════════════════════════════════════════◆'
+      ],
+      legend: {
+        '◆': 1, '═': 2, '║': 2,
+        '▛': 6, '▀': 6, '▜': 6, '▙': 6, '▄': 6, '▟': 6,
+        '▌': 7, '▐': 7,
+        '·': 8
+      }
+    },
+    { name: 'door-closed', rows: [
+      '', '', '', '',
+      '             ┌──┬──┬──┬──┬──┐',
+      '             │  │  │  │  │  │',
+      '             ╞══╪══╪══╪══╪══╡',
+      '             │  │  │  │  │  │',
+      '             │  │  │  │  │  │',
+      '             │  │  │  │◉ │  │',
+      '             │  │  │  │○ │  │',
+      '             │  │  │  │  │  │',
+      '             ╞══╪══╪══╪══╪══╡',
+      '             │  │  │  │  │  │',
+      '             └──┴──┴──┴──┴──┘'
+      ],
+      legend: {
+        '┌': 4, '┬': 4, '┐': 4, '│': 4, '└': 4, '┴': 4, '┘': 4, '─': 4,
+        '╞': 3, '╪': 3, '╡': 3, '═': 3,
+        '◉': 2, '○': 1
+      }
+    },
+    { name: 'door-open', visible: false, rows: [
+      '', '', '', '',
+      '             █▌',
+      '             █▌',
+      '             █▌',
+      '             █▌',
+      '             █▌      __',
+      '             █▌     ____',
+      '             █▌    ______',
+      '             █▌   ________',
+      '             █▌  __________',
+      '             █▌ ____________',
+      '             █▌______________'
+      ],
+      legend: {
+        '█': 4, '▌': 4,
+        '_': 8
+      }
+    },
+    { name: 'wards', visible: false, rows: [
+      '', '', '',
+      '              ✶    ✶     ✶  ✶',
+      '', '', '', '',
+      '            ✶                ✶',
+      '', '', '',
+      '            ✶                ✶',
+      '', '',
+      '                ✶        ✶'
+      ],
+      legend: {
+        '✶': { frames: '✶✦··', inks: [1, 2, 4, 8], stagger: 'grid' }
+      }
+    }
+  ],
+  hotspots: [
+    { x: 21, y: 9,  w: 5, h: 1, command: 'UNLOCK DOOR' },
+    { x: 21, y: 10, w: 5, h: 1, command: 'OPEN DOOR' }
+  ]
+};
+
+var unlocked = false, opened = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('Under the Stones', 'title');
+term.print('The stair ends at a door. Oak, iron-banded, older than the wall around it. Your iron key has been warm in your pocket since the landing above.');
+term.illuminate(art);
+term.print('[spike: try UNLOCK DOOR, then OPEN DOOR. Or tap the door furniture. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'OPEN DOOR' || cmd === 'OPEN') {
+    if (opened) return 'It is open.';
+    if (!unlocked) return 'Locked. The keyhole is cut in the shape of a falling leaf.';
+    opened = true;
+    art.setLayer('door-closed', false);
+    art.setLayer('wards', false);
+    art.setLayer('door-open', true);
+    return 'The door swings out, which explains the worn floor. Steps go down.';
+  }
+  if (cmd.indexOf('UNLOCK') === 0 || cmd === 'USE KEY') {
+    if (opened) return 'It is open.';
+    if (unlocked) return 'It is already unlocked.';
+    unlocked = true;
+    art.setLayer('wards', true);
+    return 'The key turns twice. Small lights wake in the stonework, take an interest, and settle.';
+  }
+  if (cmd === 'EXAMINE KEYHOLE' || cmd === 'X KEYHOLE') return 'Cut in the shape of a falling leaf. So are the teeth of your key.';
+  if (cmd === 'EXAMINE DOOR' || cmd === 'X DOOR') return opened ? 'Open on a descending stair.' : 'Oak and iron. The bands were forged around the planks, not nailed to them.';
+  if (cmd === 'EXAMINE KEY' || cmd === 'X KEY') return 'Iron, toothed like a leaf. Warm.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'The stair ends at a door.' + (opened ? ' The door stands open.' : '');
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

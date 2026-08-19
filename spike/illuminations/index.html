@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illuminations — spike (SPE-32)</title>
+<link rel="stylesheet" href="illumination.css">
+<style>
+  body { max-width: 88ch; }
+  h1 { font-size: 1.2em; margin: 0 0 0.2em; }
+  .intro { color: var(--dim); margin-bottom: 2em; }
+  .card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid #2a2a2a;
+    padding: 0.8em 1em;
+    margin-bottom: 0.8em;
+  }
+  .card:hover { border-color: var(--dim); }
+  .card b { display: inline-block; min-width: 16ch; }
+  .card .pal { color: var(--dim); font-size: 0.85em; }
+  .card .note { display: block; color: var(--dim); font-size: 0.85em; margin-top: 0.2em; }
+  .sw { display: inline-flex; gap: 2px; vertical-align: middle; margin-left: 0.5em; }
+  .sw i { width: 0.7em; height: 0.7em; display: inline-block; }
+</style>
+</head>
+<body>
+<h1>Illuminations — spike</h1>
+<p class="intro">
+Ten example Illuminations for Everwyn (SPE-32), each an HTML page you can open
+directly. All of them obey the DESIGN.md &sect;6.2 constraint: a glyph grid of at
+most 64&times;24 cells, one glyph per cell, 16 inks, per-cell animation loops of
+at most 8 frames on one slow tick, and hotspots that compose commands into the
+prompt (never execute them). Each page tries a different experimental palette.
+On any page: type the commands, tap the picture, hold H to outline hotspots.
+</p>
+<div id="cards"></div>
+<script src="illumination.js"></script>
+<script>
+var EXAMPLES = [
+  { href: '01-locked-door.html', title: 'Under the Stones', pal: 'goldleaf',
+    note: 'The locked door. Layer swaps on UNLOCK and OPEN; gold manuscript border; ward-lights animate.' },
+  { href: '02-painting.html', title: 'The Stair Landing', pal: 'loom',
+    note: 'The hidden clue in a painting. MOVE CANDLE rakes the light and a hidden layer surfaces in the brushwork.' },
+  { href: '03-rebus.html', title: "Masons' Court", pal: 'verdigris',
+    note: 'The rebus. Three carved panels read as an instruction; performing it opens the wall.' },
+  { href: '04-davinci.html', title: "The Scriptor's Cell", pal: 'sanguine',
+    note: 'The da Vinci folio. Red chalk, mirrored handwriting, meshing gears, TURN PAGE for the verso.' },
+  { href: '05-turning-house.html', title: 'The Crossroads', pal: 'hearth',
+    note: 'The Turning House at dusk. Guttering windows, drifting smoke, KNOCK and be let in.' },
+  { href: '06-mill.html', title: 'Mill on the Wend', pal: 'riverlight',
+    note: 'The animation stress test. Turning wheel, weir curtain, spray; PULL LEVER stops the world.' },
+  { href: '07-ferry-bell.html', title: 'Ferry Landing', pal: 'phosphor',
+    note: 'The writing guide’s own room, in pure ASCII and one green. RING BELL and the ferry answers.' },
+  { href: '08-oak.html', title: 'Oak Meadow', pal: 'seasons',
+    note: 'One place, four eras. PLANT ACORN, then walk PAST and FUTURE through the layer swaps.' },
+  { href: '09-hush-sky.html', title: 'Watchfield', pal: 'moonwash',
+    note: 'The Hush sky. A comet animated purely with phase offsets; TRACE STARS to find the constellation.' },
+  { href: '10-museum.html', title: 'The Long Gallery', pal: 'lettered',
+    note: 'The coin from the well, a thousand years later. Glass glints; READ PLACARD for the payoff.' }
+];
+var wrap = document.getElementById('cards');
+EXAMPLES.forEach(function (ex, i) {
+  var a = document.createElement('a');
+  a.className = 'card';
+  a.href = ex.href;
+  var num = (i + 1 < 10 ? '0' : '') + (i + 1);
+  a.innerHTML = '<b>' + num + ' · ' + ex.title + '</b> <span class="pal">' + ex.pal + '</span>';
+  var sw = document.createElement('span');
+  sw.className = 'sw';
+  Illum.PALETTES[ex.pal].inks.forEach(function (c) {
+    var d = document.createElement('i');
+    d.style.background = c;
+    sw.appendChild(d);
+  });
+  a.appendChild(sw);
+  var note = document.createElement('span');
+  note.className = 'note';
+  note.textContent = ex.note;
+  a.appendChild(note);
+  wrap.appendChild(a);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Scriptor's Cell — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('sanguine', 'a folio in the old master style · mirrored hand · red chalk and iron-gall');
+
+var ART = {
+  cols: 54, rows: 20,
+  palette: 'sanguine',
+  layers: [
+    { name: 'page', rows: [
+      '╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╮',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆          ,                                         ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                            ,       ┆',
+      '┆                                                    ┆',
+      '┆      ,                                             ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                    ┆',
+      '┆                                                   ╱┆',
+      '┆                                                  ╱ ┆',
+      '╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯'
+      ],
+      legend: { '╭': 5, '╮': 5, '╰': 5, '╯': 5, '┄': 5, '┆': 5, ',': 13, '╱': 4 }
+    },
+    { name: 'marginalia', ink: 4, rows: [
+      '',
+      '',
+      '   .dias neeb tey ton sah',
+      '      tahw sraeh ssarb eht',
+      '',
+      '', '', '', '', '', '', '', '', '', '', '',
+      '                              .flesti sdniw ti',
+      '                             .ti dnuow reven i'
+      ]
+    },
+    { name: 'device', ink: 12, rows: [
+      '', '', '',
+      '                          ╭─────╮',
+      '                          │  !  │',
+      '     )               ┌───────┴─────┐',
+      '    ))               │             │',
+      '   )))               │ ╭───╮╭───╮  │',
+      '   )))───────────────┤ │ + ││ × │  │',
+      '   )))               │ ╰───╯╰───╯  │',
+      '    ))               │             │',
+      '     )               └─────────────┘',
+      '',
+      '',
+      '',
+      '   L┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄J',
+      '                 xcix'
+      ],
+      legend: {
+        ')': 6,
+        '─': 5, '│': 5, '┌': 5, '┐': 5, '└': 5, '┘': 5, '├': 5, '┤': 5, '┴': 5,
+        '╭': 7, '╮': 7, '╰': 7, '╯': 7,
+        '+': { frames: '+×', ink: 7 },
+        '×': { frames: '×+', ink: 7 },
+        '!': { frames: '╱│╲│', ink: 6 },
+        'L': { glyph: '├', ink: 11 }, 'J': { glyph: '┤', ink: 11 }, '┄': 11
+      }
+    },
+    { name: 'verso', visible: false, ink: 4, rows: [
+      '', '', '', '',
+      '                  ╭─────────╮',
+      '                  │    P    │',
+      '                  │    !    │',
+      '                  │    ●    │',
+      '                  │    F    │',
+      '                  ╰─────────╯',
+      '',
+      '',
+      '        .llits dnats i nehw snrut ti',
+      '       .klaw i nehw stser eldeen eht'
+      ],
+      legend: {
+        '╭': 5, '╮': 5, '╰': 5, '╯': 5, '─': 5, '│': 5, '●': 5,
+        'P': 6, 'F': 6,
+        '!': { frames: '↑↑↓↓', ink: 6 }
+      }
+    }
+  ],
+  hotspots: [
+    { x: 26, y: 3, w: 7, h: 2, command: 'EXAMINE DIAL' },
+    { x: 21, y: 5, w: 15, h: 7, command: 'WIND MECHANISM' },
+    { x: 2, y: 2, w: 26, h: 2, command: 'READ WRITING' },
+    { x: 46, y: 16, w: 7, h: 3, command: 'TURN PAGE' }
+  ]
+};
+
+var verso = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print("The Scriptor's Cell", 'title');
+term.print('A leaf of the scriptor’s folio lies pinned open on the desk, red chalk over iron-gall ink. The device it drafts was never built, or has not been built yet.');
+term.illuminate(art);
+term.print('[spike: try READ WRITING, READ WRITING IN MIRROR, TURN PAGE, WIND MECHANISM. Hold H to outline hotspots.]', 'term-dim');
+
+function showRecto(on) {
+  art.setLayer('device', on);
+  art.setLayer('marginalia', on);
+  art.setLayer('verso', !on);
+}
+
+function handle(cmd) {
+  if (cmd === 'READ WRITING' || cmd === 'EXAMINE WRITING' || cmd === 'X WRITING') {
+    return 'A fine hand, and backward. You would need a mirror, or patience.';
+  }
+  if (cmd.indexOf('MIRROR') !== -1) {
+    return verso
+      ? 'Held to your buckle, the lines come right: IT TURNS WHEN I STAND STILL. THE NEEDLE RESTS WHEN I WALK.'
+      : 'Held to your buckle, the lines come right: THE BRASS HEARS WHAT HAS NOT YET BEEN SAID. And lower: IT WINDS ITSELF. I NEVER WOUND IT.';
+  }
+  if (cmd === 'TURN PAGE' || cmd === 'TURN LEAF') {
+    verso = !verso;
+    showRecto(!verso);
+    return verso
+      ? 'You turn the leaf. The verso holds a rounder instrument: a needle boxed between P and F, at rest exactly between.'
+      : 'You turn the leaf back to the listening whorl.';
+  }
+  if (cmd === 'EXAMINE DIAL' || cmd === 'X DIAL') {
+    return verso ? 'P above, F below. The needle minds neither.' : 'The needle swings between marks that are not numbers. It keeps no time you know.';
+  }
+  if (cmd === 'WIND MECHANISM' || cmd === 'WIND' || cmd === 'TURN CRANK') {
+    return 'The drawing needs no winding, and says so, backward, twice.';
+  }
+  if (cmd === 'EXAMINE WHORL' || cmd === 'X WHORL' || cmd === 'EXAMINE HORN' || cmd === 'X HORN') {
+    return 'A whorl of brass, drawn with more tenderness than most portraits get.';
+  }
+  if (cmd === 'EXAMINE MEASURE' || cmd === 'X MEASURE' || cmd === 'READ MEASURE') {
+    return 'The span is marked xcix. Of course it is.';
+  }
+  if (cmd === 'LOOK' || cmd === 'L') return 'The folio lies open on the desk. ' + (verso ? 'Verso: the boxed needle.' : 'Recto: the listening whorl.');
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

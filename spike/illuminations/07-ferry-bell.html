@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferry Landing — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('phosphor', 'the writing guide’s own room · pure ASCII, one green · RING BELL');
+
+var ART = {
+  cols: 56, rows: 12,
+  palette: 'phosphor',
+  layers: [
+    { name: 'far-bank', rows: [
+      "                            ____",
+      " ''  ''''  ''  ''''  ''    /____\\    ''''  ''  ''''  ''",
+      '________________________________________________________'
+      ],
+      legend: { "'": 5, '_': 6, '/': 6, '\\': 6 }
+    },
+    { name: 'water', rows: [
+      '', '', '', '', '',
+      'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+      'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+      'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww',
+      'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww'
+      ],
+      legend: { 'w': { frames: '~-~ ', inks: [6, 4, 5, 4], stagger: 'grid' } }
+    },
+    { name: 'rope', rows: [
+      '', '', '',
+      '--------------------------------------------------------'
+      ],
+      legend: { '-': 4 }
+    },
+    { name: 'ferry-far', rows: [
+      '', '', '', '',
+      '     \\__________/'
+      ],
+      legend: { '\\': 8, '_': 8, '/': 8 }
+    },
+    { name: 'ferry-near', visible: false, rows: [
+      '', '', '', '', '', '', '',
+      '                                o',
+      '                  \\_____________|____/'
+      ],
+      legend: { '\\': 10, '_': 10, '/': 10, '|': 9, 'o': 9 }
+    },
+    { name: 'bell', rows: [
+      '', '', '', '',
+      '                                          =========',
+      '                                          |   o   |',
+      '                                          |  /#\\  |',
+      '                                          | /###\\ |',
+      "                                          | '---' |"
+      ],
+      legend: {
+        '=': 9, '|': 9,
+        'o': 11, '/': 12, '#': 12, '\\': 12, "'": 12, '-': 12
+      }
+    },
+    { name: 'bell-swing', visible: false, rows: [
+      '', '', '', '', '',
+      '                                        *         *',
+      '', '',
+      '                                              x'
+      ],
+      legend: {
+        '*': { frames: '*   ', ink: 14, stagger: 'grid' },
+        'x': { frames: '\\|/|', ink: 15 }
+      }
+    },
+    { name: 'quay', rows: [
+      '', '', '', '', '', '', '', '', '',
+      '========================================================',
+      '   .    |    .    .    |     .    .    |    .    .    |'
+      ],
+      legend: { '=': 9, '.': 7, '|': 6 }
+    }
+  ],
+  hotspots: [
+    { x: 42, y: 4, w: 9, h: 5, command: 'RING BELL' },
+    { x: 4, y: 3, w: 14, h: 2, command: 'EXAMINE FERRY' },
+    { x: 0, y: 5, w: 40, h: 4, command: 'EXAMINE RIVER' }
+  ]
+};
+
+var near = false, ringing = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('Ferry Landing', 'title');
+term.print('You are on a stone quay on the south bank of the Wend. The ferry is on the far side, which says something about your luck. A towpath runs east and west.');
+term.print('There is a bronze bell here, green with years.');
+term.illuminate(art);
+term.print('[spike: this one is pure ASCII in one phosphor green. Try RING BELL. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'RING BELL' || cmd === 'RING THE BELL' || cmd === 'RING') {
+    if (near) return 'The ferrier looks up. The ferry is here. So are you. The bell has done its work.';
+    if (ringing) return 'It is still ringing.';
+    ringing = true;
+    art.setLayer('bell-swing', true);
+    setTimeout(function () {
+      art.setLayer('bell-swing', false);
+      art.setLayer('ferry-far', false);
+      art.setLayer('ferry-near', true);
+      near = true; ringing = false;
+      term.print('The ferry comes over the Wend hand over hand along the rope, and grinds against the quay. The ferrier waits.');
+    }, 4200);
+    return 'You ring. The note crosses the water flatly, twice. On the far bank, someone sets down a mug.';
+  }
+  if (cmd === 'EXAMINE BELL' || cmd === 'X BELL') return 'Bronze gone green, rope gone soft. The clapper is worn to a comma.';
+  if (cmd === 'EXAMINE FERRY' || cmd === 'X FERRY') return near ? 'Against the quay, gently insistent.' : 'Flat-bottomed, rope-hauled, on the wrong side.';
+  if (cmd === 'EXAMINE ROPE' || cmd === 'X ROPE') return 'It spans the Wend just above the water, spliced in four places. The ferry hauls itself along it.';
+  if (cmd === 'EXAMINE RIVER' || cmd === 'X RIVER' || cmd === 'EXAMINE WEND') return 'Slow, brown, and older than its name.';
+  if (cmd === 'BOARD FERRY' || cmd === 'BOARD' || cmd === 'ENTER FERRY') {
+    return near ? 'The ferrier holds out a hand for a coin you are already looking for.' : 'Swimming is for otters.';
+  }
+  if (cmd === 'LOOK' || cmd === 'L') return 'Quay, river, bell. ' + (near ? 'The ferry waits.' : 'The ferry is on the far side.');
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oak Meadow — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('seasons', 'one place, four eras · PAST and FUTURE swap layers · plant the acorn');
+
+var ART = {
+  cols: 48, rows: 15,
+  palette: 'seasons',
+  layers: [
+    { name: 'sun-noon', rows: [
+      '',
+      '       ☼'
+      ],
+      legend: { '☼': 11 } },
+    { name: 'sky-hush', visible: false, rows: [
+      '     ·          ·             ☾        ·',
+      '            ·                     ·'
+      ],
+      legend: { '☾': 15, '·': 14 } },
+    { name: 'sky-morning', visible: false, rows: [
+      '',
+      '  ☼                        ˅     ˅'
+      ],
+      legend: { '☼': 7, '˅': { glyph: 'v', ink: 14 } } },
+    { name: 'sky-lettered', visible: false, rows: [
+      '                                        ☼'
+      ],
+      legend: { '☼': 15 } },
+
+    { name: 'flora-noon', rows: [
+      '', '', '', '', '', '', '', '', '', '',
+      '          b                      b',
+      '   o   *      "  o      "   *     o    *',
+      '  "  ,  "   "     "  ,  "    "  ,   "  "'
+      ],
+      legend: {
+        'o': 15, '*': 13, '"': 4, ',': 3,
+        'b': { frames: '·  · ', ink: 11, stagger: 'grid' }
+      } },
+    { name: 'mound', visible: false, rows: [
+      '', '', '', '', '', '', '', '', '', '', '', '',
+      '                        ∙'
+      ],
+      legend: { '∙': 9 } },
+
+    { name: 'thistle', visible: false, rows: [
+      '', '', '', '', '', '', '', '', '', '', '',
+      '                        *',
+      '                        |'
+      ],
+      legend: { '*': 8, '|': 8 } },
+
+    { name: 'sapling', visible: false, rows: [
+      '', '', '', '', '', '', '', '', '', '',
+      '                       %&%',
+      '                        |',
+      '                        |'
+      ],
+      legend: { '%': 5, '&': 4, '|': 9 } },
+
+    { name: 'oak-mid', visible: false, rows: [
+      '', '', '', '', '', '',
+      '                     %&&&%',
+      '                   &&&&%&&&&',
+      '                  &%&&&&&&%&&',
+      '                    &&%&&&',
+      '                       █',
+      '                       █',
+      '                      ╱█╲'
+      ],
+      legend: { '&': 4, '%': 5, '█': 9, '╱': 9, '╲': 9 } },
+
+    { name: 'oak-vast', visible: false, rows: [
+      '', '', '',
+      '                  %&&&&&%',
+      '              &&&%&&%&&&&&&%',
+      '            &%&&&&&&&&&&%&&&&&',
+      '          &&&&%&&&&&&%&&&&&&%&&&',
+      '           &&&&&&%&&&&&&&&%&&&  r',
+      '             %&&&&&&%&&&&&&%    r',
+      '               &&&%&&&&&%  l    r',
+      '                   ▓█▓    l    ═══',
+      '                    █      l',
+      '                   ╱█╲      l'
+      ],
+      legend: {
+        '&': { frames: '&%', ink: 3, stagger: 'grid' },
+        '%': { frames: '%&', ink: 4, stagger: 'grid' },
+        '█': 9, '▓': 8, '╱': 9, '╲': 9,
+        'r': { glyph: '│', ink: 10 }, '═': 10,
+        'l': { frames: ',   ', ink: 10, stagger: 'diag' }
+      } },
+
+    { name: 'ground', rows: [
+      '', '', '', '', '', '', '', '', '', '', '', '', '',
+      "  ' , '' , ' ,, ' , '' , ' , '' ,, ' , '' , ' ,",
+      '▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁'
+      ],
+      legend: { "'": 3, ',': 2, '▁': 8 } }
+  ],
+  hotspots: [
+    { x: 18, y: 3, w: 16, h: 10, command: 'EXAMINE OAK' },
+    { x: 2, y: 11, w: 44, h: 3, command: 'EXAMINE MEADOW' }
+  ]
+};
+
+var ERAS = ['1099 BA. The Long Noon.', '99 BA. The Hush.', '99 AA. The Morning Country.', '1099 AA. The Rekindling.'];
+var era = 0, planted = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('Oak Meadow', 'title');
+term.print('A meadow with nothing to prove, an hour into the Long Noon of 1099 BA. The grass is full of bees with a good opinion of you. In your pocket is an acorn from somewhere it will not be missed.');
+term.illuminate(art);
+term.print('[spike: try PLANT ACORN, then FUTURE and PAST. WHEN tells you the year. Hold H to outline hotspots.]', 'term-dim');
+
+function setEra(i) {
+  era = i;
+  art.setLayer('sun-noon', i === 0);
+  art.setLayer('sky-hush', i === 1);
+  art.setLayer('sky-morning', i === 2);
+  art.setLayer('sky-lettered', i === 3);
+  art.setLayer('flora-noon', i === 0);
+  art.setLayer('mound', i === 0 && planted);
+  art.setLayer('thistle', i > 0 && !planted);
+  art.setLayer('sapling', i === 1 && planted);
+  art.setLayer('oak-mid', i === 2 && planted);
+  art.setLayer('oak-vast', i === 3 && planted);
+}
+
+var FORWARD = [
+  function () { return planted
+    ? 'The years pour by. The meadow keeps its shape. Where you knelt, a sapling stands to your shoulder, and the evening has a listening quality.'
+    : 'The years pour by. The meadow keeps its shape, and keeps it empty. The evening has a listening quality.'; },
+  function () { return planted
+    ? 'The stride over the Gap is the same length as every stride, whatever the calendars claim. On the far side the sapling has become a tree with opinions.'
+    : 'The stride over the Gap is the same length as every stride, whatever the calendars claim. The meadow on the far side is still keeping the spot.'; },
+  function () { return planted
+    ? 'A thousand years of weather happen to somebody else. The oak now owns the meadow, and lets children hang a swing on it.'
+    : 'A thousand years of weather happen to somebody else. The thistle has been succeeded by a thistle.'; }
+];
+var BACK = [
+  'The years run back to noon. The bees resume.',
+  'The years run back. The bells of the Hush are a while off ringing.',
+  'The years run back over the Gap without comment.'
+];
+
+function handle(cmd) {
+  if (cmd === 'FUTURE' || cmd === 'F') {
+    if (era === 3) return 'The years hold firm here. Farther After is not yet open.';
+    var line = FORWARD[era]();
+    setEra(era + 1);
+    return line;
+  }
+  if (cmd === 'PAST' || cmd === 'P') {
+    if (era === 0) return 'The years hold firm here. Deeper Before is not yet open.';
+    setEra(era - 1);
+    return BACK[era]; // era already decremented; BACK indexed by destination
+  }
+  if (cmd === 'WHEN') return 'It is ' + ERAS[era];
+  if (cmd === 'PLANT ACORN' || cmd === 'PLANT') {
+    if (era !== 0) return planted ? 'That work is done, a stride Before.' : 'The ground here is not asking for an acorn.';
+    if (planted) return 'One was enough.';
+    planted = true;
+    art.setLayer('mound', true);
+    return 'You kneel, make a hole the width of a thumb, and give the acorn its instructions. The meadow closes over it.';
+  }
+  if (cmd === 'EXAMINE OAK' || cmd === 'X OAK' || cmd === 'EXAMINE TREE' || cmd === 'X TREE' || cmd === 'EXAMINE SAPLING') {
+    if (!planted || era === 0) return era === 0 ? 'No oak here. Yet.' : 'No oak. A thistle holds the spot, as if reserved.';
+    if (era === 1) return 'An oak, young and serious. In a younger year, you planted it. That year is an hour behind you.';
+    if (era === 2) return 'An oak in its full argument with gravity. The lowest fork is exactly a boot high.';
+    return 'The oak is a landmark now, named on maps after nobody remembers who. You remember who.';
+  }
+  if (cmd === 'CLIMB OAK' || cmd === 'CLIMB TREE' || cmd === 'CLIMB') {
+    if (!planted || era < 2) return 'There is nothing here that would hold you.';
+    return era === 2
+      ? 'You climb to the third fork. From up here the meadow explains itself: old furrow lines, waiting out the centuries under the grass.'
+      : 'The first branch is a road. You walk up it a way and come down feeling younger, which for you is saying something.';
+  }
+  if (cmd === 'EXAMINE MEADOW' || cmd === 'X MEADOW' || cmd === 'EXAMINE GRASS') {
+    return era === 0 ? 'Knee-high and confident. The bees run the place.' : 'The same meadow, wearing a different year.';
+  }
+  if (cmd === 'EXAMINE SWING' || cmd === 'X SWING') {
+    return era === 3 && planted ? 'Rope newer than the branch by a thousand years. It gets replaced; the idea of it does not.' : 'No swing here.';
+  }
+  if (cmd === 'LOOK' || cmd === 'L') return 'The meadow, in ' + ERAS[era].split('.')[0] + '.';
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

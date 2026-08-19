@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watchfield — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('moonwash', 'the Hush sky · a comet made of phase offsets · a constellation to trace');
+
+var ART = {
+  cols: 56, rows: 17,
+  palette: 'moonwash',
+  layers: [
+    { name: 'stars', rows: [
+      '      ☽                              9       s      t',
+      '   t           s          s                     s',
+      '          s                          9      t         s',
+      '      t                                      s',
+      '   s                 t           9       9',
+      '          t                          f      t',
+      '                 s             9           9      t',
+      '     s                   t                      s',
+      '              t                   9     9',
+      '        s                    t              s',
+      '   t                                  s',
+      '                      s                   t'
+      ],
+      legend: {
+        '☽': 11,
+        's': { frames: '·˙· ', ink: 6, stagger: 'grid' },
+        't': { frames: '˙·˙˙', ink: 5, stagger: 'grid' },
+        '9': { glyph: '*', ink: 9 },
+        'f': { glyph: '*', ink: 13 }
+      }
+    },
+    { name: 'comet', rows: [
+      '', '',
+      '                          g  h',
+      '                    e  f',
+      '            c   d',
+      '   a    b'
+      ],
+      legend: {
+        'a': { frames: '✦·      ', ink: 10 },
+        'b': { frames: ' ✦·     ', ink: 10 },
+        'c': { frames: '  ✦·    ', ink: 10 },
+        'd': { frames: '   ✦·   ', ink: 10 },
+        'e': { frames: '    ✦·  ', ink: 10 },
+        'f': { frames: '     ✦· ', ink: 10 },
+        'g': { frames: '      ✦·', ink: 10 },
+        'h': { frames: '·      ✦', ink: 10 }
+      }
+    },
+    { name: 'lamp-lines', visible: false, rows: [
+      '                                     ✶',
+      '                                     │',
+      '                                     ✶',
+      '                                   ╱   ╲',
+      '                                 ✶       ✶',
+      '                                ╱    ✶    ╲',
+      '                               ✶           ✶',
+      '                                ╲         ╱',
+      '                                  ✶─────✶'
+      ],
+      legend: { '✶': 13, '│': 4, '╱': 4, '╲': 4, '─': 4 }
+    },
+    { name: 'town', rows: [
+      '', '', '', '', '', '', '', '', '',
+      '                                               █▀█▀█',
+      '                                               █ o █',
+      '                                               █████',
+      '                                               █████',
+      '▗▄▖  ▗▄▄▄▖    ▄▄▖   ▗▄▄   ▗▄▄▄▖   ▄▄▗▖   ▗▄▖   █████',
+      '███▄ █▪███▄  ▄██▪█ ▄███  ▪██▄  ▄█▪██  ███▄ ██▪ █████',
+      '████████████████████████████████████████████████████████'
+      ],
+      legend: {
+        '█': 2, '▄': 2, '▗': 2, '▖': 2, '▀': 3,
+        '▪': { frames: '▪▪▪·', ink: 13, stagger: 'grid' },
+        'o': 14
+      }
+    }
+  ],
+  hotspots: [
+    { x: 28, y: 0, w: 18, h: 9, command: 'TRACE STARS' },
+    { x: 47, y: 9, w: 5, h: 4, command: 'EXAMINE TOWER' },
+    { x: 0, y: 13, w: 46, h: 3, command: 'EXAMINE TOWN' }
+  ]
+};
+
+var traced = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print('Watchfield', 'title');
+term.print('You are on the walls above the town, in the last year Before. The night is clear, and everyone who can be indoors is indoors. The stars are the only things out in numbers.');
+term.illuminate(art);
+term.print('[spike: try TRACE STARS, EXAMINE COMET, LISTEN. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'TRACE STARS' || cmd === 'EXAMINE STARS' || cmd === 'X STARS') {
+    if (traced) return 'The lamp is drawn now. You cannot untrace it, and the sky knows it.';
+    traced = true;
+    art.setLayer('lamp-lines', true);
+    return "You take the stars the town gives you and draw the old lines: a lamp, hung high, lit. The Hush calls it the Keeper's Lamp. Nobody says against what.";
+  }
+  if (cmd === 'EXAMINE LAMP' || cmd === 'X LAMP') {
+    return traced ? 'It hangs where it has always hung. Tonight it seems lower.' : 'Which lamp? The sky is all loose stars until somebody draws the lines.';
+  }
+  if (cmd === 'EXAMINE COMET' || cmd === 'X COMET') {
+    return 'A slow visitor, combing its hair across the dark. The almanacs say it means nothing. The almanacs have been saying that a lot lately.';
+  }
+  if (cmd === 'EXAMINE TOWER' || cmd === 'X TOWER') {
+    return 'The bell tower. It is rung at dusk, and at dark, and at the hours between. You can see the rope-polish from here.';
+  }
+  if (cmd === 'EXAMINE TOWN' || cmd === 'X TOWN') {
+    return 'Roofs pulled down like hat brims. Half the windows lit, all of the doors shut.';
+  }
+  if (cmd === 'LISTEN') return 'Bells, a long way off, in no hurry to stop.';
+  if (cmd === 'EXAMINE MOON' || cmd === 'X MOON') return 'Thin as a paring. It gives the town to the stars.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'The town below, the sky above, the year running out.';
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masons' Court — Illumination spike</title>
+<link rel="stylesheet" href="illumination.css">
+</head>
+<body>
+<main id="term"></main>
+<script src="illumination.js"></script>
+<script>
+Illum.chrome('verdigris', 'a rebus in carved stone · solving it is a command · bronze and slate');
+
+var ART = {
+  cols: 50, rows: 17,
+  palette: 'verdigris',
+  layers: [
+    { name: 'stone', rows: [
+      '',
+      ' ┌──────────┐ ┌──────────┐ ┌──────────┐',
+      ' │   ╭──╮   │ │    ╭╮    │ │    ☼     │',
+      ' │   │  │   │ │   ╱  ╲   │ │   ╭──╮   │',
+      ' │   ╰──╯   │ │  ╱────╲  │ │  ╯    ╰  │',
+      ' │          │ │    •     │ │          │',
+      ' └──────────┘ └──────────┘ └──────────┘',
+      '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀',
+      '          ▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜            ╭──╮',
+      '          ▌                  ▐            ╱▒▒╲',
+      '          ▌                  ▐           ╱▒▒▒▒╲',
+      '          ▌                  ▐             o',
+      '          ▌                  ▐',
+      '          ▌                  ▐',
+      '          ▌                  ▐',
+      '          ▌                  ▐',
+      '          ▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟'
+      ],
+      legend: {
+        '┌': 6, '─': 6, '┐': 6, '│': 6, '└': 6, '┘': 6,
+        '╭': 10, '╮': 10, '╰': 10, '╯': 10, '╱': 10, '╲': 10, '☼': 10, '•': 10,
+        '▀': 5, '▛': 7, '▜': 7, '▌': 7, '▐': 7, '▙': 7, '▄': 7, '▟': 7,
+        '▒': 9, 'o': { glyph: '•', ink: 13 }
+      }
+    },
+    { name: 'infill', rows: [
+      '', '', '', '', '', '', '', '', '',
+      '           ▒░▒▒▪░▒░▒▒░▪▒░▒▒░▒',
+      '           ░▒░▒▒░▒▪░▒▒░▒▒▪░▒░',
+      '           ▒▒░▪▒▒░▒▒░▒▒▪▒░▒▒░',
+      '           ░▒▒░▒░▒▒▪░▒░▒▒░▒░▒',
+      '           ▒░▪▒░▒▒░▒▒▪▒░▒▒░▒▒',
+      '           ░▒▒░▒▒▪░▒░▒▒░▪▒░▒░',
+      '           ▒▒░▒▒░▒▒░▒▒░▒▒░▒▒▪'
+      ],
+      legend: { '▒': 4, '░': 3, '▪': 5 }
+    },
+    { name: 'open', visible: false, rows: [
+      '', '', '', '', '', '', '', '', '',
+      '',
+      '              ·        ·',
+      '',
+      '                   ·',
+      '             ·          ·',
+      '',
+      '                ·'
+      ],
+      legend: { '·': { frames: '·   ', ink: 9, stagger: 'grid' } }
+    }
+  ],
+  hotspots: [
+    { x: 1,  y: 1, w: 12, h: 6, command: 'EXAMINE RING' },
+    { x: 14, y: 1, w: 12, h: 6, command: 'EXAMINE CARVED BELL' },
+    { x: 27, y: 1, w: 12, h: 6, command: 'EXAMINE SUN' },
+    { x: 41, y: 8, w: 7,  h: 4, command: 'RING BELL' }
+  ]
+};
+
+var open = false;
+
+var term = new Illum.Term(document.getElementById('term'), { onCommand: handle });
+var art = new Illum.Illumination(ART);
+
+term.print("Masons' Court", 'title');
+term.print('A courtyard the masons finished and then closed behind them. The arch in the south wall is infilled with stone that matches nothing else here. Over it runs a carved lintel, and beside it hangs a bell, green with years.');
+term.illuminate(art);
+term.print('[spike: read the lintel left to right, then do what it says. Hold H to outline hotspots.]', 'term-dim');
+
+function handle(cmd) {
+  if (cmd === 'EXAMINE LINTEL' || cmd === 'X LINTEL' || cmd === 'EXAMINE CARVINGS' || cmd === 'READ LINTEL') {
+    return 'Three panels, cut deep: a ring; a bell; the sun at the top of its arc. Read left to right, as the mason meant.';
+  }
+  if (cmd === 'EXAMINE RING' || cmd === 'X RING') return 'Not a wheel, not a crown. A ring, plain as an instruction.';
+  if (cmd === 'EXAMINE CARVED BELL' || cmd === 'X CARVED BELL') return 'Stone. The real one hangs by the arch and has better manners.';
+  if (cmd === 'EXAMINE SUN' || cmd === 'X SUN') return 'At the top of its arc. Noon, forever.';
+  if (cmd === 'EXAMINE BELL' || cmd === 'X BELL') return 'Bronze under verdigris. The clapper is free.';
+  if (cmd === 'RING BELL' || cmd === 'RING THE BELL' || cmd === 'RING BELL AT NOON') {
+    if (open) return 'You ring. The arch stays open, and seems glad of the news.';
+    open = true;
+    art.setLayer('infill', false);
+    art.setLayer('open', true);
+    return 'You ring. The note is as green as the bronze. In the arch, the mortar loses interest; the infill unstacks itself, in no hurry, remembering an older arrangement. The way south is open.';
+  }
+  if (cmd === 'EXAMINE ARCH' || cmd === 'X ARCH' || cmd === 'EXAMINE WALL' || cmd === 'X WALL') {
+    return open ? 'Open. The stones are stacked beside it, neat as a woodpile.' : 'The infill is drystone, laid without mortar. Laid, you would say, so it could be unlaid.';
+  }
+  if (cmd === 'SOUTH' || cmd === 'S') return open ? 'That way lies past the edge of this spike.' : 'The infilled arch declines to be walked through.';
+  if (cmd === 'LOOK' || cmd === 'L') return 'The carved lintel, the arch below it, the bell beside. ' + (open ? 'The arch is open.' : 'The arch is stopped with stone.');
+  return 'Nothing happens.';
+}
+</script>
+</body>
+</html>
