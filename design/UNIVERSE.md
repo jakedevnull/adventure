@@ -1,11 +1,9 @@
 # The Universe Bible — Everwyn
 
-> Status: **Draft v0, for review by @jake.** Once agreed, this document is **core canon**:
+> Status: **v0.1** This document is **core canon**:
 > the single source of creative truth for the game. Only we edit it. Contributors build
 > *within* it; nothing they make may contradict it, and nothing here may be established
 > anywhere else first.
->
-> Marginal notes in *[brackets]* flag names and facts that are provisional.
 
 ---
 
