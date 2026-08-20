@@ -11,5 +11,5 @@ Infocom tradition, set in a world where time travel is as easy as walking north.
   Travelers, the landings. Core canon; edited only by us.
 - [Writing guide](design/WRITING-GUIDE.md) — the Zork-derived style all game text
   must follow.
-- [ERP process](design/ERP.md) — Everwyn Revision Proposals, how canon and world
+- [ERP process](erp/ERP-0000.md) — Everwyn Revision Proposals, how canon and world
   content get changed.

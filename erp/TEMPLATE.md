@@ -13,9 +13,9 @@ Supersedes:     ERP-NNNN             # optional
 Superseded-by:  ERP-NNNN             # optional
 ```
 
-> Copy this file to `NNNN-short-slug.md`, fill in the front-matter, and open a pull request.
+> Copy this file to `ERP-NNNN-short-slug.md`, fill in the front-matter, and open a pull request.
 > Delete these instruction lines and the guidance in each section as you go. See
-> [ERP-0000](../ERP.md) for the process, and check whether your change even needs an ERP
+> [ERP-0000](./ERP-0000.md) for the process, and check whether your change even needs an ERP
 > (ERP-0000 §1.1) — most content does not.
 
 ## Summary
