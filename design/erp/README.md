@@ -1,6 +1,6 @@
 # The ERP register
 
-This directory holds **Everwyn Revision Proposals** — numbered proposals to change core canon
+This directory holds Everwyn Revision Proposals — numbered proposals to change core canon
 or to add world content that later work will depend on. The process is defined in
 [ERP-0000](../ERP.md); read it first.
 
