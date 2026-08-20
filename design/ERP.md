@@ -1,0 +1,171 @@
+# ERP — Everwyn Revision Proposals
+
+```
+ERP:      0000
+Title:    The ERP process
+Type:     Universe
+Status:   Draft
+Author:   @jake
+Created:  2026-08-20
+Gates:    Universe
+```
+
+> Status: **Draft for review by @jake.** This document defines the process; once agreed it
+> is **core canon** and becomes the way the canon is changed thereafter — including the way
+> *this* document is changed. It is a governance doc, not game text, so the
+> [WRITING-GUIDE.md](./WRITING-GUIDE.md) does not bind its prose; it does bind everything an
+> ERP proposes for the world.
+
+Companion documents:
+
+- [DESIGN.md](./DESIGN.md) §7 — extensibility, canon tiers, and the three review gates this
+  process operationalizes.
+- [UNIVERSE.md](./UNIVERSE.md) — core canon; the thing a Universe ERP edits.
+- The register of proposals lives in [`erp/`](./erp/); copy [`erp/TEMPLATE.md`](./erp/TEMPLATE.md)
+  to file one.
+
+---
+
+## 1. What an ERP is
+
+An **ERP** (Everwyn Revision Proposal) is a numbered, written proposal to change something
+that other work will depend on. It is Everwyn's version of a PEP or an RFC: a durable record
+of what was proposed, who decided, and why.
+
+The design already draws the line an ERP enforces (DESIGN §7.1):
+
+> **Anyone may build in the universe. Only we may build the universe.**
+
+An ERP is how a change to *the universe* — or a piece of *the world* substantial enough to
+constrain later work — gets proposed, reviewed against the published gates, and recorded.
+
+### 1.1 When to file one (and when not to)
+
+Filing an ERP has a cost, and the cost is the point: it slows a change down enough to be sure
+of it. Reserve it for changes worth that friction. **Most contributions are not ERPs.** An
+ordinary room, an item, a small Thread inside an existing realm — these go through normal
+review (a pull request against the three gates, §4) and never need a proposal number.
+
+File an ERP when a change would:
+
+- edit **core canon** — the universe bible, the fixed points, the Foundry tileset as a
+  versioned artifact, the writing guide, or the settled decisions in the DESIGN decision log;
+- add or resolve a **proper noun** that later Threads may cite (a realm name, a named wonder,
+  a standing NPC, or one of the still-bracketed provisional names);
+- add a whole **realm**, or a Thread that spans realms and declares dependencies others will
+  build on;
+- **petition for a fixed point** (UNIVERSE §4) or extend the **Foundry** (DESIGN §6.3);
+- change **this process**.
+
+When in doubt, ship the smaller thing as ordinary reviewed content and open an ERP only if a
+reviewer says the change reaches canon. Doing the reverse — an ERP for every room — is exactly
+the slowdown this system is meant to avoid.
+
+## 2. Two types
+
+Every ERP is one of two types, matching the two ownership tiers in DESIGN §7.1.
+
+### 2.1 Universe ERP
+
+A **Universe ERP** changes core canon. Only the inner group (the custodians — "we", §5) may
+author one. This is the mechanism by which the bible, the fixed points, the Foundry, the
+writing guide, and the DESIGN decision log are amended, and by which the provisional names
+bracketed across UNIVERSE.md are settled or replaced.
+
+- **Who proposes:** custodians only.
+- **Gate:** the Universe gate always applies; the Writing and Craft gates apply if the change
+  carries text or content.
+- **Decision:** consensus of the custodians. @jake holds final cut.
+
+### 2.2 Realm ERP
+
+A **Realm ERP** proposes canon *content* at a scale later work will lean on — a new realm, a
+cross-realm Thread, a Foundry addition, a citable proper noun, a fixed-point petition.
+
+- **Who proposes:** anyone.
+- **Gates:** all three apply (Universe, Writing, Craft — DESIGN §7.3).
+- **Decision:** the custodians must approve. The Universe gate is theirs alone and non-
+  delegable; the Writing and Craft gates may be judged by **deputized reviewers** as the
+  community matures (DESIGN §7.3). Custodians hold final cut, always.
+
+**The escalation case.** A Realm ERP that would establish a *fixed point* or mint a proper
+noun that constrains the bible does not merely pass the Universe gate — it changes core canon
+if granted. Such a proposal is decided as a Universe ERP would be: consensus of the custodians,
+who grant fixed points sparingly (UNIVERSE §4). The proposal may be *authored* by anyone; the
+*decision* is the inner group's.
+
+## 3. Lifecycle
+
+An ERP moves through these statuses. The current status lives in the proposal's front-matter.
+
+| Status | Meaning |
+|---|---|
+| **Draft** | Being written. Not yet submitted for review. |
+| **Proposed** | Submitted (a pull request is open). Awaiting review. |
+| **In Review** | Under active review against the gates. May be trialed in the Apocrypha (§3.1). |
+| **Accepted** | Approved. The change is merged: content becomes canon; a Universe ERP's edits land in the bible or the doc it amends. |
+| **Rejected** | Declined. The reason is recorded on the proposal; the file is kept, not deleted. |
+| **Withdrawn** | Pulled by its author before a decision. |
+| **Deferred** | Parked deliberately, not decided now (the DESIGN "held in reserve" posture). |
+| **Superseded** | Replaced by a later ERP, linked by number. |
+
+An accepted ERP is a permanent record. Its file stays in the register even after its edits are
+folded into canon, so the history of *why* the canon reads as it does is never lost.
+
+### 3.1 Trial in the Apocrypha
+
+While a Realm ERP is **In Review**, its content may be played in the **Apocrypha** — the
+labeled proving ground reached through a door in-fiction (DESIGN §7.2). This lets a realm or
+Thread be experienced and critiqued before it is canon, without contaminating the world if it
+never gets there. Acceptance moves it onto the shared map; rejection leaves the world untouched.
+
+## 4. Review gates
+
+ERPs are reviewed against the three gates published in DESIGN §7.3. They are restated here so a
+proposal author knows the bar:
+
+1. **Universe gate** — consistent with the bible; no new metaphysics; nothing about the
+   Awakening beyond licensed mystery. Custodians only; non-delegable.
+2. **Writing gate** — passes [WRITING-GUIDE.md](./WRITING-GUIDE.md), red pen and all.
+3. **Craft gate** — puzzles fair, Threads completable, era-states coherent with their
+   neighbors in time.
+
+A Universe ERP always faces gate 1 and faces gates 2–3 only insofar as it carries text or
+content. A Realm ERP faces all three.
+
+## 5. Roles
+
+- **Custodians** — the small inner group ("we"). They own the Universe gate and final cut, and
+  are the only authors of Universe ERPs. Today this is @jake.
+- **Contributors** — anyone building in the universe. They may author Realm ERPs and ordinary
+  reviewed content.
+- **Deputized reviewers** — trusted contributors granted authority over the Writing and Craft
+  gates as the community matures (DESIGN §7.3). Never the Universe gate.
+
+## 6. Mechanics
+
+- **Home.** Proposals live as markdown files in [`erp/`](./erp/), one file per ERP, named
+  `NNNN-short-slug.md` (for example `0001-the-riverlands.md`).
+- **Numbering.** Zero-padded, sequential, assigned when a proposal is first submitted. This
+  process document is **ERP-0000**. Numbers are never reused; a rejected or withdrawn ERP keeps
+  its number.
+- **Front-matter.** Every ERP opens with the fields shown in [`erp/TEMPLATE.md`](./erp/TEMPLATE.md):
+  `ERP`, `Title`, `Type`, `Status`, `Author`, `Created`, `Gates`, and the optional
+  `Depends-on` / `Supersedes` / `Superseded-by`.
+- **Submission and review.** An ERP is opened as a pull request and reviewed like any other
+  contribution (DESIGN §7.3). Discussion happens on the PR and the tracking issue; the decision
+  is written back into the proposal's `Status` and a short **Decision** note before merge.
+- **The register.** [`erp/README.md`](./erp/README.md) indexes every ERP and its current status.
+
+## 7. Decision log and open questions
+
+Settled: none yet — this document is itself Draft.
+
+Open:
+
+1. **The name "ERP."** In keeping with DESIGN §8, treat *ERP* and *Everwyn Revision Proposal*
+   as provisional until approved in review.
+2. **Deputizing reviewers.** When, and by what standard, a contributor earns the Writing and
+   Craft gates is deferred until there is a community to deputize (DESIGN §7.3).
+3. **Voting rule for Universe ERPs.** While the inner group is one person, "consensus of the
+   custodians" is @jake. The rule for a larger group is deferred until there is one.

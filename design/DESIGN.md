@@ -311,6 +311,9 @@ are reviewed like pull requests against three published gates:
 We hold final cut, always. As the community matures, trusted contributors can be
 deputized to review the second and third gates; the universe gate stays with us.
 
+The standardized mechanism for proposing a revision — to the universe or to the
+world — is specified in [ERP.md](./ERP.md), the **Everwyn Revision Proposal** process.
+
 ## 8. Naming and technology notes
 
 - **Everwyn** is the name of the world and of the game, and *the Lapse* and *the
