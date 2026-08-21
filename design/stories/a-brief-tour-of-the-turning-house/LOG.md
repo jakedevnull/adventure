@@ -120,3 +120,18 @@ factory: max_rooms: 6 · max_rounds: 2 · round: 0
             armed 20 min.
 - next:     await the Rooms fix; then merge its branch into the story branch (updates
             PR #16), re-run typecheck/test/eval:reach + the play route, reply to jake.
+
+## 2026-08-21 14:13 UTC · step 9 · PR review fix merged
+- event:    Rooms child (SPE-59) completed the wording fix (commit 1681d70).
+- saw:      the three first-visit `look` openers reworded off "the same room" (1099 BA →
+            "A low room", 99 BA / 99 AA → "The common room"); constants kept. Verified on
+            the merged story branch: only remaining "same room" is a code comment;
+            typecheck clean, 36/36 tests, eval:reach PASS 5/5; full playthrough prints the
+            reworded openers, lamp still lit at 99 AA, return beat resolves.
+- decision: accept and merge; reply to jake resolving the thread.
+- reason:   text-only fix addresses the review exactly, reachability unaffected; no fresh
+            evaluator round warranted for cosmetic text I re-verified myself.
+- action:   merged origin/spe-59 (review fix) into the story branch (no-ff), pushed —
+            PR #16 updated; replied on jake's inline comment (discussion_r3830916016).
+            round stays 0 of 2; SPE-57 remains In Review.
+- next:     none — jake re-reviews PR #16. Loop idle.
