@@ -33,3 +33,28 @@ factory: max_rooms: 6 · max_rounds: 2 · round: 0
             spawned; deadline wakeup armed for 20 min.
 - next:     await outline completion (or deadline). On completion: verify in worktree,
             check ≤6 rooms + all four sections, merge, then spawn Rooms.
+
+## 2026-08-21 03:17 UTC · step 3 · outline accepted + merged
+- event:    outline child SPE-58 completed (PR #14).
+- saw:      OUTLINE.md with all four sections; 5 rooms (≤ 6); Blockers empty; landings in
+            engine vocab (2099 BA, 1099 BA, 99 BA, 99 AA); lamp through-line spelled out
+            (unlit 2099 BA → carried → lit 99 AA → return); two-way stride chain crossing
+            the Gap. Verified in worktree: typecheck clean, 36/36 tests pass.
+- decision: accept the outline and merge.
+- reason:   per ADVENTURE_FACTORY.md §5.4 — count ≤ max_rooms, every room line has
+            place/landing/purpose, Story carries the whole issue and reads as one story.
+- action:   merged origin/spe-58 branch into the story branch (no-ff), pushed. Not a round.
+- next:     spawn Rooms generator.
+
+## 2026-08-21 03:18 UTC · step 4 · rooms spawned
+- event:    created and spawned the detail generator.
+- saw:      SPE-59 created (label Generate, parent, assignee inherited, Todo); child
+            session f280727a started.
+- decision: delegate room detail; wait for completion.
+- reason:   per ADVENTURE_FACTORY.md §5.5 — detail child writes each room from the merged
+            outline, one commit per room.
+- action:   sub-issue SPE-59 created; SPE-57 blocked-by swapped SPE-58 → SPE-59; session
+            spawned; deadline armed 20 min.
+- next:     await rooms completion (or deadline). On completion: verify typecheck/test/
+            eval:reach + a full play route in the worktree, confirm every room ticked with
+            as-built notes, merge, then spawn Evaluate.
