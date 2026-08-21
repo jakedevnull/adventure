@@ -103,3 +103,20 @@ factory: max_rooms: 6 · max_rounds: 2 · round: 0
             no commits, nothing to merge from SPE-61.
 - next:     none — Jake reviews PR #16. Loop complete: 5 rooms, 0 fix rounds, outline +
             rooms + evaluate all green.
+
+## 2026-08-21 14:10 UTC · step 8 · human PR review — fix delegated
+- event:    jake reviewed PR #16; one inline comment on turning-house-99-aa.ts:21.
+- saw:      the first-visit `look` of the later faces opens "The same [low] room", which
+            presumes arrival by a FUTURE/PAST stride from an adjacent face; wrong if the
+            player just walks in. Pattern recurs in turning-house-1099-ba, -99-ba, -99-aa.
+- decision: reword the three room openers so they don't presume time-stride arrival;
+            delegate to the Rooms generator, not a new evaluator round.
+- reason:   content change — orchestrator has no Edit/Write by construction; the generator
+            owns content + the writing guide. Human-review fix, text-only, no exits/ids
+            touched, so NOT an evaluator round (round stays 0 of 2); reachability
+            unaffected and I'll re-verify eval:reach before finalizing.
+- action:   give_feedback to Rooms session f280727a (SPE-59) with exact before/after
+            guidance + verification; SPE-57 blocked-by swapped SPE-61 → SPE-59; deadline
+            armed 20 min.
+- next:     await the Rooms fix; then merge its branch into the story branch (updates
+            PR #16), re-run typecheck/test/eval:reach + the play route, reply to jake.
