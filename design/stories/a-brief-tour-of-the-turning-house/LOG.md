@@ -86,3 +86,20 @@ factory: max_rooms: 6 · max_rounds: 2 · round: 0
             spawned; deadline armed 15 min.
 - next:     await the evaluator's PASS/FAIL report (or deadline). PASS → open PR to main,
             move SPE-57 to In Review. FAIL → round 0→1, hand report back to Rooms.
+
+## 2026-08-21 03:33 UTC · step 7 · PASS — loop closed
+- event:    evaluator SPE-61 completed with verdict PASS.
+- saw:      eval:reach PASS 5/5 (zero problems, zero unreachable), --json agreed; every
+            reported route played through with --expect (all exit 0); full round-trip
+            OUT IN FUTURE×3 PAST×3 returns to turning-house; return beat resolves
+            (SAY the Morning Country → landlady "nods, as if she has heard it before").
+            Only note: the outline-documented lamp-lighting-as-authored-text limitation,
+            not a defect.
+- decision: PASS — open the PR to main and move the story to In Review.
+- reason:   per ADVENTURE_FACTORY.md §5.7/§6 (PASS) — an independent read-only pass proved
+            full reachability and playability on the first evaluation; no fix round needed
+            (round stays 0 of 2).
+- action:   opened PR #16 (story branch → main); SPE-57 moved to In Review; evaluator made
+            no commits, nothing to merge from SPE-61.
+- next:     none — Jake reviews PR #16. Loop complete: 5 rooms, 0 fix rounds, outline +
+            rooms + evaluate all green.
