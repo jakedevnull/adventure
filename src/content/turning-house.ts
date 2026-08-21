@@ -28,6 +28,11 @@ export const turningHouse: Room = {
     past: false,
     future: true,
   },
+  exits: {
+    // Out the door into the inn-yard at the crossroads. The yard exists only in
+    // 2099 BA; the later faces of the House are reached through the years, not on foot.
+    out: "crossroads:2099-ba",
+  },
   items: [
     {
       id: "lamp",

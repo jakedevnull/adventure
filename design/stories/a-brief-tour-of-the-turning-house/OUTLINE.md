@@ -96,8 +96,10 @@ people already gone and not yet born).
 
 ## Rooms
 
-- [ ] turning-house · 2099 BA (the High Masonry) — start and hub; the landlady presses the unlit brass lamp on you and sends you to see the House; every leg returns here
-- [ ] crossroads · 2099 BA (the High Masonry) — the yard at the door; the High Roads new and already meant to outlast everyone; a spatial step out and back
+- [x] turning-house · 2099 BA (the High Masonry) — start and hub; the landlady presses the unlit brass lamp on you and sends you to see the House; every leg returns here
+  - as built: legacy id `turning-house`; extended, not replaced. `time.future: true` (FUTURE → `turning-house:1099-ba`), `time.past: false` (oldest landing, declines in voice). `exits: { out: "crossroads:2099-ba" }`. The landlady's `talk` now sets the goal ("Take the lamp with you… tell me where it burns"); door text opened onto the yard. Lamp/bread/coin unchanged; lamp still `start: "room"`, unlit, the through-line's origin. `engine.test.ts` retargeted to the assembled `world` (the room is no longer a valid one-room world once it opens FUTURE).
+- [x] crossroads · 2099 BA (the High Masonry) — the yard at the door; the High Roads new and already meant to outlast everyone; a spatial step out and back
+  - as built: `crossroads:2099-ba` in `src/content/crossroads-2099-ba.ts`. `exits: { in: "turning-house" }`; time both `false` (a foot excursion, not a stride). Scenery: roads ("Cut this year, and meant for a thousand"), milestone ("distances to towns that are not built yet"), house, door, night — the persistence note stated in stone before any era is touched. No items. Reached by OUT from the hub, returned by IN.
 - [ ] turning-house · 1099 BA (the Long Noon) — the same room at its loudest: full board, good wine, nobody worried; the lamp still unlit
 - [ ] turning-house · 99 BA (the Hush) — the same room gone quiet: bells ringing, the common room empty, the keeper watching the door
 - [ ] turning-house · 99 AA (the Morning Country) — the same room half ruin and wholly open; the carried brass lamp burns in the window here; the tour's end
@@ -122,6 +124,8 @@ Room ids: the 2099 BA common room keeps its legacy id `turning-house`; the yard 
 - **The High Roads / the crossroads** — the yard (`crossroads:2099-ba`) exists only in
   2099 BA for this tour, reached by a spatial out-and-back from the start room. The roads'
   persistence, stated once outside in stone, is the note the whole House later plays; it
-  may be referenced from inside the later faces but is not re-entered. — planned
+  may be referenced from inside the later faces but is not re-entered. — built: OUT from
+  `turning-house` reaches the yard, IN returns; the roads/milestone carry the persistence
+  note. The later faces keep the `road` scenery inside but offer no OUT exit.
 
 ## Blockers
