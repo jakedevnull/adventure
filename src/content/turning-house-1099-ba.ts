@@ -13,7 +13,7 @@ export const turningHouse1099Ba: Room = {
   landing: "1099 BA",
   age: "the Long Noon",
   look:
-    "The same low room, loud as a market. Every bench is full, and the long table is a " +
+    "A low room, loud as a market. Every bench is full, and the long table is a " +
     "wreck of cups and bones with good wine spilled across it and left to soak. The fire " +
     "roars, the black beams hold, the stair climbs past a landing where two men argue " +
     "about a road. The landlady of this age goes by with a jug in each hand and no time for you.",

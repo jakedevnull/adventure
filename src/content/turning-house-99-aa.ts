@@ -17,7 +17,7 @@ export const turningHouse99Aa: Room = {
   landing: "99 AA",
   age: "the Morning Country",
   look:
-    "The same room, half fallen and wide open. A roof-beam has come down across one " +
+    "The common room, half fallen and wide open. A roof-beam has come down across one " +
     "corner and been left where it lies; grass stands in the threshold, and the door is " +
     "gone, bar and all, with nothing here that needs one. Words are cut in the long " +
     "table and worn past reading, the House's own and lost to the House. In the window a " +
