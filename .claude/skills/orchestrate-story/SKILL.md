@@ -18,7 +18,10 @@ on your own issue).
 - Linear MCP (`mcp__linear__*`): `save_issue` to create/update issues (if your server
   exposes `create_issue`/`update_issue` instead, use those), `get_issue`,
   `save_document` for the log. Always pass `parentId`, `assignee` (the parent's),
-  `state: "Todo"` (the team's unstarted state), and `labels`.
+  `project` (the parent's — sub-issues do **not** inherit the project, and Cyrus routes
+  the child session to the repository by project; an issue outside the project triggers
+  a "which repository?" prompt that stalls the loop), `state: "Todo"` (the team's
+  unstarted state), and `labels`.
 - Cyrus MCP: `mcp__cyrus-tools__linear_agent_session_create` to spawn a child session on
   a sub-issue; `mcp__cyrus-tools__linear_agent_give_feedback` to re-prompt an existing
   child session (fix rounds).
@@ -44,7 +47,8 @@ on your own issue).
 ## 1. Outline
 
 Create sub-issue **`Outline: <story title>`** — label `Generate`, parent = the story
-issue, state "Todo", assignee inherited. Description (exactly this structure):
+issue, **project = the story issue's project**, state "Todo", assignee inherited.
+Description (exactly this structure):
 
 ```
 Objective: Write design/stories/<slug>/OUTLINE.md for this story (generate-story skill, phase: outline).
