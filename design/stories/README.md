@@ -4,7 +4,7 @@ One directory per story the factory has worked on (`ADVENTURE_FACTORY.md`), name
 the story's slug. Each holds:
 
 - `OUTLINE.md` — the story's working bible: the expanded story, the room plan with
-  per-room as-built notes, cross-room threads, and blockers. Every generator reads it
+  per-room as-built notes, cross-room through-lines, and blockers. Every generator reads it
   and every generator improves it. The format is in `ADVENTURE_FACTORY.md` §5.3.
 - `LOG.md` — a mirror of the orchestrator's log (§5.8). The Linear document linked to the
   story issue is the primary copy.
@@ -27,7 +27,7 @@ the tone notes. Written so that nothing in the issue is needed to author a room.
       as built: <exits and time exits · items/scenery that matter · what it sets up or
       pays off · deviations from plan and why>            ← added by the detail generator
 
-## Threads
+## Through-lines
 - <something that spans rooms: a traveling item, a puzzle in pieces, a PAST/FUTURE pair
   that must line up> — <status>
 
