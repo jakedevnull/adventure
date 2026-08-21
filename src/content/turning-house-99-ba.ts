@@ -13,7 +13,7 @@ export const turningHouse99Ba: Room = {
   landing: "99 BA",
   age: "the Hush",
   look:
-    "The same room, emptied. The benches are pushed back and no one sits at the long " +
+    "The common room, emptied. The benches are pushed back and no one sits at the long " +
     "table; the fire is banked low and the black beams hold the quiet up. Bells are going " +
     "somewhere out in the dark, steady, rung at something no one here will name. The door " +
     "is barred, and the landlady keeps looking at it.",

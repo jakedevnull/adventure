@@ -133,6 +133,12 @@ Room ids: the 2099 BA common room keeps its legacy id `turning-house`; the yard 
   walk out to the end and back to the start. — built: the FUTURE/PAST chain runs both ways
   end to end (verified: FUTURE×3 reaches 99 AA, PAST×3 returns to the start); every face
   keeps the black beams, the long table, the stair, and a fire, each marked "the same".
+  Review update (PR #16): the first-visit `look` of each later face no longer opens by
+  asserting "The same room" — that framing presumed the player had time-strode in from an
+  adjacent face, but a player may arrive at a face without having seen another. The
+  openers now let the constant nouns (beams, table, stair, fire) carry the recognition
+  instead of stating it (Rule 7/8). `lookAgain` and the "the same" scenery EXAMINE lines
+  (the Traveler's eye on one object) are unchanged.
 - **The High Roads / the crossroads** — the yard (`crossroads:2099-ba`) exists only in
   2099 BA for this tour, reached by a spatial out-and-back from the start room. The roads'
   persistence, stated once outside in stone, is the note the whole House later plays; it
