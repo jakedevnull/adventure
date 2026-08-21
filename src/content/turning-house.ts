@@ -13,18 +13,20 @@ export const turningHouse: Room = {
   look:
     "You are in the common room of an inn at a crossroads, low under black beams, " +
     "a fire going against a cold the season has not earned. The walls are drystone, " +
-    "laid without mortar, and have outlasted the road they watch. A barred door holds " +
-    "off the night; a stair climbs into the dark.\n" +
-    "The landlady works the fire and does not ask your business.\n" +
+    "laid without mortar, and have outlasted the road they watch. The door stands off " +
+    "its bar tonight, open on the yard; a stair climbs into the dark.\n" +
+    "The landlady works the fire. She does not ask your business; tonight she means to " +
+    "show you the House rather than tell you of it.\n" +
     "On the long table a brass lamp stands unlit, and beside it a coin lies face down.",
   lookAgain:
     "The common room, low and warm. A brass lamp on the table, a coin face down " +
     "beside it, and the landlady at her fire.",
   time: {
-    // The House turns in every age — but only one landing is built in this slice,
-    // so the years have nowhere to carry you yet. The parser declines in voice.
+    // 2099 BA is the oldest built landing, so PAST has nowhere to go and declines
+    // in voice. FUTURE runs: the years carry to the same room in 1099 BA, the Long
+    // Noon. The landlady keeps this fire, and tonight she says the years run plainly.
     past: false,
-    future: false,
+    future: true,
   },
   items: [
     {
@@ -60,7 +62,9 @@ export const turningHouse: Room = {
       nouns: ["landlady", "woman", "keeper", "innkeeper", "her"],
       description:
         "She has kept this fire longer than the walls have stood, and will not say how long.",
-      talk: "\"Late to be traveling,\" she says, and does not mean the hour.",
+      talk:
+        "\"Late to be traveling,\" she says, and does not mean the hour. \"Take the " +
+        "lamp with you. See the House in its years, then come back and tell me where it burns.\"",
     },
     {
       id: "fire",
@@ -80,7 +84,7 @@ export const turningHouse: Room = {
     {
       id: "door",
       nouns: ["door"],
-      description: "A stout door, barred against the road and the weather. Not tonight.",
+      description: "A stout door, off its bar tonight, open on the yard and the crossroads.",
     },
     {
       id: "stair",

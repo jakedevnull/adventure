@@ -1,10 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Game } from "../src/engine.ts";
-import { turningHouse } from "../src/content/turning-house.ts";
+import { world } from "../src/content/index.ts";
 
+// The Turning House (2099 BA) is the world's start room. Once it opens FUTURE and
+// gains a yard exit it is no longer a valid one-room world on its own, so these
+// tests drive the assembled world from its front door.
 function newGame() {
-  return new Game(turningHouse);
+  return new Game(world);
 }
 
 test("intro shows the room title and first look", () => {
@@ -56,10 +59,11 @@ test("take all reports each item", () => {
   assert.match(r, /let it lie/i); // the coin refuses
 });
 
-test("temporal exits decline in voice when the room has none", () => {
+test("a barred stride declines in voice", () => {
+  // 2099 BA is the oldest landing, so PAST has nowhere to carry and declines.
+  // (FUTURE runs from here; the stride itself is exercised in world.test.ts.)
   const g = newGame();
   assert.match(g.handle("past").text, /House holds still/);
-  assert.match(g.handle("future").text, /House holds still/);
 });
 
 test("when reports the landing", () => {
