@@ -55,7 +55,7 @@ Context: The full story as written by the planner follows. max_rooms: <n>.
 --- END STORY ---
 
 Acceptance Criteria:
-- [ ] OUTLINE.md exists with sections Story, Rooms, Threads, Blockers (format: design/stories/README.md)
+- [ ] OUTLINE.md exists with sections Story, Rooms, Through-lines, Blockers (format: design/stories/README.md)
 - [ ] "Story" contains and expands the story above so a generator needs nothing else
 - [ ] Rooms: one line each, ≤ <max_rooms> entries, each with place · landing (age) — purpose
 - [ ] PR opened against branch <story-branch>
@@ -76,9 +76,10 @@ Then: set the story issue **blocked by** this sub-issue; spawn with
 2. Check: room count ≤ `max_rooms`; every room line has place, landing, purpose; the
    `## Story` section carries everything the issue said and reads as one story.
    Landings use engine vocabulary (`2099 BA`), never calendar years.
-3. Reject → `linear_agent_give_feedback` to the outline child with the exact problems;
-   this counts as a round (increment `round` in the issue); re-arm the deadline; log; end
-   turn. Accept → merge the child branch into the story branch, push, log, go to §3.
+3. Reject → this is a fix round: if `round >= max_rounds`, stop as in §6 (NEEDS HUMAN);
+   else `round` += 1, `linear_agent_give_feedback` to the outline child with the exact
+   problems, re-arm the deadline, log, end turn. Accept → merge the child branch into the
+   story branch, push, log, go to §3.
 
 ## 3. Rooms
 
@@ -92,7 +93,7 @@ Context: The outline is the source — read it first; do not consult the story i
 Acceptance Criteria:
 - [ ] Every unchecked room in OUTLINE.md is written under src/content/, registered in src/content/index.ts, and ticked with an as-built note
 - [ ] After every room: npm run typecheck && npm test pass, and the room is committed
-- [ ] Threads section kept current; blockers only as a last resort (design/UNIVERSE.md first)
+- [ ] Through-lines section kept current; blockers only as a last resort (design/UNIVERSE.md first)
 - [ ] PR opened against branch <story-branch>
 
 Dependencies: the outline (merged on the story branch)
@@ -109,7 +110,10 @@ Blocked-by swap → spawn → deadline (20 min) → log → end turn.
    `OUTLINE.md` is ticked and has an as-built note (or a recorded blocker).
 2. If rooms remain unchecked (the child ran out of turns): merge what exists, then spawn
    **`Rooms (continued): <story title>`** with the same description plus "start at the
-   first unchecked room". Not a round. Log. End turn.
+   first unchecked room". A continuation that made progress (ticked at least one new room)
+   is not a round; a continuation that ticked **no** new room counts as a fix round (apply
+   the §6 check — something is wrong, and continuations must not loop forever). Log. End
+   turn.
 3. Otherwise merge into the story branch, push, log, go to §5.
 
 ## 5. Evaluate
@@ -139,12 +143,14 @@ Blocked-by swap → spawn → deadline (15 min) → log → end turn.
 Read the report's `verdict`.
 
 **FAIL:**
-1. `round` += 1 in the story issue's `factory:` block (update the description).
-2. If `round >= max_rounds`: write a final log entry that begins `NEEDS HUMAN: rounds
-   exhausted` and includes the last report, move the story issue to "In Review" (the
-   team has no dedicated needs-human state; In Review plus that marker is the signal —
-   no PR to main is opened), and stop.
-3. Else: send the full report to the **Rooms** child session with
+1. If `round >= max_rounds` (the fix rounds are used up): write a final log entry that
+   begins `NEEDS HUMAN: rounds exhausted` and includes the last report, move the story
+   issue to "In Review" (the team has no dedicated needs-human state; In Review plus that
+   marker is the signal — no PR to main is opened), and stop.
+2. Else `round` += 1 in the story issue's `factory:` block (update the description).
+   `max_rounds` is the number of fix rounds allowed after the first evaluation:
+   `max_rounds: 2` means up to two fix rounds and three evaluations.
+3. Send the full report to the **Rooms** child session with
    `linear_agent_give_feedback` and the instruction "fix every failure in this report,
    re-run npm run eval:reach until it passes, update OUTLINE.md as-built notes, commit, and
    push to your PR". If that session no longer exists, create sub-issue

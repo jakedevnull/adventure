@@ -44,7 +44,7 @@ small engine. Read this whole file before doing anything.
   Only if a genuine gap remains, record the blocker in the story's `OUTLINE.md` and
   continue. A blocker is a last resort, never a first response.
 - **The outline is the source.** When working a story, `design/stories/<slug>/OUTLINE.md`
-  carries the whole story; read it, and improve it as you go (as-built notes, threads).
+  carries the whole story; read it, and improve it as you go (as-built notes, through-lines).
   Do not go back to the Linear issue for story content.
 - **PR against the story branch,** not `main`, when you are a child of a story issue. The
   orchestrator owns the story branch and is the only one who opens a PR to `main`.

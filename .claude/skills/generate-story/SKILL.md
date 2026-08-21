@@ -30,7 +30,7 @@ Input: the story text in your sub-issue description and `max_rooms`.
      (<age>) — <one phrase of purpose>`. Landings are engine landings (`2099 BA`,
      `2099 AA`), never calendar years; ages are the age's name. A room is one place in
      one era; the same place in two eras is two lines.
-   - `## Threads` — what spans rooms: traveling items, puzzles in pieces, PAST/FUTURE
+   - `## Through-lines` — what spans rooms: traveling items, puzzles in pieces, PAST/FUTURE
      pairs that must line up, with the rooms involved.
    - `## Blockers` — leave empty.
 2. Do **not** write any `src/content` in this phase.
@@ -44,7 +44,7 @@ Input: `design/stories/<slug>/OUTLINE.md` on the story branch. It is the source;
 consult the Linear story issue. Work the `## Rooms` list **top to bottom, one room per
 cycle**:
 
-1. Re-read `## Story`, `## Threads`, and the as-built notes of the rooms around this one.
+1. Re-read `## Story`, `## Through-lines`, and the as-built notes of the rooms around this one.
    Re-read the design-doc passages relevant to this room.
 2. Write the room as data in its own file `src/content/<place>-<landing-slug>.ts`
    exporting a `Room` (`src/types.ts`):
@@ -62,7 +62,7 @@ cycle**:
 5. **Commit** (one room per commit).
 6. **Update the outline**: tick the room and add an indented `as built:` line under it —
    the exits and time exits it actually has, the items/scenery that matter, what it sets
-   up or pays off, any deviation from the plan and why. Update `## Threads` if this room
+   up or pays off, any deviation from the plan and why. Update `## Through-lines` if this room
    added, moved, or resolved one. Commit.
 7. Next room.
 

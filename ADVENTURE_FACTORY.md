@@ -98,7 +98,7 @@ Cyrus's project rule; no repository prompt.
 ---
 factory:
   max_rooms: 8        # hard cap on rooms (places × eras) for this story
-  max_rounds: 3       # generate↔evaluate cycles before escalating to a human
+  max_rounds: 3       # fix rounds allowed after the first evaluation (retries), then escalate to a human
   round: 0            # maintained by the orchestrator
 ```
 
@@ -158,7 +158,7 @@ so that nothing in the issue is needed to author a room.>
 - [ ] mill-race · 2099 BA — the only way down to the water
 ...
 
-## Threads
+## Through-lines
 <Things that span rooms: an item that travels, a puzzle with pieces in several
 places, a PAST/FUTURE pair that must line up. One line each, updated as rooms land.>
 
@@ -188,7 +188,7 @@ turn.
 
 The detail child works the outline **top to bottom, one room per cycle**:
 
-1. Read the outline — `## Story`, `## Threads`, and the neighbors' as-built notes — and
+1. Read the outline — `## Story`, `## Through-lines`, and the neighbors' as-built notes — and
    the relevant design docs for this room (writing guide is law for all text). The
    outline is the source; the Linear issue is not consulted.
 2. Write the room as game data under `src/content/` following the existing shape
@@ -198,7 +198,7 @@ The detail child works the outline **top to bottom, one room per cycle**:
 4. **Commit.** Then **update the outline**, not just the checkbox: tick the room and add
    an *as-built* line under it — the exits and time exits it actually has, the items and
    scenery that matter, what it sets up or pays off, and any deviation from the plan and
-   why. Update `## Threads` if this room added, moved, or resolved one. Commit that too.
+   why. Update `## Through-lines` if this room added, moved, or resolved one. Commit that too.
    The outline gets clearer with every room, so each later generator — including the
    next fix round — inherits what was actually built, not just what was planned.
 
@@ -233,10 +233,13 @@ that report to the orchestrator on resume.
 
 ### 5.7 Close the loop
 
-- **FAIL:** increment `round` in the story issue. If `round ≥ max_rounds`, stop: write a
-  final log entry beginning `NEEDS HUMAN: rounds exhausted` with the last report, move the
-  story to In Review (the team has no dedicated needs-human state; In Review without a PR
-  to `main` plus that marker is the signal), done. Else
+- **FAIL:** if `round ≥ max_rounds` (the fix rounds are used up), stop: write a final log
+  entry beginning `NEEDS HUMAN: rounds exhausted` with the last report, move the story to
+  In Review (the team has no dedicated needs-human state; In Review without a PR to
+  `main` plus that marker is the signal), done. Else increment `round` — `max_rounds` is
+  the number of fix rounds after the first evaluation, so `max_rounds: 2` means up to two
+  fixes and three evaluations; outline rejections and zero-progress continuations count
+  as fix rounds, ordinary continuations after a turn ceiling do not — and
   hand the full report back to the Rooms generator — preferably by re-prompting its
   existing session (`linear_agent_give_feedback`, which keeps its worktree and context),
   or, if that session is gone, by creating **"Rooms (round N): <one-line summary>"** with
@@ -304,7 +307,7 @@ mandatory, not optional.
 | `scripts/eval-reach.ts` + `npm run eval:reach` | The reachability harness. Deterministic; exit 1 on any unreachable room; `--json` for machines. |
 | `scripts/play.ts` | Scripted playthrough through the real engine (`--expect <room id>` exits 1 if the route doesn't land there). The evaluator's second layer; it has no Write tool, so this script exists. |
 | `src/world.ts` | World helpers the engine and harness share: lookup, stride resolution, `validateWorld`, `reachability`. |
-| `design/stories/<slug>/OUTLINE.md` | One per story: the story's working bible — the expanded story, the room plan with per-room as-built notes, cross-room threads, blockers. Every generator reads it and every generator improves it. |
+| `design/stories/<slug>/OUTLINE.md` | One per story: the story's working bible — the expanded story, the room plan with per-room as-built notes, cross-room through-lines, blockers. Every generator reads it and every generator improves it. |
 | `design/stories/<slug>/LOG.md` | Mirror of the orchestration log (§5.8); the Linear document linked to the story issue is the primary copy. |
 | `src/content/` | Generated rooms, in the engine's data shape. |
 | `cyrus-setup.sh` | `npm install`, so each worktree can typecheck and run the engine immediately. |
