@@ -84,7 +84,7 @@ never polls in the happy path.
 
 ## 4. The Linear model
 
-**Project:** `adventure`. Routing to the `jakelevirne/adventure` repo is automatic via
+**Project:** `adventure`. Routing to the `specstoryai/adventure` repo is automatic via
 Cyrus's project rule; no repository prompt. Sub-issues do **not** inherit the parent's
 project in Linear, so the orchestrator sets `project` explicitly on every sub-issue it
 creates (learned on the first live run: an un-projected sub-issue stalled on "which
