@@ -242,7 +242,16 @@ planning. Every one of these constrains a room in this story.
       broke the moment that face gained a north exit. `newGame()` now strips exits from
       that copy (`new Game({ ...turningHouse, exits: {} })`) — one line, no assertion
       changed, and the one-room world behaves exactly as before.
-- [ ] back-garden · 1099 BA (the Long Noon) — the maze pegged out in string, and the gold-lettered plan of a heart with no way in
+- [x] back-garden · 1099 BA (the Long Noon) — the maze pegged out in string, and the gold-lettered plan of a heart with no way in
+      as built: `src/content/back-garden-1099-ba.ts`. Exits: south → `turning-house:1099-ba`,
+      which gained north → here. No north: there is nothing to walk into yet. Time
+      `{past: true, future: true}`. Item: `maze-plan` (not takeable, READ — every walk
+      drawn and named, the middle a square of grass with no gap anywhere in the hedge).
+      Scenery: the gardener (TALK — "Sixty years before it's a hedge. The middle isn't for
+      going in. It's for knowing about."), the well under its painted roof, the yew whips,
+      the string lines, the barrow, the wall, the door, the turned ground. Gold on the
+      names, as the road-map in the House of the same age. Sets up the first of the two
+      wrong plans.
 - [ ] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
 - [ ] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
 - [ ] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
