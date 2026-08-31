@@ -60,6 +60,6 @@ export const farWalk99AA: Room = {
   ],
   exits: {
     // No west and no south: this square and the heart above it are a pocket.
-    // north → maze-heart:99-aa, wired when that room is written.
+    north: "maze-heart:99-aa",
   },
 };
