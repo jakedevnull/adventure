@@ -132,3 +132,33 @@ attached to JAK-18. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             `--quiet` and to report the bug under `## Notes`. Flagged for the author: it can
             turn a good exit into a false FAIL for any later evaluator.
 - next:     the evaluator's report (§6). Round 0 of 4. By 23:05Z.
+
+## 2026-08-31 23:07Z · step 6 · PASS · CLOSE-OUT JAK-21 · PR to main
+- event:    evaluator completed (session ended 22:54:05Z); §6 PASS path
+- saw:      report "Evaluation: The Gardens Behind the House (round 0)", verdict PASS, rooms 20
+            reachable 20, Failures section empty. All twenty harness routes played with
+            `--expect`, all exit 0, tabulated; the outline's own solution route played end to
+            end with `sword` in INVENTORY at `turning-house:99-ba`; every deliberate asymmetry
+            probed and refusing cleanly. It also ran a negative control
+            (`--expect maze-heart:99-aa NORTH` exits 1) to prove its own assertions were live,
+            and it reported the `scripts/play.ts` first-command bug under Notes as instructed.
+- decision: accept the PASS, open the PR to `main`, and move the story to In Review.
+- reason:   per §6 — a PASS with no failures and the fix-round budget untouched (round 0 of 4).
+            I did not take the verdict on the child's word: re-ran `npm run eval:reach`
+            (PASS, 20/20), the stride-only route to `maze-heart:99-ba` (exit 0, the hedger and
+            her bundle), and the evaluator's own negative control (exit 1, so the harness is
+            asserting). The report's four criteria are each backed by output I can see.
+- action:   JAK-21 criteria ticked 4/4 and moved to Done; JAK-18's blocked-by on JAK-21
+            removed; PR #7 opened, story branch → `main`, with the route, the two review notes,
+            and a link to this log; JAK-18 moved to In Review and the PR linked to it.
+- next:     human review of PR #7. Revisions (§7) are budgeted separately from fix rounds:
+            revisions 0 of 5. Nothing is waiting on me.
+
+## Summary of the run
+- Rooms: 14 planned, 14 written, exactly at `max_rooms: 14`. World total 20.
+- Fix rounds used: 0 of 4. Revisions used: 0 of 5.
+- Children: JAK-19 (Plan) → JAK-20 (Generate) → JAK-21 (Evaluate), all Done with criteria
+  ticked 5/5, 8/8, 4/4.
+- PRs: #5 outline, #6 rooms, both merged into the story branch; #7 story branch → `main`, open.
+- One defect found and not fixed, because it is outside this story: `scripts/play.ts` drops the
+  first command unless `--expect` or `--quiet` is passed.
