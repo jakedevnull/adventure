@@ -179,7 +179,20 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
       having gone into the Gap. The fire's relighting is carried by the hearth alone: "New
       ash over old, parted by a pale seam that no winter could account for." No one
       explains it. The sill is stone and glassless.
-- [ ] turning-house · 1099 AA (the Rekindling) — a printed history of the family, wrong
+- [x] turning-house · 1099 AA (the Rekindling) — a printed history of the family, wrong
+      as built: `src/content/turning-house-1099-aa.ts`. `time: {past: true, future: true}`.
+      Two items, both untakeable and both readable: `license` (the guild's, "sell drink and
+      keep the peace until midnight, in that order") and `family-history` ("A True Account
+      of the House at the Crossroads," beginning in the year 459 and growing surer with
+      every page). Both are items rather than scenery because READ only answers to items;
+      a board of print that shrugged at READ would be the room's worst moment. The keeper's
+      refusal is the citation — he does not claim the date, he taps the page — which is a
+      different shape from the Long Noon's brisk number. 640 years puts the founding after
+      two ages the player has already stood in. The sill is glazed and the iron bracket
+      under it is empty, which 2099 AA fills.
+      Note: spelled "license" throughout, following the design docs' American spelling
+      ("flavor", "favorite" in `UNIVERSE.md`); the outline's "licence board" is the same
+      object. The parser accepts both spellings as nouns.
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lamp burning on the sill; end of tour
 
 ## Through-lines
