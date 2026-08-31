@@ -230,7 +230,18 @@ planning. Every one of these constrains a room in this story.
 
 ## Rooms
 
-- [ ] back-garden · 2099 BA (the High Masonry) — the walled plot, the orchard, and the well the story is really about
+- [x] back-garden · 2099 BA (the High Masonry) — the walled plot, the orchard, and the well the story is really about
+      as built: `src/content/back-garden-2099-ba.ts`, title "Behind the House". Exits: south
+      → `turning-house`; `turning-house` gained north → here in the same commit. Time
+      `{past: false, future: true}` (oldest landing). Items: `apple` (takeable, EAT).
+      Scenery: the well (windlass, shaft, and nobody named who dug it), the young orchard,
+      the beds, the drystone wall, the back door, the ground. No maze, and no mention of
+      one: the plot is being eaten off, not laid out. Establishes the well and the back
+      door for all six faces.
+      Deviation: `test/engine.test.ts` builds a one-room world out of `turningHouse` and
+      broke the moment that face gained a north exit. `newGame()` now strips exits from
+      that copy (`new Game({ ...turningHouse, exits: {} })`) — one line, no assertion
+      changed, and the one-room world behaves exactly as before.
 - [ ] back-garden · 1099 BA (the Long Noon) — the maze pegged out in string, and the gold-lettered plan of a heart with no way in
 - [ ] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
 - [ ] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
