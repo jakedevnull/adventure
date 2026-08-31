@@ -168,7 +168,17 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
       declines the affordance in voice. The bells that are ringing are other villages',
       and separate scenery. This is the intended beat's fact — a rope in the room, silent —
       without the trap.
-- [ ] turning-house · 99 AA (the Morning Country) — rebuilt from its own stones, the fire lit again
+- [x] turning-house · 99 AA (the Morning Country) — rebuilt from its own stones, the fire lit again
+      as built: `src/content/turning-house-99-aa.ts`. `time: {past: true, future: true}`;
+      PAST is the stride back over the Gap. One item, `waymark` (untakeable, readable):
+      EXAMINE gives the cut stone laid face-in, READ gives the Traveler's note — the years
+      run here, and the step back is longer than the calendar says. That is the Lapse
+      referenced as a traveler's practical note, not as evidence (`UNIVERSE.md` §2 allows
+      the first and forbids the second). The keeper is the one laying stone; his refusal is
+      plain ignorance — "Older than us. That's as much as anybody kept" — the records
+      having gone into the Gap. The fire's relighting is carried by the hearth alone: "New
+      ash over old, parted by a pale seam that no winter could account for." No one
+      explains it. The sill is stone and glassless.
 - [ ] turning-house · 1099 AA (the Rekindling) — a printed history of the family, wrong
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lamp burning on the sill; end of tour
 
