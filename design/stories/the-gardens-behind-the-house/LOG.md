@@ -44,3 +44,24 @@ attached to JAK-18. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             differ era to era. Better to hand the planner that constraint now than to reject
             an unbuildable outline at §2.
 - next:     the planner's OUTLINE.md, checked against max_rooms: 14 (§2). By 21:59Z.
+
+## 2026-08-31 21:59Z · step 3 · deadline fired · planner still running
+- event:    the 20-minute deadline on JAK-19 fired before the child reported
+- saw:      JAK-19 In Progress since 21:39:20Z, last activity 21:50Z. Its branch carries one
+            commit (2bf9389, OUTLINE.md, 288 lines) and PR #5 is open with the correct base,
+            `cylocal/jak-18-the-gardens-behind-the-house`. Read the outline off the remote
+            branch without merging: fourteen room lines — six `back-garden` faces and two each
+            of `maze-mouth`, `long-walk`, `far-walk`, `maze-heart` at 99 BA and 99 AA — all
+            four sections present, Blockers empty, engine landings throughout. The maze is
+            built from exits alone, as the sub-issue required: the east turn exists only in
+            99 BA, the gap into the heart only in 99 AA.
+- decision: wait, and re-arm for 10 minutes rather than merging now.
+- reason:   per §8 the child is visibly progressing — deliverable pushed, PR opened, session
+            still live and likely writing its final response. Merging a branch out from under
+            a running child risks taking a half-finished state and losing whatever it pushes
+            next; there is no cost to waiting, and its completion resumes me sooner than any
+            deadline. Reading the outline in place is free and leaves nothing to do at §2 but
+            re-run the checks on the merge.
+- action:   no merge, no feedback, no round consumed; deadline re-armed 10m.
+- next:     the planner's completion, then the §2 outline check on the merged story branch.
+            By 22:09Z.
