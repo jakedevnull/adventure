@@ -48,6 +48,6 @@ export const longWalk99BA: Room = {
   ],
   exits: {
     south: "maze-mouth:99-ba",
-    // east → far-walk:99-ba, wired when that room is written.
+    east: "far-walk:99-ba",
   },
 };
