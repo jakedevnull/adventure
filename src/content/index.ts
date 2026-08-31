@@ -5,6 +5,7 @@ import { turningHouse99BA } from "./turning-house-99-ba.ts";
 import { turningHouse99AA } from "./turning-house-99-aa.ts";
 import { turningHouse1099AA } from "./turning-house-1099-aa.ts";
 import { turningHouse2099AA } from "./turning-house-2099-aa.ts";
+import { backGarden2099BA } from "./back-garden-2099-ba.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -25,5 +26,6 @@ export const world: World = {
     turningHouse99AA,
     turningHouse1099AA,
     turningHouse2099AA,
+    backGarden2099BA,
   ],
 };

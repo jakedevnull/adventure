@@ -3,8 +3,11 @@ import assert from "node:assert/strict";
 import { Game } from "../src/engine.ts";
 import { turningHouse } from "../src/content/turning-house.ts";
 
+// A one-room world made from the House's oldest face. Its spatial exits are
+// stripped: they lead into the rest of the map (the back garden is north), and
+// these tests are about the engine on its own, in a world of one room.
 function newGame() {
-  return new Game(turningHouse);
+  return new Game({ ...turningHouse, exits: {} });
 }
 
 test("intro shows the room title and first look", () => {
