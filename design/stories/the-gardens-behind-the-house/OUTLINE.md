@@ -302,7 +302,14 @@ planning. Every one of these constrains a room in this story.
       patches and grown out, and that is all the text says about it), the fallen side of the
       arch with new yew coming out of it, the walk kept open down the middle by deer, the
       bramble, the light. Both `maze-mouth` faces now stride to each other across the Gap.
-- [ ] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
+- [x] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
+      as built: `src/content/long-walk-99-ba.ts`. Exits: south → `maze-mouth:99-ba`, which
+      gained north → here in the same commit; east → `far-walk:99-ba` is written in with
+      that room. Time `{past: false, future: true}`. No items. Scenery: the hedge (not one
+      gap in any of the three faces), the turn (swept, the way a thing is kept that gets
+      used), the walk with a barrow track down one side of it going east, the strip of sky
+      with the bells in it. The walk stops north against a face of hedge and there is no
+      north exit; the text says so.
 - [ ] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
 - [ ] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
 - [ ] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
