@@ -1,6 +1,7 @@
 import type { World } from "../types.ts";
 import { turningHouse } from "./turning-house.ts";
 import { turningHouse1099BA } from "./turning-house-1099-ba.ts";
+import { turningHouse99BA } from "./turning-house-99-ba.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -14,5 +15,5 @@ import { turningHouse1099BA } from "./turning-house-1099-ba.ts";
 export const world: World = {
   start: "turning-house",
   landings: ["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"],
-  rooms: [turningHouse, turningHouse1099BA],
+  rooms: [turningHouse, turningHouse1099BA, turningHouse99BA],
 };
