@@ -12,6 +12,6 @@ import { turningHouse } from "./turning-house.ts";
 
 export const world: World = {
   start: "turning-house",
-  landings: ["2099 BA"],
+  landings: ["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"],
   rooms: [turningHouse],
 };
