@@ -326,7 +326,15 @@ planning. Every one of these constrains a room in this story.
       hedge, the grass trodden thin along the north side where somebody has stood to look
       at their own work more than once, the walk west. "Somebody took that length out and
       set it again, and it took" is the clause; nothing explains it.
-- [ ] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
+- [x] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
+      as built: `src/content/far-walk-99-aa.ts`. Exits: **none west, none south**, as
+      planned; north → `maze-heart:99-aa` is written in with that room. Time
+      `{past: true, future: false}`, and that stride is the only way out. No items.
+      Scenery: the dead hedge ("Every yew in this length died together, which is what
+      happens to yew set in turned ground. The rest of the maze did not."), the gap where
+      two of the dead ones came out, the thicket west (the same thicket from the other end),
+      the old hedge, the grass with the trodden line along the north side still showing.
+      The room states the choice and never names the verb that gets the player out.
 - [ ] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
 - [ ] maze-heart · 99 BA (the Hush) — the hedger, the turned earth, and the bundle in oiled cloth; reachable only by striding
 
