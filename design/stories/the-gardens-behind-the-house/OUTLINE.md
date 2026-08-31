@@ -260,7 +260,14 @@ planning. Every one of these constrains a room in this story.
       well (painted roof gone, rope cut off short at the windlass, recently, by somebody),
       the bells, the dug-over beds, the drystone wall down to knee height on the east side,
       the door, the barrow of clippings. The bells are one clause, as planned.
-- [ ] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
+- [x] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
+      as built: `src/content/back-garden-99-aa.ts`. Exits: south → `turning-house:99-aa`,
+      which gained north → here; north → `maze-mouth:99-aa` is written in with that room.
+      Time `{past: true, future: true}`. No items. Scenery: the half-dead hedge, the arch
+      fallen in on one side, the choked well (the stonework still the best work left in the
+      garden), the grass with the beds showing under it in ridges, the drystone wall now
+      mostly in the village being a house, the door. No number is put on how long it has
+      been: the calendars are wrong and the narrator does not repeat them.
 - [ ] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
 - [ ] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
 - [ ] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
