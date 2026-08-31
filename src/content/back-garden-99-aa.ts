@@ -67,6 +67,6 @@ export const backGarden99AA: Room = {
   ],
   exits: {
     south: "turning-house:99-aa",
-    // north → maze-mouth:99-aa, wired when that room is written.
+    north: "maze-mouth:99-aa",
   },
 };
