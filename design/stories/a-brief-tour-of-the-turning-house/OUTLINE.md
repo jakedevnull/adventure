@@ -193,33 +193,86 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
       Note: spelled "license" throughout, following the design docs' American spelling
       ("flavor", "favorite" in `UNIVERSE.md`); the outline's "licence board" is the same
       object. The parser accepts both spellings as nouns.
-- [ ] turning-house · 2099 AA (the Lettered Age) — the lamp burning on the sill; end of tour
+- [x] turning-house · 2099 AA (the Lettered Age) — the lamp burning on the sill; end of tour
+      as built: `src/content/turning-house-2099-aa.ts`. `time: {past: true, future: false}`;
+      FUTURE from here earns the engine's "the House holds still," which ends the tour.
+      Two items, both untakeable: `sill-lamp` ("burning, dented in three places and rubbed
+      bright where a hand goes"; TAKE gets "She would only fill another one"; READ gets
+      "Nothing is written on it. It is the one thing in this room without a placard") and
+      `cased-coin` (READ gets the placard: COIN, PRE-AWAKENING. FOUND UNDER THE HEARTHSTONE.
+      PROBABLY CEREMONIAL). The sill lamp answers to `lamp` / `burning lamp` and never to
+      `brass` or `brass lamp`, which stay the player's own, so both lamps are reachable by
+      name in this room and the House's lamp is what LAMP means here. Nothing in the room
+      is written as "your lamp" and nothing connects the two; the placard is the only
+      opinion offered, and it is wrong. The keeper's refusal is the shrug of the age that
+      dates everything — "The university has a date for it. They have had three" — followed
+      by her turning the lamp out of the draft, which is the closest this room comes to
+      sentiment and as close as it gets.
 
 ## Through-lines
 
 - **The brass lamp.** Taken in 2099 BA, carried in inventory to 2099 AA, where a lamp with
   the same dents is already burning. Declared once, in `src/content/turning-house.ts`; no
   other room declares an item with id `lamp`. Never lit by the player. Rooms: all six. —
-  planned
+  **as built.** The 2099 AA lamp is a separate untakeable item, `sill-lamp`, and answers to
+  `lamp`; the carried one keeps `brass lamp` and `brass`. Neither room says they are the
+  same lamp. No room mentions a wick, oil, tinder, or flint, and no room hints that the
+  player can light anything.
 - **The keepers' refusal.** One keeper per era, same family line, never named, each declining
-  the House's age in the manner of their century. Rooms: all six. — planned
+  the House's age in the manner of their century. Rooms: all six. — **as built,** and the
+  six shapes are all different: silence and a fire that needs seeing to (2099 BA, in her
+  `talk`); a brisk wrong number with accounts that are never fetched (1099 BA); deflection
+  onto what is coming instead (99 BA); plain ignorance, the records lost in the Gap (99 AA);
+  a citation to a printed page (1099 AA); a shrug about the university's three dates
+  (2099 AA). No surname anywhere. Each is `scenery` with a `talk` line.
 - **The fire.** Kept in every age, out somewhere in the Gap, lit again in 99 AA and kept
   since. No one in the game explains it, and no one connects it to the name of the
-  Rekindling. Carried mainly by 2099 BA, 99 AA, and 2099 AA; a clause elsewhere. — planned
+  Rekindling. Carried mainly by 2099 BA, 99 AA, and 2099 AA; a clause elsewhere. —
+  **as built.** Too eager for the season (2099 BA); nobody's particular job (1099 BA);
+  banked to a red seam (99 BA); "The fire is going again," with a pale ash seam no winter
+  could account for (99 AA); swept twice a day for visitors (1099 AA); "going, and is not
+  an exhibit" (2099 AA). Nothing names the Rekindling in connection with it.
 - **The sill.** Empty in 99 BA, glassless in 99 AA, glazed with an empty bracket in 1099 AA,
   and holding the burning lamp in 2099 AA. It does not appear in 2099 BA, whose lamp sits on
-  the table. Rooms: 99 BA, 99 AA, 1099 AA, 2099 AA. — planned
+  the table. Rooms: 99 BA, 99 AA, 1099 AA, 2099 AA. — **as built,** exactly so. Each of the
+  four is `scenery` with id `sill` answering to `sill` / `window` / `windowsill`, and in the
+  last two to `glass` and `bracket` as well.
 - **The face-down coin.** Untakeable in 2099 BA (`coin`, a Traveler's sign, already
   written); in 2099 AA it is in a case under a placard that guesses wrong. Needs a distinct
-  item id there, e.g. `cased-coin`. Rooms: 2099 BA, 2099 AA. — planned
+  item id there, e.g. `cased-coin`. Rooms: 2099 BA, 2099 AA. — **as built** as `cased-coin`.
+  READ gives the placard; the refusals rhyme ("You let it lie." / "You would let it lie
+  anyway.") without either room explaining the other.
 - **The road.** The high roads were laid to outlast their makers and are winning
   (`turning-house.ts`, already written). One clause per era at most, and the clause should
-  cost the road nothing. Rooms: all six. — planned
+  cost the road nothing. Rooms: all six. — **as built.** One `road` scenery entry per room,
+  one sentence each, and the road loses nothing in any of them: the map is sure there are
+  four (1099 BA); empty in all directions (99 BA); nobody living knows who laid it (99 AA);
+  the guild surveyed it, priced it, and left it alone (1099 AA); they are resurfacing it on
+  top of the old courses (2099 AA).
 - **The PAST/FUTURE chain.** The six faces are the entire map. `time` per room: 2099 BA
   `{past: false, future: true}`; 1099 BA, 99 BA, 99 AA, 1099 AA all `{past: true, future:
   true}`; 2099 AA `{past: true, future: false}`. No stride is barred, so the tour walks both
-  ways and a lone player can always finish. Rooms: all six. — planned
+  ways and a lone player can always finish. Rooms: all six. — **as built,** exactly these
+  flags. FUTURE from 99 BA lands in 99 AA in one step, over the Gap. `npm run eval:reach`
+  reports PASS, rooms: 6, reachable: 6, with FUTURE ×5 as the route to the last face.
 - **No spatial exits.** No room in this story sets `exits`. Reachability comes from the time
-  chain alone, which is what `npm run eval:reach` will walk. Rooms: all six. — planned
+  chain alone, which is what `npm run eval:reach` will walk. Rooms: all six. — **as built.**
+  No `exits` key in any of the six files. The barred door, the shutters, and the stair are
+  all `scenery`.
 
 ## Blockers
+
+None. Every room in the plan is written, and nothing in the story needed a mechanic the
+engine lacks.
+
+## Notes for the harness (not story blockers)
+
+- **`scripts/play.ts` drops the first command unless `--expect` is passed.** `commands` is
+  filtered with `i !== expectIdx + 1`, and `expectIdx` is `-1` when there is no `--expect`,
+  so index 0 is always filtered out. `node scripts/play.ts "TAKE LAMP" FUTURE` silently
+  skips TAKE LAMP. Every route in this story is therefore quoted with `--expect <room id>`,
+  which both fixes the filter and gives a non-zero exit on a wrong landing. Out of a
+  generator's scope to fix (`scripts/` is not content); worth its own issue.
+- **`src/engine.ts` HELP still says "Two more you will not need tonight: PAST and
+  FUTURE."** That was true when one landing was built. Now the whole game is those two
+  verbs. Same scope note: engine text, not content.
