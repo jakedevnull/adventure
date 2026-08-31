@@ -25,3 +25,22 @@ attached to JAK-18. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             later reader key off it); pushed the story branch to origin so children can branch
             from it; created this log and its repo mirror.
 - next:     create the Plan sub-issue (§1).
+
+## 2026-08-31 21:39Z · step 2 · spawn planner
+- event:    Plan sub-issue created and delegated
+- saw:      this deployment still has no `mcp__cyrus-tools__linear_agent_session_create` tool
+            (checked the tool list), the same gap JAK-14 hit at its step 2.
+- decision: spawn the child by setting JAK-19's Linear delegate to CyLocal, as on the previous
+            story.
+- reason:   delegation is the only mechanism here that starts a child session, and without a
+            child nothing in the loop can proceed. Recorded as a deliberate deviation from the
+            skill's spawn instruction rather than a silent one.
+- action:   JAK-19 "Plan: The Gardens Behind the House" created — label `Plan`, parent JAK-18,
+            project `adventure`, state Todo, assignee jakedevnull; JAK-19 blocks JAK-18;
+            delegate CyLocal; deadline wakeup set 20m. The sub-issue carries an extra
+            acceptance criterion and an "engine facts" section in its Technical Notes: the
+            engine has no conditional state (no locks, keys, or flags), so "a very little bit
+            of time travel is required" can only be expressed structurally, by exits that
+            differ era to era. Better to hand the planner that constraint now than to reject
+            an unbuildable outline at §2.
+- next:     the planner's OUTLINE.md, checked against max_rooms: 14 (§2). By 21:59Z.
