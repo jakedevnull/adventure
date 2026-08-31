@@ -268,7 +268,15 @@ planning. Every one of these constrains a room in this story.
       garden), the grass with the beds showing under it in ridges, the drystone wall now
       mostly in the village being a house, the door. No number is put on how long it has
       been: the calendars are wrong and the narrator does not repeat them.
-- [ ] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
+- [x] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
+      as built: `src/content/back-garden-1099-aa.ts`. Exits: south → `turning-house:1099-aa`
+      only, which gained north → here; the look text says outright that there is no other
+      way out of the garden. Time `{past: true, future: true}`. No items. Scenery: the
+      allotments and cinder paths, the old roots at the north end (running in lines that
+      nothing above ground follows — the maze, unrecognized), the well capped with iron and
+      pumped, with the guild's name cast into the handle twice, the withy beds, the canal
+      and its lock, the wall, the door. The guild's stamp is in EXAMINE, not READ: READ
+      works on items only.
 - [ ] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
 - [ ] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
 - [ ] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
