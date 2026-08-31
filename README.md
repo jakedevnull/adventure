@@ -14,6 +14,12 @@ npm run play
 
 Type `HELP` at the prompt. See [DEVELOP.md](DEVELOP.md) for the code layout and tests.
 
+## Roadmap
+
+- Expand the story beyond the Turning House — more rooms, more ages.
+- Move from the command line to the browser terminal.
+- Open the world to multiple players at once.
+
 ## Design
 
 - [Game design](design/DESIGN.md) — pillars, the time mechanic, multiplayer,
