@@ -1,7 +1,9 @@
 import type { Room } from "../types.ts";
 
 // The Turning House, 2099 BA — the High Masonry.
-// One place, one era: the game's front door, and for this slice the whole world.
+// The game's front door, and the oldest face of the one place that stands in
+// every age. It keeps the legacy room id `turning-house`; the other five faces
+// use the `<place>:<landing-slug>` convention.
 // All text here answers to design/WRITING-GUIDE.md.
 
 export const turningHouse: Room = {
@@ -21,10 +23,11 @@ export const turningHouse: Room = {
     "The common room, low and warm. A brass lamp on the table, a coin face down " +
     "beside it, and the landlady at her fire.",
   time: {
-    // The House turns in every age — but only one landing is built in this slice,
-    // so the years have nowhere to carry you yet. The parser declines in voice.
+    // 2099 BA is the oldest landing in the world; there is nothing behind it.
+    // Forward the years run, all the way to 2099 AA (A Brief Tour of the
+    // Turning House).
     past: false,
-    future: false,
+    future: true,
   },
   items: [
     {
@@ -60,7 +63,9 @@ export const turningHouse: Room = {
       nouns: ["landlady", "woman", "keeper", "innkeeper", "her"],
       description:
         "She has kept this fire longer than the walls have stood, and will not say how long.",
-      talk: "\"Late to be traveling,\" she says, and does not mean the hour.",
+      talk:
+        "\"Late to be traveling,\" she says, and does not mean the hour. She has been " +
+        "asked how old the House is before, and the fire needs seeing to.",
     },
     {
       id: "fire",
