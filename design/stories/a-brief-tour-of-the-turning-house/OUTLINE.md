@@ -133,7 +133,16 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
 
 ## Rooms
 
-- [ ] turning-house · 2099 BA (the High Masonry) — the tour opens and the lamp is taken
+- [x] turning-house · 2099 BA (the High Masonry) — the tour opens and the lamp is taken
+      as built: `src/content/turning-house.ts`, edited not replaced. `time: {past: false,
+      future: true}`; no spatial exits. Items `lamp` (takeable, the through-line), `bread`,
+      `coin` (untakeable Traveler's sign) all unchanged. The landlady's `talk` gains one
+      sentence — "She has been asked how old the House is before, and the fire needs
+      seeing to" — which opens the refusal spine as silence, the High Masonry's shape of
+      it. All six landings registered in `src/content/index.ts`, oldest first.
+      Deviation: `test/engine.test.ts` asserted FUTURE was refused with "the House holds
+      still"; with the years now open that one-room game gets "nothing of this place
+      stands in that age" instead, so the assertion was updated. No engine change.
 - [ ] turning-house · 1099 BA (the Long Noon) — a rich House, plastered over, sure of a wrong date
 - [ ] turning-house · 99 BA (the Hush) — the keeper asks you to carry the lamp across
 - [ ] turning-house · 99 AA (the Morning Country) — rebuilt from its own stones, the fire lit again
