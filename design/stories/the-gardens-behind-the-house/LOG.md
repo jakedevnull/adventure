@@ -96,3 +96,39 @@ attached to JAK-18. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             Those are the four ways this particular story can be built wrong, and each is
             cheap for the generator to check and expensive for an evaluator to find.
 - next:     the generator's fourteen rooms (§4). Round still 0 of 4. By 22:33Z.
+
+## 2026-08-31 22:50Z · step 5 · rooms accepted · CLOSE-OUT JAK-20 · spawn evaluator
+- event:    generator completed (session ended 22:47:26Z); §4 verification; Evaluate sub-issue
+            created and delegated
+- saw:      28 commits on JAK-20's branch — fourteen rooms, each followed by its own outline
+            tick — and PR #6 against the story branch. All fourteen room lines ticked, all
+            fourteen carrying an as-built note, Blockers empty, and the Through-lines section
+            rewritten from "planned" to "built", quoting the three clauses that carry the dead
+            hedge across three rooms.
+- decision: accept and merge; go to §5 with round still 0.
+- reason:   verified on the merged story branch (§9), not on the child's claim: `npm run
+            typecheck` clean, `npm test` 36/36, `npm run eval:reach` verdict PASS, 20 rooms /
+            20 reachable. The four story-specific criteria I set all hold, checked by probing
+            the engine rather than reading the code: the full sixteen-command route lands in
+            `turning-house:99-ba` with `sword` in INVENTORY; EAST from `long-walk:99-aa` and
+            NORTH from `far-walk:99-ba` both refuse, so the sword cannot be had without
+            striding; the six `turning-house` files gained a `north` exit and nothing else
+            (diff read line by line). One test file also changed: `test/engine.test.ts` now
+            builds its one-room world as `{...turningHouse, exits: {}}`. That is correct, not
+            a masked failure — the engine unit tests construct a world of a single room, and
+            the new back door points at a room that world does not contain.
+- action:   merged the generator branch and pushed; PR #6 merged 22:49:57Z; JAK-20 criteria
+            ticked 8/8 and moved to Done; JAK-18's blocked-by on JAK-20 removed. JAK-21
+            "Evaluate: The Gardens Behind the House" created — label `Evaluate`, parent
+            JAK-18, project `adventure`, Todo, assignee jakedevnull; JAK-21 blocks JAK-18;
+            delegate CyLocal; deadline 15m.
+- also:     found a real bug in `scripts/play.ts` while probing. Line 22 filters commands with
+            `i !== expectIdx + 1`; with no `--expect` flag `expectIdx` is -1, so the filter
+            throws away argument 0 and the first command is silently dropped. `node
+            scripts/play.ts NORTH` never leaves the start room. The `--expect` and `--quiet`
+            forms are unaffected, which is why the story's own route verified correctly. The
+            harness script is not this story's content and the evaluator cannot fix it (no
+            Write tool), so JAK-21's Technical Notes tell it to always pass `--expect` or
+            `--quiet` and to report the bug under `## Notes`. Flagged for the author: it can
+            turn a good exit into a false FAIL for any later evaluator.
+- next:     the evaluator's report (§6). Round 0 of 4. By 23:05Z.
