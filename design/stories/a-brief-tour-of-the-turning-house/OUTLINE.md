@@ -143,7 +143,17 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
       Deviation: `test/engine.test.ts` asserted FUTURE was refused with "the House holds
       still"; with the years now open that one-room game gets "nothing of this place
       stands in that age" instead, so the assertion was updated. No engine change.
-- [ ] turning-house · 1099 BA (the Long Noon) — a rich House, plastered over, sure of a wrong date
+- [x] turning-house · 1099 BA (the Long Noon) — a rich House, plastered over, sure of a wrong date
+      as built: `src/content/turning-house-1099-ba.ts`. `time: {past: true, future: true}`,
+      no spatial exits. One item, `road-map` (untakeable, readable): EXAMINE gives the
+      gold lettering, READ gives "Four roads are named here. Three of them are out there."
+      The `road` scenery closes the joke from the other side. The landlord's refusal is the
+      brisk wrong number — "Four hundred years next spring" — which dates the House to
+      after the era the player has just left. Plaster over drystone carries the age.
+      Deviation: no wine, though the age is famous for it. `drink` is not a verb, and a
+      cup on the table would earn `I don't know the word "drink"` — the same trap the
+      outline's engine notes set for the lamp. The richness shows in plaster, paint, and
+      an unbarred door instead.
 - [ ] turning-house · 99 BA (the Hush) — the keeper asks you to carry the lamp across
 - [ ] turning-house · 99 AA (the Morning Country) — rebuilt from its own stones, the fire lit again
 - [ ] turning-house · 1099 AA (the Rekindling) — a printed history of the family, wrong
