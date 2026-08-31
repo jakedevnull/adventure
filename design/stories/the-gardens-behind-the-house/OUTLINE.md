@@ -295,7 +295,13 @@ planning. Every one of these constrains a room in this story.
       that room. Time `{past: false, future: true}` — the maze has no face in 1099 BA.
       No items. Scenery: the hedge (no seeing through it and no getting through it), the
       arch, the walk, the light. Rooms 3 and 7 now make a two-way passage.
-- [ ] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
+- [x] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
+      as built: `src/content/maze-mouth-99-aa.ts`. Exits: south → `back-garden:99-aa`, which
+      gained north → here in the same commit; north → `long-walk:99-aa` is written in with
+      that room. Time `{past: true, future: false}`. No items. Scenery: the hedge (dead in
+      patches and grown out, and that is all the text says about it), the fallen side of the
+      arch with new yew coming out of it, the walk kept open down the middle by deer, the
+      bramble, the light. Both `maze-mouth` faces now stride to each other across the Gap.
 - [ ] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
 - [ ] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
 - [ ] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
