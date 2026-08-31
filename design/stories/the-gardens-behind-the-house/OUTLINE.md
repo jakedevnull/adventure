@@ -252,7 +252,14 @@ planning. Every one of these constrains a room in this story.
       the string lines, the barrow, the wall, the door, the turned ground. Gold on the
       names, as the road-map in the House of the same age. Sets up the first of the two
       wrong plans.
-- [ ] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
+- [x] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
+      as built: `src/content/back-garden-99-ba.ts`. Exits: south → `turning-house:99-ba`,
+      which gained north → here; north → `maze-mouth:99-ba` is written in with that room,
+      three commits later, and the look text names the arch from the start. Time
+      `{past: true, future: true}`. No items. Scenery: the clipped hedge, the arch, the
+      well (painted roof gone, rope cut off short at the windlass, recently, by somebody),
+      the bells, the dug-over beds, the drystone wall down to knee height on the east side,
+      the door, the barrow of clippings. The bells are one clause, as planned.
 - [ ] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
 - [ ] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
 - [ ] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
