@@ -154,7 +154,20 @@ Room titles: every face is titled **The Turning House**. A place keeps its name 
       cup on the table would earn `I don't know the word "drink"` — the same trap the
       outline's engine notes set for the lamp. The richness shows in plaster, paint, and
       an unbarred door instead.
-- [ ] turning-house · 99 BA (the Hush) — the keeper asks you to carry the lamp across
+- [x] turning-house · 99 BA (the Hush) — the keeper asks you to carry the lamp across
+      as built: `src/content/turning-house-99-ba.ts`. `time: {past: true, future: true}` —
+      FUTURE is the stride over the Gap, landing in 99 AA. `items: []`, so TAKE ALL earns
+      "There is nothing here to take," which is the room's point. The look says so out
+      loud: "Nothing sits on the sill, and nothing is set out on the tables." The sill is
+      present and bare. The keeper's request is the story's weight and works whether or
+      not the player is carrying the lamp: she names it rather than pointing at it, so a
+      player who left it behind is told there is one.
+      Deviation: the bell-rope is in the room but not in the player's reach. There is no
+      `pull` or `ring` verb, and a rope offered to the player earns `I don't know the word
+      "pull"`. It ends "at a knot at her shoulder. Hers to pull, and she has not," which
+      declines the affordance in voice. The bells that are ringing are other villages',
+      and separate scenery. This is the intended beat's fact — a rope in the room, silent —
+      without the trap.
 - [ ] turning-house · 99 AA (the Morning Country) — rebuilt from its own stones, the fire lit again
 - [ ] turning-house · 1099 AA (the Rekindling) — a printed history of the family, wrong
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lamp burning on the sill; end of tour
