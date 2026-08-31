@@ -310,7 +310,14 @@ planning. Every one of these constrains a room in this story.
       used), the walk with a barrow track down one side of it going east, the strip of sky
       with the bells in it. The walk stops north against a face of hedge and there is no
       north exit; the text says so.
-- [ ] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
+- [x] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
+      as built: `src/content/long-walk-99-aa.ts`. Exits: south → `maze-mouth:99-aa`, which
+      gained north → here in the same commit. **No east**, as planned. Time
+      `{past: true, future: false}`. No items. Scenery: the thicket (wood, not leaves, going
+      back further than you can see into it), the barrow track (beaten hard, never dug up,
+      and the thicket grew over it and not out of it), the hedge, the sky that comes and
+      goes. The track is the whole of the invitation to stride PAST; nothing in the room
+      names the verb.
 - [ ] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
 - [ ] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
 - [ ] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
