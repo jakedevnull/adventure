@@ -161,3 +161,33 @@ attached to JAK-14. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
 - action:   `Evaluate` label applied to JAK-17; the description paragraph that said the
             label could not be created replaced with what is actually true.
 - next:     unchanged — the report, by 20:35Z, plus a branch check before I trust it.
+
+## 2026-08-31 20:24Z · step 9 · PASS · close-out JAK-17 · PR to main
+- event:    evaluator completed (JAK-17, session ended 20:22:07Z, two minutes). The author
+            asked me to wake early rather than sit out the 15-minute deadline, so I read the
+            report from the session thread instead of waiting for the resume.
+- saw:      `verdict: PASS`, rooms: 6 reachable: 6, no failures. The report goes past the
+            harness: all six routes replayed, the chain walked backward, both closed ends
+            checked, the lamp through-line played end to end, and each room's text read
+            against what the outline promised. Two problems are carried forward as explicitly
+            out of scope: `scripts/play.ts` drops the first command when `--expect` is absent,
+            and `src/engine.ts` HELP still calls PAST and FUTURE verbs "you will not need
+            tonight".
+- decision: accept the PASS, close JAK-17 out at 4/4, and open the PR to `main`.
+- reason:   re-ran everything myself on the story branch rather than taking the verdict
+            (§9): `eval:reach` PASS 6/6 with `"problems": []` and `"unreachable": []`; the
+            quiet route prints `turning-house:2099-aa` and exits 0; the lamp route exits 0
+            with the lamp still in inventory after five strides and both lamps answering to
+            their own names. The read-only criterion I checked against the child's worktree
+            rather than its word — `git log cylocal/jak-14-…..HEAD` there returns nothing and
+            `git status --porcelain` shows only the untracked settings file it did not
+            create — so the unlabeled evaluator behaved as an evaluator despite holding the
+            tools not to. I also confirmed both carried-forward notes are real
+            (`expectIdx = -1` makes the filter drop argument 0; `engine.ts:364`). Neither
+            touches this story's rooms, so neither is a FAIL, and per §5.6 the evaluator was
+            right to report rather than fix them.
+- action:   JAK-17 criteria ticked 4/4 and moved to Done; JAK-14's blocked-by on JAK-17
+            removed; PR opened story branch → `main`; JAK-14 moved to In Review. Round
+            finished at 0 of 2 — no fix round was needed.
+- next:     human review of the PR. Revisions, if any, are §7 and draw on `max_revisions: 5`,
+            not on the untouched fix-round budget.
