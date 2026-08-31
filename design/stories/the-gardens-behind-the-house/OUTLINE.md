@@ -318,7 +318,14 @@ planning. Every one of these constrains a room in this story.
       and the thicket grew over it and not out of it), the hedge, the sky that comes and
       goes. The track is the whole of the invitation to stride PAST; nothing in the room
       names the verb.
-- [ ] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
+- [x] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
+      as built: `src/content/far-walk-99-ba.ts`. Exits: west → `long-walk:99-ba`, which
+      gained east → here in the same commit. **No north**, as planned. Time
+      `{past: false, future: true}`. No items. Scenery: the young hedge (set from big
+      cuttings, all of a size, closer planted than the hedge it was cut out of), the old
+      hedge, the grass trodden thin along the north side where somebody has stood to look
+      at their own work more than once, the walk west. "Somebody took that length out and
+      set it again, and it took" is the clause; nothing explains it.
 - [ ] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
 - [ ] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
 - [ ] maze-heart · 99 BA (the Hush) — the hedger, the turned earth, and the bundle in oiled cloth; reachable only by striding
