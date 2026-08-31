@@ -14,6 +14,7 @@ import { backGarden2099AA } from "./back-garden-2099-aa.ts";
 import { mazeMouth99BA } from "./maze-mouth-99-ba.ts";
 import { mazeMouth99AA } from "./maze-mouth-99-aa.ts";
 import { longWalk99BA } from "./long-walk-99-ba.ts";
+import { longWalk99AA } from "./long-walk-99-aa.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -43,5 +44,6 @@ export const world: World = {
     mazeMouth99BA,
     mazeMouth99AA,
     longWalk99BA,
+    longWalk99AA,
   ],
 };
