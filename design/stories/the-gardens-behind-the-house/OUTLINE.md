@@ -289,7 +289,12 @@ planning. Every one of these constrains a room in this story.
       (the grass over them goes brown first in a dry August), the rebuilt wall, the door.
       The well's line was rewritten once: the first draft said it was dug before the maze
       and open after it, which is the one thing the through-line forbids the text to say.
-- [ ] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
+- [x] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
+      as built: `src/content/maze-mouth-99-ba.ts`. Exits: south → `back-garden:99-ba`, which
+      gained north → here in the same commit; north → `long-walk:99-ba` is written in with
+      that room. Time `{past: false, future: true}` — the maze has no face in 1099 BA.
+      No items. Scenery: the hedge (no seeing through it and no getting through it), the
+      arch, the walk, the light. Rooms 3 and 7 now make a two-way passage.
 - [ ] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
 - [ ] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
 - [ ] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
