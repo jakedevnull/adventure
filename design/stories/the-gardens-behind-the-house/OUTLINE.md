@@ -335,7 +335,18 @@ planning. Every one of these constrains a room in this story.
       two of the dead ones came out, the thicket west (the same thicket from the other end),
       the old hedge, the grass with the trodden line along the north side still showing.
       The room states the choice and never names the verb that gets the player out.
-- [ ] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
+- [x] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
+      as built: `src/content/maze-heart-99-aa.ts`. Exits: south → `far-walk:99-aa`, which
+      gained north → here in the same commit. Time `{past: true, future: false}`. Item:
+      `sword` (takeable, READ — "One word is cut into the blade below the hilt, in the
+      letters of a kingdom two ages gone. It reads as a name."). No verb the parser lacks is
+      invited: it is a thing in the ground, not a tool. Scenery: the dead hedge on the south
+      side with its gap, the living yew on the other three, the bare line the drip has worn
+      down the middle, the sky.
+      Deviation: `lookAgain` does not name the sword. The engine keeps a native item out of
+      its auto-list whether or not the player is carrying it, so a `lookAgain` that named the
+      sword would go on describing it at the player's feet after they took it. It names the
+      bare line instead, which points at the same spot and is true either way.
 - [ ] maze-heart · 99 BA (the Hush) — the hedger, the turned earth, and the bundle in oiled cloth; reachable only by striding
 
 ## Through-lines
