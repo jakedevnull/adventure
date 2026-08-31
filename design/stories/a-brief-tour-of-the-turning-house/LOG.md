@@ -71,3 +71,49 @@ attached to JAK-14. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             parent JAK-14, project `adventure`, state Todo, assignee jakedevnull; JAK-16
             blocks JAK-14; delegate CyLocal; deadline wakeup set 20m.
 - next:     six rooms written, committed, and ticked with as-built notes. By 18:31Z.
+
+## 2026-08-31 18:47Z · step 5 · generation verified + close-out JAK-16
+- event:    generator completed (JAK-16, session ended 18:22:50Z, PR #3), twelve commits —
+            one writing each of the six faces, one annotating each.
+- saw:      all six room lines in OUTLINE.md ticked with as-built notes, every through-line
+            moved from "planned" to "as built", Blockers still empty. Three deviations are
+            recorded and each is the same kind: an obvious beat withheld because the verb
+            does not exist (no wine in the Long Noon, `drink` is not a verb; the bell-rope
+            in the Hush left at the keeper's shoulder rather than offered, no `pull`), plus
+            one test assertion updated because opening FUTURE on 2099 BA changes what the
+            single-room test world replies.
+- decision: accept and merge; close JAK-16 out at 5/5.
+- reason:   verified on the merged story branch (§9), not on the child's claim.
+            `npm run typecheck` clean; `npm test` 36/36; `npm run eval:reach` PASS,
+            rooms: 6 reachable: 6, route FUTURE ×5. Played the tour end to end:
+            `node scripts/play.ts "TAKE LAMP" FUTURE ×5 INVENTORY --expect
+            turning-house:2099-aa` exits 0, the lamp is still carried on arrival, and a
+            brass lamp is burning on the sill with the same three dents. Neither room says
+            they are the same lamp. `EXAMINE LAMP` there gives the burning one and
+            `EXAMINE BRASS LAMP` the carried one, so both are reachable by name as the
+            as-built note claims. Walked it backwards too: PAST ×5 returns to 2099 BA and
+            both ends refuse in voice. For the commit-per-room criterion I checked out all
+            twelve commits in a scratch worktree and ran typecheck + tests at each: twelve
+            for twelve green, so the criterion is a verification record and not a
+            self-report. The test-assertion change was read and is narrow — it still
+            asserts a refusal, just the correct one for a one-room world.
+- action:   merged origin/cylocal/jak-16-… into the story branch and pushed; JAK-16 criteria
+            ticked 5/5 and moved to Done; JAK-14's blocked-by on JAK-16 removed.
+- next:     the stop condition (§6, as modified by `evaluate: false`).
+
+## 2026-08-31 18:48Z · step 6 · STOPPED: evaluate: false
+- event:    end of the run
+- saw:      six rooms merged on the story branch, both children Done, round 0 of 2 unused,
+            no blockers recorded.
+- decision: stop here. No Evaluate sub-issue, and no PR to `main`.
+- reason:   the author's factory block sets `evaluate: false` ("Part 3: stop before the
+            evaluator"), so §5 does not run. §6 opens the PR to `main` only on an
+            evaluator PASS, and with no evaluator there is no PASS to act on — opening one
+            anyway would assert a verdict nobody produced. My own checks (typecheck, tests,
+            eval:reach 6/6, the tour played both ways) are recorded above and are what the
+            story branch is offered on; they are not a substitute for the evaluator, which
+            also reads the routes against the outline's promises.
+- action:   JAK-14 moved to In Review with the story branch pushed and no PR to `main`.
+            Story branch: `cylocal/jak-14-a-brief-tour-of-the-turning-house`.
+- next:     the author's call — review the branch, or say the word and I will open the PR to
+            `main`, or flip `evaluate: true` and I will run the evaluator round.
