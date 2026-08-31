@@ -65,3 +65,34 @@ attached to JAK-18. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
 - action:   no merge, no feedback, no round consumed; deadline re-armed 10m.
 - next:     the planner's completion, then the §2 outline check on the merged story branch.
             By 22:09Z.
+
+## 2026-08-31 22:13Z · step 4 · outline accepted · CLOSE-OUT JAK-19 · spawn generator
+- event:    planner completed; §2 outline check; Generate sub-issue created and delegated
+- saw:      the child's Cyrus session ended at 21:50:32Z (agent-sessions list), but JAK-19 was
+            left In Progress and no completion resumed me — the second time this run that the
+            issue state lagged the session. The work itself was complete: OUTLINE.md, 288
+            lines, sections Story / Rooms / Through-lines / Blockers, Blockers empty. Fourteen
+            room lines, counted mechanically, exactly `max_rooms: 14`. Engine landings
+            throughout, no calendar years. The Story section quotes the author verbatim and
+            expands it into arc, beats, cast, items, tone, an explicit exit graph and stride
+            table, and an "engine facts" section checked against the source.
+- decision: accept the outline and merge it; do not send it back.
+- reason:   per §2 — the count is at the cap, not over; every room line carries place, landing,
+            age, and purpose; the Story section is self-sufficient. The extra criterion I added
+            is met concretely: the east turn out of `long-walk` exists only in 99 BA, the gap
+            into the heart only in 99 AA, and `maze-heart:99-ba` has no spatial exits at all,
+            so the sword genuinely cannot be had without striding — and none of it needs a
+            mechanic the engine lacks. Verified on the merged story branch, not the child
+            worktree (§9): `npm run typecheck` clean, `npm test` 36/36, `npm run eval:reach`
+            6 rooms / 6 reachable (unchanged, as expected — the outline is a document).
+- action:   merged the planner branch into the story branch and pushed (a478652); PR #5 merged
+            22:12:40Z; JAK-19 criteria ticked 5/5 and moved to Done; JAK-18's blocked-by on
+            JAK-19 removed. JAK-20 "Generate: The Gardens Behind the House" created — label
+            `Generate`, parent JAK-18, project `adventure`, Todo, assignee jakedevnull; JAK-20
+            blocks JAK-18; delegate CyLocal; deadline 20m. Its criteria go past the skill's
+            template on purpose: the exit graph built exactly including its asymmetries, the
+            six `turning-house` files gaining a north exit and nothing else, `eval:reach` at
+            20/20, and the outline's own sixteen-command route played through the real engine.
+            Those are the four ways this particular story can be built wrong, and each is
+            cheap for the generator to check and expensive for an evaluator to find.
+- next:     the generator's fourteen rooms (§4). Round still 0 of 4. By 22:33Z.
