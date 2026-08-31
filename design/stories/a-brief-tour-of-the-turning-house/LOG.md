@@ -117,3 +117,47 @@ attached to JAK-14. This file is the mirror (ADVENTURE_FACTORY.md §5.8).
             Story branch: `cylocal/jak-14-a-brief-tour-of-the-turning-house`.
 - next:     the author's call — review the branch, or say the word and I will open the PR to
             `main`, or flip `evaluate: true` and I will run the evaluator round.
+
+## 2026-08-31 20:20Z · step 7 · RESUMED: evaluate: true · spawn evaluator
+- event:    the author flipped `evaluate: true` on JAK-14 and said continue. The run that
+            stopped at step 6 resumes at §5.
+- saw:      factory block re-read: `evaluate: true`, round still 0 of 2, revisions 0. Story
+            branch unchanged and in sync with origin, plus one new commit from the author
+            (e8064fd, the evaluate-story skill from upstream). The `Evaluate` label did not
+            exist in this workspace, and `create_issue_label` returned
+            `auth_insufficient_scope` — this orchestrator cannot create labels.
+- decision: spawn the evaluator unlabeled rather than hold the loop, having put the
+            question to the author first.
+- reason:   ADVENTURE_FACTORY.md §11 makes the evaluator read-only *by tool preset*, which
+            the label selects; without it the child gets the default preset and full tools.
+            That is a real weakening of a settled decision (§13), so it was the author's
+            call, not mine. They answered "continue". Read-only is therefore held by
+            instruction this round — stated three times over (the sub-issue's own header,
+            the `evaluate-story` skill, and CLAUDE.md's "Evaluators never fix") — and, more
+            usefully, made checkable: I added a fourth acceptance criterion, "No commits,
+            no content edits, no PR", which I verify against the child's branch rather than
+            take on trust.
+- action:   JAK-17 "Evaluate: A Brief Tour of the Turning House" created — parent JAK-14,
+            project `adventure`, state Todo, assignee jakedevnull; JAK-17 blocks JAK-14;
+            delegate CyLocal; JAK-14 moved back to In Progress; deadline wakeup set 15m.
+- next:     the report (§8 format), verdict PASS or FAIL. By 20:35Z.
+
+## 2026-08-31 20:21Z · step 8 · label arrives mid-flight
+- event:    the author created the `Evaluate` label themselves, about a minute after JAK-17
+            was spawned.
+- saw:      child session 1e7e680b started 20:19:55Z; the label landed after that, so the
+            running session had already resolved its tool preset without it.
+- decision: label JAK-17, correct the now-false paragraph in its description, and let the
+            running session finish rather than kill and respawn it.
+- reason:   a tool preset is fixed when the session starts, so relabeling does not retool
+            the child in flight; only a fresh session would, and I have no tool to stop one
+            cleanly (cancel-and-redelegate churns the issue). Against that: the cost of
+            being wrong is bounded and detectable. I verify on the merged story branch and
+            one criterion is explicitly that its branch is unchanged, so if this child edits
+            or commits anything I will see it, discard the branch, and respawn — and the
+            respawn will pick up the label correctly, since it now exists. Letting a
+            possibly-overtooled evaluator run under watch is cheaper than a restart, and
+            the label is right for every session after this one.
+- action:   `Evaluate` label applied to JAK-17; the description paragraph that said the
+            label could not be created replaced with what is actually true.
+- next:     unchanged — the report, by 20:35Z, plus a branch check before I trust it.
