@@ -277,7 +277,18 @@ planning. Every one of these constrains a room in this story.
       pumped, with the guild's name cast into the handle twice, the withy beds, the canal
       and its lock, the wall, the door. The guild's stamp is in EXAMINE, not READ: READ
       works on items only.
-- [ ] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
+- [x] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
+      as built: `src/content/back-garden-2099-aa.ts`. Exits: south → `turning-house:2099-aa`
+      only, which gained north → here. Time `{past: true, future: false}` (newest landing).
+      Item: `maze-placard` (not takeable, READ — "THE HOUSE MAZE. Nine walks and a fountain
+      at the middle, entered from the west. The estate books record the north hedge of the
+      far walk renewed once, at some expense, and do not say why."). It disagrees with
+      `maze-plan` on the middle, the way in, and the count, and is right about the one thing
+      that matters. The post stands where the arch was, and the mown plan does not put one
+      there. Scenery: the mown stripes, the well behind its rope with its card, the stumps
+      (the grass over them goes brown first in a dry August), the rebuilt wall, the door.
+      The well's line was rewritten once: the first draft said it was dug before the maze
+      and open after it, which is the one thing the through-line forbids the text to say.
 - [ ] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
 - [ ] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
 - [ ] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
