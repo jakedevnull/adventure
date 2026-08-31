@@ -9,6 +9,7 @@ import { backGarden2099BA } from "./back-garden-2099-ba.ts";
 import { backGarden1099BA } from "./back-garden-1099-ba.ts";
 import { backGarden99BA } from "./back-garden-99-ba.ts";
 import { backGarden99AA } from "./back-garden-99-aa.ts";
+import { backGarden1099AA } from "./back-garden-1099-aa.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -33,5 +34,6 @@ export const world: World = {
     backGarden1099BA,
     backGarden99BA,
     backGarden99AA,
+    backGarden1099AA,
   ],
 };
