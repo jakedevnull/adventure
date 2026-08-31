@@ -91,4 +91,8 @@ export const turningHouse1099BA: Room = {
       description: "Three roads leave the crossroads. The map is very sure there are four.",
     },
   ],
+  exits: {
+    // The back door, into the garden (The Gardens Behind the House).
+    north: "back-garden:1099-ba",
+  },
 };

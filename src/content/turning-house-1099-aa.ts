@@ -94,4 +94,8 @@ export const turningHouse1099AA: Room = {
         "The guild has surveyed it, priced repairing it, and left it alone. It does not need them.",
     },
   ],
+  exits: {
+    // The back door, into the garden (The Gardens Behind the House).
+    north: "back-garden:1099-aa",
+  },
 };

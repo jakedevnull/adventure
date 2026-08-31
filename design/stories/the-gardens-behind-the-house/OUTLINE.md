@@ -230,20 +230,135 @@ planning. Every one of these constrains a room in this story.
 
 ## Rooms
 
-- [ ] back-garden · 2099 BA (the High Masonry) — the walled plot, the orchard, and the well the story is really about
-- [ ] back-garden · 1099 BA (the Long Noon) — the maze pegged out in string, and the gold-lettered plan of a heart with no way in
-- [ ] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
-- [ ] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
-- [ ] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
-- [ ] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
-- [ ] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
-- [ ] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
-- [ ] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
-- [ ] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
-- [ ] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
-- [ ] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
-- [ ] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
-- [ ] maze-heart · 99 BA (the Hush) — the hedger, the turned earth, and the bundle in oiled cloth; reachable only by striding
+- [x] back-garden · 2099 BA (the High Masonry) — the walled plot, the orchard, and the well the story is really about
+      as built: `src/content/back-garden-2099-ba.ts`, title "Behind the House". Exits: south
+      → `turning-house`; `turning-house` gained north → here in the same commit. Time
+      `{past: false, future: true}` (oldest landing). Items: `apple` (takeable, EAT).
+      Scenery: the well (windlass, shaft, and nobody named who dug it), the young orchard,
+      the beds, the drystone wall, the back door, the ground. No maze, and no mention of
+      one: the plot is being eaten off, not laid out. Establishes the well and the back
+      door for all six faces.
+      Deviation: `test/engine.test.ts` builds a one-room world out of `turningHouse` and
+      broke the moment that face gained a north exit. `newGame()` now strips exits from
+      that copy (`new Game({ ...turningHouse, exits: {} })`) — one line, no assertion
+      changed, and the one-room world behaves exactly as before.
+- [x] back-garden · 1099 BA (the Long Noon) — the maze pegged out in string, and the gold-lettered plan of a heart with no way in
+      as built: `src/content/back-garden-1099-ba.ts`. Exits: south → `turning-house:1099-ba`,
+      which gained north → here. No north: there is nothing to walk into yet. Time
+      `{past: true, future: true}`. Item: `maze-plan` (not takeable, READ — every walk
+      drawn and named, the middle a square of grass with no gap anywhere in the hedge).
+      Scenery: the gardener (TALK — "Sixty years before it's a hedge. The middle isn't for
+      going in. It's for knowing about."), the well under its painted roof, the yew whips,
+      the string lines, the barrow, the wall, the door, the turned ground. Gold on the
+      names, as the road-map in the House of the same age. Sets up the first of the two
+      wrong plans.
+- [x] back-garden · 99 BA (the Hush) — the maze grown and clipped, bells down the road, the way north open
+      as built: `src/content/back-garden-99-ba.ts`. Exits: south → `turning-house:99-ba`,
+      which gained north → here; north → `maze-mouth:99-ba` is written in with that room,
+      three commits later, and the look text names the arch from the start. Time
+      `{past: true, future: true}`. No items. Scenery: the clipped hedge, the arch, the
+      well (painted roof gone, rope cut off short at the windlass, recently, by somebody),
+      the bells, the dug-over beds, the drystone wall down to knee height on the east side,
+      the door, the barrow of clippings. The bells are one clause, as planned.
+- [x] back-garden · 99 AA (the Morning Country) — the garden gone to grass and the maze a wreck, the way north open
+      as built: `src/content/back-garden-99-aa.ts`. Exits: south → `turning-house:99-aa`,
+      which gained north → here; north → `maze-mouth:99-aa` is written in with that room.
+      Time `{past: true, future: true}`. No items. Scenery: the half-dead hedge, the arch
+      fallen in on one side, the choked well (the stonework still the best work left in the
+      garden), the grass with the beds showing under it in ridges, the drystone wall now
+      mostly in the village being a house, the door. No number is put on how long it has
+      been: the calendars are wrong and the narrator does not repeat them.
+- [x] back-garden · 1099 AA (the Rekindling) — the maze grubbed out for allotments; the age that forgot there was one
+      as built: `src/content/back-garden-1099-aa.ts`. Exits: south → `turning-house:1099-aa`
+      only, which gained north → here; the look text says outright that there is no other
+      way out of the garden. Time `{past: true, future: true}`. No items. Scenery: the
+      allotments and cinder paths, the old roots at the north end (running in lines that
+      nothing above ground follows — the maze, unrecognized), the well capped with iron and
+      pumped, with the guild's name cast into the handle twice, the withy beds, the canal
+      and its lock, the wall, the door. The guild's stamp is in EXAMINE, not READ: READ
+      works on items only.
+- [x] back-garden · 2099 AA (the Lettered Age) — the maze mown into the turf from a wrong reconstruction, and the placard that hints anyway
+      as built: `src/content/back-garden-2099-aa.ts`. Exits: south → `turning-house:2099-aa`
+      only, which gained north → here. Time `{past: true, future: false}` (newest landing).
+      Item: `maze-placard` (not takeable, READ — "THE HOUSE MAZE. Nine walks and a fountain
+      at the middle, entered from the west. The estate books record the north hedge of the
+      far walk renewed once, at some expense, and do not say why."). It disagrees with
+      `maze-plan` on the middle, the way in, and the count, and is right about the one thing
+      that matters. The post stands where the arch was, and the mown plan does not put one
+      there. Scenery: the mown stripes, the well behind its rope with its card, the stumps
+      (the grass over them goes brown first in a dry August), the rebuilt wall, the door.
+      The well's line was rewritten once: the first draft said it was dug before the maze
+      and open after it, which is the one thing the through-line forbids the text to say.
+- [x] maze-mouth · 99 BA (the Hush) — the kept arch into the maze
+      as built: `src/content/maze-mouth-99-ba.ts`. Exits: south → `back-garden:99-ba`, which
+      gained north → here in the same commit; north → `long-walk:99-ba` is written in with
+      that room. Time `{past: false, future: true}` — the maze has no face in 1099 BA.
+      No items. Scenery: the hedge (no seeing through it and no getting through it), the
+      arch, the walk, the light. Rooms 3 and 7 now make a two-way passage.
+- [x] maze-mouth · 99 AA (the Morning Country) — the same arch, fallen and still walkable
+      as built: `src/content/maze-mouth-99-aa.ts`. Exits: south → `back-garden:99-aa`, which
+      gained north → here in the same commit; north → `long-walk:99-aa` is written in with
+      that room. Time `{past: true, future: false}`. No items. Scenery: the hedge (dead in
+      patches and grown out, and that is all the text says about it), the fallen side of the
+      arch with new yew coming out of it, the walk kept open down the middle by deer, the
+      bramble, the light. Both `maze-mouth` faces now stride to each other across the Gap.
+- [x] long-walk · 99 BA (the Hush) — the clipped walk whose east turn is open
+      as built: `src/content/long-walk-99-ba.ts`. Exits: south → `maze-mouth:99-ba`, which
+      gained north → here in the same commit; east → `far-walk:99-ba` is written in with
+      that room. Time `{past: false, future: true}`. No items. Scenery: the hedge (not one
+      gap in any of the three faces), the turn (swept, the way a thing is kept that gets
+      used), the walk with a barrow track down one side of it going east, the strip of sky
+      with the bells in it. The walk stops north against a face of hedge and there is no
+      north exit; the text says so.
+- [x] long-walk · 99 AA (the Morning Country) — the same walk, east closed to thicket; where the player is caught and where the years run
+      as built: `src/content/long-walk-99-aa.ts`. Exits: south → `maze-mouth:99-aa`, which
+      gained north → here in the same commit. **No east**, as planned. Time
+      `{past: true, future: false}`. No items. Scenery: the thicket (wood, not leaves, going
+      back further than you can see into it), the barrow track (beaten hard, never dug up,
+      and the thicket grew over it and not out of it), the hedge, the sky that comes and
+      goes. The track is the whole of the invitation to stride PAST; nothing in the room
+      names the verb.
+- [x] far-walk · 99 BA (the Hush) — the heart sealed behind the maze's youngest hedge
+      as built: `src/content/far-walk-99-ba.ts`. Exits: west → `long-walk:99-ba`, which
+      gained east → here in the same commit. **No north**, as planned. Time
+      `{past: false, future: true}`. No items. Scenery: the young hedge (set from big
+      cuttings, all of a size, closer planted than the hedge it was cut out of), the old
+      hedge, the grass trodden thin along the north side where somebody has stood to look
+      at their own work more than once, the walk west. "Somebody took that length out and
+      set it again, and it took" is the clause; nothing explains it.
+- [x] far-walk · 99 AA (the Morning Country) — that hedge dead and gapped; the pocket with no walking way out
+      as built: `src/content/far-walk-99-aa.ts`. Exits: **none west, none south**, as
+      planned; north → `maze-heart:99-aa` is written in with that room. Time
+      `{past: true, future: false}`, and that stride is the only way out. No items.
+      Scenery: the dead hedge ("Every yew in this length died together, which is what
+      happens to yew set in turned ground. The rest of the maze did not."), the gap where
+      two of the dead ones came out, the thicket west (the same thicket from the other end),
+      the old hedge, the grass with the trodden line along the north side still showing.
+      The room states the choice and never names the verb that gets the player out.
+- [x] maze-heart · 99 AA (the Morning Country) — the sword, in the grass, where the rain found it
+      as built: `src/content/maze-heart-99-aa.ts`. Exits: south → `far-walk:99-aa`, which
+      gained north → here in the same commit. Time `{past: true, future: false}`. Item:
+      `sword` (takeable, READ — "One word is cut into the blade below the hilt, in the
+      letters of a kingdom two ages gone. It reads as a name."). No verb the parser lacks is
+      invited: it is a thing in the ground, not a tool. Scenery: the dead hedge on the south
+      side with its gap, the living yew on the other three, the bare line the drip has worn
+      down the middle, the sky.
+      Deviation: `lookAgain` does not name the sword. The engine keeps a native item out of
+      its auto-list whether or not the player is carrying it, so a `lookAgain` that named the
+      sword would go on describing it at the player's feet after they took it. It names the
+      bare line instead, which points at the same spot and is true either way.
+- [x] maze-heart · 99 BA (the Hush) — the hedger, the turned earth, and the bundle in oiled cloth; reachable only by striding
+      as built: `src/content/maze-heart-99-ba.ts`. **No `exits` key at all**, as planned:
+      in by striding PAST from `maze-heart:99-aa`, out by striding FUTURE, and nothing else.
+      Time `{past: false, future: true}`. No items — the bundle is scenery, because an item
+      could be taken or read and this one may be neither. Scenery: the hedger (TALK — "A
+      maze is a good cupboard, so long as one person has the plan and nobody writes it down."
+      She looks at the young hedge, not at you), the bundle (long, wrapped close, tied at
+      both ends by somebody who does not want it wet), the young hedge set this spring out of
+      the length that was here, the turned earth with the turf stacked at the hedge foot to
+      go back, the hedge with no gap in it, her shears with her father's initials on the
+      shank and hers under them, the bells. She never names the bundle and never remarks on
+      what the player carries.
 
 ## Through-lines
 
@@ -254,35 +369,66 @@ planning. Every one of these constrains a room in this story.
   E ↔ W `far-walk:99-ba`. `far-walk:99-aa` N ↔ S `maze-heart:99-aa`. **No other spatial
   exits exist in the maze.** In particular: no east from `long-walk:99-aa`, no west from
   `far-walk:99-aa`, no north from `far-walk:99-ba`, and nothing at all from
-  `maze-heart:99-ba`. The other four `back-garden` faces have no north exit. — planned,
-  and simulated against the engine's own rules before writing: 20 rooms, 20 reachable from
-  `turning-house`, no dangling exit, no room that cannot get back to the start, and the
-  sixteen-command route above completes.
+  `maze-heart:99-ba`. The other four `back-garden` faces have no north exit. — **built,
+  exactly as written.** `npm run eval:reach` reports 20 rooms, 20 reachable, no dangling
+  exit, and the route below completes through the real engine. Every asymmetry is in the
+  code with a comment saying it is deliberate, so that a later hand does not "fix" it:
+  `long-walk:99-aa` has south only, `far-walk:99-ba` has west only, `far-walk:99-aa` has
+  north only, and `maze-heart:99-ba` has no `exits` key at all.
 - **The stride table.** `back-garden`: 2099 BA `{past: false, future: true}`; 1099 BA,
   99 BA, 99 AA, 1099 AA all `{past: true, future: true}`; 2099 AA `{past: true, future:
   false}`. Every maze place: 99 BA `{past: false, future: true}` and 99 AA `{past: true,
   future: false}`. The maze's only stride is the one across the Gap, and both ends of it
-  are needed. — planned
+  are needed. — **built, exactly as written.** Every `false` is a landing where the place
+  has no face, so the engine is never asked to refuse a stride the text implied.
 - **The sword.** Lies in `maze-heart:99-aa` and leaves with the player. It is the story's
   only takeable that matters, and later stories may ask for it. Nothing about the maze or
-  the way out depends on carrying it; the engine could not express that if it did. — planned
+  the way out depends on carrying it; the engine could not express that if it did. — **built.**
+  `sword`, takeable, with a READ line and no `eat`. Nothing in the story tests for it. The
+  other three items landed as planned too: `apple` (takeable, EAT) in 2099 BA, `maze-plan`
+  and `maze-placard` not takeable with a `takeRefusal` and a READ line each.
 - **The hedge that died is the hedge that was cut.** Burying the sword meant taking out a
   length of yew and setting it again, and yew set in turned ground is the yew that dies.
   `maze-heart:99-ba` (the burial), `far-walk:99-ba` (the young hedge, solid), and
   `far-walk:99-aa` (the dead hedge, gapped) are three faces of one fact, and it is the
   reason the puzzle has an answer. State it in a clause in each room and never explain it.
-  — planned
+  — **built.** The three clauses, in order of the player's route: "Somebody took that length
+  out and set it again, and it took" (`far-walk:99-ba`); "Every yew in this length died
+  together, which is what happens to yew set in turned ground. The rest of the maze did not."
+  (`far-walk:99-aa`); "Set this spring out of the length that was here, and doing well."
+  (`maze-heart:99-ba`). No room says why the ground was turned.
 - **The well.** Scenery in all six `back-garden` rooms, one sentence each, never remarked
   on. Windlass, painted roof, cut rope, choked, capped and pumped, roped off with a card.
-  It outlasts the maze, and the text never says so. — planned
+  It outlasts the maze, and the text never says so. — **built**, all six, one sentence each,
+  in that order: the windlass and nobody worth naming who dug it; the painted roof, and the
+  paint the newer work; the rope cut off short at the windlass, recently, by somebody; the
+  fallen windlass under whatever the wind put in; the iron cap with the guild's name cast
+  into the pump handle twice; the shaft behind a rope with a card that gives it two
+  sentences and a date. No line compares one age to another.
 - **The two wrong plans.** `maze-plan` in 1099 BA shows a heart with no way in and is
   right for the wrong reason. `maze-placard` in 2099 AA records that the far walk's north
   hedge was renewed once and is wrong about everything around it. Between them the player
   has a fair hint from either end of the story, and neither age understood what it had.
-  They must not agree with each other on anything else. — planned
+  They must not agree with each other on anything else. — **built.** The plan: "Every walk
+  is drawn and every walk is named. At the middle is a square of grass with hedge all the
+  way round it and no gap anywhere in the hedge." The placard: "THE HOUSE MAZE. Nine walks
+  and a fountain at the middle, entered from the west. The estate books record the north
+  hedge of the far walk renewed once, at some expense, and do not say why." They disagree
+  about the middle, the way in, and the count of the walks.
 - **The room budget.** Fourteen rooms, exactly at `max_rooms`. If a room must be given up,
   give up `back-garden:1099-aa`; nothing depends on it. That costs the back door in the
   Rekindling, and forces `back-garden:99-aa` to `future: false` and `back-garden:2099-aa`
-  to `past: false`. Do not give up anything else. — planned
+  to `past: false`. Do not give up anything else. — **built.** Nothing was given up. All
+  fourteen rooms are written; `back-garden:1099-aa` stands and the Rekindling keeps its back
+  door.
+- **The one edit outside this story's rooms, beyond the six back doors.** `test/engine.test.ts`
+  builds a one-room world out of `turningHouse` to test the engine on its own, and the
+  moment that face gained a north exit the world it built had a dangling exit and eighteen
+  tests threw. `newGame()` now strips exits from its copy of the room. One line, no
+  assertion touched, and the one-room world behaves as it did before. — built
+- **A note for the evaluator, not a blocker.** `scripts/play.ts` drops the first command
+  when `--expect` is absent: `expectIdx` is `-1`, so the filter's `i !== expectIdx + 1`
+  throws away argument 0. Every route below therefore passes `--expect`, which is what the
+  evaluator wants anyway. The script is not this story's to fix.
 
 ## Blockers
