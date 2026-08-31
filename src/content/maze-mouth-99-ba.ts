@@ -52,6 +52,6 @@ export const mazeMouth99BA: Room = {
   ],
   exits: {
     south: "back-garden:99-ba",
-    // north → long-walk:99-ba, wired when that room is written.
+    north: "long-walk:99-ba",
   },
 };
