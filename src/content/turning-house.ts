@@ -16,7 +16,8 @@ export const turningHouse: Room = {
     "You are in the common room of an inn at a crossroads, low under black beams, " +
     "a fire going against a cold the season has not earned. The walls are drystone, " +
     "laid without mortar, and have outlasted the road they watch. A barred door holds " +
-    "off the night; a stair climbs into the dark.\n" +
+    "off the night; a stair climbs into the dark, and a hatch in the floor stands open on " +
+    "steps going the other way.\n" +
     "The landlady works the fire and does not ask your business.\n" +
     "On the long table a brass lamp stands unlit, and beside it a coin lies face down.",
   lookAgain:
@@ -35,6 +36,7 @@ export const turningHouse: Room = {
       nouns: ["lamp", "brass lamp", "brass"],
       description: "A brass lamp, unlit, dented with long use. No wick you can find.",
       takeable: true,
+      lightRefusal: "There is no wick in it. Whatever it was for, it was long ago.",
       read: "There is nothing written on the lamp.",
       start: "room",
     },
@@ -93,6 +95,12 @@ export const turningHouse: Room = {
       description: "The stair climbs to rooms with a pair of boots outside each one.",
     },
     {
+      // The way down. `stair` above it is the stair up, and keeps "steps".
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "cellar steps", "cellar stair", "trap", "trapdoor"],
+      description: "Propped open with a stick. The steps under it go down past where the fire reaches.",
+    },
+    {
       id: "table",
       nouns: ["table", "long table"],
       description: "A long table, scrubbed pale, that seems to have been used recently.",
@@ -106,5 +114,7 @@ export const turningHouse: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:2099-ba",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:2099-ba",
   },
 };

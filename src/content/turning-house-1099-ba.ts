@@ -15,7 +15,8 @@ export const turningHouse1099BA: Room = {
   look:
     "You are in the common room of the inn at the crossroads, plastered now to the " +
     "height of a man and painted with a vine border that stops where the ladder did. " +
-    "Behind the plaster the drystone is still doing the work. The fire has not been " +
+    "Behind the plaster the drystone is still doing the work, and a hatch in the floor " +
+    "stands open on steps down to the wine. The fire has not been " +
     "out in living memory, and living memory is the shortest thing in this room.\n" +
     "The landlord is pricing a journey for a table of merchants who have not asked.\n" +
     "A map of the roads hangs by the door.",
@@ -86,6 +87,12 @@ export const turningHouse1099BA: Room = {
       description: "The stair climbs to rooms that cost twice what they did last year.",
     },
     {
+      // The way down. `stair` above it is the stair up, and keeps "steps".
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "cellar steps", "cellar stair", "trap", "trapdoor"],
+      description: "Open, and kept open. Somebody is down there most of the evening.",
+    },
+    {
       id: "road",
       nouns: ["road", "roads", "crossroads", "high road", "high roads"],
       description: "Three roads leave the crossroads. The map is very sure there are four.",
@@ -94,5 +101,7 @@ export const turningHouse1099BA: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:1099-ba",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:1099-ba",
   },
 };

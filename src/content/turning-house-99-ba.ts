@@ -18,7 +18,8 @@ export const turningHouse99BA: Room = {
   look:
     "The shutters are barred and the common room is full, and quiet. The fire is banked " +
     "to a red seam under the ash, the way a fire is kept when nobody trusts the night. " +
-    "Bells are going in the valley, one village and then another.\n" +
+    "Bells are going in the valley, one village and then another. The hatch to the cellar " +
+    "is open, and it is the only thing in this House that is.\n" +
     "The keeper stands at the window with the bell-rope knotted at her shoulder. " +
     "Nothing sits on the sill, and nothing is set out on the tables.",
   lookAgain:
@@ -56,6 +57,13 @@ export const turningHouse99BA: Room = {
       description: "Banked down to a red seam. It will keep like that until morning, if asked.",
     },
     {
+      // The way down. This face has no stair scenery, so the cellar steps may
+      // have the word.
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "cellar steps", "cellar stair", "steps", "trap", "trapdoor"],
+      description: "Propped on the stick that lives there. The stores went down it this week and have not come up.",
+    },
+    {
       id: "sill",
       nouns: ["sill", "windowsill", "window", "ledge"],
       description: "A deep stone sill under a barred window. Nothing on it.",
@@ -90,5 +98,7 @@ export const turningHouse99BA: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:99-ba",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:99-ba",
   },
 };

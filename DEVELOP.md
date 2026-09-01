@@ -23,11 +23,11 @@ src/
 scripts/
   eval-reach.ts          can every room be reached from the start? (npm run eval:reach)
   play.ts                scripted playthrough for evaluators and tests
-test/                    parser, engine, and world tests
+test/                    parser, engine, world, and dark-room tests
 design/stories/          per-story outlines and logs written by the story factory
 ```
 
-Rooms move by spatial `exits` and by time: `PAST`/`FUTURE` step to the same place at the adjacent landing when the room opens that way. The engine validates the world at startup. Agents working here start at [`AGENTS.md`](AGENTS.md); the autonomous story loop is described in [`ADVENTURE_FACTORY.md`](ADVENTURE_FACTORY.md).
+Rooms move by spatial `exits` and by time: `PAST`/`FUTURE` step to the same place at the adjacent landing when the room opens that way. A room may also be `dark` (blind without a `light` item in hand or on the floor) and may declare a `menace`; either gives the player one move before it kills them, and the dead wake at `World.hearth`. The engine validates the world at startup. Agents working here start at [`AGENTS.md`](AGENTS.md); the autonomous story loop is described in [`ADVENTURE_FACTORY.md`](ADVENTURE_FACTORY.md).
 
 **Stack:** TypeScript, run directly on Node (v22.6+; v24 recommended) with no build step — Node strips the types. The only dependencies are dev-only (`typescript`, `@types/node`) for typechecking.
 
