@@ -19,7 +19,12 @@ const args = argv.slice(2);
 const quiet = args.includes("--quiet");
 const expectIdx = args.indexOf("--expect");
 const expected = expectIdx >= 0 ? args[expectIdx + 1] : undefined;
-const commands = args.filter((a, i) => a !== "--quiet" && a !== "--expect" && i !== expectIdx + 1);
+// Drop the flags, and the value after --expect — but only when --expect is
+// actually present. Without it `expectIdx` is -1, and an ungated filter would
+// silently eat argument 0, the first command of the route.
+const commands = args.filter(
+  (a, i) => a !== "--quiet" && a !== "--expect" && !(expectIdx >= 0 && i === expectIdx + 1),
+);
 
 const game = new Game(world);
 if (!quiet) stdout.write(game.intro() + "\n[where: " + game.where() + "]\n");
