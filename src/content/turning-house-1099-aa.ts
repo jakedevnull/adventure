@@ -16,7 +16,8 @@ export const turningHouse1099AA: Room = {
   look:
     "The common room has glass in the window and its own history pasted on the wall. A " +
     "canal has been cut past the crossroads, with a lock at the end of it and a man " +
-    "taking money at the lock; the road is not troubled. The fire is where it always is.\n" +
+    "taking money at the lock; the road is not troubled. The fire is where it always is, " +
+    "and behind the counter a hatch stands open on the cellar steps.\n" +
     "The innkeeper stands behind a counter, which is new.\n" +
     "A license hangs by the door, and six pages of print beside it.",
   lookAgain:
@@ -78,6 +79,13 @@ export const turningHouse1099AA: Room = {
       description: "New oak, with a ledger on it that goes back eleven years.",
     },
     {
+      // The way down. This face has no stair scenery, so the cellar steps may
+      // have the word.
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "cellar steps", "cellar stair", "steps", "trap", "trapdoor"],
+      description: "Open, with a rail round it since the guild took an interest in rails.",
+    },
+    {
       id: "walls",
       nouns: ["walls", "wall", "stones", "stone", "drystone", "masonry", "plaster"],
       description: "Plaster over stone over older stone, and paper over all of it.",
@@ -97,5 +105,7 @@ export const turningHouse1099AA: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:1099-aa",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:1099-aa",
   },
 };
