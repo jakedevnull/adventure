@@ -136,3 +136,61 @@ lives on the story issue; this one ships in the PR.
 - action:   no merge, no feedback, no round consumed; deadline re-armed 10m.
 - next:     the generator's completion, then the §4 verification on the merged story branch.
             Round 0 of 3. By 03:18Z.
+
+## 2026-09-01 03:36Z · step 6 · rooms accepted · CLOSE-OUT JAK-24 · spawn evaluator
+- event:    generator completed (session ended 03:28:35Z); §4 verification; Evaluate sub-issue
+            created and delegated
+- saw:      ten commits on JAK-24's branch and PR #9 against the story branch — the harness
+            fix first, then the mechanic with `cellar:2099-ba`, then the other five cellars,
+            then two outline commits. All six room lines ticked, each with an as-built note,
+            Blockers empty, Through-lines moved from "planned" to "built" with the clauses
+            that carry them. Four deviations recorded rather than hidden: the tally is a
+            readable item because scenery has no `read`; the keeper's talk line takes the
+            sill lamp's old refusal and turns it into an offer; the menace gets first refusal
+            on the noun phrase so `ATTACK QUENCH WITH SWORD` resolves; and `LIGHT` is not
+            gated on sight, so `LIGHT LAMP` still answers in the pitch dark.
+- decision: accept and merge; go to §5 with round still 0.
+- reason:   verified on the merged story branch (§9), by probing the engine rather than
+            reading the claims. `npm run typecheck` clean; `npm test` 55/55 (36 before, so 19
+            new, in `test/dark.test.ts` and `test/world.test.ts`); `npm run eval:reach`
+            verdict PASS, 26 rooms / 26 reachable, exit 0. `grep` finds no room id anywhere in
+            `src/engine.ts`, so the mechanic is data-driven as the outline required. The four
+            story-specific criteria hold in play:
+            · the full solution route lands in `cellar:2099-ba` and `ATTACK QUENCH` answers
+              "You put the sword through it. It comes apart without much comment, and the
+              lamplight reaches the far wall.", with lamp and sword still in INVENTORY;
+            · `TAKE LAMP`, `DOWN` answers "It is pitch black. You are likely to be eaten by a
+              quench.", the next command kills, and the player wakes at `turning-house` still
+              carrying the lamp;
+            · lit but unarmed, `UP` gets you out on the one move of grace, and `ATTACK QUENCH`
+              instead answers "You have nothing to fight it with. Your hands are noted, and
+              dismissed." and then kills you — the fairness claim, as designed;
+            · `node scripts/play.ts NORTH` now leaves the start room, so the harness bug is
+              genuinely fixed; the `eval:reach` change is a `(dark)` annotation on the routes
+              list and cannot affect pass/fail.
+            The changes to existing rooms are the minimum the story needs, read line by line:
+            a `down` exit, a `cellar-hatch` scenery, one clause of `look` per House face; the
+            sword gains `weapon: true` and no prose; the sill lamp becomes takeable and
+            lighting. `validateWorld` gained the two checks the outline specified, including
+            refusing to start a world that has a dark room and no takeable light in it.
+- limit of the check: I verified the final state passes, not that typecheck and tests passed
+            at each of the ten intermediate commits. The commits are one per room, which is
+            what the criterion exists to guarantee.
+- action:   merged the generator branch and pushed; PR #9 merged 03:36:00Z; JAK-24 criteria
+            ticked 10/10 and moved to Done; JAK-22's blocked-by on JAK-24 removed. JAK-25
+            "Evaluate: Basement Encounter" created — label `Evaluate`, parent JAK-22, project
+            `adventure`, Todo, assignee jakedevnull; JAK-25 blocks JAK-22; delegate CyLocal;
+            deadline 15m.
+- also:     the generator's mechanic commit carried `.claude/settings.local.json`, Cyrus's
+            per-worktree permissions file, into the branch. I removed it from the story branch
+            and added it to `.gitignore` in one commit, and re-ran the checks after.
+- reason:   it is not story content and should not reach `main` in a story PR; the file is
+            regenerated per worktree, so nothing is lost. Doing it here cost one commit;
+            sending it back to a child whose session has ended would have cost a whole
+            session for a one-line hygiene fix.
+- noted for the author, not a defect of this story: `turning-house`'s `lookAgain` still says
+            "A brass lamp on the table" after the player has taken the lamp. That text and the
+            lamp's `takeable: true` both predate this story; the death return simply makes it
+            easy to see. The engine lists carried-in items but does not un-list a room's own
+            items from prose written before they moved.
+- next:     the evaluator's report (§6). Round 0 of 3. By 03:52Z.
