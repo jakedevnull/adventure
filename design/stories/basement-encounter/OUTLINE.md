@@ -266,6 +266,11 @@ still gets the `look` text, not `lookAgain`). Commands that need eyes refuse in 
 `INVENTORY`, `WHEN`, `WAIT`, `SAY`, `MARK`, `DROP`, `AGAIN`, `HELP` and `QUIT` work as
 normal. Nothing needs eyes.
 
+> as built: `LIGHT` is in that second list, and the table above does not cover it. A hand in a
+> pocket knows what it finds there, and `LIGHT LAMP` in the pitch dark is the exact moment the
+> brass lamp's *There is no wick in it* has been waiting the whole game for. It still solves
+> nothing.
+
 **Being blind is fatal and is meant to be.** The author's "lost and can't get back out" is
 implemented literally: no spatial exit and no stride works while blind, so the only way out
 of a dark room is a light you already have. The resolution of the unwinnable state is that it
@@ -386,6 +391,14 @@ light:  light
 single-word fallback in `resolve` matches to the quench. Bare `ATTACK` targets the living
 menace in the room if there is one. No indirect-object slot is added.
 
+> as built: it does not, and the plan was wrong here. `resolve`'s single-word fallback walks
+> carried items before the menace, and the sword is in hand by definition on that command, so
+> the phrase resolved to the sword and the reply was *That would not improve either of you.*
+> `attack` now gives the living menace first refusal on the noun phrase, and falls through to
+> `resolve` only if the phrase does not name it. `resolve` itself is unchanged apart from
+> having the menace appended to its candidates, so EXAMINE, TAKE and TALK behave as planned.
+> Covered by *attacking the quench with a sword slays it* in `test/dark.test.ts`.
+
 `run()`'s switch in `src/engine.ts` is exhaustive over `Verb` with no `default`, so
 `npm run typecheck` fails until both verbs are handled. That is the intended hook.
 
@@ -430,8 +443,18 @@ five cellars are ordinary rooms after that.
 
 ## Rooms
 
-- [ ] cellar · 2099 BA (the High Masonry) — the encounter: footings older than the House, the hearthstone overhead, and the quench
+- [x] cellar · 2099 BA (the High Masonry) — the encounter: footings older than the House, the hearthstone overhead, and the quench
       carry: **dark.** A lit light to see, a weapon to survive. Lightless, the player dies in two turns. Lit and unarmed, they must leave within one move. `UP` → `turning-house`; time `{past: false, future: true}`.
+      as built: `src/content/cellar-2099-ba.ts`. `dark: true`, `menace: quench` with the four lines
+      as written in *The exact lines*. `UP` → `turning-house`; time `{past: false, future: true}` (the
+      FUTURE stride waits on `cellar:1099-ba`). No items. Scenery: `cellar-footings`, `masons-mark`,
+      `cellar-hearthstone`, `cellar-steps`, `far-wall` — the far wall is named in `look` ("out past
+      where the light reaches") so it answers to EXAMINE, and the quench's `slain` line pays it off.
+      The mason's mark is described as a name and nothing else; 2099 AA's placard is what gets it
+      wrong. `lookAgain` does not mention the far wall, so the slain line stays true afterwards.
+      Landed with the engine, per the build order. Two things went differently from the plan, both
+      recorded under *Mechanics*: `ATTACK QUENCH WITH SWORD` needed the menace to get first refusal
+      on the noun phrase, and `LIGHT` is not gated on sight.
 - [ ] cellar · 1099 BA (the Long Noon) — wine laid down by an age certain of itself, and a chalked map that is wrong about the stair
       carry: **dark.** A lit light. No menace; with light it is safe to stand in. `UP` → `turning-house:1099-ba`; time `{past: true, future: true}`.
 - [ ] cellar · 99 BA (the Hush) — stores laid in against something nobody can name, and the bell's clapper brought down out of the way
