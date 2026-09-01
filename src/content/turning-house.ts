@@ -103,4 +103,8 @@ export const turningHouse: Room = {
       description: "The high roads were laid to outlast their makers. They are winning.",
     },
   ],
+  exits: {
+    // The back door, into the garden (The Gardens Behind the House).
+    north: "back-garden:2099-ba",
+  },
 };

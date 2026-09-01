@@ -87,4 +87,8 @@ export const turningHouse99BA: Room = {
       description: "Empty in all directions, which is the whole of tonight's news.",
     },
   ],
+  exits: {
+    // The back door, into the garden (The Gardens Behind the House).
+    north: "back-garden:99-ba",
+  },
 };

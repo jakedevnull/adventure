@@ -85,4 +85,8 @@ export const turningHouse99AA: Room = {
         "and nobody here reads it.",
     },
   ],
+  exits: {
+    // The back door, into the garden (The Gardens Behind the House).
+    north: "back-garden:99-aa",
+  },
 };
