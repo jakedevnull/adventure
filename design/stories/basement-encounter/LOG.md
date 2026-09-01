@@ -194,3 +194,44 @@ lives on the story issue; this one ships in the PR.
             easy to see. The engine lists carried-in items but does not un-list a room's own
             items from prose written before they moved.
 - next:     the evaluator's report (§6). Round 0 of 3. By 03:52Z.
+
+## 2026-09-01 03:54Z · step 7 · PASS · CLOSE-OUT JAK-25 · PR to main
+- event:    evaluator completed (session ended 03:40:08Z, again without resuming me); §6 PASS
+            path
+- saw:      report "Evaluation: Basement Encounter (round 0)", verdict PASS, rooms 26
+            reachable 26, Failures section empty. All twenty-six harness routes played with
+            `--expect`, all exit 0, tabulated; the six cellar faces played alive with the
+            lamp, each `UP` checked back to its own House face; the solution route played
+            end to end with `ATTACK QUENCH WITH SWORD` answering the slain line. Its `##
+            Notes` are the useful part: the harness's own cellar routes die by design,
+            because every one begins `DOWN` into the dark 2099 BA face — death, not a missing
+            exit, and it applies to the lit 2099 AA face too because its route passes
+            through. It also caught that stopping to `EXAMINE QUENCH` costs the run (the
+            one-move clock, working), that the slain quench stays slain across `UP`/`DOWN`
+            and two `WAIT`s, and that `cellar:2099-ba`'s `lookAgain` drops the far wall so
+            the slain line stays true on re-entry.
+- decision: PASS — close the loop, open the PR to `main`, move the story to In Review.
+- reason:   per §6 the verdict is PASS with no failures, and I verified it rather than took
+            it: re-ran `npm run eval:reach` (verdict PASS, 26/26) and both routes the report
+            quotes for verification, verbatim — both exit 0, and the second still answers
+            "You put the sword through it…" in `cellar:2099-ba`. Round stays 0; no fix round
+            was ever needed.
+- action:   JAK-25 criteria ticked 5/5 and moved to Done; JAK-22's blocked-by on JAK-25
+            removed. PR #10 opened, `cylocal/jak-22-basement-encounter` -> `main`, 19 commits,
+            26 files, +1812/-26, with the solution and death routes quoted for the reviewer
+            and a link to this log. JAK-22 moved to In Review and the PR linked to it.
+- next:     human review. Revisions, if any, are §7: `revisions: 0` of 5, and they do not
+            consume `round`.
+
+## Summary of the run
+- Rooms: 6 of `max_rooms: 6` — `cellar` in all six landings, 2099 BA to 2099 AA.
+- Rounds: 0 of 3. The outline was accepted first time and the rooms were accepted first
+  time; the evaluator passed on its first run.
+- Children: JAK-23 (Plan) 6/6 Done, JAK-24 (Generate) 10/10 Done, JAK-25 (Evaluate) 5/5 Done.
+- Beyond the six rooms: a light-and-menace mechanic in the engine (`Room.dark`, `Item.light`,
+  `Item.weapon`, `Menace`, `World.hearth`, the danger clock, `ATTACK`, `LIGHT`, death to the
+  hearth), 19 new tests, two validation rules, and a fix to `scripts/play.ts` that had been
+  silently dropping the first command of any unquoted route since before this story.
+- One thing this run proved that the last one only guessed at: the factory can take a story
+  that needs a *mechanic*, not just rooms, provided the planner is told to specify it. The
+  cost was one paragraph in the Plan sub-issue.
