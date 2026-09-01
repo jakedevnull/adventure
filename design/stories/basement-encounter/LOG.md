@@ -114,3 +114,25 @@ lives on the story issue; this one ships in the PR.
             evaluator has no Write tool, so the generator fixes it or the next evaluator
             trips over it.
 - next:     the generator's six cellars and the engine (§4). Round still 0 of 3. By 03:07Z.
+
+## 2026-09-01 03:08Z · step 5 · deadline fired · generator still running
+- event:    the 20-minute deadline on JAK-24 fired before the child reported
+- saw:      the child's Cyrus session (23741956) started 02:47:05Z and has not ended. Nothing
+            pushed yet and no PR, so I looked at its worktree instead (§8): eight commits,
+            clean tree. In order — the `scripts/play.ts` first-command fix, then the cellar
+            mechanic with `cellar:2099-ba`, then an outline commit that ticks that room and
+            "record[s] the two mechanic deviations", then the other five cellars, ending with
+            `cellar:2099-aa` for the Lettered Age.
+- decision: wait, and re-arm for 10 minutes.
+- reason:   per §8 the child is visibly progressing, and fast: all six rooms and the engine
+            are already committed, in the build order the outline prescribed, with the
+            harness bug fixed first as its own commit. What remains is the tail of its
+            procedure — the last outline ticks, the tests, the PR. Nothing here calls for a
+            continuation, and interrupting a child that is one step from opening its PR would
+            cost more than the ten minutes.
+- noted:    the outline commit mentions two deviations from the planned mechanic. Those are
+            the first thing to read at §4; a deviation recorded in an as-built note is
+            correct behaviour, an unrecorded one is not.
+- action:   no merge, no feedback, no round consumed; deadline re-armed 10m.
+- next:     the generator's completion, then the §4 verification on the merged story branch.
+            Round 0 of 3. By 03:18Z.
