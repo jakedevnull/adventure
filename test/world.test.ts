@@ -67,6 +67,56 @@ test("validateWorld reports broken exits, bad landings, duplicate ids, and a mis
   assert.ok(problems.some((p) => p.includes("start room \"nowhere\"")));
 });
 
+test("validateWorld refuses a dark world with no light to carry into it", () => {
+  const lightless: World = {
+    start: "a",
+    landings: ["2099 BA"],
+    rooms: [room({ id: "a", place: "a", landing: "2099 BA", dark: true })],
+  };
+  assert.ok(validateWorld(lightless).some((p) => p.includes("no takeable light")));
+
+  const lit: World = {
+    ...lightless,
+    rooms: [
+      {
+        ...lightless.rooms[0]!,
+        items: [
+          { id: "lamp", nouns: ["lamp"], description: "A lamp.", takeable: true, light: true, start: "room" },
+        ],
+      },
+    ],
+  };
+  assert.deepEqual(validateWorld(lit), []);
+});
+
+test("validateWorld reports a menace id that collides, and a hearth that is not there", () => {
+  const clash: World = {
+    start: "a",
+    hearth: "nowhere",
+    landings: ["2099 BA"],
+    rooms: [
+      room({
+        id: "a",
+        place: "a",
+        landing: "2099 BA",
+        items: [{ id: "quench", nouns: ["quench"], description: "A jar.", start: "room" }],
+        menace: {
+          id: "quench",
+          nouns: ["quench"],
+          description: "A quench.",
+          warning: "It waits.",
+          kill: "You are dead.",
+          slain: "It comes apart.",
+          unarmed: "Your hands are noted.",
+        },
+      }),
+    ],
+  };
+  const problems = validateWorld(clash);
+  assert.ok(problems.some((p) => p.includes('menace id "quench" collides')));
+  assert.ok(problems.some((p) => p.includes('hearth room "nowhere"')));
+});
+
 test("strideTarget follows the landings list for the same place", () => {
   const [ba, aa] = tiny.rooms;
   assert.equal(strideTarget(tiny, ba!, "future")?.id, "house:2099-aa");

@@ -20,6 +20,8 @@ export type Verb =
   | "mark"
   | "read"
   | "eat"
+  | "attack"
+  | "light"
   | "help"
   | "quit";
 
@@ -94,6 +96,14 @@ const VERBS: Record<string, Verb> = {
   mark: "mark",
   read: "read",
   eat: "eat",
+  attack: "attack",
+  kill: "attack",
+  hit: "attack",
+  fight: "attack",
+  strike: "attack",
+  stab: "attack",
+  slay: "attack",
+  light: "light",
   help: "help",
   "?": "help",
   commands: "help",

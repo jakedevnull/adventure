@@ -36,6 +36,8 @@ export const mazeHeart99AA: Room = {
       description:
         "A plain old sword, and the ground has had the better of it along one edge.",
       takeable: true,
+      // The one thing in the world that will kill a menace (Basement Encounter).
+      weapon: true,
       read:
         "One word is cut into the blade below the hilt, in the letters of a kingdom two " +
         "ages gone. It reads as a name.",

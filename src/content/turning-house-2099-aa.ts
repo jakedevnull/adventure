@@ -20,7 +20,8 @@ export const turningHouse2099AA: Room = {
   look:
     "The common room is half a museum of itself, with a placard on the settle and one on " +
     "the door about the hinges. The fire is going, and is not an exhibit. On the sill a " +
-    "brass lamp is burning.\n" +
+    "brass lamp is burning. A hatch behind the bar is open on the way down, and there is a " +
+    "placard about that too.\n" +
     "The keeper is old and busy.\n" +
     "A coin lies face down in a case by the stair, under a placard.",
   lookAgain:
@@ -38,8 +39,11 @@ export const turningHouse2099AA: Room = {
       // are reachable by name if they carried theirs this far.
       nouns: ["burning lamp", "lit lamp", "lamp"],
       description: "A brass lamp, burning, dented in three places and rubbed bright where a hand goes.",
-      takeable: false,
-      takeRefusal: "She would only fill another one.",
+      // She said she would only fill another one, and she meant it: this is the
+      // one light in the world that can be carried into the cellar
+      // (design/stories/basement-encounter/OUTLINE.md).
+      takeable: true,
+      light: true,
       read: "Nothing is written on it. It is the one thing in this room without a placard.",
       start: "room",
     },
@@ -58,9 +62,13 @@ export const turningHouse2099AA: Room = {
       id: "keeper",
       nouns: ["keeper", "woman", "landlady", "innkeeper", "old woman", "her"],
       description: "She fills the lamp in the evening and does not explain the habit to people who ask.",
+      // Her refusal used to be the sill lamp's `takeRefusal`. The lamp is
+      // takeable now, so the line moves here and turns into a yes
+      // (design/stories/basement-encounter/OUTLINE.md).
       talk:
         "\"The university has a date for it,\" she says. \"They have had three.\" She " +
-        "turns the lamp a little out of the draft.",
+        "turns the lamp a little out of the draft. \"Take it if you're going down. I'd " +
+        "only fill another.\"",
     },
     {
       id: "fire",
@@ -88,6 +96,12 @@ export const turningHouse2099AA: Room = {
       description: "The same stair, carpeted, with a rope across the bottom step and boots above it.",
     },
     {
+      // The way down. `stair` above it is the stair up, and keeps "steps".
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "undercroft", "cellar steps", "cellar stair", "trap", "trapdoor"],
+      description: "Open, railed, and lit all the way down, which it has not always been.",
+    },
+    {
       id: "door",
       nouns: ["door", "hinges", "hinge", "frame"],
       description: "The hinges are original. The placard says so, and says it twice.",
@@ -106,5 +120,7 @@ export const turningHouse2099AA: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:2099-aa",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:2099-aa",
   },
 };

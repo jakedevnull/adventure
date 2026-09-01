@@ -96,6 +96,11 @@ story turns into a yes.
 `--expect` is passed (its argument filter drops index `expectIdx + 1`, which is `0` when
 `--expect` is absent). Quote every route with `--expect <room id>`.
 
+> as built: fixed, in its own commit before anything depended on it. The filter is gated on
+> `expectIdx >= 0`, so a route quoted without `--expect` keeps its first command.
+> `--expect` is still worth passing, because it makes the harness exit non-zero when a route
+> ends somewhere it should not.
+
 Once the lamp is in hand the whole cellar column is walkable: `DOWN` from any face of the
 House, then `PAST` / `FUTURE` along the cellar itself, `2099 BA` to `2099 AA`.
 
@@ -266,6 +271,11 @@ still gets the `look` text, not `lookAgain`). Commands that need eyes refuse in 
 `INVENTORY`, `WHEN`, `WAIT`, `SAY`, `MARK`, `DROP`, `AGAIN`, `HELP` and `QUIT` work as
 normal. Nothing needs eyes.
 
+> as built: `LIGHT` is in that second list, and the table above does not cover it. A hand in a
+> pocket knows what it finds there, and `LIGHT LAMP` in the pitch dark is the exact moment the
+> brass lamp's *There is no wick in it* has been waiting the whole game for. It still solves
+> nothing.
+
 **Being blind is fatal and is meant to be.** The author's "lost and can't get back out" is
 implemented literally: no spatial exit and no stride works while blind, so the only way out
 of a dark room is a light you already have. The resolution of the unwinnable state is that it
@@ -386,6 +396,14 @@ light:  light
 single-word fallback in `resolve` matches to the quench. Bare `ATTACK` targets the living
 menace in the room if there is one. No indirect-object slot is added.
 
+> as built: it does not, and the plan was wrong here. `resolve`'s single-word fallback walks
+> carried items before the menace, and the sword is in hand by definition on that command, so
+> the phrase resolved to the sword and the reply was *That would not improve either of you.*
+> `attack` now gives the living menace first refusal on the noun phrase, and falls through to
+> `resolve` only if the phrase does not name it. `resolve` itself is unchanged apart from
+> having the menace appended to its candidates, so EXAMINE, TAKE and TALK behave as planned.
+> Covered by *attacking the quench with a sword slays it* in `test/dark.test.ts`.
+
 `run()`'s switch in `src/engine.ts` is exhaustive over `Verb` with no `default`, so
 `npm run typecheck` fails until both verbs are handled. That is the intended hook.
 
@@ -403,6 +421,10 @@ check: it walks exits and strides and ignores what the player is carrying, which
 room plan below states the carrying requirement for every room. Gating the harness on
 inventory would make it a solver, and it is not one. It may usefully print `(dark)` beside
 those rooms in its markdown report; that is presentation only and must not affect pass/fail.
+
+> as built: all of it. `movesFrom` is untouched, and `eval-reach.ts` appends `(dark)` to a
+> room's line in the markdown report only. Five of the twenty-six lines carry it. The `pass`
+> flag is computed from `validateWorld` and `reachability.unreachable` exactly as before.
 
 ### Files the generator touches
 
@@ -422,6 +444,17 @@ answers in voice. `test/engine.test.ts` builds its world from `turning-house` wi
 so adding a `down` exit there is safe, but the opening of the `look` text must keep matching
 `/The common room, low and warm/`.
 
+> as built: all nine, and eight more, in `test/dark.test.ts` — its own file, over a fixture
+> world (a hall with a burning lamp, a brass one that will never burn, a sword and a stone,
+> over a pit that is dark, occupied, or both) rather than over shipped content, so the tests
+> do not have to be rewritten every time a room's prose changes. The extra eight: the verbs
+> that need eyes each refuse in voice; the verbs that do not still work; a blind visit does
+> not spend the room's first `look`; the clock resets on leaving, so an unarmed player can
+> always flee; the quench is examinable while it lives; bare `ATTACK` finds it; `ATTACK`
+> answers in voice where there is nothing to kill; `QUIT` does not run the clock. Two more
+> in `test/world.test.ts` cover the new validation. `test/engine.test.ts` is unchanged and
+> its 17 tests still pass: 36 before, 55 after.
+
 Build order: the engine and `cellar:2099-ba` land together, because that room is the only
 one that exercises the whole mechanic; the sill lamp and the sword change with it. The other
 five cellars are ordinary rooms after that.
@@ -430,39 +463,112 @@ five cellars are ordinary rooms after that.
 
 ## Rooms
 
-- [ ] cellar · 2099 BA (the High Masonry) — the encounter: footings older than the House, the hearthstone overhead, and the quench
+- [x] cellar · 2099 BA (the High Masonry) — the encounter: footings older than the House, the hearthstone overhead, and the quench
       carry: **dark.** A lit light to see, a weapon to survive. Lightless, the player dies in two turns. Lit and unarmed, they must leave within one move. `UP` → `turning-house`; time `{past: false, future: true}`.
-- [ ] cellar · 1099 BA (the Long Noon) — wine laid down by an age certain of itself, and a chalked map that is wrong about the stair
+      as built: `src/content/cellar-2099-ba.ts`. `dark: true`, `menace: quench` with the four lines
+      as written in *The exact lines*. `UP` → `turning-house`; time `{past: false, future: true}`.
+      No items. Scenery: `cellar-footings`, `masons-mark`,
+      `cellar-hearthstone`, `cellar-steps`, `far-wall` — the far wall is named in `look` ("out past
+      where the light reaches") so it answers to EXAMINE, and the quench's `slain` line pays it off.
+      The mason's mark is described as a name and nothing else; 2099 AA's placard is what gets it
+      wrong. `lookAgain` does not mention the far wall, so the slain line stays true afterwards.
+      Landed with the engine, per the build order. Two things went differently from the plan, both
+      recorded under *Mechanics*: `ATTACK QUENCH WITH SWORD` needed the menace to get first refusal
+      on the noun phrase, and `LIGHT` is not gated on sight.
+- [x] cellar · 1099 BA (the Long Noon) — wine laid down by an age certain of itself, and a chalked map that is wrong about the stair
       carry: **dark.** A lit light. No menace; with light it is safe to stand in. `UP` → `turning-house:1099-ba`; time `{past: true, future: true}`.
-- [ ] cellar · 99 BA (the Hush) — stores laid in against something nobody can name, and the bell's clapper brought down out of the way
+      as built: `src/content/cellar-1099-ba.ts`. `dark: true`, no menace, exits and time as planned.
+      Item `chalked-map` (not takeable, readable): EXAMINE gives the hand it was drawn in,
+      READ gives the House with the stair on the wrong wall. Scenery: `wine`, `cellar-hearthstone`,
+      `cellar-footings`, `cellar-steps`. The footings carry the same description shape in all six
+      faces, which is the persistence beat doing its own work. `turning-house:1099-ba` gained
+      `down`, a `cellar-hatch` scenery, and one clause of `look` ("a hatch in the floor stands open
+      on steps down to the wine").
+- [x] cellar · 99 BA (the Hush) — stores laid in against something nobody can name, and the bell's clapper brought down out of the way
       carry: **dark.** A lit light. No menace. `UP` → `turning-house:99-ba`; time `{past: true, future: true}`.
-- [ ] cellar · 99 AA (the Morning Country) — a year of somebody's life spent down here, tallied by the steps and stopped at forty-one
+      as built: `src/content/cellar-99-ba.ts`. Item `clapper` (takeable, readable) — the only
+      takeable thing in the column, and it does nothing. Its description places it "two floors
+      under the bell it belongs to", which is all that is said: the keeper upstairs stands with the
+      bell-rope knotted at her shoulder and has not pulled it, and the two facts are left a floor
+      apart for the player to put together. Scenery: `stores`, `cellar-hearthstone` (barely warm
+      this age — the fire above is banked), `cellar-footings`, `cellar-steps`.
+      `turning-house:99-ba` gained `down`, `cellar-hatch`, and the clause "The hatch to the cellar
+      is open, and it is the only thing in this House that is."
+- [x] cellar · 99 AA (the Morning Country) — a year of somebody's life spent down here, tallied by the steps and stopped at forty-one
       carry: **dark.** A lit light. No menace. `UP` → `turning-house:99-aa`; time `{past: true, future: true}`.
-- [ ] cellar · 1099 AA (the Rekindling) — the guild's bottles, an empty lamp bracket, and a bricked arch where the old end started
+      as built: `src/content/cellar-99-aa.ts`. **Deviation:** the tally is a non-takeable *item*
+      with a `read`, not scenery, because scenery has no `read` and READ TALLY deserved better than
+      "There's nothing to read there." Same shape as `waymark` in the House above, and for the same
+      reason. Id `cellar-tally`; READ gives "Forty-one. It does not say what it was counting, and
+      it stops rather than finishes." Scenery: `bed-frame`, `small-fires`, `cellar-hearthstone`
+      (warm again, "which it was not for whoever laid those fires" — the Gap, in one clause),
+      `cellar-footings` ("Nothing down here needed putting back"), `cellar-steps`.
+      `turning-house:99-aa` gained `down`, `cellar-hatch` ("Nobody rebuilt it. Nobody had to."),
+      and the clause "the hatch in the floor is open on steps older than the wall above them".
+- [x] cellar · 1099 AA (the Rekindling) — the guild's bottles, an empty lamp bracket, and a bricked arch where the old end started
       carry: **dark.** A lit light. No menace. `UP` → `turning-house:1099-aa`; time `{past: true, future: true}`.
-- [ ] cellar · 2099 AA (the Lettered Age) — lit, swept and labelled: the placard that names the quench and gets everything else wrong
+      as built: `src/content/cellar-1099-aa.ts`. No items. Scenery: `guild-bottles`,
+      `lamp-bracket` ("empty. The guild has a form for the lamp"), `bricked-arch` ("What it closes
+      off is not in the book"), `cellar-hearthstone`, `cellar-footings`, `cellar-steps`. The empty
+      bracket rhymes with the empty bracket on the House's own sill in this age, which 2099 AA
+      fills; no room text depends on the player noticing. `turning-house:1099-aa` gained `down`,
+      `cellar-hatch`, and the clause "behind the counter a hatch stands open on the cellar steps".
+- [x] cellar · 2099 AA (the Lettered Age) — lit, swept and labelled: the placard that names the quench and gets everything else wrong
       carry: **not dark.** Nothing. The only face a lightless player survives, and the room that teaches the word. `UP` → `turning-house:2099-aa`; time `{past: true, future: false}`.
+      as built: `src/content/cellar-2099-aa.ts`. `dark` omitted, so this face is lit and safe with
+      nothing in hand. Item `cellar-placard` (not takeable, readable), in the caps voice the other
+      placards in this House use: "THE UNDERCROFT. THE WORD QUENCH IS A MISREADING OF AN OLDER WORD
+      FOR A SNUFFER AND HAS NOTHING TO DO WITH THE DARK. THE NAME CUT IN THE FOOTING IS COPIED FROM
+      A SWORD OF THE SAME PERIOD, NOW LOST. BEFORE LAMPS, NOBODY CAME DOWN HERE ALONE." Two of the
+      four sentences are wrong, the third is the borrowing backwards, and "NOW LOST" is read by a
+      player who is usually holding it. Scenery: `vault-lamps` ("Filled every morning by whoever
+      fills the one on the sill upstairs"), `masons-mark` (the same mark as 2099 BA, still in the
+      footing, now with a brass label under it), `cellar-hearthstone`, `cellar-footings`,
+      `cellar-steps`. `turning-house:2099-aa` gained `down`, `cellar-hatch`, and the clause "A
+      hatch behind the bar is open on the way down, and there is a placard about that too."
+      **Deviation:** the keeper's `talk` line takes one more clause — *"Take it if you're going
+      down. I'd only fill another."* The sill lamp is takeable now and has no `takeRefusal` to
+      carry "She would only fill another one", which the outline calls the one line this story
+      turns into a yes. It moves to her mouth and becomes the hint.
 
 ## Through-lines
 
 - **The lamp that is not the answer.** The brass lamp in `turning-house` (2099 BA) has no
   wick and never gets one. The lamp that works is `sill-lamp` in `turning-house:2099-aa`,
   five thousand years forward, and it has to be carried back. Rooms: `turning-house`,
-  `turning-house:2099-aa`, and every dark cellar. — planned
+  `turning-house:2099-aa`, and every dark cellar. — **built.** `lamp` keeps
+  `takeable: true` and gains only `lightRefusal: "There is no wick in it. Whatever it was
+  for, it was long ago."`, which is the reply to `LIGHT LAMP` — including in the pitch dark
+  of `cellar:2099-ba`, one turn before the quench takes them. `sill-lamp` is
+  `takeable: true, light: true` and its `takeRefusal` is gone; the keeper says the refusal
+  instead, as an offer. The two answer to different nouns (`lamp`/`brass lamp` against
+  `burning lamp`/`lit lamp`), so a player carrying both can still name either.
 - **The sword from the maze.** `sword` at `maze-heart:99-aa`, left there by *The Gardens
   Behind the House* against exactly this, gains `weapon: true` and no new prose. Rooms:
-  `maze-heart:99-aa`, `cellar:2099-ba`. — planned
+  `maze-heart:99-aa`, `cellar:2099-ba`. — **built.** One field, no prose change. Its `read`
+  ("One word is cut into the blade below the hilt … It reads as a name") is what the 2099 AA
+  placard mishandles.
 - **The hearthstone from below.** The cellar is under the common room in every age, so the
   underside of the hearthstone is overhead in every face, warm where the fire is lit above
   it. `cased-coin` in `turning-house:2099-aa` already reads FOUND UNDER THE HEARTHSTONE.
   The player who has read the case and then stood under the stone in 2099 BA knows where
   that coin came from; the museum does not. No room text depends on the player having done
-  either. Rooms: all six cellars, `turning-house:2099-aa`. — planned
+  either. Rooms: all six cellars, `turning-house:2099-aa`. — **built.** Scenery id
+  `cellar-hearthstone` in all six faces, and the temperature tracks the fire above it:
+  warm in 2099 BA, 1099 BA, 99 AA, 1099 AA and 2099 AA; "barely warm" in 99 BA, where the
+  keeper has banked the fire to a red seam against the night.
 - **The mason's mark and the placard.** A name cut small in a footing in `cellar:2099-ba`;
   the placard in `cellar:2099-aa` matches it to the word on the sword and has the direction
   of the borrowing backwards. Wrong answers are canon; evidence is not. Rooms:
-  `cellar:2099-ba`, `cellar:2099-aa`, `maze-heart:99-aa`. — planned
+  `cellar:2099-ba`, `cellar:2099-aa`, `maze-heart:99-aa`. — **built.** Scenery id
+  `masons-mark` in both faces of the cellar: in 2099 BA it is "on the one course that was
+  never going to be looked at"; in 2099 AA it is the same cut with "a brass label under it
+  that is very sure whose it is". The placard's clause is THE NAME CUT IN THE FOOTING IS
+  COPIED FROM A SWORD OF THE SAME PERIOD, NOW LOST. Nothing anywhere corrects it.
 - **One place, six ages, one title.** Every face is titled *The Cellar*. With the lamp the
-  column strides end to end, `2099 BA` to `2099 AA`, underground. Rooms: all six. — planned
+  column strides end to end, `2099 BA` to `2099 AA`, underground. Rooms: all six. —
+  **built,** and played: after `TAKE BURNING LAMP` in 2099 AA, `DOWN` then `PAST` ×5 lands
+  in `cellar:2099-ba` without surfacing. Time flags are `{past: false, future: true}` at
+  2099 BA, both at the four middles, `{past: true, future: false}` at 2099 AA.
 
 ## Blockers
