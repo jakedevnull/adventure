@@ -17,7 +17,8 @@ export const turningHouse99AA: Room = {
   look:
     "Three courses of the old drystone still run true, and the wall above them was laid " +
     "by somebody learning the trade as he went. The window has no glass in it and an " +
-    "unbroken view of the road. The fire is going again.\n" +
+    "unbroken view of the road. The fire is going again, and the hatch in the floor is " +
+    "open on steps older than the wall above them.\n" +
     "A man is bedding a stone into the wall and does not stop for you.\n" +
     "Low in the old courses, one stone carries a scratched sign.",
   lookAgain:
@@ -68,6 +69,13 @@ export const turningHouse99AA: Room = {
       description: "Stone, worn in the middle, and open to the weather. There is no glass in this age.",
     },
     {
+      // The way down. This face has no stair scenery, so the cellar steps may
+      // have the word.
+      id: "cellar-hatch",
+      nouns: ["hatch", "cellar", "cellar steps", "cellar stair", "steps", "trap", "trapdoor"],
+      description: "Nobody rebuilt it. Nobody had to.",
+    },
+    {
       id: "mortar",
       nouns: ["mortar", "joint", "joints", "trowel"],
       description: "He uses mortar because he has to. The old work did not.",
@@ -88,5 +96,7 @@ export const turningHouse99AA: Room = {
   exits: {
     // The back door, into the garden (The Gardens Behind the House).
     north: "back-garden:99-aa",
+    // The hatch behind the bar (Basement Encounter).
+    down: "cellar:99-aa",
   },
 };
