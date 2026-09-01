@@ -67,3 +67,50 @@ lives on the story issue; this one ships in the PR.
             will bite the evaluator, so the Generate sub-issue will carry the one-line fix.
 - action:   no merge, no feedback; deadline re-armed 10m.
 - next:     the planner's final response, or 02:44Z, whichever comes first.
+
+## 2026-09-01 02:47Z · step 4 · outline accepted · CLOSE-OUT JAK-23 · spawn generator
+- event:    planner's session ended without resuming me; §2 outline check; Generate sub-issue
+            created and delegated
+- saw:      the child's Cyrus session (e011b976) ended at 02:28:02Z, but JAK-23 was left In
+            Progress and no completion resumed me — the same lag both previous stories hit.
+            No commit after b7cc883 in the 17 minutes since. The work itself is complete:
+            OUTLINE.md, 468 lines, sections Story / Mechanics / Rooms / Through-lines /
+            Blockers, Blockers empty. Six room lines, counted mechanically (`grep -c`),
+            exactly `max_rooms: 6` — one place, `cellar`, one face per landing, each line
+            carrying place, landing, age, purpose, dark/not dark, and what to carry.
+- decision: accept the outline and merge it; do not send it back; treat the ended session as
+            completion.
+- reason:   per §2 the count is at the cap, not over; every room line is well formed; the
+            Story section quotes the author verbatim and expands it into arc, beats, cast,
+            items, tone and a full route, so a generator needs nothing else. The two extra
+            criteria I set are met concretely rather than gestured at: the Mechanics section
+            names every new field, gives the two-tick clock as pseudocode, and writes out the
+            player-facing lines; and it resolves both traps — "lost and can't get back out"
+            is implemented literally (blind, no exit works) but bounded (the quench arrives
+            next turn), and death returns the player to the hearth with their inventory
+            intact, which costs a walk and nothing else. Waiting longer would only re-read a
+            branch that has stopped changing.
+- verified: on the merged story branch, not the child worktree (§9) — `npm run typecheck`
+            clean, `npm test` 36/36, `npm run eval:reach` verdict PASS 20/20 (unchanged, as
+            expected: the outline is a document). Beyond the checks, I played the outline's
+            own twenty-command approach route through the real engine: it ends in
+            `turning-house:2099-aa` with `sword` in INVENTORY, and `TAKE BURNING LAMP`
+            resolves to the sill lamp and answers "She would only fill another one." Both
+            objects the story depends on are obtainable today, and the one line the story
+            turns into a yes is where the outline says it is.
+- action:   merged the planner branch into the story branch and pushed (48f78dd + merge); PR
+            #8 merged 02:46:13Z; JAK-23 criteria ticked 6/6 and moved to Done; JAK-22's
+            blocked-by on JAK-23 removed. JAK-24 "Generate: Basement Encounter" created —
+            label `Generate`, parent JAK-22, project `adventure`, Todo, assignee jakedevnull;
+            JAK-24 blocks JAK-22; delegate CyLocal; deadline 20m.
+- reason for JAK-24's extra criteria: this story can be built wrong in five specific ways,
+            and each is cheap for the generator to check and expensive for an evaluator to
+            find. So: the mechanic must match the outline's contract with no room id in
+            `src/engine.ts`; `eval:reach` must land at 26/26; the mechanic needs its own
+            tests; the solution route must end with the quench slain; and the death route
+            must actually kill and actually return the player's things. The sixth is the
+            `scripts/play.ts` first-command bug — flagged by the previous story's
+            orchestrator, confirmed by me by reading the file, and still unfixed. The
+            evaluator has no Write tool, so the generator fixes it or the next evaluator
+            trips over it.
+- next:     the generator's six cellars and the engine (§4). Round still 0 of 3. By 03:07Z.
