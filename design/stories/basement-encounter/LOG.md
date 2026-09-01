@@ -42,3 +42,28 @@ lives on the story issue; this one ships in the PR.
             names the two design traps up front — an unwinnable "lost" state, and where a
             dead player lands — because both are canon questions, not coding questions.
 - next:     the planner's OUTLINE.md, checked against max_rooms: 6 (§2). By 02:33Z.
+
+## 2026-09-01 02:34Z · step 3 · deadline fired · planner still running
+- event:    the 20-minute deadline on JAK-23 fired before the child reported
+- saw:      JAK-23 In Progress since 02:12:53Z, last activity 02:28Z. Its branch carries one
+            commit (b7cc883, OUTLINE.md) and PR #8 is open with the correct base,
+            `cylocal/jak-22-basement-encounter`. Read the outline off the remote branch
+            without merging: six room lines, all one place (`cellar`), one face per landing
+            2099 BA -> 2099 AA, each line stating dark/not dark and what the player must
+            carry; all four sections present plus a `## Mechanics` section; Blockers empty;
+            engine landings throughout. The mechanic is specified as data plus a small
+            engine — new `Menace` type, `Item.light`/`weapon`, `Room.dark`, `World.hearth`,
+            a two-tick danger clock, death to the hearth with inventory intact — with the
+            exact player-facing lines written out.
+- decision: wait, and re-arm for 10 minutes rather than merging now.
+- reason:   per §8 the child is visibly progressing — deliverable pushed, PR opened, session
+            live 6 minutes ago and most likely writing its final response. Merging a branch
+            out from under a running child risks racing its last commit, and the acceptance
+            check in §2 is cheap once it reports. Nothing in what I read argues for
+            rejection, so there is no reason to act early.
+- also saw: the outline's harness caveat checks out. `scripts/play.ts` computes
+            `expectIdx = -1` when `--expect` is absent, and its filter then drops the
+            command at index 0. Confirmed by reading the file. That is a real bug and it
+            will bite the evaluator, so the Generate sub-issue will carry the one-line fix.
+- action:   no merge, no feedback; deadline re-armed 10m.
+- next:     the planner's final response, or 02:44Z, whichever comes first.
