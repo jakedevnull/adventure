@@ -71,7 +71,10 @@ if (reach.unreachable.length > 0) {
 lines.push("## Routes from start");
 for (const id of reach.reachable) {
   const r = rooms.get(id)!;
-  lines.push(`- ${r.place} · ${r.landing} (${id}): ${route(id)}`);
+  // `(dark)` is a note to whoever plays the route: they will need a light in
+  // hand. It is presentation only — reachability is pure topology and does not
+  // know what the player is carrying.
+  lines.push(`- ${r.place} · ${r.landing} (${id})${r.dark ? " (dark)" : ""}: ${route(id)}`);
 }
 stdout.write(lines.join("\n") + "\n");
 exit(pass ? 0 : 1);

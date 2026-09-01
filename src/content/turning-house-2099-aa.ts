@@ -38,8 +38,11 @@ export const turningHouse2099AA: Room = {
       // are reachable by name if they carried theirs this far.
       nouns: ["burning lamp", "lit lamp", "lamp"],
       description: "A brass lamp, burning, dented in three places and rubbed bright where a hand goes.",
-      takeable: false,
-      takeRefusal: "She would only fill another one.",
+      // She said she would only fill another one, and she meant it: this is the
+      // one light in the world that can be carried into the cellar
+      // (design/stories/basement-encounter/OUTLINE.md).
+      takeable: true,
+      light: true,
       read: "Nothing is written on it. It is the one thing in this room without a placard.",
       start: "room",
     },

@@ -25,7 +25,9 @@ export function strideTarget(world: World, room: Room, way: "past" | "future"): 
 export function validateWorld(world: World): string[] {
   const problems: string[] = [];
   const ids = new Set<string>();
-  const itemIds = new Map<string, string>();
+  const namedIds = new Map<string, string>();
+  let dark = false;
+  let portableLight = false;
 
   if (world.rooms.length === 0) problems.push("world has no rooms");
   if (world.landings.length === 0) problems.push("world has no landings");
@@ -36,13 +38,29 @@ export function validateWorld(world: World): string[] {
     if (!world.landings.includes(room.landing)) {
       problems.push(`room "${room.id}" has landing "${room.landing}" not listed in world.landings`);
     }
+    if (room.dark) dark = true;
+    // Items and menaces share one namespace: the parser and the engine's state
+    // do not distinguish them by kind.
     for (const item of room.items) {
-      const prior = itemIds.get(item.id);
+      const prior = namedIds.get(item.id);
       if (prior) problems.push(`item id "${item.id}" appears in both "${prior}" and "${room.id}"`);
-      itemIds.set(item.id, room.id);
+      namedIds.set(item.id, room.id);
+      if (item.light && item.takeable) portableLight = true;
+    }
+    if (room.menace) {
+      const prior = namedIds.get(room.menace.id);
+      if (prior) problems.push(`menace id "${room.menace.id}" collides with "${prior}"`);
+      namedIds.set(room.menace.id, room.id);
     }
   }
   if (!ids.has(world.start)) problems.push(`start room "${world.start}" does not exist`);
+  if (world.hearth !== undefined && !ids.has(world.hearth)) {
+    problems.push(`hearth room "${world.hearth}" does not exist`);
+  }
+  // A dark world with no lamp in it is an authoring bug, not a hard puzzle.
+  if (dark && !portableLight) {
+    problems.push("world has a dark room but no takeable light to carry into it");
+  }
 
   for (const room of world.rooms) {
     for (const [dir, target] of Object.entries(room.exits ?? {})) {

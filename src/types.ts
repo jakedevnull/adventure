@@ -33,6 +33,12 @@ export interface Item extends Examinable {
   eat?: string;
   /** Optional line shown when the item is read. */
   read?: string;
+  /** Whether the thing burns. A burning thing lights the room it is in, or the hands it is in. */
+  light?: boolean;
+  /** Whether the thing will kill a menace. */
+  weapon?: boolean;
+  /** In-voice reply to LIGHT for something that cannot be lit. */
+  lightRefusal?: string;
   /** Where the item starts. */
   start: "room" | "inventory";
 }
@@ -41,6 +47,22 @@ export interface Item extends Examinable {
 export interface Scenery extends Examinable {
   /** Optional line shown when the player TALKs to this (an NPC). */
   talk?: string;
+}
+
+/**
+ * A thing in a room that will kill the player if they stay. At most one per
+ * room. It has no `start`, so the engine's `isScenery` classifies it with the
+ * furniture and EXAMINE reaches it without a special case.
+ */
+export interface Menace extends Examinable {
+  /** Appended at the end of the first turn the player shares the room with it. */
+  warning: string;
+  /** Appended at the end of the second. The player dies. */
+  kill: string;
+  /** ATTACK, with a weapon in hand. */
+  slain: string;
+  /** ATTACK, with nothing in hand. */
+  unarmed: string;
 }
 
 /** Which temporal exits a place offers. Time is an exit, per the design. */
@@ -71,6 +93,10 @@ export interface Room {
   lookAgain?: string;
   items: Item[];
   scenery: Scenery[];
+  /** Whether the place has no light of its own. Without a light here the player is blind. */
+  dark?: boolean;
+  /** What lives here. */
+  menace?: Menace;
   /** Whether the years run from here. The target is the same place at the adjacent landing. */
   time: TimeExits;
   /** Spatial exits: direction → room id. Absent directions are "You can't go that way." */
@@ -81,6 +107,8 @@ export interface Room {
 export interface World {
   /** Room id the player starts in. */
   start: string;
+  /** Where the dead wake. Defaults to `start`. */
+  hearth?: string;
   /** Every landing in the world, oldest first. PAST and FUTURE step along this list. */
   landings: string[];
   rooms: Room[];

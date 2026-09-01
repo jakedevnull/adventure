@@ -19,6 +19,7 @@ import { farWalk99BA } from "./far-walk-99-ba.ts";
 import { farWalk99AA } from "./far-walk-99-aa.ts";
 import { mazeHeart99AA } from "./maze-heart-99-aa.ts";
 import { mazeHeart99BA } from "./maze-heart-99-ba.ts";
+import { cellar2099BA } from "./cellar-2099-ba.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -53,5 +54,6 @@ export const world: World = {
     farWalk99AA,
     mazeHeart99AA,
     mazeHeart99BA,
+    cellar2099BA,
   ],
 };
