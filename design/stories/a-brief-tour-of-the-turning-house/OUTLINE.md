@@ -1,0 +1,348 @@
+# A Brief Tour of the Turning House
+
+max_rooms: 6
+
+## Story
+
+The author's story, carried over as written (the ellipsis is the author's own):
+
+> The Turning House stands at its crossroads in every age, kept by the same stubborn family,
+> and tonight the landlady of 2099 BA has decided you should see it. … The unlit brass lamp
+> from the 2099 BA common room is the through-line: carry it forward. Where it finally burns
+> is the end of the tour. Tone: dry on the surface, deep underneath.
+
+### What this story is
+
+The tour is through time, not through space. One place — the Turning House — in all six of
+its landings, walked oldest to newest. The player never leaves the inn; the inn is what
+changes. That is the whole conceit, and it is the cheapest possible demonstration of the
+universe's favorite theme: place persists, time varies (DESIGN.md §4.4), and what lasts a
+thousand years is never what anyone intended (UNIVERSE.md §6.1).
+
+The Turning House is core canon (UNIVERSE.md §5): an inn at a crossroads that exists in
+every landing, kept in every age by someone of the same stubborn family line. Its founding
+is one of the three fixed points. Two sentences of that section are the spine of this
+story and must not be contradicted: in 2099 BA *"it is already old, and the landlady will
+not say how old"*; in 2099 AA *"it is still open, still warm, lamps lit for someone
+expected to return."*
+
+That second sentence is the ending. The lamp the landlady hands you in the first room is
+the lamp that burns in the window of the last one, and the someone expected to return is
+you. The story never says so. The last room simply shows a window of lit lamps and an
+empty hook that fits the one in your hands.
+
+### What the player is doing, and why
+
+The landlady of 2099 BA tells you to take the unlit brass lamp and see the House. She does
+not explain, because she does not explain things. There is no puzzle to solve and nothing
+to defeat: the player's task is to carry one object forward through six eras and notice
+what the House does with it. The pleasure is recognition, not challenge — each era gives
+the lamp a different meaning, and the last one gives it a home.
+
+This is a tour, and it should feel like one: short rooms, dry guide, six stops.
+
+### The arc
+
+Open in warmth (2099 BA), go comic (1099 BA), turn cold (99 BA), cross the Gap into ruin
+(99 AA), find the lamp turned into a custom nobody understands (1099 AA), and end at the
+lit window (2099 AA). The tonal floor is the Gap crossing; everything after it is the
+world getting its light back, badly at first, then properly.
+
+### The beats, in order
+
+1. **2099 BA · the High Masonry.** The common room, the fire, the landlady who will not
+   say how old the House is. She sets the tour going and the lamp is on the table, unlit,
+   dented, with no wick you can find. The years open forward for the first time.
+2. **1099 BA · the Long Noon.** The House at its fattest: crowded, loud, the family
+   prosperous and careless, the wine good and the maps bad. The room is already full of
+   light, so the lamp you carry is a curiosity — an heirloom somebody's grandmother used
+   to fuss about. Nobody here can imagine needing it. The joke is structural and the
+   narrator does not point at it.
+3. **99 BA · the Hush.** Bells rung against something coming; everyone feels it, no one can
+   say what. This is a fixed point and the story may not explain it. The House is barred
+   and quiet, the family sitting up. Someone asks you, politely, to keep the lamp unlit —
+   light draws attention, and they would rather not be noticed tonight. This is the story's
+   turn, and the calm delivery is the whole effect (WRITING-GUIDE Rule 5).
+4. **99 AA · the Morning Country.** One stride, a thousand years, straight over the Gap.
+   Survivors living in a half-ruined House among ruins nobody can read, their own included.
+   The drystone walls from the first room are still standing, because drystone does not
+   need mortar and nothing holds it up but the fit of it. The family is still here and no
+   longer knows why they keep the place. They keep it anyway. This is the story's deepest
+   point and its clearest statement of persistence.
+5. **1099 AA · the Rekindling.** Guilds, canals, print, and history rewritten by people
+   guessing. The House is rebuilt and prosperous, and the family now keeps a lamp lit in
+   the window as a tradition — with a printed card on the wall explaining the tradition's
+   origin, confidently and wrongly. The custom outlived its reason. Dry comedy on the
+   surface, consequence at a distance underneath: the thing you are carrying is why, and
+   the card does not know that.
+6. **2099 AA · the Lettered Age.** Universities, museums, scholars of the Awakening and
+   the Lapse, all wrong. The House is still open and still warm. The window holds a row of
+   lit lamps, kept burning every night for someone expected to return, and one hook in the
+   row is empty. The keeper — same line, same refusal to explain — does not ask your
+   business either. End of tour.
+
+### Places and eras
+
+One place, `turning-house`, in six landings. No second place. The six landings are the
+full launch span (DESIGN.md §4.1), oldest first:
+
+`2099 BA` → `1099 BA` → `99 BA` → [ the Gap ] → `99 AA` → `1099 AA` → `2099 AA`
+
+Every stride is one thousand years, including the one over the Gap. No scene may be set
+inside the Gap; the stride from 99 BA lands clean in 99 AA.
+
+### What carries across rooms
+
+- **The brass lamp** — the through-line, taken in 2099 BA and carried to 2099 AA.
+- **The family line** — one keeper in every room, never named as the same person, always
+  recognizably the same stubbornness. Each is a `talk`-bearing scenery object.
+- **The drystone walls** — mentioned in all six rooms, in one clause each, in whatever
+  state the age has left them. This is the persistence motif doing its work quietly.
+- **The face-down coin** — the Traveler's sign for *I was here*, on the table in 2099 BA.
+  It may reappear in a late room behind museum glass with a placard that gets it wrong.
+
+### Tone notes
+
+Dry on the surface, deep underneath (the author's line, and UNIVERSE.md §7). Zork's
+smirk, Tolkien's long shadow. The narrator notices and reports; it never emotes for the
+player and never concludes on their behalf. One voice across all six rooms with the nouns
+doing the era work — unmortared stone in 2099 BA, print and canal locks in 1099 AA — and
+no archaic grammar anywhere. The ending is the one place where sentiment is available, and
+it must be delivered flat: a window, a row of lamps, an empty hook. The narrator does not
+say what it means.
+
+The emotional load of this story is carried entirely by recognition, which means the last
+room fails if it explains itself.
+
+### What the engine can and cannot do here
+
+Binding constraints, confirmed against `src/types.ts`, `src/parser.ts` and `src/world.ts`.
+The generator should plan within these rather than discover them:
+
+- **There is no `LIGHT` verb.** The parser knows `look, examine, take, drop, inventory, go,
+  past, future, when, wait, again, say, talk, mark, read, eat, help, quit` and nothing else.
+  The lamp cannot be lit by a player action. "Where it finally burns" is therefore narrated
+  by the 2099 AA room's `look` text, not performed.
+- **There is no world state, no flags, and no conditional text.** A room cannot check
+  whether the player is carrying the lamp. The 2099 AA room must read well either way, and
+  should be written so it lands hardest for a player who has the lamp in hand.
+- **Item ids are globally unique across the world.** The lamp is already declared once, in
+  `turning-house` (id `lamp`). No later room may declare another item with that id; the
+  lamp travels in the player's inventory, which is how it gets there. The same applies to
+  `bread` and `coin`. Recurring objects in later rooms must be `scenery`, or items with
+  fresh ids.
+- **An item's `description` is fixed for the whole game.** The lamp reads the same in every
+  era, so the change must live in the rooms around it.
+- **A time exit only works if the same `place` string exists at the adjacent landing.** Set
+  `time.past` / `time.future` to match actual neighbors, and add each new landing to
+  `landings` in `src/content/index.ts` in chronological order.
+- **The engine appends its own time line** ("Here, the years run forward."). Do not also
+  announce the years in a room's `look`.
+
+### What the generator must build (engine terms)
+
+Five new rooms, all `place: "turning-house"`, plus one small edit to the existing room.
+File naming follows the house convention, `src/content/<place>-<landing-slug>.ts`.
+
+- `src/content/index.ts` — `landings` becomes
+  `["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"]` (oldest first), and all
+  six rooms are registered. `start` stays `"turning-house"`.
+- `turning-house` — **existing room, keeps its legacy id.** The only change it needs is
+  `time: { past: false, future: true }`. Its text already carries the landlady, the lamp,
+  the coin and the drystone walls. Touch the prose only if the tour needs the landlady to
+  set it going; if so, the smallest possible change is her `talk` line.
+- `turning-house:1099-ba` — `landing: "1099 BA"`, `age: "the Long Noon"`,
+  `time: { past: true, future: true }`.
+- `turning-house:99-ba` — `landing: "99 BA"`, `age: "the Hush"`,
+  `time: { past: true, future: true }`.
+- `turning-house:99-aa` — `landing: "99 AA"`, `age: "the Morning Country"`,
+  `time: { past: true, future: true }`.
+- `turning-house:1099-aa` — `landing: "1099 AA"`, `age: "the Rekindling"`,
+  `time: { past: true, future: true }`.
+- `turning-house:2099-aa` — `landing: "2099 AA"`, `age: "the Lettered Age"`,
+  `time: { past: true, future: false }`.
+
+No room needs spatial `exits`. The tour is a two-way chain of strides, so the player can
+walk back to the landlady the way they came, and every room is reachable from the start by
+`FUTURE` alone.
+
+## Rooms
+
+- [x] turning-house · 2099 BA (the High Masonry) — the landlady starts the tour and the unlit lamp is taken
+      as built: `src/content/turning-house.ts`, legacy id `turning-house` kept. `time: { past: false,
+      future: true }` — oldest landing, so nothing behind it. No spatial exits. Items `lamp` (takeable,
+      the through-line), `bread`, `coin` (face down, refuses to be taken) were already here and are
+      untouched. Scenery `landlady` (the keeper) got the story's only prose change: her `talk` now runs
+      `"Late to be traveling," … "Take the lamp. Go and see the House, since you can."` — she starts the
+      tour without explaining it, and "since you can" is as close as she comes to naming what you are.
+      Drystone clause already present ("laid without mortar, and have outlasted the road they watch").
+      Sets up: the lamp, the coin, the family's refusal to say how old the House is.
+      Deviation: `test/engine.test.ts:59` asserted this room's FUTURE was closed, using it as a one-room
+      fixture. Opening `future` makes that stride hit the no-face-in-that-age decline instead, so the
+      assertion was updated to match. Engine untouched; the test encoded content, not behaviour.
+      Note for the engine's owner (not a blocker, out of this sub-issue's scope): `HELP` in
+      `src/engine.ts` still ends "Two more you will not need tonight: PAST and FUTURE." Tonight, you do.
+- [x] turning-house · 1099 BA (the Long Noon) — a House too rich and too lit to need a lamp
+      as built: `src/content/turning-house-1099-ba.ts`, id `turning-house:1099-ba`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `long-noon-map` (not takeable,
+      READable, wrong about the river) — an item rather than scenery because only items can carry `read`.
+      Scenery `landlord` (the keeper: has his grandfather's House and never thought to ask how old it is
+      — the family stubbornness in the Long Noon's careless key), `brackets`, `walls-1099-ba`, `wine`,
+      `table-1099-ba`, `road-1099-ba`.
+      Pays off: the lamp, by making it redundant. The room is over-lit and the landlord's `talk` is
+      "There's a crate of them under the stair. Nobody's needed one in my lifetime." Nothing in the
+      narration points at what the player is carrying, per the plan.
+      Drystone clause: "Limewash covers the drystone now, which is held to be an improvement."
+      Note: the `brackets` scenery deliberately answers to "lamps"/"lights" but never the singular "lamp",
+      so it can never shadow the carried `lamp` item. Verified in play both carrying and not.
+- [x] turning-house · 99 BA (the Hush) — barred and waiting; keep the lamp unlit tonight
+      as built: `src/content/turning-house-99-ba.ts`, id `turning-house:99-ba`,
+      `time: { past: true, future: true }`, no spatial exits. **No items** — the Hush is bare on purpose
+      ("the long table, with everyone at it and nothing on it"). Scenery `eldest` (the keeper),
+      `family-99-ba`, `bell`, `beam`, `hearth-99-ba`, `shutters`, `walls-99-ba`, `table-99-ba`,
+      `road-99-ba`.
+      The turn: the eldest's `talk` is "No lights tonight. If you have one, keep it unlit. Light carries."
+      Phrased conditionally ("if you have one") because the engine cannot check inventory, so it reads
+      right whether or not the player is carrying the lamp. Nothing here explains what is coming, and no
+      evidence about the Awakening appears — the bell is heard, never seen, and the hearth was put out
+      on purpose.
+      Drystone clause: "Drystone, cold through, with the old limewash flaking off it" — the Long Noon's
+      limewash from room 2, going.
+      Sets up: the Gap stride. What this room is braced for is never answered.
+- [x] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
+      as built: `src/content/turning-house-99-aa.ts`, id `turning-house:99-aa`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `lintel` (not takeable, READable).
+      Scenery `woman-99-aa` (the keeper), `child`, `hearth-99-aa`, `walls-99-aa`, `roof`, `ruins`,
+      `table-99-aa`, `road-99-aa`.
+      The persistence statement is structural, not narrated: "The drystone stands exactly as it was laid,
+      having never needed mortar; the mortared work along the road is a long heap of stone and lime."
+      `walls-99-aa` answers EXAMINE with "Nothing held it up but the fit of it, and nothing had to" —
+      the 2099 BA wall line in the past tense.
+      The keeper's `talk` is "We keep it. There was a reason." Her EXAMINE line, "She is here because her
+      mother was here, and does not go back further than that," is the 2099 BA landlady's refusal turned
+      into an inability. That is the Gap's damage, in one clause.
+      Added beyond the plan: the `lintel` READs "legible if you have seen the hand before. It is the name
+      of this house." It is the one place the Traveler knows something the room does not, which is the
+      recognition this story runs on. It names no name, so the player supplies it. It is evidence about
+      the House, never about the Awakening.
+      Pairs with 99 BA: nothing here answers what the Hush was braced for, and nobody in the room knows
+      there is a question.
+- [x] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
+      as built: `src/content/turning-house-1099-aa.ts`, id `turning-house:1099-aa`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `card` (not takeable, READable,
+      framed). Scenery `landlord-1099-aa` (the keeper), `window-1099-aa`, `walls-1099-aa`, `ribbon`,
+      `tolls`, `hearth-1099-aa`, `floor`, `table-1099-aa`, `road-1099-aa`.
+      The card READs as a confident invention: the custom is "in memory of the landlord Corrin Hale, lost
+      on the road in fog and brought home by his wife's light. Printed at the sign of the Three Locks, by
+      subscription." Consequence at a distance, with the cause standing in the room holding the lamp.
+      The keeper's `talk` is "It's traditional," and he points at the card. This is the only era where the
+      family explains itself, which is exactly the era that has it wrong — the inverse of 2099 BA's refusal
+      and 2099 AA's. His EXAMINE line, "will tell you so before you ask," is the Long Noon's carelessness
+      grown talkative.
+      Drystone clause: "taken down and put back up stone for stone, which the mason charged extra for";
+      EXAMINE adds "The mason found the old courses and followed them."
+      Continuity picked up without comment: `tolls` answers "The river got a lock and stopped arguing"
+      (the 1099 BA map was wrong about that river), and `table-1099-aa` reads "A long table again, and not
+      the long table" (the 99 AA one burned).
+      The window lamp is `window-1099-aa` scenery and deliberately never answers to the singular "lamp",
+      so it cannot shadow the carried `lamp` item.
+- [x] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
+      as built: `src/content/turning-house-2099-aa.ts`, id `turning-house:2099-aa`,
+      `time: { past: true, future: false }` — newest landing, nothing ahead of it. No spatial exits.
+      One item, `case` (not takeable, READable). Scenery `keeper-2099-aa`, `window-2099-aa`, `hook`,
+      `students`, `walls-2099-aa`, `hearth-2099-aa`, `table-2099-aa`, `road-2099-aa`.
+      The ending, in the room's own last two sentences: "In the front window a row of lamps burns, one to
+      a hook, kept lit every night for someone expected back. One hook is empty." Nothing explains it.
+      EXAMINE HOOK adds "The empty one is third from the left, and has been dusted," which is as close as
+      the story comes to saying the House has been keeping the place ready.
+      Structured in three paragraphs to rhyme with room 1 (setting / keeper / objects), and "The keeper
+      does not ask your business" is room 1's landlady line word for word. Her `talk` declines as flatly
+      as the landlady's: "Older than the University, and I'll not be more exact than that."
+      Drystone clause: "surveyed and left alone, there being nothing to improve."
+      Took the optional coin payoff here, the one late room with the museums to justify it: the case
+      READs "GAMING PIECE, LATE BEFORE. Found on this site. The face-down position is thought to indicate
+      a forfeit." The narrator never claims it is the same coin.
+      Deviation: the body opens "The House is open and warm…" rather than "The Turning House is…", which
+      read as an echo directly under the title.
+      Engine limit honoured: no world state, so this room cannot check for the lamp. It reads straight
+      without it and lands with it. Verified both ways in play.
+
+## Through-lines
+
+- **The brass lamp** (item id `lamp`, declared once in `turning-house`, 2099 BA) — taken in
+  room 1, carried in inventory through all six. Never redeclared. Its meaning changes room
+  by room: heirloom, curiosity, liability, forgotten purpose, misremembered custom, and
+  finally the lamp the window was always missing. — **done.** Declared once and never again.
+  Verified carried across all five strides (`INVENTORY` in 2099 AA reports `lamp`). Two rooms
+  hold a lamp of their own; neither answers to the singular "lamp", so the carried one is
+  never shadowed: `brackets` (1099 BA) takes "lamps"/"lights", `window-2099-aa` takes
+  "lamps"/"row"/"lights". No room narrates the lamp in the player's hands, because no room can.
+- **The time chain** — all six rooms share `place: "turning-house"`, one per landing, and
+  their `time.past` / `time.future` must agree with their neighbors: 2099 BA opens future
+  only; 2099 AA opens past only; the four between open both. The existing room currently
+  has both closed and must have `future` opened. — **done.** `landings` is
+  `["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"]`, oldest first; `start`
+  stays `"turning-house"`. Six FUTUREs walk the tour, five PASTs walk it back, and both ends
+  decline in voice ("The years do not give. Tonight the House holds still.") without moving
+  the player.
+- **The Gap crossing** (99 BA → 99 AA) — the story's tonal pivot and the one stride the
+  player will remember. Both rooms must be written as a pair: what the Hush was braced for
+  is never answered, and the Morning Country is the answer's aftermath without knowing it.
+  No evidence about the Awakening in either room, only how each age copes. — **done.** 99 BA
+  puts its fire out on purpose and bars the door; 99 AA has a cold hearth relit small and a
+  child copying letters nobody there can read. Neither room contains a cause, a theory, or a
+  witness. The bell in 99 BA is heard and never seen, and nothing in 99 AA refers back to it.
+- **The keeper of the House** — one family member per room as scenery with a `talk` line,
+  each a thousand years apart and recognizably the same line. The 2099 BA landlady "will
+  not say how old" the House is; the 2099 AA keeper should decline just as flatly, which is
+  how the player knows the family held. — **done.** Six keepers, six `talk` lines:
+  `landlady` (2099 BA) / `landlord` (1099 BA) / `eldest` (99 BA) / `woman-99-aa` (99 AA) /
+  `landlord-1099-aa` (1099 AA) / `keeper-2099-aa` (2099 AA). The refusal is the spine and it
+  bends once: 1099 BA has never thought to ask, 99 AA can no longer answer ("There was a
+  reason"), 1099 AA answers confidently and wrongly by pointing at a printed card, and
+  2099 AA refuses again, flatly, four thousand years after the landlady did.
+- **The drystone walls** — one clause per room, six states, mortarless throughout. The
+  cheapest and most reliable carrier of the persistence theme. — **done.** Outlasting the
+  road (2099 BA) → under limewash held to be an improvement (1099 BA) → limewash flaking,
+  cold through (99 BA) → standing as laid while the mortared work is a heap (99 AA) → taken
+  down and rebuilt stone for stone on the old courses (1099 AA) → surveyed and left alone
+  (2099 AA). Never mortared, never fallen.
+- **The face-down coin** (`coin`, 2099 BA, not takeable) — the Traveler's sign for *I was
+  here*. Optional payoff: it reappears in a late room as scenery behind glass, with a
+  placard confidently wrong about it. Use it in at most one later room, and only if the
+  room has space for it. — **done, in 2099 AA only.** Built as the item `case` rather than
+  scenery, because only items can carry `read` and the placard needed its own text: "GAMING
+  PIECE, LATE BEFORE. Found on this site. The face-down position is thought to indicate a
+  forfeit." One clause in the room's `look`, so it does not crowd the ending.
+
+Two through-lines the rooms grew on their own, recorded so a later story does not break them:
+
+- **The high roads** — one EXAMINE line per room, running the same joke the long way:
+  "They are winning" (2099 BA) → nobody living has repaired one (1099 BA) → empty tonight,
+  which has never happened (99 BA) → under the grass and still the fastest way anywhere
+  (99 AA) → "They are not worried" (1099 AA) → "They are still the roads" (2099 AA).
+- **The long table** — present in all six and quietly mortal, unlike the walls: scrubbed pale
+  (2099 BA) → seating more than the House has room for (1099 BA) → everyone at it and nothing
+  on it (99 BA) → "shorter by a yard where it burned" (99 AA) → "A long table again, and not
+  the long table" (1099 AA) → a century of initials under the varnish (2099 AA).
+
+## Blockers
+
+_None._
+
+## Notes for the engine's owner
+
+Two things found while building this story. Neither blocks a room, and both are outside a
+generator's remit (`src/content/` only), so they are recorded rather than fixed.
+
+1. **`scripts/play.ts` silently drops the first command when `--expect` is absent.**
+   `const expectIdx = args.indexOf("--expect")` is `-1` when the flag is not passed, so the
+   filter's `i !== expectIdx + 1` becomes `i !== 0` and discards `args[0]`. Reproduce:
+   `node scripts/play.ts "TAKE LAMP" INVENTORY` prints only `> INVENTORY / You are carrying
+   nothing.` This matters to the factory: an evaluator pasting a route from `npm run
+   eval:reach` loses its first stride and lands a room short, which reads as a false FAIL.
+   Every route in this story is published with `--expect <room id>`, which both dodges the
+   bug and asserts the destination.
+2. **`HELP` is out of date now that the years run.** `src/engine.ts` still ends its help text
+   with "Two more you will not need tonight: PAST and FUTURE." That was true of the one-room
+   slice. This story is nothing but those two verbs.

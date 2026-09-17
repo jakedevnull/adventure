@@ -21,10 +21,9 @@ export const turningHouse: Room = {
     "The common room, low and warm. A brass lamp on the table, a coin face down " +
     "beside it, and the landlady at her fire.",
   time: {
-    // The House turns in every age — but only one landing is built in this slice,
-    // so the years have nowhere to carry you yet. The parser declines in voice.
+    // The oldest landing in the world: nothing behind it, and the tour ahead.
     past: false,
-    future: false,
+    future: true,
   },
   items: [
     {
@@ -60,7 +59,9 @@ export const turningHouse: Room = {
       nouns: ["landlady", "woman", "keeper", "innkeeper", "her"],
       description:
         "She has kept this fire longer than the walls have stood, and will not say how long.",
-      talk: "\"Late to be traveling,\" she says, and does not mean the hour.",
+      talk:
+        "\"Late to be traveling,\" she says, and does not mean the hour. " +
+        "\"Take the lamp. Go and see the House, since you can.\"",
     },
     {
       id: "fire",
