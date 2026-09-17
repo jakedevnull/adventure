@@ -182,7 +182,19 @@ walk back to the landlady the way they came, and every room is reachable from th
       assertion was updated to match. Engine untouched; the test encoded content, not behaviour.
       Note for the engine's owner (not a blocker, out of this sub-issue's scope): `HELP` in
       `src/engine.ts` still ends "Two more you will not need tonight: PAST and FUTURE." Tonight, you do.
-- [ ] turning-house · 1099 BA (the Long Noon) — a House too rich and too lit to need a lamp
+- [x] turning-house · 1099 BA (the Long Noon) — a House too rich and too lit to need a lamp
+      as built: `src/content/turning-house-1099-ba.ts`, id `turning-house:1099-ba`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `long-noon-map` (not takeable,
+      READable, wrong about the river) — an item rather than scenery because only items can carry `read`.
+      Scenery `landlord` (the keeper: has his grandfather's House and never thought to ask how old it is
+      — the family stubbornness in the Long Noon's careless key), `brackets`, `walls-1099-ba`, `wine`,
+      `table-1099-ba`, `road-1099-ba`.
+      Pays off: the lamp, by making it redundant. The room is over-lit and the landlord's `talk` is
+      "There's a crate of them under the stair. Nobody's needed one in my lifetime." Nothing in the
+      narration points at what the player is carrying, per the plan.
+      Drystone clause: "Limewash covers the drystone now, which is held to be an improvement."
+      Note: the `brackets` scenery deliberately answers to "lamps"/"lights" but never the singular "lamp",
+      so it can never shadow the carried `lamp` item. Verified in play both carrying and not.
 - [ ] turning-house · 99 BA (the Hush) — barred and waiting; keep the lamp unlit tonight
 - [ ] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
 - [ ] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
@@ -216,3 +228,20 @@ walk back to the landlady the way they came, and every room is reachable from th
 ## Blockers
 
 _None._
+
+## Notes for the engine's owner
+
+Two things found while building this story. Neither blocks a room, and both are outside a
+generator's remit (`src/content/` only), so they are recorded rather than fixed.
+
+1. **`scripts/play.ts` silently drops the first command when `--expect` is absent.**
+   `const expectIdx = args.indexOf("--expect")` is `-1` when the flag is not passed, so the
+   filter's `i !== expectIdx + 1` becomes `i !== 0` and discards `args[0]`. Reproduce:
+   `node scripts/play.ts "TAKE LAMP" INVENTORY` prints only `> INVENTORY / You are carrying
+   nothing.` This matters to the factory: an evaluator pasting a route from `npm run
+   eval:reach` loses its first stride and lands a room short, which reads as a false FAIL.
+   Every route in this story is published with `--expect <room id>`, which both dodges the
+   bug and asserts the destination.
+2. **`HELP` is out of date now that the years run.** `src/engine.ts` still ends its help text
+   with "Two more you will not need tonight: PAST and FUTURE." That was true of the one-room
+   slice. This story is nothing but those two verbs.
