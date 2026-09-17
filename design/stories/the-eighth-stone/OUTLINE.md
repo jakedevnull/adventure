@@ -523,7 +523,16 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     unless there is something under it — and nobody in the room draws the conclusion. The fall
     is forty feet, the same figure the 2099 BA face gives, so the mile measures the same in
     both ages.
-- [ ] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
+- [x] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
+  - as built: `src/content/ford-1099-aa.ts`, `time { past: true, future: true }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. Items: `ford-stone-1099-aa`, laid face out in the near wall
+    with the letters at the waterline, and `ford-slate-1099-aa`, whose `read` gives six a boat
+    and twelve a lockful and closes on "set to the same table as the canal below, and entered
+    in the book the same evening" — the link to the tolls already chalked up daily at
+    `turning-house:1099-aa`. `ford-canal-1099-aa` keeps the canal where the shipped yard face
+    put it, a separate cut meeting the river below the lock, and the word canal is never used
+    for the river. The keeper's `talk` is rate, level and gates, in that order; the level is
+    taken off the top line of the lettered course and the wall is never mentioned.
 - [ ] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
 
 ## Through-lines
