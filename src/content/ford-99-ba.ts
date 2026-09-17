@@ -36,7 +36,7 @@ export const ford99Ba: Room = {
   items: [
     {
       id: "ford-stone-99-ba",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "foot", "base", "weed"],
       description: "Out of the river foot and all, with a band of weed round the base where the water has always been.",
       takeable: false,
       takeRefusal: "Nobody is watching, and it is still a milestone.",
@@ -67,7 +67,7 @@ export const ford99Ba: Room = {
     },
     {
       id: "ford-boat-99-ba",
-      nouns: ["boat", "ferry", "punt", "craft"],
+      nouns: ["boat", "ferry", "punt", "craft", "line"],
       description: "Pulled up dry with the line coiled on the thwart, the way a man leaves it for one night.",
     },
     {

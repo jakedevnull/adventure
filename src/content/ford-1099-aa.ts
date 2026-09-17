@@ -37,7 +37,7 @@ export const ford1099Aa: Room = {
   items: [
     {
       id: "ford-stone-1099-aa",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription", "lettered course", "course"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "lettered course", "course", "face", "bottom", "green"],
       description: "Laid on its side in the near wall, face out, with the letters at the waterline and green along the bottom of them.",
       takeable: false,
       takeRefusal: "There are four courses of good ashlar on top of it and both gates lean on all four.",
@@ -70,7 +70,7 @@ export const ford1099Aa: Room = {
     },
     {
       id: "ford-gates-1099-aa",
-      nouns: ["gates", "gate", "lock", "chamber", "beams", "balance beams"],
+      nouns: ["gates", "gate", "lock", "chamber", "stone chamber", "beams", "balance beams"],
       description: "Oak and iron at both ends of the chamber, shut, and they shut on a hair.",
     },
     {
@@ -80,7 +80,7 @@ export const ford1099Aa: Room = {
     },
     {
       id: "ford-book-1099-aa",
-      nouns: ["book", "ledger", "accounts", "column", "columns"],
+      nouns: ["book", "ledger", "accounts", "column", "columns", "foot"],
       description: "Ruled in columns, with today half down the page and the ink still wet at the foot of it.",
     },
     {
@@ -90,7 +90,7 @@ export const ford1099Aa: Room = {
     },
     {
       id: "ford-wall-1099-aa",
-      nouns: ["wall", "masonry", "courses", "coursing", "ashlar"],
+      nouns: ["wall", "near wall", "chamber wall", "masonry", "courses", "coursing", "ashlar"],
       description: "Good ashlar down to the waterline, with whatever came to hand built in below that.",
     },
     {

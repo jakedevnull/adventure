@@ -35,7 +35,7 @@ export const ford99Aa: Room = {
   items: [
     {
       id: "ford-stone-99-aa",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription", "plank stone"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "plank stone", "foot"],
       description: "On its side in the silt with the plank across its foot, and the letters up and clear of the mud.",
       takeable: false,
       takeRefusal: "The plank is on it and the silt is round it, and it weighs what it always weighed.",
@@ -46,7 +46,7 @@ export const ford99Aa: Room = {
   scenery: [
     {
       id: "ford-eel-woman-99-aa",
-      nouns: ["woman", "eel-woman", "eel woman", "her", "trapper"],
+      nouns: ["woman", "eel-woman", "eel woman", "her", "trapper", "line"],
       description: "She comes down at the same hour every evening and takes her line off the plank stone.",
       talk:
         "\"That's the plank stone,\" she says. \"It came up out of the mud when my " +
@@ -56,7 +56,7 @@ export const ford99Aa: Room = {
     },
     {
       id: "ford-plank-99-aa",
-      nouns: ["plank", "board", "bridge", "elm"],
+      nouns: ["plank", "board", "bridge", "elm", "end", "near end", "far end", "ends"],
       description: "One good elm plank, its near end on the stone and its far end on a bar of silt.",
     },
     {
@@ -81,7 +81,7 @@ export const ford99Aa: Room = {
     },
     {
       id: "ford-far-bank-99-aa",
-      nouns: ["far bank", "bank", "far side", "other side", "opposite", "bar"],
+      nouns: ["far bank", "bank", "far side", "other side", "opposite", "bar", "silt bar"],
       description: "The plank ends on the silt bar, and the channel past the bar is deeper than the plank is long.",
     },
   ],

@@ -39,7 +39,7 @@ export const ford2099Aa: Room = {
   items: [
     {
       id: "ford-stone-2099-aa",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription", "exhibit"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "exhibit", "foot"],
       description: "Upright on a dressed plinth, scrubbed back to the grain, with every letter of it legible.",
       takeable: false,
       takeRefusal: "It is dowelled to the plinth at the foot, and the plinth is bedded in the towpath.",
@@ -97,7 +97,7 @@ export const ford2099Aa: Room = {
     },
     {
       id: "ford-plinth-2099-aa",
-      nouns: ["plinth", "pedestal", "base", "dowels", "glass"],
+      nouns: ["plinth", "pedestal", "base", "dowels", "glass", "face", "faces"],
       description: "Dressed on four faces, with the stone dowelled on top of it and the label glazed into the front.",
     },
     {
