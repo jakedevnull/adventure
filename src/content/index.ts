@@ -12,6 +12,7 @@ import { ford2099Ba } from "./ford-2099-ba.ts";
 import { crossroadsYard1099Ba } from "./crossroads-yard-1099-ba.ts";
 import { ford1099Ba } from "./ford-1099-ba.ts";
 import { crossroadsYard99Ba } from "./crossroads-yard-99-ba.ts";
+import { ford99Ba } from "./ford-99-ba.ts";
 import { crossroadsYard99Aa } from "./crossroads-yard-99-aa.ts";
 import { highCrossing99Aa } from "./high-crossing-99-aa.ts";
 import { crossroadsYard1099Aa } from "./crossroads-yard-1099-aa.ts";
@@ -43,6 +44,7 @@ export const world: World = {
     crossroadsYard1099Ba,
     ford1099Ba,
     crossroadsYard99Ba,
+    ford99Ba,
     crossroadsYard99Aa,
     highCrossing99Aa,
     crossroadsYard1099Aa,
