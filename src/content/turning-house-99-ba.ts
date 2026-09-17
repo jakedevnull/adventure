@@ -74,4 +74,7 @@ export const turningHouse99Ba: Room = {
       description: "The high roads are empty tonight, which has never happened.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:99-ba",
+  },
 };
