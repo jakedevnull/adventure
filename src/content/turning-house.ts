@@ -13,8 +13,8 @@ export const turningHouse: Room = {
   look:
     "You are in the common room of an inn at a crossroads, low under black beams, " +
     "a fire going against a cold the season has not earned. The walls are drystone, " +
-    "laid without mortar, and have outlasted the road they watch. A barred door holds " +
-    "off the night, and a stair climbs into the dark; the landlady works the fire and " +
+    "laid without mortar, and have outlasted the road they watch. The door is unbarred " +
+    "tonight, and a stair climbs into the dark; the landlady works the fire and " +
     "does not ask your business.\n" +
     "On the long table a brass lamp stands unlit, and beside it a coin lies face down.",
   lookAgain:
@@ -81,7 +81,7 @@ export const turningHouse: Room = {
     {
       id: "door",
       nouns: ["door"],
-      description: "A stout door, barred against the road, the weather, and tonight.",
+      description: "A stout door with its bar leaned against the jamb, which is not where the bar lives.",
     },
     {
       id: "stair",
@@ -99,4 +99,7 @@ export const turningHouse: Room = {
       description: "The high roads were laid to outlast their makers, and are winning.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:2099-ba",
+  },
 };
