@@ -494,7 +494,16 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     green on the stone, then one clause about the map up at the House that has this river the
     far side of the hills — the shipped `long-noon-map` at `turning-house:1099-ba`. He never
     says there are letters on the stone.
-- [ ] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
+- [x] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
+  - as built: `src/content/ford-99-ba.ts`, `time { past: true, future: true }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. One item, `ford-stone-99-ba`: out of the river foot and
+    all, with a band of weed round the base where the water has always been, which is the
+    whole of the "first time in an age" and no more than a clause of it. Nobody here. The
+    price of the crossing is the box on the post with the lid up and nothing in it, and the
+    lease frame is empty. `ford-bell-99-ba` puts the bell **west** along the road, which is
+    the same bell `crossroads-yard:99-ba` hears **east** of itself on the same night: the two
+    rooms now bracket it, and neither says what it is. `ford-far-bank-99-ba` is the refusal,
+    and it is an absence rather than an obstacle.
 - [ ] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
 - [ ] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
 - [ ] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
