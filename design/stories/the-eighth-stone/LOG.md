@@ -111,3 +111,12 @@ Note for the human, to go on the PR: my fix-round sub-issue asked the generator 
 - reason:   every claim re-ran green under me on the story branch, including the six identical READs (one distinct reply across all six ford faces), zero `east:` keys in any ford file, and the eighteen-command round trip at exit 0 — so the close-out ticks are a verification record. The `bank` note is correctly a note: the noun answers, and it answers with a bank, which is not the wrong-*kind*-of-object shape that made `chamber wall`→gates and `stone chamber`→milestone real defects. And `bank` sits on `ford-far-bank-*` deliberately, to guard the edge of the map in the two rooms where a player is likeliest to test whether they can cross; re-pointing it weakens that guard, so it is a trade for a human to make in review, not a fix to spend the last round on. Escalating a PASS over an arguable trade would have been the worse error in both directions.
 - action:   JAK-45 closed out 6/6, state Done; blocked-by removed. PR #11 opened `cylocal1/jak-38-the-eighth-stone` → `main` with the log linked and five things named for review: the `bank` note, `east-road:99-aa` as the weakest of the eight (the final evaluator's read, and I agree), the undiscoverable `east` exit at both crossing faces, the game-wide possessive sub-part gap in the previous story's shipped rooms, and the two process defects this run found in ADVENTURE_FACTORY.md §6 and the fix-round criteria.  JAK-38 moved to In Review.
 - next:     human review of PR #11. Rooms: 8 of 8. Rounds used: 2 of 3. Revisions used: 0 of 5.
+
+## 2026-09-17 18:44Z · step 13 · STALE DEADLINE · LOOP AT REST
+
+- event:    the 15-minute deadline armed for JAK-45 fired after JAK-45 had already completed.
+- saw:      JAK-45 Done, JAK-38 In Review with no blocked-by relations, PR #11 OPEN `cylocal1/jak-38-the-eighth-stone` → `main`, story branch in sync with origin.
+- decision: no action, and no further wakeup.
+- reason:   the wakeup was a safety net for a child that reported inside its window; every terminal condition of §6's PASS path is already satisfied, and the loop's next input is a human's. Re-arming would only produce another empty check.
+- action:   none beyond this entry.
+- next:     human review of PR #11. The loop resumes only on a comment in this session — a review request becomes a revision (§7, `revisions: 0` of 5), and `run the evaluator` would re-enter §5.
