@@ -354,7 +354,17 @@ Two rules on those edits:
       nothing to say about it), the well under its brass windlass, the queue of
       carts, the roads, the gate, the milestone seen from here and not visited, and
       the open door. Pays off the mason's letters by ignoring them.
-- [ ] crossroads-yard · 99 BA (the Hush) — both roads empty, no lights anywhere, the bucket left in the well
+- [x] crossroads-yard · 99 BA (the Hush) — both roads empty, no lights anywhere, the bucket left in the well
+      as built: `src/content/crossroads-yard-99-ba.ts`, id `crossroads-yard:99-ba`.
+      `time: { past: true, future: true }` — this is the face the stride over the Gap
+      leaves from. Exits `in → turning-house:99-ba`, and `turning-house-99-ba.ts`
+      gains `out` and nothing else, as the plan requires: the Hush's face inside
+      keeps its dread word for word. No items; the age has nothing to hand you.
+      Scenery: the four empty roads, the well with the bucket down and the rope
+      coiled, the bell east along the road, the shut door with the beam back in its
+      brackets, the shuttered windows, the clear night, and the milestone with
+      nothing going past it. The door being barred again behind the player is the
+      only new fact, and it is a fact about the family rather than about tonight.
 - [ ] crossroads-yard · 99 AA (the Morning Country) — grass has the roads; the drystone wellhead is why anyone is still here
 - [ ] high-crossing · 99 AA (the Morning Country) — the milestone where it fell, and a girl who cannot read it and is sure of it
 - [ ] crossroads-yard · 1099 AA (the Rekindling) — the canals took the traffic; a pump-handle over the well, the yard a yard again
