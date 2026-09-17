@@ -136,6 +136,35 @@ The generator should plan within these rather than discover them:
 - **A time exit only works if the same `place` string exists at the adjacent landing.** Set
   `time.past` / `time.future` to match actual neighbors, and add each new landing to
   `landings` in `src/content/index.ts` in chronological order.
+- **The engine appends its own time line** ("Here, the years run forward."). Do not also
+  announce the years in a room's `look`.
+
+### What the generator must build (engine terms)
+
+Five new rooms, all `place: "turning-house"`, plus one small edit to the existing room.
+File naming follows the house convention, `src/content/<place>-<landing-slug>.ts`.
+
+- `src/content/index.ts` — `landings` becomes
+  `["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"]` (oldest first), and all
+  six rooms are registered. `start` stays `"turning-house"`.
+- `turning-house` — **existing room, keeps its legacy id.** The only change it needs is
+  `time: { past: false, future: true }`. Its text already carries the landlady, the lamp,
+  the coin and the drystone walls. Touch the prose only if the tour needs the landlady to
+  set it going; if so, the smallest possible change is her `talk` line.
+- `turning-house:1099-ba` — `landing: "1099 BA"`, `age: "the Long Noon"`,
+  `time: { past: true, future: true }`.
+- `turning-house:99-ba` — `landing: "99 BA"`, `age: "the Hush"`,
+  `time: { past: true, future: true }`.
+- `turning-house:99-aa` — `landing: "99 AA"`, `age: "the Morning Country"`,
+  `time: { past: true, future: true }`.
+- `turning-house:1099-aa` — `landing: "1099 AA"`, `age: "the Rekindling"`,
+  `time: { past: true, future: true }`.
+- `turning-house:2099-aa` — `landing: "2099 AA"`, `age: "the Lettered Age"`,
+  `time: { past: true, future: false }`.
+
+No room needs spatial `exits`. The tour is a two-way chain of strides, so the player can
+walk back to the landlady the way they came, and every room is reachable from the start by
+`FUTURE` alone.
 
 ## Rooms
 
@@ -173,4 +202,4 @@ The generator should plan within these rather than discover them:
 
 ## Blockers
 
-None.
+_None._
