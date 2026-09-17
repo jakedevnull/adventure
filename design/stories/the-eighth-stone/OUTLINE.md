@@ -483,7 +483,17 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     scenery that the plan did not list, because the `look` and the `talk` both name it and
     every noun must answer to EXAMINE. The stepping stones are not counted in the prose: a
     number there would have read as a signal it is not.
-- [ ] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
+- [x] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
+  - as built: `src/content/ford-1099-ba.ts`, id `ford:1099-ba`, `time { past: true, future: true }`,
+    no `exits`, exactly as the map table has it. Imports `EIGHTH_STONE_LETTERS`. Items:
+    `ford-stone-1099-ba` (green to the waterline, legible above it) and `ford-lease-1099-ba`,
+    whose `read` sets the rate at twelve, six and three — three times the commissioners' four,
+    two and one a thousand years earlier, which is the price through-line doing its arithmetic
+    in the open. The lease is framed over the four nail holes the toll-board left, so the post
+    carries both ages at once. The ferryman's `talk` is the rate, then the level taken off the
+    green on the stone, then one clause about the map up at the House that has this river the
+    far side of the hills — the shipped `long-noon-map` at `turning-house:1099-ba`. He never
+    says there are letters on the stone.
 - [ ] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
 - [ ] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
 - [ ] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
