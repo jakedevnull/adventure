@@ -85,4 +85,7 @@ export const ford99Aa: Room = {
       description: "The plank ends on the silt bar, and the channel past the bar is deeper than the plank is long.",
     },
   ],
+  exits: {
+    west: "east-road:99-aa",
+  },
 };
