@@ -365,7 +365,19 @@ Two rules on those edits:
       brackets, the shuttered windows, the clear night, and the milestone with
       nothing going past it. The door being barred again behind the player is the
       only new fact, and it is a fact about the family rather than about tonight.
-- [ ] crossroads-yard · 99 AA (the Morning Country) — grass has the roads; the drystone wellhead is why anyone is still here
+- [x] crossroads-yard · 99 AA (the Morning Country) — grass has the roads; the drystone wellhead is why anyone is still here
+      as built: `src/content/crossroads-yard-99-aa.ts`, id `crossroads-yard:99-aa`.
+      `time: { past: true, future: true }`; exits `in → turning-house:99-aa`, and
+      `turning-house-99-aa.ts` gains `out`. The `east` exit to `high-crossing:99-aa`
+      lands with that room, in the next commit. No items. Scenery: the well
+      (drystone, as laid, and the reason for every roof in sight), the buried roads
+      that the worn paths follow exactly, the houses, the children at the water, the
+      lime heap where a mortared wall stood, and the inn under half a roof.
+      Deviation, small: the plan put the drystone-versus-mortar contrast inside the
+      well's one sentence. The matching `turning-house:99-aa` face already makes that
+      argument in almost those words, so the contrast is split here — the well keeps
+      "standing as it was laid", the lime heap is its own scenery — and the room does
+      not echo the House next door.
 - [ ] high-crossing · 99 AA (the Morning Country) — the milestone where it fell, and a girl who cannot read it and is sure of it
 - [ ] crossroads-yard · 1099 AA (the Rekindling) — the canals took the traffic; a pump-handle over the well, the yard a yard again
 - [ ] crossroads-yard · 2099 AA (the Lettered Age) — survey pegs, the well capped in iron, and a placard that quotes the stone and gets it wrong
