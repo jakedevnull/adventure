@@ -378,7 +378,18 @@ Two rules on those edits:
       argument in almost those words, so the contrast is split here — the well keeps
       "standing as it was laid", the lime heap is its own scenery — and the room does
       not echo the House next door.
-- [ ] high-crossing · 99 AA (the Morning Country) — the milestone where it fell, and a girl who cannot read it and is sure of it
+- [x] high-crossing · 99 AA (the Morning Country) — the milestone where it fell, and a girl who cannot read it and is sure of it
+      as built: `src/content/high-crossing-99-aa.ts`, id `high-crossing:99-aa`.
+      `time: { past: false, future: false }`, so no time line prints here either.
+      Exits `west → crossroads-yard:99-aa`; the yard's matching `east` landed in this
+      same commit. Item `milestone-99-aa` (`takeable: false`), `read: MILESTONE_LETTERS`
+      — imported from `high-crossing-2099-ba.ts`, not retyped, so the two readings
+      cannot drift apart. The weathering lives in the `description`, which is where it
+      has to live if the `read` is to stay byte-identical. Scenery: the girl (`talk`
+      gives her village's reading: nine, from her gran, who had it from hers, and
+      nobody has ever wanted the letters), the crossing as a rise in the turf, the
+      grassed-over socket the stone came out of, and the roofs west. Pays off the
+      mason's letters for the first time; the narrator does not adjudicate.
 - [ ] crossroads-yard · 1099 AA (the Rekindling) — the canals took the traffic; a pump-handle over the well, the yard a yard again
 - [ ] crossroads-yard · 2099 AA (the Lettered Age) — survey pegs, the well capped in iron, and a placard that quotes the stone and gets it wrong
 
