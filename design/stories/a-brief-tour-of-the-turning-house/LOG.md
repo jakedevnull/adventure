@@ -36,3 +36,19 @@ Story issue: JAK-30 · branch `cylocal1/jak-30-a-brief-tour-of-the-turning-house
 - reason:   room 1 is the only entry where "write the room" and "the room exists" collide; without that instruction the likely failure is a duplicate room id or a renamed legacy id, which breaks the start room. Added an eval:reach 6/6 acceptance criterion and asked for a full play route so §4 verification can walk the whole tour rather than trust the harness alone.
 - action:   JAK-32 "Generate: A Brief Tour of the Turning House" created (label Generate, project adventure, state Todo, assignee jakedevnull, delegate cylocal) · JAK-32 blocks JAK-30 · deadline wakeup set 20m
 - next:     six rooms committed one at a time, outline ticked with as-built notes, PR against the story branch; deadline check at ~01:23Z
+
+## 2026-09-17 01:16Z · step 5 · ROOMS ACCEPTED + CLOSE-OUT JAK-32
+- event:    generator completed all six rooms; verified on the merged story branch (§9)
+- saw:      6/6 room lines ticked with as-built notes, 0 unchecked, blockers none. typecheck clean · 36/36 tests pass · eval:reach PASS 6/6, every room reached by FUTURE alone. Played the full tour myself and every line the generator predicted arrived in order, ending "You are carrying: lamp" at the empty hook. Six per-room routes and the five-stride walk back all exit 0.
+- decision: accept, close JAK-32 at 5/5, go to §4a
+- reason:   every criterion was re-run here rather than taken on the child's word, and the two claims worth doubting both held up. The changed test assertion is not a weakened test: the one-room fixture now takes the engine's other in-voice decline because the outline opens room 1's FUTURE, and both decline paths remain asserted. `git diff -- src/engine.ts src/parser.ts src/world.ts` is empty, so the engine is untouched. I also reproduced the reported scripts/play.ts bug directly.
+- action:   merged origin/cylocal1/jak-32-… into the story branch (4ef662b) and pushed · JAK-32 criteria ticked 5/5 and moved to Done · JAK-30 blocked-by JAK-32 removed
+- next:     open the PR to main and stop, per evaluate: false
+
+## 2026-09-17 01:17Z · step 6 · STOPPED BEFORE EVALUATION (evaluate: false)
+- event:    story complete through Generate; PR to main opened; factory loop halted before the evaluator
+- saw:      six rooms on the story branch, all checks green, round 0 of 2 used, revisions 0 of 5 used
+- decision: stop here rather than run an Evaluate child
+- reason:   `evaluate: false` in the factory block is the author's explicit Part 3 setting (§4a / ADVENTURE_FACTORY.md §5.6a). Nothing failed and no limit was hit — the loop is halted by instruction, not by trouble. Carried two out-of-scope defects to the PR instead of fixing them: the scripts/play.ts first-command bug (confirmed by reproduction; it would make the evaluator report false FAILs the moment it is turned on) and the stale HELP text. Both are engine/harness, not story content, so they are the repo owner's call.
+- action:   PR #3 opened against main (https://github.com/jakedevnull/adventure/pull/3) · JAK-30 moved to In Review · round unchanged at 0 · no Evaluate sub-issue created
+- next:     human review. To evaluate this story later, set `evaluate: true` in the factory block and comment `run the evaluator` in this session.
