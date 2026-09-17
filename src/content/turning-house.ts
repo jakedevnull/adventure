@@ -14,8 +14,8 @@ export const turningHouse: Room = {
     "You are in the common room of an inn at a crossroads, low under black beams, " +
     "a fire going against a cold the season has not earned. The walls are drystone, " +
     "laid without mortar, and have outlasted the road they watch. A barred door holds " +
-    "off the night; a stair climbs into the dark.\n" +
-    "The landlady works the fire and does not ask your business.\n" +
+    "off the night, and a stair climbs into the dark; the landlady works the fire and " +
+    "does not ask your business.\n" +
     "On the long table a brass lamp stands unlit, and beside it a coin lies face down.",
   lookAgain:
     "The common room, low and warm. A brass lamp on the table, a coin face down " +
@@ -29,7 +29,7 @@ export const turningHouse: Room = {
     {
       id: "lamp",
       nouns: ["lamp", "brass lamp", "brass"],
-      description: "A brass lamp, unlit, dented with long use. No wick you can find.",
+      description: "A brass lamp, unlit and dented with long use, with no wick you can find.",
       takeable: true,
       read: "There is nothing written on the lamp.",
       start: "room",
@@ -46,7 +46,7 @@ export const turningHouse: Room = {
       id: "coin",
       nouns: ["coin", "face-down coin", "penny"],
       description:
-        "A coin turned face down: a Traveler's sign for I was here. It is not your coin.",
+        "A coin turned face down, a Traveler's sign for I was here, and it is not your coin.",
       takeable: false,
       takeRefusal: "Some other Traveler left it face down. You let it lie.",
       read: "The coin's face is down, and that is the whole of what it says.",
@@ -76,12 +76,12 @@ export const turningHouse: Room = {
     {
       id: "walls",
       nouns: ["walls", "wall", "stones", "stone", "drystone", "masonry"],
-      description: "Drystone, laid without mortar. Nothing holds it up but the fit of it.",
+      description: "Drystone, laid without mortar, with nothing holding it up but the fit of it.",
     },
     {
       id: "door",
       nouns: ["door"],
-      description: "A stout door, barred against the road and the weather. Not tonight.",
+      description: "A stout door, barred against the road, the weather, and tonight.",
     },
     {
       id: "stair",
@@ -96,7 +96,7 @@ export const turningHouse: Room = {
     {
       id: "road",
       nouns: ["road", "roads", "crossroads", "high road", "high roads"],
-      description: "The high roads were laid to outlast their makers. They are winning.",
+      description: "The high roads were laid to outlast their makers, and are winning.",
     },
   ],
 };

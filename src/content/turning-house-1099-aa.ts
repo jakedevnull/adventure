@@ -49,22 +49,22 @@ export const turningHouse1099Aa: Room = {
     {
       id: "window-1099-aa",
       nouns: ["window", "glass", "lamps", "window lamp"],
-      description: "A lamp behind good glass, where the road can see it. Filled at dusk, and not asked about.",
+      description: "A lamp behind good glass where the road can see it, filled at dusk and not asked about.",
     },
     {
       id: "walls-1099-aa",
       nouns: ["walls", "wall", "drystone", "stones", "stone", "masonry"],
-      description: "Drystone again, rebuilt stone for stone. The mason found the old courses and followed them.",
+      description: "Drystone again, rebuilt stone for stone along the old courses the mason found.",
     },
     {
       id: "ribbon",
       nouns: ["ribbon", "guild ribbon", "guild"],
-      description: "The victuallers' guild, third grade. The House is prouder of it than of the walls.",
+      description: "The victuallers' guild, third grade, of which the House is prouder than of the walls.",
     },
     {
       id: "tolls",
       nouns: ["tolls", "toll", "chalk", "canal", "canals", "locks", "board"],
-      description: "Canal tolls, chalked up daily. The river got a lock and stopped arguing.",
+      description: "Canal tolls chalked up daily, since the river got a lock and stopped arguing.",
     },
     {
       id: "hearth-1099-aa",
@@ -84,7 +84,7 @@ export const turningHouse1099Aa: Room = {
     {
       id: "road-1099-aa",
       nouns: ["road", "roads", "crossroads", "high road", "high roads"],
-      description: "The high roads carry less than the canals now. They are not worried.",
+      description: "The high roads carry less than the canals now, and are not worried.",
     },
   ],
 };

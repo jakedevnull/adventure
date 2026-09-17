@@ -36,12 +36,12 @@ export const turningHouse99Ba: Room = {
     {
       id: "family-99-ba",
       nouns: ["family", "others", "them", "people"],
-      description: "Six of them, sitting up. Nobody has suggested going to bed.",
+      description: "Six of them sitting up, and nobody has suggested bed.",
     },
     {
       id: "bell",
       nouns: ["bell", "bells", "ringing"],
-      description: "You cannot see it from in here. Slow, even, and going to keep on.",
+      description: "You cannot see it from in here: slow, even, and going to keep on.",
     },
     {
       id: "beam",
@@ -51,7 +51,7 @@ export const turningHouse99Ba: Room = {
     {
       id: "hearth-99-ba",
       nouns: ["fire", "hearth", "fireplace", "ashes", "embers"],
-      description: "Cold, and raked out. Putting it out took some doing.",
+      description: "Cold and raked out, which took some doing.",
     },
     {
       id: "shutters",

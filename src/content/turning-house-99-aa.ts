@@ -31,7 +31,7 @@ export const turningHouse99Aa: Room = {
       id: "lintel",
       nouns: ["lintel", "letters", "stone", "inscription"],
       description:
-        "A fallen lintel, letters down one face. The child is copying them and does not know what they are.",
+        "A fallen lintel with letters down one face, which the child is copying without knowing what they are.",
       takeable: false,
       takeRefusal: "It weighs what a lintel weighs.",
       read: "Deep-cut, and legible if you have seen the hand before. It is the name of this house.",
@@ -58,7 +58,7 @@ export const turningHouse99Aa: Room = {
     {
       id: "walls-99-aa",
       nouns: ["walls", "wall", "drystone", "stones", "masonry"],
-      description: "Drystone, as laid. Nothing held it up but the fit of it, and nothing had to.",
+      description: "Drystone as laid, held up by nothing but the fit of it, which was enough.",
     },
     {
       id: "roof",
@@ -68,7 +68,7 @@ export const turningHouse99Aa: Room = {
     {
       id: "ruins",
       nouns: ["ruins", "ruin", "rubble", "heap", "village", "buildings"],
-      description: "Stone shapes in the grass for a mile out. Nobody here has a name for any of them.",
+      description: "Stone shapes in the grass for a mile out, and nobody here has a name for any of them.",
     },
     {
       id: "table-99-aa",

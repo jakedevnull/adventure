@@ -27,7 +27,7 @@ export const turningHouse1099Ba: Room = {
     {
       id: "long-noon-map",
       nouns: ["map", "maps", "chart"],
-      description: "A handsome map. It puts the river on the wrong side of the hills, in good ink.",
+      description: "A handsome map that puts the river on the wrong side of the hills, in good ink.",
       takeable: false,
       takeRefusal: "It is pinned up, and the landlord is in the middle of using it.",
       read:
@@ -49,12 +49,12 @@ export const turningHouse1099Ba: Room = {
     {
       id: "brackets",
       nouns: ["lamps", "brackets", "bracket", "lights", "light"],
-      description: "A dozen of them, filled and burning at midday. The House would like that noticed.",
+      description: "A dozen of them, filled and burning at midday, which the House would like noticed.",
     },
     {
       id: "walls-1099-ba",
       nouns: ["walls", "wall", "limewash", "drystone", "stones", "stone", "masonry"],
-      description: "Drystone under a coat of limewash. The stones never needed it and were not asked.",
+      description: "Drystone under a coat of limewash the stones never needed and were not asked about.",
     },
     {
       id: "wine",

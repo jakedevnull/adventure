@@ -21,8 +21,8 @@ export const turningHouse2099Aa: Room = {
   look:
     "The House is open and warm and lettered now, with a case of labelled " +
     "oddments by the door and students at the long table arguing about the Lapse. The " +
-    "drystone has been surveyed and left alone, there being nothing to improve.\n" +
-    "The keeper does not ask your business.\n" +
+    "drystone has been surveyed and left alone, there being nothing to improve; the " +
+    "keeper does not ask your business.\n" +
     "In the front window a row of lamps burns, one to a hook, kept lit every night for " +
     "someone expected back. One hook is empty.",
   lookAgain:
@@ -36,7 +36,7 @@ export const turningHouse2099Aa: Room = {
     {
       id: "case",
       nouns: ["case", "oddments", "coin", "placard", "label", "glass"],
-      description: "Behind glass, a few small things from the late Before. One of them is a coin, face down.",
+      description: "Behind glass, a few small things from the late Before, one of them a coin, face down.",
       takeable: false,
       takeRefusal: "The case is locked, and the House has the only key.",
       read:
@@ -71,7 +71,7 @@ export const turningHouse2099Aa: Room = {
     {
       id: "walls-2099-aa",
       nouns: ["walls", "wall", "drystone", "stones", "stone", "masonry"],
-      description: "Drystone, surveyed twice and published once. It has not moved.",
+      description: "Drystone, surveyed twice, published once, and not moved.",
     },
     {
       id: "hearth-2099-aa",
@@ -86,7 +86,7 @@ export const turningHouse2099Aa: Room = {
     {
       id: "road-2099-aa",
       nouns: ["road", "roads", "crossroads", "high road", "high roads"],
-      description: "The high roads are studied now. They are still the roads.",
+      description: "The high roads are studied now, and are still the roads.",
     },
   ],
 };
