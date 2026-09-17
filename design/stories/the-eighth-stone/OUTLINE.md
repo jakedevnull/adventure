@@ -470,7 +470,19 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     heard and not seen, and the crossing back west with the mason's lamp still going. The
     `look` names west and east both, since the engine lists no exits. The fall is given as
     forty feet, a figure the 99 AA face reuses so the same mile is the same mile.
-- [ ] ford · 2099 BA (the High Masonry) — stepping stones, a ferry-post, a toll, and the eighth stone new-cut with its foot in the river
+- [x] ford · 2099 BA (the High Masonry) — stepping stones, a ferry-post, a toll, and the eighth stone new-cut with its foot in the river
+  - as built: `src/content/ford-2099-ba.ts`, id `ford:2099-ba`, title **The Ford**,
+    `time { past: false, future: true }`, `west → east-road:2099-ba`. In the same commit
+    `east-road:2099-ba` gained `east: "ford:2099-ba"`, closing the pair. This file exports
+    `EIGHTH_STONE_LETTERS = "ELLERMARK\nEIGHT"`; the five later faces import it and none
+    retypes it, so the six `read` strings are identical by construction. Two items:
+    `ford-stone-2099-ba` (`read` is the constant) and `ford-toll-board-2099-ba`, whose `read`
+    gives the rate as four, two and one, foot passage at half of a beast, as planned. Seven
+    scenery, including the tollman, whose `talk` is price then depth then the box he keeps on
+    the stone, and `ford-far-bank-2099-ba`, the refusal for this age. A box was added to the
+    scenery that the plan did not list, because the `look` and the `talk` both name it and
+    every noun must answer to EXAMINE. The stepping stones are not counted in the prose: a
+    number there would have read as a signal it is not.
 - [ ] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
 - [ ] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
 - [ ] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
