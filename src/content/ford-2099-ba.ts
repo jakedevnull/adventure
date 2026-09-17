@@ -48,7 +48,7 @@ export const ford2099Ba: Room = {
   items: [
     {
       id: "ford-stone-2099-ba",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "foot"],
       description: "Waist-high and squared off, pale along the cuts, with its foot under water at this level.",
       takeable: false,
       takeRefusal: "It is set at the head of the stones to stay there, and the river has not shifted it yet.",
@@ -71,7 +71,7 @@ export const ford2099Ba: Room = {
   scenery: [
     {
       id: "ford-tollman-2099-ba",
-      nouns: ["tollman", "man", "him", "collector", "keeper"],
+      nouns: ["tollman", "man", "him", "collector", "keeper", "knees"],
       description: "He keeps the box on his knees and has been bored of this road for most of the week it has existed.",
       talk:
         "\"One, for a man on his own feet,\" he says. \"Water's over the last three stones " +

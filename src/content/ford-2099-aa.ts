@@ -71,6 +71,11 @@ export const ford2099Aa: Room = {
       description: "Enamelled and bolted to the chamber wall, graduated from the cill up in tenths.",
     },
     {
+      id: "ford-wall-2099-aa",
+      nouns: ["chamber wall", "wall", "masonry", "courses", "ashlar"],
+      description: "Good ashlar with the gauge board bolted to it, and a square of new stone at the waterline where the exhibit came out.",
+    },
+    {
       id: "ford-pegs-2099-aa",
       nouns: ["pegs", "peg", "level pegs", "stakes", "line"],
       description: "Painted stakes at even intervals along the bank, read twice a year and written down.",

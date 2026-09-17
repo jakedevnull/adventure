@@ -46,7 +46,7 @@ export const eastRoad2099Ba: Room = {
     },
     {
       id: "east-road-fall-2099-ba",
-      nouns: ["land", "fall", "slope", "ground", "hill", "valley"],
+      nouns: ["land", "fall", "slope", "ground", "hill", "valley", "cutting", "bottom"],
       description:
         "The ground gives up forty feet between here and the water, which is why this mile is cut and not laid.",
     },

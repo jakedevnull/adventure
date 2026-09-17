@@ -39,7 +39,7 @@ export const ford1099Ba: Room = {
   items: [
     {
       id: "ford-stone-1099-ba",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "green"],
       description: "Four feet out in the water, green to the waterline and dry and legible above it.",
       takeable: false,
       takeRefusal: "It is out in the river and it is the only fixed thing in it.",
@@ -74,7 +74,7 @@ export const ford1099Ba: Room = {
     },
     {
       id: "ford-water-1099-ba",
-      nouns: ["water", "river", "shallows", "level", "current", "ford", "mark"],
+      nouns: ["water", "river", "shallows", "level", "current", "ford", "mark", "waterline"],
       description: "Running a few yards north of the road and a hand's breadth below the mark on the stone.",
     },
     {
@@ -84,7 +84,7 @@ export const ford1099Ba: Room = {
     },
     {
       id: "ford-post-1099-ba",
-      nouns: ["post", "ferry-post", "ferry post", "ring", "rope", "holes", "nails"],
+      nouns: ["post", "ferry-post", "ferry post", "ring", "rope", "holes", "nails", "toll-board", "toll board", "board"],
       description: "The same oak post with the same iron ring, and four nail holes in it where the board was.",
     },
     {

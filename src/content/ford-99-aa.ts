@@ -66,7 +66,7 @@ export const ford99Aa: Room = {
     },
     {
       id: "ford-water-99-aa",
-      nouns: ["water", "river", "silt", "narrows", "channel", "current", "ford", "mud"],
+      nouns: ["water", "river", "silt", "narrows", "channel", "current", "ford", "mud", "banks"],
       description: "Narrow and brown between two banks of silt, and deeper down the middle than the whole of it used to be.",
     },
     {
