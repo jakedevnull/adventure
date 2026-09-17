@@ -246,32 +246,85 @@ walk back to the landlady the way they came, and every room is reachable from th
       the long table" (the 99 AA one burned).
       The window lamp is `window-1099-aa` scenery and deliberately never answers to the singular "lamp",
       so it cannot shadow the carried `lamp` item.
-- [ ] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
+- [x] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
+      as built: `src/content/turning-house-2099-aa.ts`, id `turning-house:2099-aa`,
+      `time: { past: true, future: false }` — newest landing, nothing ahead of it. No spatial exits.
+      One item, `case` (not takeable, READable). Scenery `keeper-2099-aa`, `window-2099-aa`, `hook`,
+      `students`, `walls-2099-aa`, `hearth-2099-aa`, `table-2099-aa`, `road-2099-aa`.
+      The ending, in the room's own last two sentences: "In the front window a row of lamps burns, one to
+      a hook, kept lit every night for someone expected back. One hook is empty." Nothing explains it.
+      EXAMINE HOOK adds "The empty one is third from the left, and has been dusted," which is as close as
+      the story comes to saying the House has been keeping the place ready.
+      Structured in three paragraphs to rhyme with room 1 (setting / keeper / objects), and "The keeper
+      does not ask your business" is room 1's landlady line word for word. Her `talk` declines as flatly
+      as the landlady's: "Older than the University, and I'll not be more exact than that."
+      Drystone clause: "surveyed and left alone, there being nothing to improve."
+      Took the optional coin payoff here, the one late room with the museums to justify it: the case
+      READs "GAMING PIECE, LATE BEFORE. Found on this site. The face-down position is thought to indicate
+      a forfeit." The narrator never claims it is the same coin.
+      Deviation: the body opens "The House is open and warm…" rather than "The Turning House is…", which
+      read as an echo directly under the title.
+      Engine limit honoured: no world state, so this room cannot check for the lamp. It reads straight
+      without it and lands with it. Verified both ways in play.
 
 ## Through-lines
 
 - **The brass lamp** (item id `lamp`, declared once in `turning-house`, 2099 BA) — taken in
   room 1, carried in inventory through all six. Never redeclared. Its meaning changes room
   by room: heirloom, curiosity, liability, forgotten purpose, misremembered custom, and
-  finally the lamp the window was always missing. — planned
+  finally the lamp the window was always missing. — **done.** Declared once and never again.
+  Verified carried across all five strides (`INVENTORY` in 2099 AA reports `lamp`). Two rooms
+  hold a lamp of their own; neither answers to the singular "lamp", so the carried one is
+  never shadowed: `brackets` (1099 BA) takes "lamps"/"lights", `window-2099-aa` takes
+  "lamps"/"row"/"lights". No room narrates the lamp in the player's hands, because no room can.
 - **The time chain** — all six rooms share `place: "turning-house"`, one per landing, and
   their `time.past` / `time.future` must agree with their neighbors: 2099 BA opens future
   only; 2099 AA opens past only; the four between open both. The existing room currently
-  has both closed and must have `future` opened. — planned
+  has both closed and must have `future` opened. — **done.** `landings` is
+  `["2099 BA", "1099 BA", "99 BA", "99 AA", "1099 AA", "2099 AA"]`, oldest first; `start`
+  stays `"turning-house"`. Six FUTUREs walk the tour, five PASTs walk it back, and both ends
+  decline in voice ("The years do not give. Tonight the House holds still.") without moving
+  the player.
 - **The Gap crossing** (99 BA → 99 AA) — the story's tonal pivot and the one stride the
   player will remember. Both rooms must be written as a pair: what the Hush was braced for
   is never answered, and the Morning Country is the answer's aftermath without knowing it.
-  No evidence about the Awakening in either room, only how each age copes. — planned
+  No evidence about the Awakening in either room, only how each age copes. — **done.** 99 BA
+  puts its fire out on purpose and bars the door; 99 AA has a cold hearth relit small and a
+  child copying letters nobody there can read. Neither room contains a cause, a theory, or a
+  witness. The bell in 99 BA is heard and never seen, and nothing in 99 AA refers back to it.
 - **The keeper of the House** — one family member per room as scenery with a `talk` line,
   each a thousand years apart and recognizably the same line. The 2099 BA landlady "will
   not say how old" the House is; the 2099 AA keeper should decline just as flatly, which is
-  how the player knows the family held. — planned
+  how the player knows the family held. — **done.** Six keepers, six `talk` lines:
+  `landlady` (2099 BA) / `landlord` (1099 BA) / `eldest` (99 BA) / `woman-99-aa` (99 AA) /
+  `landlord-1099-aa` (1099 AA) / `keeper-2099-aa` (2099 AA). The refusal is the spine and it
+  bends once: 1099 BA has never thought to ask, 99 AA can no longer answer ("There was a
+  reason"), 1099 AA answers confidently and wrongly by pointing at a printed card, and
+  2099 AA refuses again, flatly, four thousand years after the landlady did.
 - **The drystone walls** — one clause per room, six states, mortarless throughout. The
-  cheapest and most reliable carrier of the persistence theme. — planned
+  cheapest and most reliable carrier of the persistence theme. — **done.** Outlasting the
+  road (2099 BA) → under limewash held to be an improvement (1099 BA) → limewash flaking,
+  cold through (99 BA) → standing as laid while the mortared work is a heap (99 AA) → taken
+  down and rebuilt stone for stone on the old courses (1099 AA) → surveyed and left alone
+  (2099 AA). Never mortared, never fallen.
 - **The face-down coin** (`coin`, 2099 BA, not takeable) — the Traveler's sign for *I was
   here*. Optional payoff: it reappears in a late room as scenery behind glass, with a
   placard confidently wrong about it. Use it in at most one later room, and only if the
-  room has space for it. — optional
+  room has space for it. — **done, in 2099 AA only.** Built as the item `case` rather than
+  scenery, because only items can carry `read` and the placard needed its own text: "GAMING
+  PIECE, LATE BEFORE. Found on this site. The face-down position is thought to indicate a
+  forfeit." One clause in the room's `look`, so it does not crowd the ending.
+
+Two through-lines the rooms grew on their own, recorded so a later story does not break them:
+
+- **The high roads** — one EXAMINE line per room, running the same joke the long way:
+  "They are winning" (2099 BA) → nobody living has repaired one (1099 BA) → empty tonight,
+  which has never happened (99 BA) → under the grass and still the fastest way anywhere
+  (99 AA) → "They are not worried" (1099 AA) → "They are still the roads" (2099 AA).
+- **The long table** — present in all six and quietly mortal, unlike the walls: scrubbed pale
+  (2099 BA) → seating more than the House has room for (1099 BA) → everyone at it and nothing
+  on it (99 BA) → "shorter by a yard where it burned" (99 AA) → "A long table again, and not
+  the long table" (1099 AA) → a century of initials under the varnish (2099 AA).
 
 ## Blockers
 
