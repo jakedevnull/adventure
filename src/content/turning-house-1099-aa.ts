@@ -87,4 +87,7 @@ export const turningHouse1099Aa: Room = {
       description: "The high roads carry less than the canals now, and are not worried.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:1099-aa",
+  },
 };

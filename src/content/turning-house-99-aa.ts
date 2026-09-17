@@ -81,4 +81,7 @@ export const turningHouse99Aa: Room = {
       description: "The high roads are under the grass now, and still the fastest way anywhere.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:99-aa",
+  },
 };

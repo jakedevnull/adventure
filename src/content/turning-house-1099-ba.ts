@@ -72,4 +72,7 @@ export const turningHouse1099Ba: Room = {
       description: "The high roads still carry everything, and nobody living has repaired one.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:1099-ba",
+  },
 };
