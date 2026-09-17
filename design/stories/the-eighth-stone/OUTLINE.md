@@ -461,7 +461,15 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
 
 ## Rooms
 
-- [ ] east-road · 2099 BA (the High Masonry) — a mile of week-old road falling toward water you hear before you see
+- [x] east-road · 2099 BA (the High Masonry) — a mile of week-old road falling toward water you hear before you see
+  - as built: `src/content/east-road-2099-ba.ts`, id `east-road:2099-ba`, title **East Road**,
+    `time { past: false, future: false }` as planned. Ships with `west → high-crossing:2099-ba`
+    only; `east → ford:2099-ba` arrives in room 2's commit, per the build order. In the same
+    commit `high-crossing-2099-ba.ts` gained one line, `east: "east-road:2099-ba"`, and nothing
+    else. No items. Five scenery: the new paving, the spoil on the verge, the fall, the water
+    heard and not seen, and the crossing back west with the mason's lamp still going. The
+    `look` names west and east both, since the engine lists no exits. The fall is given as
+    forty feet, a figure the 99 AA face reuses so the same mile is the same mile.
 - [ ] ford · 2099 BA (the High Masonry) — stepping stones, a ferry-post, a toll, and the eighth stone new-cut with its foot in the river
 - [ ] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
 - [ ] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
