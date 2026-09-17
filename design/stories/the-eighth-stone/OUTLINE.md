@@ -461,16 +461,93 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
 
 ## Rooms
 
-- [ ] east-road · 2099 BA (the High Masonry) — a mile of week-old road falling toward water you hear before you see
-- [ ] ford · 2099 BA (the High Masonry) — stepping stones, a ferry-post, a toll, and the eighth stone new-cut with its foot in the river
-- [ ] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
-- [ ] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
-- [ ] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
-- [ ] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
-- [ ] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
-- [ ] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
+- [x] east-road · 2099 BA (the High Masonry) — a mile of week-old road falling toward water you hear before you see
+  - as built: `src/content/east-road-2099-ba.ts`, id `east-road:2099-ba`, title **East Road**,
+    `time { past: false, future: false }` as planned. Ships with `west → high-crossing:2099-ba`
+    only; `east → ford:2099-ba` arrives in room 2's commit, per the build order. In the same
+    commit `high-crossing-2099-ba.ts` gained one line, `east: "east-road:2099-ba"`, and nothing
+    else. No items. Five scenery: the new paving, the spoil on the verge, the fall, the water
+    heard and not seen, and the crossing back west with the mason's lamp still going. The
+    `look` names west and east both, since the engine lists no exits. The fall is given as
+    forty feet, a figure the 99 AA face reuses so the same mile is the same mile.
+- [x] ford · 2099 BA (the High Masonry) — stepping stones, a ferry-post, a toll, and the eighth stone new-cut with its foot in the river
+  - as built: `src/content/ford-2099-ba.ts`, id `ford:2099-ba`, title **The Ford**,
+    `time { past: false, future: true }`, `west → east-road:2099-ba`. In the same commit
+    `east-road:2099-ba` gained `east: "ford:2099-ba"`, closing the pair. This file exports
+    `EIGHTH_STONE_LETTERS = "ELLERMARK\nEIGHT"`; the five later faces import it and none
+    retypes it, so the six `read` strings are identical by construction. Two items:
+    `ford-stone-2099-ba` (`read` is the constant) and `ford-toll-board-2099-ba`, whose `read`
+    gives the rate as four, two and one, foot passage at half of a beast, as planned. Seven
+    scenery, including the tollman, whose `talk` is price then depth then the box he keeps on
+    the stone, and `ford-far-bank-2099-ba`, the refusal for this age. A box was added to the
+    scenery that the plan did not list, because the `look` and the `talk` both name it and
+    every noun must answer to EXAMINE. The stepping stones are not counted in the prose: a
+    number there would have read as a signal it is not.
+- [x] ford · 1099 BA (the Long Noon) — the river has moved; the stone is out in the shallows and the ferryman reads the water off it
+  - as built: `src/content/ford-1099-ba.ts`, id `ford:1099-ba`, `time { past: true, future: true }`,
+    no `exits`, exactly as the map table has it. Imports `EIGHTH_STONE_LETTERS`. Items:
+    `ford-stone-1099-ba` (green to the waterline, legible above it) and `ford-lease-1099-ba`,
+    whose `read` sets the rate at twelve, six and three — three times the commissioners' four,
+    two and one a thousand years earlier, which is the price through-line doing its arithmetic
+    in the open. The lease is framed over the four nail holes the toll-board left, so the post
+    carries both ages at once. The ferryman's `talk` is the rate, then the level taken off the
+    green on the stone, then one clause about the map up at the House that has this river the
+    far side of the hills — the shipped `long-noon-map` at `turning-house:1099-ba`. He never
+    says there are letters on the stone.
+- [x] ford · 99 BA (the Hush) — the lowest water in living memory, the whole stone out of it, and nobody at the ford to see
+  - as built: `src/content/ford-99-ba.ts`, `time { past: true, future: true }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. One item, `ford-stone-99-ba`: out of the river foot and
+    all, with a band of weed round the base where the water has always been, which is the
+    whole of the "first time in an age" and no more than a clause of it. Nobody here. The
+    price of the crossing is the box on the post with the lid up and nothing in it, and the
+    lease frame is empty. `ford-bell-99-ba` puts the bell **west** along the road, which is
+    the same bell `crossroads-yard:99-ba` hears **east** of itself on the same night: the two
+    rooms now bracket it, and neither says what it is. `ford-far-bank-99-ba` is the refusal,
+    and it is an absence rather than an obstacle.
+- [x] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
+  - as built: `src/content/ford-99-aa.ts`, `time { past: true, future: true }`. Shipped with no
+    `exits`; `west → east-road:99-aa` arrives in room 6's commit, which is the same pairing
+    the build order uses for rooms 1 and 2. Imports `EIGHTH_STONE_LETTERS`. One item,
+    `ford-stone-99-aa`, on its side in the silt with the plank across its foot and the letters
+    up and clear of the mud, so READ still works in the age that cannot. `plank stone` is one
+    of its nouns, because that is the only name this age has for it. The eel-woman's `talk`
+    gives the stone's use, its provenance as far back as her grandfather, and the price, which
+    is nothing. She is not corrected, here or anywhere.
+- [x] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
+  - as built: `src/content/east-road-99-aa.ts`, `time { past: false, future: false }`,
+    `west → high-crossing:99-aa`, `east → ford:99-aa`. This commit closed the second pair:
+    `high-crossing-99-aa.ts` gained one line, `east: "east-road:99-aa"`, and `ford:99-aa`
+    gained `west: "east-road:99-aa"`. Nothing else in either file was touched. No items, no
+    people. Five scenery: the path, the hedge, the sheep, the fall and the crossing back west.
+    `east-road-path-99-aa` carries the joke flat — dead straight, which no drove road is
+    unless there is something under it — and nobody in the room draws the conclusion. The fall
+    is forty feet, the same figure the 2099 BA face gives, so the mile measures the same in
+    both ages.
+- [x] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
+  - as built: `src/content/ford-1099-aa.ts`, `time { past: true, future: true }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. Items: `ford-stone-1099-aa`, laid face out in the near wall
+    with the letters at the waterline, and `ford-slate-1099-aa`, whose `read` gives six a boat
+    and twelve a lockful and closes on "set to the same table as the canal below, and entered
+    in the book the same evening" — the link to the tolls already chalked up daily at
+    `turning-house:1099-aa`. `ford-canal-1099-aa` keeps the canal where the shipped yard face
+    put it, a separate cut meeting the river below the lock, and the word canal is never used
+    for the river. The keeper's `talk` is rate, level and gates, in that order; the level is
+    taken off the top line of the lettered course and the wall is never mentioned.
+- [x] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
+  - as built: `src/content/ford-2099-aa.ts`, `time { past: true, future: false }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. Items: `ford-stone-2099-aa`, upright and scrubbed with
+    every letter legible, and `ford-label-2099-aa`, whose `read` takes the shape the plan set
+    out — found in the lock wall, dated with the wall on the canal company's records at 1104,
+    ELLERMARK transcribed as a place-name of uncertain application, the second line filed as an
+    uninterpreted mason's tally, the stone read as a lock gauge. It does not quote the second
+    line, does not mention the crossing, and does not mention a sequence. Nobody is in the room.
+    The price of the crossing has come off the water and onto the stone: the lock is free and
+    `ford-box-2099-aa` holds about a coin's weight.
 
 ## Through-lines
+
+_As built: all eight rooms are written and every through-line below held without a
+deviation worth the name. `npm run eval:reach` reports 22 of 22._
 
 - **The eighth stone's letters** (all six `ford` faces) — `ELLERMARK` / `EIGHT`, on two lines,
   the same string in every age. Written **once** as
@@ -479,6 +556,13 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
   `src/content/high-crossing-2099-ba.ts` and imported by the faces that show the ninth. Six
   uses, none of them reading: bollard, depth gauge, nothing at all, plank-rest, course of
   masonry, exhibit. The word "eight" is never spoken by anybody in any age.
+  - as built: the constant is declared once at `src/content/ford-2099-ba.ts:25` and imported
+    by the other five faces; `grep -rn "EIGHTH_STONE_LETTERS" src/` shows one export and five
+    imports, and `grep -rno "EIGHT\b" src/` returns exactly one line in the whole of `src/`.
+    The six uses came out as planned. Each face carries its age's condition in the item's
+    `description` and never in the `read`: pale along the cuts with its foot under water,
+    green to the waterline, a band of weed round the base, letters up and clear of the mud,
+    green along the bottom of them at the waterline, scrubbed back to the grain.
 - **The eighth stone against the ninth** (`ford:*` against the shipped
   `high-crossing:2099-ba`, `high-crossing:99-aa` and `crossroads-yard:2099-aa`) — the ninth
   stone's placard in the Lettered Age already tells visitors the sequence's other eight
@@ -487,33 +571,63 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
   the same sentence. The mason's shipped line at the crossing, *"Nine miles, and the last two
   of them are mine,"* is the only thread between them, and it is a thousand years and one
   mile from the label that misses it.
+  - as built: the label at `ford:2099-aa` gets its answer wrong in a new way — it dates the
+    stone by the wall it came out of, on a source it names, and files the second line away
+    uninterpreted rather than glossing it. It never quotes that line, never says crossing and
+    never says series. `ford:2099-aa` is empty, so the story ends on printed text with no
+    reader, against the previous story's student at a placard.
 - **The price of the crossing** (all six `ford` faces) — toll-board, lease, empty box, no
   toll at all, lock-keeper's rate, exhibit contribution. One or two sentences per face, always
   a stated figure or a stated arrangement, never a mood. It never becomes a puzzle and the
   player never needs a coin. The Rekindling's rate is the same money as the canal tolls
   already chalked up daily at `turning-house:1099-aa`.
+  - as built: the figures run four / two / one on the 2099 BA toll-board, twelve / six / three
+    on the 1099 BA lease, nothing at all in 99 BA with the box open and empty on the post,
+    nothing in 99 AA, six a boat and twelve a lockful on the 1099 AA slate, and a contribution
+    box on the plinth in 2099 AA. The Long Noon rate is three times the High Masonry rate at
+    every line of it, so the through-line does its arithmetic where the player can see it. The
+    1099 AA slate closes on "set to the same table as the canal below, and entered in the book
+    the same evening", which is the link to the House's chalked tolls. No coin is ever wanted.
 - **The water** (all six `ford` faces) — high in the Long Noon, lowest in living memory in the
   Hush, silted in the Morning Country, held by gates in the Rekindling, on a gauge board in
   the Lettered Age. Always a measurement or a fact about passage. The stone is what several
   ages measure it against, which is the two through-lines meeting: an instrument with a scale
   nobody reads.
+  - as built: over the last three stepping stones in 2099 BA, a hand's breadth below the mark
+    on the stone in 1099 BA, a channel two feet across in 99 BA, narrow and brown between two
+    banks of silt in 99 AA, two fingers over the top line of the lettered course in 1099 AA,
+    four tenths on the gauge board in 2099 AA. Three of the six take their figure off the
+    stone. No face describes the water as weather.
 - **The far bank** (all six `ford` faces) — one piece of scenery per face, one sentence, and
   that sentence is the refusal, in that age's own terms. No ford face has an `east` exit in
   any age and no face describes a way over that a player could reasonably expect to take.
+  - as built: `ford-far-bank-<landing>` in all six faces, one sentence each, matching the
+    plan's table age for age. No ford face has an `east` exit, and none of the six `look`
+    bodies offers the far bank as a direction.
 - **The ford's stride chain** (all six `ford` faces) — the PAST/FUTURE pairs that must line
   up: `2099 BA {false,true}` · `1099 BA {true,true}` · `99 BA {true,true}` ·
   `99 AA {true,true}` · `1099 AA {true,true}` · `2099 AA {true,false}`. Every open side has a
   face waiting; the only closed sides are the world's two ends. Removing any ford face breaks
   the chain, so all six are load-bearing for the requirement that the years run from the ford
   as they run from the yard.
+  - as built: the flags shipped exactly as tabled, and the chain walks both ways. `OUT, EAST,
+    EAST, EAST` then five `FUTURE` reaches `ford:2099-aa`; five `PAST` then `WEST, WEST, WEST,
+    IN` is back in the common room. `npm run eval:reach` finds the ford at every landing and
+    the engine's "nothing of this place stands in that age" reply is unreachable in this story.
 - **Both `east-road` faces are strideless** (`{ past: false, future: false }`) — reached by
   walking EAST from the crossing and left by walking WEST, exactly like the two
   `high-crossing` faces. The engine prints no time line when both sides are closed, so
   nothing needs explaining and nothing should be explained.
+  - as built: both faces shipped `{ past: false, future: false }`, and playing into either of
+    them prints no time line. Neither face remarks on it. The 2099 BA face gives the fall as
+    forty feet and the 99 AA face gives the same forty, so the mile is one mile in both ages.
 - **The place keeps its name** — **The Ford** in all six ford faces, including the three
   ages in which nobody has forded anything for a thousand years. That is the persistence
   theme doing its own work in the room heading, and it is not to be softened to "The Lock" in
   1099 AA.
+  - as built: `title: "The Ford"` in all six faces and `title: "East Road"` in both road
+    faces. The 1099 AA heading reads **The Ford · 1099 AA** over a room with a lock in it,
+    and nothing in the prose apologises for that.
 
 ## Blockers
 
