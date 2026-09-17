@@ -230,7 +230,7 @@ as-built notes, so the outline also records how each failure was resolved.
 ### 5.6 Evaluate
 
 The orchestrator merges, creates **"Evaluate: <story>"** (label `Evaluate`), spawns. The
-evaluator has read-only tools: it cannot change content, by construction. Two layers:
+evaluator has read-only tools: it cannot change content, by construction. Three layers:
 
 1. **Reachability harness** — `npm run eval:reach` (a checked-in script, §7): loads the
    content, walks every spatial and time exit from the start room, and lists every
@@ -238,6 +238,12 @@ evaluator has read-only tools: it cannot change content, by construction. Two la
 2. **Playthrough** — the engine is a pure string-in/text-out function, so the evaluator
    plays: for each room it issues the harness's route as commands and checks the text
    actually arrives there (catches "reachable on paper but a locked door with no key").
+3. **Voice lint** — `npm run eval:voice -- --story <slug>` (§7): the countable rules of
+   the writing guide (rooms ≤ 4 sentences, objects ≤ 1, banned vocabulary, em-dashes,
+   exclamation points, the reversal tic), one finding per passage with the text quoted.
+   `--story` scopes it to the rooms the story's outline claims, so a finished story's
+   prose cannot fail a new one. Taste — flat delivery, the surprising detail — stays a
+   judgment in the report's Notes.
 
 It ends with a structured report (§8) as its final response and completes. Cyrus hands
 that report to the orchestrator on resume.
@@ -285,7 +291,7 @@ orchestrator quotes them in the log (`REVISION <k>`), classifies each change as
 **structural**, delegates to the generator with the comments verbatim, verifies per
 the close-out rule, and for structural changes runs a fresh `Evaluate (revision k)` child
 before finishing. Text-only revisions are self-verified (typecheck, tests, `eval:reach`,
-play route) — the orchestrator replies on each PR comment with what changed. Revisions
+`eval:voice`, play route) — the orchestrator replies on each PR comment with what changed. Revisions
 don't consume `round`; they're capped by `max_revisions` (default 5), tracked as
 `revisions:` in the `factory:` block; past the cap → `NEEDS HUMAN: revisions exhausted`.
 
@@ -347,6 +353,8 @@ mandatory, not optional.
 | `.claude/skills/generate-story/` | The generator playbook (per-room procedure, data shape, checks, as-built notes, fix rounds, revisions). |
 | `.claude/skills/evaluate-story/` | The evaluator playbook (run harness, play routes, report format). |
 | `scripts/eval-reach.ts` + `npm run eval:reach` | The reachability harness. Deterministic; exit 1 on any unreachable room; `--json` for machines. |
+| `scripts/eval-voice.ts` + `npm run eval:voice` | The voice lint. Deterministic; the countable writing-guide rules over every passage; exit 1 on any finding; `--story <slug>` scopes to an outline's rooms, `--rooms <ids>` to a list; `--json` for machines. |
+| `src/voice.ts` | The lint rules themselves (`lintVoice`, `countSentences`, the banned list, per-rule hints). Pure; the harness and the tests share it. |
 | `scripts/play.ts` | Scripted playthrough through the real engine (`--expect <room id>` exits 1 if the route doesn't land there). The evaluator's second layer; it has no Write tool, so this script exists. |
 | `src/world.ts` | World helpers the engine and harness share: lookup, stride resolution, `validateWorld`, `reachability`. |
 | `design/stories/<slug>/OUTLINE.md` | One per story: the story's working bible — the expanded story, the room plan with per-room as-built notes, cross-room through-lines, blockers. Every generator reads it and every generator improves it. |
@@ -366,6 +374,7 @@ The report is the contract between evaluator and generator. Plain markdown, fixe
 # Evaluation: <story> (round N)
 verdict: FAIL            # or PASS
 rooms: 8  reachable: 6   # harness totals
+voice: 3 findings        # voice lint total (0 on a clean story)
 
 ## Failures
 ### mill-race · 2099 BA
@@ -377,6 +386,12 @@ rooms: 8  reachable: 6   # harness totals
   mill-race · 2099 AA
 
 ### <next room> ...
+
+## Voice
+### turning-house · 2099 BA
+- object-length · lamp.description: 2 (limit 1)
+  text: "A brass lamp, unlit, dented with long use. No wick you can find."
+  suggestion: keep the one concrete sentence
 
 ## Notes
 <anything the playthrough saw that the harness can't: text that arrives in the wrong
@@ -438,8 +453,8 @@ Per-repo in `~/.cyrus/config.json` (hot-reloaded):
   "builder":      { "labels": ["Generate"],   "allowedTools": "all" },
   "scoper":       { "labels": ["Evaluate"],   "allowedTools": [
     "Read(**)", "Glob", "Grep", "Skill", "Task", "TaskCreate", "TaskUpdate", "TaskGet", "TaskList",
-    "Bash(npm install:*)", "Bash(npm run eval:reach:*)", "Bash(npm test:*)",
-    "Bash(npm run typecheck:*)", "Bash(node scripts/play.ts:*)",
+    "Bash(npm install:*)", "Bash(npm run eval:reach:*)", "Bash(npm run eval:voice:*)",
+    "Bash(npm test:*)", "Bash(npm run typecheck:*)", "Bash(node scripts/play.ts:*)",
     "Bash(git status:*)", "Bash(git log:*)", "Bash(git diff:*)"
   ] }
 }

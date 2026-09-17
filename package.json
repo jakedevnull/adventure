@@ -15,7 +15,8 @@
     "play": "node src/cli.ts",
     "test": "node --test",
     "typecheck": "tsc --noEmit",
-    "eval:reach": "node scripts/eval-reach.ts"
+    "eval:reach": "node scripts/eval-reach.ts",
+    "eval:voice": "node scripts/eval-voice.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

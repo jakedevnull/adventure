@@ -22,6 +22,7 @@ src/
   cli.ts                 the terminal front end (readline + typewriter)
 scripts/
   eval-reach.ts          can every room be reached from the start? (npm run eval:reach)
+  eval-voice.ts          does the text obey the writing guide's countable rules? (npm run eval:voice)
   play.ts                scripted playthrough for evaluators and tests
 test/                    parser, engine, and world tests
 design/stories/          per-story outlines and logs written by the story factory
@@ -39,6 +40,8 @@ npm run play       # play in your terminal
 npm test           # run the test suite
 npm run typecheck  # tsc --noEmit
 npm run eval:reach # reachability report; exit 1 if any room can't be reached
+npm run eval:voice # voice lint (sentence caps, banned words, em-dashes); exit 1 on any finding
+npm run eval:voice -- --story <slug>   # only the rooms design/stories/<slug>/OUTLINE.md claims
 node scripts/play.ts FUTURE DOWN   # play a command sequence, see where you land
 ```
 

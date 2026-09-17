@@ -150,18 +150,19 @@ Create sub-issue **`Evaluate: <story title>`** — label `Evaluate`, parent, pro
 story's), "Todo", assignee inherited, delegate = the story's. Description:
 
 ```
-Objective: Prove every room of this story is reachable from the start (evaluate-story skill). Report; do not fix.
+Objective: Prove every room of this story is reachable from the start and its text passes the voice lint (evaluate-story skill). Report; do not fix.
 Context: Story branch <story-branch> (merged rooms). Outline: design/stories/<slug>/OUTLINE.md. Round: <round>.
 
 Acceptance Criteria:
 - [ ] npm run eval:reach run and its output included
+- [ ] npm run eval:voice -- --story <slug> run and its output included
 - [ ] Every reported route played through with node scripts/play.ts --expect
 - [ ] Final response is the report in the exact format of ADVENTURE_FACTORY.md §8, beginning with "verdict: PASS" or "verdict: FAIL"
 
 Dependencies: rooms merged
 Technical Notes: Use the `evaluate-story` skill. You have no Edit/Write tools; never commit.
 
-**MANDATORY VERIFICATION REQUIREMENTS:** <standard template — for an evaluator the verification is re-running eval:reach and one play route>
+**MANDATORY VERIFICATION REQUIREMENTS:** <standard template — for an evaluator the verification is re-running eval:reach and eval:voice and one play route>
 ```
 
 Blocked-by swap → spawn → deadline (15 min) → log → end turn.
@@ -179,9 +180,9 @@ Read the report's `verdict`.
    `max_rounds` is the number of fix rounds allowed after the first evaluation:
    `max_rounds: 2` means up to two fix rounds and three evaluations.
 3. Send the full report to the **generator** child session with
-   `linear_agent_give_feedback` and the instruction "fix every failure in this report,
-   re-run npm run eval:reach until it passes, update OUTLINE.md as-built notes, commit, and
-   push to your PR". If that session no longer exists, create sub-issue
+   `linear_agent_give_feedback` and the instruction "fix every failure and every voice
+   finding in this report, re-run npm run eval:reach and npm run eval:voice -- --story
+   <slug> until both pass, update OUTLINE.md as-built notes, commit, and push to your PR". If that session no longer exists, create sub-issue
    **`Generate (round <round>): <one-line summary>`** (label `Generate`) with the report
    in the description and spawn it. Deadline, log, end turn. When it completes, verify and
    merge as in §4, then go to §5 again.
@@ -217,7 +218,7 @@ When a human asks for changes after the story is In Review (a comment in your se
    session keeps its worktree and context), with the comments verbatim plus exact
    guidance. Swap blocked-by, arm a deadline, log with the `REVISION:` marker, end turn.
 4. On completion, verify per §9. **Text-only:** your own verification is sufficient
-   (typecheck, tests, `eval:reach`, the play route) — merge, push (updates the PR), and
+   (typecheck, tests, `eval:reach`, `eval:voice`, the play route) — merge, push (updates the PR), and
    reply to each PR comment explaining what changed. **Structural:** after merging, run a
    fresh `Evaluate (revision <k>)` child (§5) and only reply/finish on PASS; a FAIL here
    is a fix round and follows §6.

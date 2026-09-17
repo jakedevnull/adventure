@@ -31,6 +31,7 @@ small engine. Read this whole file before doing anything.
 - Movement: spatial `exits` (direction → room id) and time strides (`PAST`/`FUTURE`
   move to the same place at the adjacent landing when `time.past`/`time.future` is open).
 - Commands: `npm run typecheck`, `npm test`, `npm run eval:reach` (every room reachable?),
+  `npm run eval:voice` (does the text obey the writing guide's countable rules?),
   `node scripts/play.ts <COMMANDS…>` (scripted playthrough), `npm run play`.
 
 ## Non-negotiables
