@@ -15,6 +15,12 @@ test("intro shows the room title and first look", () => {
   assert.match(intro, /common room of an inn/);
 });
 
+test("the room heading shows the year", () => {
+  const g = newGame();
+  assert.match(g.intro(), /^The Turning House · 2099 BA$/m);
+  assert.match(g.handle("look").text, /^The Turning House · 2099 BA$/m);
+});
+
 test("look is long on arrival, short on return", () => {
   const g = newGame();
   g.intro(); // marks visited

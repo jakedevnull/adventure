@@ -133,7 +133,8 @@ export class Game {
     this.visited.add(this.room.id);
     const body = first ? this.room.look : this.room.lookAgain ?? this.room.look;
 
-    const lines = [this.room.title, body];
+    // The heading carries the landing, so the year is always on the page.
+    const lines = [`${this.room.title} · ${this.room.landing}`, body];
 
     // Items lying here that the look text doesn't already account for — things
     // dropped here, or carried in from elsewhere — are listed, Zork-style.
