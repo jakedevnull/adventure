@@ -56,6 +56,11 @@ The game presents as a single scrolling transcript in a monospace face — outpu
 a prompt below. No panes, no minimaps, no health bars. State that matters is discovered
 by asking (`LOOK`, `INVENTORY`, `WHEN`), exactly as in Zork.
 
+The one standing exception is the year. Every room heading carries its landing —
+`The Turning House · 2099 BA` — because in a game about deep time the player should never
+have to ask *when* they are, only what it means. `WHEN` still answers, and adds the name
+of the age.
+
 Text arrives with a slight typewriter cadence (fast, skippable) so that the transcript
 feels performed rather than dumped.
 
