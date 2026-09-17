@@ -90,7 +90,7 @@ export const ford2099Ba: Room = {
     },
     {
       id: "ford-stones-2099-ba",
-      nouns: ["stepping stones", "stepping", "stones", "steps"],
+      nouns: ["stepping stones", "stepping", "stones", "steps", "face", "upstream face"],
       description: "Set in a line across the bed, flat on top and squared off on the upstream face.",
     },
     {
