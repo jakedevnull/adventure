@@ -504,7 +504,15 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     the same bell `crossroads-yard:99-ba` hears **east** of itself on the same night: the two
     rooms now bracket it, and neither says what it is. `ford-far-bank-99-ba` is the refusal,
     and it is an absence rather than an obstacle.
-- [ ] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
+- [x] ford · 99 AA (the Morning Country) — silt, a plank resting one end on the stone, and a woman who calls it the plank stone
+  - as built: `src/content/ford-99-aa.ts`, `time { past: true, future: true }`. Shipped with no
+    `exits`; `west → east-road:99-aa` arrives in room 6's commit, which is the same pairing
+    the build order uses for rooms 1 and 2. Imports `EIGHTH_STONE_LETTERS`. One item,
+    `ford-stone-99-aa`, on its side in the silt with the plank across its foot and the letters
+    up and clear of the mud, so READ still works in the age that cannot. `plank stone` is one
+    of its nouns, because that is the only name this age has for it. The eel-woman's `talk`
+    gives the stone's use, its provenance as far back as her grandfather, and the price, which
+    is nothing. She is not corrected, here or anywhere.
 - [ ] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
 - [ ] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
 - [ ] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
