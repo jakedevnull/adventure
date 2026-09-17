@@ -28,8 +28,12 @@ child's worktree.
 - Spawning a child session is Linear delegation, nothing more: once the sub-issue is
   delegated, Linear starts the child session and Cyrus resumes you with the child's
   result when it completes. Delegate each sub-issue exactly once.
-- Cyrus MCP: `mcp__cyrus-tools__linear_agent_give_feedback` to re-prompt an existing
-  child session (fix rounds).
+- Cyrus MCP: `mcp__cyrus-tools__linear_agent_give_feedback` to re-prompt a child session
+  that is **still open** — a planner whose outline you have not yet accepted. It cannot
+  reach a closed-out child: moving a sub-issue to Done stops its session and deletes its
+  worktree, and the tool still returns `success: true` because Linear accepted the message.
+  Fix rounds and revisions therefore always spawn a **new** sub-issue; never re-prompt a
+  child you have closed out.
 - `ScheduleWakeup` for per-child deadlines. `Bash` for git and for appending the log
   mirror.
 
@@ -187,14 +191,18 @@ Read the report's `verdict`.
 2. Else `round` += 1 in the story issue's `factory:` block (update the description).
    `max_rounds` is the number of fix rounds allowed after the first evaluation:
    `max_rounds: 2` means up to two fix rounds and three evaluations.
-3. Send the full report to the **generator** child session with
-   `linear_agent_give_feedback` and the instruction "fix every failure, every voice
+3. Create sub-issue **`Generate (round <round>): <one-line summary>`** — label `Generate`,
+   parent, project (the story's), "Todo", assignee inherited, delegate = the story's — with
+   the full report in the description and the instruction "fix every failure, every voice
    finding and every missing noun in this report — add scenery for a missing noun rather
    than cutting the prose — re-run npm run eval:reach and npm run eval:voice -- --story
-   <slug> until both pass, update OUTLINE.md as-built notes, commit, and push to your PR". If that session no longer exists, create sub-issue
-   **`Generate (round <round>): <one-line summary>`** (label `Generate`) with the report
-   in the description and spawn it. Deadline, log, end turn. When it completes, verify and
-   merge as in §4, then go to §5 again.
+   <slug> until both pass, update OUTLINE.md as-built notes, commit, and push a PR against
+   the story branch". Name each fix concretely (the noun, the room, the target array) and
+   list what must not change. Do **not** `linear_agent_give_feedback` the generator that
+   wrote the rooms: you closed it out in §4, which stopped its session and removed its
+   worktree, and the tool will report success anyway. Blocked-by swap → spawn → deadline
+   (15 min) → log → end turn. When it completes, verify and merge as in §4, then go to §5
+   again.
 
 **PASS:**
 1. **Close out the evaluator child (§10)** — its criteria are verified by the report
@@ -223,9 +231,12 @@ When a human asks for changes after the story is In Review (a comment in your se
    - **text-only** — `look`/`lookAgain`/descriptions/dialogue/titles; no exits, time
      flags, items, scenery ids, room ids, or landings touched;
    - **structural** — anything else.
-3. Delegate the fix to the generator with `linear_agent_give_feedback` (the same
-   session keeps its worktree and context), with the comments verbatim plus exact
-   guidance. Swap blocked-by, arm a deadline, log with the `REVISION:` marker, end turn.
+3. Create sub-issue **`Revise (<k>): <one-line summary>`** (label `Generate`, parent,
+   project, "Todo", assignee inherited, delegate = the story's) with the comments verbatim
+   plus exact guidance, and spawn it. The generator that wrote the rooms was closed out
+   and its session is gone; a new child starts from the story branch, which holds
+   everything it needs. Swap blocked-by, arm a deadline, log with the `REVISION:` marker,
+   end turn.
 4. On completion, verify per §9. **Text-only:** your own verification is sufficient
    (typecheck, tests, `eval:reach`, `eval:voice`, the play route) — merge, push (updates the PR), and
    reply to each PR comment explaining what changed. **Structural:** after merging, run a
@@ -262,7 +273,9 @@ your verification record, not the child's self-report.
    `- [ ] <text>` with `- [x] <text>` in the sub-issue description. Leave unticked
    anything you could not verify, and say why in the log.
 2. Move the sub-issue to **Done** (or **Canceled** if it was superseded — e.g. a
-   continuation replaced it). Done triggers Cyrus to tear down the child's worktree.
+   continuation replaced it). Done triggers Cyrus to stop the child's session and tear
+   down its worktree. There is no re-prompting a child after this: any later fix round
+   or revision is a new sub-issue (§6, §7).
 3. Remove the story issue's blocked-by on it (`removeBlockedBy`).
 4. Log: event `CLOSE-OUT <sub-issue>`, with the criteria ticked (n/m) and the state set.
 

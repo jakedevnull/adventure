@@ -271,11 +271,11 @@ orchestrator's session — it resumes at §5.6 and, on PASS, updates the existin
   the number of fix rounds after the first evaluation, so `max_rounds: 2` means up to two
   fixes and three evaluations; outline rejections and zero-progress continuations count
   as fix rounds, ordinary continuations after a turn ceiling do not — and
-  hand the full report back to the generator — preferably by re-prompting its
-  existing session (`linear_agent_give_feedback`, which keeps its worktree and context),
-  or, if that session is gone, by creating **"Generate (round N): <one-line summary>"** with
-  the report in the description — and go to §5.5. Either way the generator now has exact
-  repros.
+  hand the full report back as a **new** child, **"Generate (round N): <one-line
+  summary>"**, with the report in the description — and go to §5.5. The generator that
+  wrote the rooms cannot be re-prompted: accepting its work closed it out (§5.5), and Done
+  stops the session and removes the worktree, while `linear_agent_give_feedback` still
+  reports success. A fresh child starts from the story branch and has exact repros.
 - **PASS:** open the PR story branch → `main`, move the story issue to In Review, post a
   summary. Human reviews a whole, evaluated story; `main` never sees a half-made one.
 
