@@ -230,7 +230,7 @@ as-built notes, so the outline also records how each failure was resolved.
 ### 5.6 Evaluate
 
 The orchestrator merges, creates **"Evaluate: <story>"** (label `Evaluate`), spawns. The
-evaluator has read-only tools: it cannot change content, by construction. Three layers:
+evaluator has read-only tools: it cannot change content, by construction. Four layers:
 
 1. **Reachability harness** — `npm run eval:reach` (a checked-in script, §7): loads the
    content, walks every spatial and time exit from the start room, and lists every
@@ -244,6 +244,11 @@ evaluator has read-only tools: it cannot change content, by construction. Three 
    `--story` scopes it to the rooms the story's outline claims, so a finished story's
    prose cannot fail a new one. Taste — flat delivery, the surprising detail — stays a
    judgment in the report's Notes.
+4. **EXAMINE sweep** — the guide's "every mentioned noun responds to EXAMINE", done by hand
+   through the engine: list the concrete nouns each room's text names, EXAMINE each from
+   the room, report every miss with the sentence and the engine's reply. No script does
+   this, on purpose: it is the check a first draft is most likely to fail, and the fix
+   (a scenery entry) is the kind a fix round should teach.
 
 It ends with a structured report (§8) as its final response and completes. Cyrus hands
 that report to the orchestrator on resume.
@@ -375,6 +380,7 @@ The report is the contract between evaluator and generator. Plain markdown, fixe
 verdict: FAIL            # or PASS
 rooms: 8  reachable: 6   # harness totals
 voice: 3 findings        # voice lint total (0 on a clean story)
+nouns: 2 missing         # EXAMINE sweep misses (0 on a clean story)
 
 ## Failures
 ### mill-race · 2099 BA
@@ -392,6 +398,13 @@ voice: 3 findings        # voice lint total (0 on a clean story)
 - object-length · lamp.description: 2 (limit 1)
   text: "A brass lamp, unlit, dented with long use. No wick you can find."
   suggestion: keep the one concrete sentence
+
+## Nouns
+### crossroads-yard · 2099 BA
+- trough — in: "A stone trough by the door holds last night's rain."
+  tried: EXAMINE TROUGH (and: EXAMINE WATER)
+  got: "You can't see any such thing."
+  suggestion: scenery `trough-2099-ba` with nouns ["trough", "water", "rain"]
 
 ## Notes
 <anything the playthrough saw that the harness can't: text that arrives in the wrong
@@ -450,7 +463,8 @@ Per-repo in `~/.cyrus/config.json` (hot-reloaded):
 ```json
 "labelPrompts": {
   "orchestrator": { "labels": ["Game Story"], "allowedTools": "coordinator" },
-  "builder":      { "labels": ["Generate"],   "allowedTools": "all" },
+  "builder":      { "labels": ["Generate"],   "allowedTools": "all",
+                    "disallowedTools": ["Bash(npm run eval:voice:*)", "Bash(node scripts/eval-voice.ts:*)"] },
   "scoper":       { "labels": ["Evaluate"],   "allowedTools": [
     "Read(**)", "Glob", "Grep", "Skill", "Task", "TaskCreate", "TaskUpdate", "TaskGet", "TaskList",
     "Bash(npm install:*)", "Bash(npm run eval:reach:*)", "Bash(npm run eval:voice:*)",

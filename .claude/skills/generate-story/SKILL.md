@@ -53,6 +53,10 @@ When every room is ticked: run `npm run eval:reach` yourself and fix any unreach
 you can (the evaluator's verdict is the official one, but there is no reason to hand it an
 obvious gap). Then push and open a PR against the story branch.
 
+Do not run `npm run eval:voice` and do not sweep EXAMINE coverage yourself. Write to
+`design/WRITING-GUIDE.md` and stop there: those two checks are the evaluator's first look,
+and if it finds something you get a fix round with the exact passage and the fix.
+
 ## Your final response, every time (first pass, continuations, fix rounds, revisions)
 
 List the rooms written and the harness result, then an **`## Acceptance criteria`** block

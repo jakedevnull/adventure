@@ -116,6 +116,13 @@ Technical Notes: Use the `generate-story` skill. Room id convention <place>:<lan
 **MANDATORY VERIFICATION REQUIREMENTS:** <standard template>
 ```
 
+**Leave the evaluator something to find.** Do not add criteria that make the generator
+pre-run the evaluator's checks — no `eval:voice`, no EXAMINE sweep — and do not mention
+them in its description. The generator's own verification is typecheck, tests,
+`eval:reach` and the play route. The first evaluation is meant to be a first look; fix
+rounds are the loop working, not a cost to optimise away.
+
+
 Blocked-by swap → spawn → deadline (20 min) → log → end turn.
 
 ## 4. On generate completion
@@ -156,6 +163,7 @@ Context: Story branch <story-branch> (merged rooms). Outline: design/stories/<sl
 Acceptance Criteria:
 - [ ] npm run eval:reach run and its output included
 - [ ] npm run eval:voice -- --story <slug> run and its output included
+- [ ] Every concrete noun in each new room's text tried with EXAMINE through the engine, and every miss reported under ## Nouns
 - [ ] Every reported route played through with node scripts/play.ts --expect
 - [ ] Final response is the report in the exact format of ADVENTURE_FACTORY.md §8, beginning with "verdict: PASS" or "verdict: FAIL"
 
@@ -180,8 +188,9 @@ Read the report's `verdict`.
    `max_rounds` is the number of fix rounds allowed after the first evaluation:
    `max_rounds: 2` means up to two fix rounds and three evaluations.
 3. Send the full report to the **generator** child session with
-   `linear_agent_give_feedback` and the instruction "fix every failure and every voice
-   finding in this report, re-run npm run eval:reach and npm run eval:voice -- --story
+   `linear_agent_give_feedback` and the instruction "fix every failure, every voice
+   finding and every missing noun in this report — add scenery for a missing noun rather
+   than cutting the prose — re-run npm run eval:reach and npm run eval:voice -- --story
    <slug> until both pass, update OUTLINE.md as-built notes, commit, and push to your PR". If that session no longer exists, create sub-issue
    **`Generate (round <round>): <one-line summary>`** (label `Generate`) with the report
    in the description and spawn it. Deadline, log, end turn. When it completes, verify and

@@ -58,3 +58,7 @@ needs the issue), commit, push, and repeat the final-response format.
 ## Never
 
 - Never write `src/content`. Never exceed `max_rooms`. Never open the PR against `main`.
+- Never transcribe a check's rules into the outline. Do not read `src/voice.ts` or
+  `scripts/eval-*.ts` for the plan, and do not list what the voice lint or the evaluator
+  fails on. The generator writes to `design/WRITING-GUIDE.md`; the evaluator applies the
+  checks afterwards, and a fix round is how the generator learns what it missed.
