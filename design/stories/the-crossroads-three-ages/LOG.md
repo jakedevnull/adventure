@@ -37,3 +37,21 @@ Mirror of the Linear document linked to JAK-33 (the primary copy).
 - reason:   the six existing faces are finished, evaluated prose from the previous story; the cheapest way to protect them is to make "nothing else changed" a criterion I can check in the diff. Making the generator run the evaluator's two harnesses first turns the first evaluation into a confirmation rather than a first look, which is where fix rounds are usually spent.
 - action:   JAK-35 created and delegated; JAK-33 blocked-by swapped from JAK-34 to JAK-35; deadline wakeup set 20m.
 - next:     the generator's completion, or the 20-minute deadline check.
+
+## 2026-09-17 16:12Z · step 5 · ROOMS ACCEPTED (JAK-35) · CLOSE-OUT
+
+- event:    the generator completed all eight rooms in one session; PR #5 against the story branch.
+- saw:      on the merged story branch: typecheck silent, 46 pass / 0 fail, `eval:reach` 14 of 14 reachable, `eval:voice --story` 0 findings (0 world-wide too). All eight `## Rooms` lines ticked with as-built notes, 17 `as built` annotations across rooms and through-lines, Blockers still `_None._`. Two changes flagged by the generator as going past its brief.
+- decision: accept, merge, and tick all six criteria including the one that was exceeded.
+- reason:   both flagged changes were inspected in the diff and are necessary rather than opportunistic. The `door` scenery in `turning-house.ts` still said the door was barred after the permitted `look` edit unbarred it; leaving it would make the room contradict itself in the one place the story's opening depends on. The `test/engine.test.ts` change wraps the 2099 BA face with `exits: {}` so the one-room test world still validates now that the face has an `out`; no assertion moved and the engine was not touched. The generator declared both rather than burying them, which is the behaviour the criterion exists to produce.
+- action:   merged origin/cylocal1/jak-35-generate-the-crossroads-three-ages and verified on the story branch. Re-played all eight per-room routes and the full OUT/EAST/WEST/stride/IN route plus the five-PAST return: every one exits 0. Confirmed by direct module inspection that the milestone `read` is byte-identical across both `high-crossing` faces (`"ELLERMARK\nNINE"`) and quoted verbatim inside the 2099 AA placard. Story branch pushed. JAK-35 closed out: 6/6 ticked (criterion 2 with the exception recorded on the issue), state Done, blocked-by removed.
+- next:     spawn the evaluator.
+
+## 2026-09-17 16:12Z · step 6 · SPAWN Evaluate (JAK-36)
+
+- event:    sub-issue created — JAK-36 "Evaluate: The Crossroads, Three Ages", label `Evaluate`, project `adventure`, state Todo, assignee jakedevnull, delegate cylocal. Round 0.
+- saw:      a story that already passes both harnesses by the generator's own run and mine.
+- decision: spawn the evaluator anyway, and point it at two things the harnesses cannot see: the milestone's byte-identity across three rooms, and the deliberate stridelessness of both `high-crossing` faces.
+- reason:   `evaluate: true`, so the loop runs (ADVENTURE_FACTORY.md §5.6); and a green harness is not the evaluation — the second layer is playing the routes and the third is judgment in the Notes. The two pointers are exactly the failures that would pass `eval:reach` and `eval:voice` and still break the story, so an evaluator that only re-runs my commands adds nothing.
+- action:   JAK-36 created and delegated; JAK-33 blocked-by swapped from JAK-35 to JAK-36; deadline wakeup set 15m. Also warned it about the zsh word-splitting trap that made seven of my own route checks report a false FAIL on the first pass.
+- next:     the evaluator's verdict, or the 15-minute deadline check.
