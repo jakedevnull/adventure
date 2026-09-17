@@ -390,7 +390,16 @@ Two rules on those edits:
       nobody has ever wanted the letters), the crossing as a rise in the turf, the
       grassed-over socket the stone came out of, and the roofs west. Pays off the
       mason's letters for the first time; the narrator does not adjudicate.
-- [ ] crossroads-yard · 1099 AA (the Rekindling) — the canals took the traffic; a pump-handle over the well, the yard a yard again
+- [x] crossroads-yard · 1099 AA (the Rekindling) — the canals took the traffic; a pump-handle over the well, the yard a yard again
+      as built: `src/content/crossroads-yard-1099-aa.ts`, id `crossroads-yard:1099-aa`.
+      `time: { past: true, future: true }`; exits `in → turning-house:1099-aa`, and
+      `turning-house-1099-aa.ts` gains `out`. No items. Scenery: the well under its
+      bolted pump-handle with the old rope kept on a peg, the grassed-over roads
+      outrun by a canal that had to go around three hills, the barges, the raked
+      gravel with one set of cart tracks in it, the milestone still down in the grass
+      and grazed around, and the propped door. Carries the well through-line's
+      fifth gear and leaves the milestone lying, so that standing it up in 2099 AA is
+      something the Lettered Age did.
 - [ ] crossroads-yard · 2099 AA (the Lettered Age) — survey pegs, the well capped in iron, and a placard that quotes the stone and gets it wrong
 
 ## Through-lines
