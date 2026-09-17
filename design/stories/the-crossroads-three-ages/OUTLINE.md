@@ -329,7 +329,19 @@ Two rules on those edits:
       Deviation, recorded: `test/engine.test.ts` wraps this face as a one-room world,
       which `validateWorld` now rejects (an exit pointing at a room that world has
       not got). The test helper drops exits for the wrapper; no assertion changed.
-- [ ] high-crossing · 2099 BA (the High Masonry) — the milestone new-cut, and a mason who reads it out as a distance
+- [x] high-crossing · 2099 BA (the High Masonry) — the milestone new-cut, and a mason who reads it out as a distance
+      as built: `src/content/high-crossing-2099-ba.ts`, id `high-crossing:2099-ba`.
+      `time: { past: false, future: false }` — the engine prints no time line at all
+      here, so the strideless crossing needs no explaining. Exits `west →
+      crossroads-yard:2099-ba`; the matching `east` was added to the yard in this
+      same commit. Item `milestone-2099-ba` (`takeable: false`), whose `read` is the
+      exported constant `MILESTONE_LETTERS = "ELLERMARK\nNINE"`. That constant lives
+      in this file and is imported by `high-crossing:99-aa` and by the placard in
+      `crossroads-yard:2099-aa`, which is how the three readings are guaranteed to be
+      the same letters. Scenery: the mason (`talk` gives the flat reading — a town
+      and a distance, then a remark about the roadbed), the fitted crossing, his
+      lantern, his tools, and the House's lit window west. Sets up both later
+      readings; pays off nothing yet, which is the point.
 - [ ] crossroads-yard · 1099 BA (the Long Noon) — the same ground fat with traffic, a windlass on the well, a carter with a wrong map
 - [ ] crossroads-yard · 99 BA (the Hush) — both roads empty, no lights anywhere, the bucket left in the well
 - [ ] crossroads-yard · 99 AA (the Morning Country) — grass has the roads; the drystone wellhead is why anyone is still here
