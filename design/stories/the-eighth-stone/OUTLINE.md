@@ -513,7 +513,16 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     of its nouns, because that is the only name this age has for it. The eel-woman's `talk`
     gives the stone's use, its provenance as far back as her grandfather, and the price, which
     is nothing. She is not corrected, here or anywhere.
-- [ ] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
+- [x] east-road · 99 AA (the Morning Country) — a drovers' path that follows the buried paving exactly and does not know it
+  - as built: `src/content/east-road-99-aa.ts`, `time { past: false, future: false }`,
+    `west → high-crossing:99-aa`, `east → ford:99-aa`. This commit closed the second pair:
+    `high-crossing-99-aa.ts` gained one line, `east: "east-road:99-aa"`, and `ford:99-aa`
+    gained `west: "east-road:99-aa"`. Nothing else in either file was touched. No items, no
+    people. Five scenery: the path, the hedge, the sheep, the fall and the crossing back west.
+    `east-road-path-99-aa` carries the joke flat — dead straight, which no drove road is
+    unless there is something under it — and nobody in the room draws the conclusion. The fall
+    is forty feet, the same figure the 2099 BA face gives, so the mile measures the same in
+    both ages.
 - [ ] ford · 1099 AA (the Rekindling) — a lock, a cottage and a book of tolls; the stone is a course in the wall and a gauge
 - [ ] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
 
