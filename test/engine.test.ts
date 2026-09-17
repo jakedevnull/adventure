@@ -57,9 +57,11 @@ test("take all reports each item", () => {
 });
 
 test("temporal exits decline in voice when the room has none", () => {
+  // `newGame` wraps the 2099 BA room alone, so it is the oldest and only landing:
+  // PAST is closed by the content, and FUTURE is open onto an age with no face here.
   const g = newGame();
   assert.match(g.handle("past").text, /House holds still/);
-  assert.match(g.handle("future").text, /House holds still/);
+  assert.match(g.handle("future").text, /nothing of this place stands/);
 });
 
 test("when reports the landing", () => {
