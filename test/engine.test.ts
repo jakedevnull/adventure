@@ -3,8 +3,13 @@ import assert from "node:assert/strict";
 import { Game } from "../src/engine.ts";
 import { turningHouse } from "../src/content/turning-house.ts";
 
+// These tests exercise the engine's verbs inside one room, so they wrap the 2099 BA
+// face on its own. Its spatial exits are dropped for the wrapper: they point at the
+// dooryard, which lives in the assembled world (see world.test.ts), not in here.
+const soloTurningHouse = { ...turningHouse, exits: {} };
+
 function newGame() {
-  return new Game(turningHouse);
+  return new Game(soloTurningHouse);
 }
 
 test("intro shows the room title and first look", () => {

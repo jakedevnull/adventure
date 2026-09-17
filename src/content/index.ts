@@ -5,6 +5,14 @@ import { turningHouse99Ba } from "./turning-house-99-ba.ts";
 import { turningHouse99Aa } from "./turning-house-99-aa.ts";
 import { turningHouse1099Aa } from "./turning-house-1099-aa.ts";
 import { turningHouse2099Aa } from "./turning-house-2099-aa.ts";
+import { crossroadsYard2099Ba } from "./crossroads-yard-2099-ba.ts";
+import { highCrossing2099Ba } from "./high-crossing-2099-ba.ts";
+import { crossroadsYard1099Ba } from "./crossroads-yard-1099-ba.ts";
+import { crossroadsYard99Ba } from "./crossroads-yard-99-ba.ts";
+import { crossroadsYard99Aa } from "./crossroads-yard-99-aa.ts";
+import { highCrossing99Aa } from "./high-crossing-99-aa.ts";
+import { crossroadsYard1099Aa } from "./crossroads-yard-1099-aa.ts";
+import { crossroadsYard2099Aa } from "./crossroads-yard-2099-aa.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -25,5 +33,13 @@ export const world: World = {
     turningHouse99Aa,
     turningHouse1099Aa,
     turningHouse2099Aa,
+    crossroadsYard2099Ba,
+    highCrossing2099Ba,
+    crossroadsYard1099Ba,
+    crossroadsYard99Ba,
+    crossroadsYard99Aa,
+    highCrossing99Aa,
+    crossroadsYard1099Aa,
+    crossroadsYard2099Aa,
   ],
 };
