@@ -227,7 +227,25 @@ walk back to the landlady the way they came, and every room is reachable from th
       the House, never about the Awakening.
       Pairs with 99 BA: nothing here answers what the Hush was braced for, and nobody in the room knows
       there is a question.
-- [ ] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
+- [x] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
+      as built: `src/content/turning-house-1099-aa.ts`, id `turning-house:1099-aa`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `card` (not takeable, READable,
+      framed). Scenery `landlord-1099-aa` (the keeper), `window-1099-aa`, `walls-1099-aa`, `ribbon`,
+      `tolls`, `hearth-1099-aa`, `floor`, `table-1099-aa`, `road-1099-aa`.
+      The card READs as a confident invention: the custom is "in memory of the landlord Corrin Hale, lost
+      on the road in fog and brought home by his wife's light. Printed at the sign of the Three Locks, by
+      subscription." Consequence at a distance, with the cause standing in the room holding the lamp.
+      The keeper's `talk` is "It's traditional," and he points at the card. This is the only era where the
+      family explains itself, which is exactly the era that has it wrong — the inverse of 2099 BA's refusal
+      and 2099 AA's. His EXAMINE line, "will tell you so before you ask," is the Long Noon's carelessness
+      grown talkative.
+      Drystone clause: "taken down and put back up stone for stone, which the mason charged extra for";
+      EXAMINE adds "The mason found the old courses and followed them."
+      Continuity picked up without comment: `tolls` answers "The river got a lock and stopped arguing"
+      (the 1099 BA map was wrong about that river), and `table-1099-aa` reads "A long table again, and not
+      the long table" (the 99 AA one burned).
+      The window lamp is `window-1099-aa` scenery and deliberately never answers to the singular "lamp",
+      so it cannot shadow the carried `lamp` item.
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
 
 ## Through-lines
