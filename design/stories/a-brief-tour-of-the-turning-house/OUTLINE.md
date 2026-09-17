@@ -168,7 +168,20 @@ walk back to the landlady the way they came, and every room is reachable from th
 
 ## Rooms
 
-- [ ] turning-house · 2099 BA (the High Masonry) — the landlady starts the tour and the unlit lamp is taken
+- [x] turning-house · 2099 BA (the High Masonry) — the landlady starts the tour and the unlit lamp is taken
+      as built: `src/content/turning-house.ts`, legacy id `turning-house` kept. `time: { past: false,
+      future: true }` — oldest landing, so nothing behind it. No spatial exits. Items `lamp` (takeable,
+      the through-line), `bread`, `coin` (face down, refuses to be taken) were already here and are
+      untouched. Scenery `landlady` (the keeper) got the story's only prose change: her `talk` now runs
+      `"Late to be traveling," … "Take the lamp. Go and see the House, since you can."` — she starts the
+      tour without explaining it, and "since you can" is as close as she comes to naming what you are.
+      Drystone clause already present ("laid without mortar, and have outlasted the road they watch").
+      Sets up: the lamp, the coin, the family's refusal to say how old the House is.
+      Deviation: `test/engine.test.ts:59` asserted this room's FUTURE was closed, using it as a one-room
+      fixture. Opening `future` makes that stride hit the no-face-in-that-age decline instead, so the
+      assertion was updated to match. Engine untouched; the test encoded content, not behaviour.
+      Note for the engine's owner (not a blocker, out of this sub-issue's scope): `HELP` in
+      `src/engine.ts` still ends "Two more you will not need tonight: PAST and FUTURE." Tonight, you do.
 - [ ] turning-house · 1099 BA (the Long Noon) — a House too rich and too lit to need a lamp
 - [ ] turning-house · 99 BA (the Hush) — barred and waiting; keep the lamp unlit tonight
 - [ ] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
