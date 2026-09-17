@@ -629,6 +629,39 @@ deviation worth the name. `npm run eval:reach` reports 22 of 22._
     faces. The 1099 AA heading reads **The Ford · 1099 AA** over a room with a lock in it,
     and nothing in the prose apologises for that.
 
+## Round 1 — the EXAMINE sweep
+
+The round-0 evaluation was `FAIL` on one count only: nouns the rooms' own `look` and
+`lookAgain` text names that did not answer to EXAMINE. Reachability was 22 of 22, the voice
+lint was clean, and all four structural through-lines held. This round changed twelve `nouns`
+entries and added one scenery entry. **No prose was touched** — no `look`, `lookAgain`,
+`talk`, `read` or existing `description` string differs by a character.
+
+- `ford:1099-aa` — `course` onto `ford-stone-1099-aa`. The most important of the twelve: the
+  `look` hands the player the word ("one course of it lies on its side with letters cut in
+  the face of it") and the stone is the story. `courses` still answers with the wall, since
+  the exact-phrase pass in `Game.resolve` matches that noun on `ford-wall-1099-aa` first.
+- `ford:1099-aa` — `arm` onto the keeper, `waterline` onto `ford-water-1099-aa` beside `mark`.
+- `ford:1099-ba` — `board`, `toll-board`, `toll board` onto `ford-post-1099-ba`, which already
+  carried `holes` and `nails` and whose one sentence is the answer to all five. `green` onto
+  `ford-stone-1099-ba`, which the ferryman takes his level off. `waterline` onto
+  `ford-water-1099-ba` beside `mark`, matching the 1099 AA face.
+- `ford:2099-ba` — `knees` onto the tollman, `foot` onto `ford-stone-2099-ba`. Possessive
+  sub-parts: the room names them, so they answer. The same gap in the shipped `high-crossing`
+  faces is out of this story's scope and was left alone.
+- `ford:99-aa` — `banks` onto `ford-water-99-aa`, where `silt` already lives, so the bare
+  plural lands where `silt banks` already landed. `bank` still answers with the far bank.
+- `east-road:2099-ba` — `cutting` and `bottom` onto `east-road-fall-2099-ba`, whose sentence
+  ("the ground gives up forty feet … which is why this mile is cut and not laid") is the
+  answer to both.
+- `ford:2099-aa` — new scenery `ford-wall-2099-aa`, nouns `chamber wall`, `wall`, `masonry`,
+  `courses`, `ashlar`. This face had dropped the wall that the 1099 AA face ships as
+  `ford-wall-1099-aa`, and `CHAMBER WALL` was matching on `chamber` and answering with the
+  **gates** — a wrong thing, not a missing one. It now answers with the wall; `CHAMBER` alone
+  still answers with the gates, which is what a lock chamber is. The one sentence added is the
+  only new string in the round, and it is the sixth use of the stone seen from the other side:
+  the wall the exhibit was cut out of, with the square of new stone where it was.
+
 ## Blockers
 
 _None._
