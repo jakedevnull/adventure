@@ -20,6 +20,7 @@ import { highCrossing99Aa } from "./high-crossing-99-aa.ts";
 import { crossroadsYard1099Aa } from "./crossroads-yard-1099-aa.ts";
 import { ford1099Aa } from "./ford-1099-aa.ts";
 import { crossroadsYard2099Aa } from "./crossroads-yard-2099-aa.ts";
+import { ford2099Aa } from "./ford-2099-aa.ts";
 
 // The assembled world. Every room in every era is registered here, and
 // `landings` lists every era oldest-first — PAST and FUTURE step along it.
@@ -55,5 +56,6 @@ export const world: World = {
     crossroadsYard1099Aa,
     ford1099Aa,
     crossroadsYard2099Aa,
+    ford2099Aa,
   ],
 };
