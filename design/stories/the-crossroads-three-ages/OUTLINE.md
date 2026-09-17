@@ -342,7 +342,18 @@ Two rules on those edits:
       and a distance, then a remark about the roadbed), the fitted crossing, his
       lantern, his tools, and the House's lit window west. Sets up both later
       readings; pays off nothing yet, which is the point.
-- [ ] crossroads-yard · 1099 BA (the Long Noon) — the same ground fat with traffic, a windlass on the well, a carter with a wrong map
+- [x] crossroads-yard · 1099 BA (the Long Noon) — the same ground fat with traffic, a windlass on the well, a carter with a wrong map
+      as built: `src/content/crossroads-yard-1099-ba.ts`, id `crossroads-yard:1099-ba`.
+      `time: { past: true, future: true }`; exits `in → turning-house:1099-ba`, and
+      `turning-house-1099-ba.ts` gains `out` to match. No `east`: the plan opens the
+      crossing in two ages only, and this is the age where nobody walks over to it.
+      Item `carter-map` (`takeable: false`, `read` gives a map with the river on it
+      twice). That is one more readable than the plan called for; it earns its place
+      by being the Long Noon's own joke and by keeping the age's one verb available.
+      Scenery: the carter (`talk` — he has passed the stone all his life and has
+      nothing to say about it), the well under its brass windlass, the queue of
+      carts, the roads, the gate, the milestone seen from here and not visited, and
+      the open door. Pays off the mason's letters by ignoring them.
 - [ ] crossroads-yard · 99 BA (the Hush) — both roads empty, no lights anywhere, the bucket left in the well
 - [ ] crossroads-yard · 99 AA (the Morning Country) — grass has the roads; the drystone wellhead is why anyone is still here
 - [ ] high-crossing · 99 AA (the Morning Country) — the milestone where it fell, and a girl who cannot read it and is sure of it
