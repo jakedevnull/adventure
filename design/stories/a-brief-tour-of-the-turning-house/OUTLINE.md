@@ -209,7 +209,24 @@ walk back to the landlady the way they came, and every room is reachable from th
       Drystone clause: "Drystone, cold through, with the old limewash flaking off it" — the Long Noon's
       limewash from room 2, going.
       Sets up: the Gap stride. What this room is braced for is never answered.
-- [ ] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
+- [x] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
+      as built: `src/content/turning-house-99-aa.ts`, id `turning-house:99-aa`,
+      `time: { past: true, future: true }`, no spatial exits. One item, `lintel` (not takeable, READable).
+      Scenery `woman-99-aa` (the keeper), `child`, `hearth-99-aa`, `walls-99-aa`, `roof`, `ruins`,
+      `table-99-aa`, `road-99-aa`.
+      The persistence statement is structural, not narrated: "The drystone stands exactly as it was laid,
+      having never needed mortar; the mortared work along the road is a long heap of stone and lime."
+      `walls-99-aa` answers EXAMINE with "Nothing held it up but the fit of it, and nothing had to" —
+      the 2099 BA wall line in the past tense.
+      The keeper's `talk` is "We keep it. There was a reason." Her EXAMINE line, "She is here because her
+      mother was here, and does not go back further than that," is the 2099 BA landlady's refusal turned
+      into an inability. That is the Gap's damage, in one clause.
+      Added beyond the plan: the `lintel` READs "legible if you have seen the hand before. It is the name
+      of this house." It is the one place the Traveler knows something the room does not, which is the
+      recognition this story runs on. It names no name, so the player supplies it. It is evidence about
+      the House, never about the Awakening.
+      Pairs with 99 BA: nothing here answers what the Hush was braced for, and nobody in the room knows
+      there is a question.
 - [ ] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
 
