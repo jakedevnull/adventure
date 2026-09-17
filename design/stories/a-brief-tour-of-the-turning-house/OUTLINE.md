@@ -195,7 +195,20 @@ walk back to the landlady the way they came, and every room is reachable from th
       Drystone clause: "Limewash covers the drystone now, which is held to be an improvement."
       Note: the `brackets` scenery deliberately answers to "lamps"/"lights" but never the singular "lamp",
       so it can never shadow the carried `lamp` item. Verified in play both carrying and not.
-- [ ] turning-house · 99 BA (the Hush) — barred and waiting; keep the lamp unlit tonight
+- [x] turning-house · 99 BA (the Hush) — barred and waiting; keep the lamp unlit tonight
+      as built: `src/content/turning-house-99-ba.ts`, id `turning-house:99-ba`,
+      `time: { past: true, future: true }`, no spatial exits. **No items** — the Hush is bare on purpose
+      ("the long table, with everyone at it and nothing on it"). Scenery `eldest` (the keeper),
+      `family-99-ba`, `bell`, `beam`, `hearth-99-ba`, `shutters`, `walls-99-ba`, `table-99-ba`,
+      `road-99-ba`.
+      The turn: the eldest's `talk` is "No lights tonight. If you have one, keep it unlit. Light carries."
+      Phrased conditionally ("if you have one") because the engine cannot check inventory, so it reads
+      right whether or not the player is carrying the lamp. Nothing here explains what is coming, and no
+      evidence about the Awakening appears — the bell is heard, never seen, and the hearth was put out
+      on purpose.
+      Drystone clause: "Drystone, cold through, with the old limewash flaking off it" — the Long Noon's
+      limewash from room 2, going.
+      Sets up: the Gap stride. What this room is braced for is never answered.
 - [ ] turning-house · 99 AA (the Morning Country) — across the Gap: ruin, survivors, and the walls still standing
 - [ ] turning-house · 1099 AA (the Rekindling) — the lamp in the window is a custom now, explained wrongly in print
 - [ ] turning-house · 2099 AA (the Lettered Age) — the lit window, the empty hook, the end of the tour
