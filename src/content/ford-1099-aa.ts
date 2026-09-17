@@ -37,7 +37,7 @@ export const ford1099Aa: Room = {
   items: [
     {
       id: "ford-stone-1099-aa",
-      nouns: ["milestone", "stone", "marker", "letters", "inscription", "lettered course"],
+      nouns: ["milestone", "stone", "marker", "letters", "inscription", "lettered course", "course"],
       description: "Laid on its side in the near wall, face out, with the letters at the waterline and green along the bottom of them.",
       takeable: false,
       takeRefusal: "There are four courses of good ashlar on top of it and both gates lean on all four.",
@@ -60,7 +60,7 @@ export const ford1099Aa: Room = {
   scenery: [
     {
       id: "ford-keeper-1099-aa",
-      nouns: ["keeper", "lock-keeper", "lockkeeper", "man", "him"],
+      nouns: ["keeper", "lock-keeper", "lockkeeper", "man", "him", "arm"],
       description: "He keeps the gates, the book and the rate, and he had the slate out before it was light.",
       talk:
         "\"Six for a boat through, twelve if you want a lockful drawn off for you,\" he " +
@@ -85,7 +85,7 @@ export const ford1099Aa: Room = {
     },
     {
       id: "ford-water-1099-aa",
-      nouns: ["water", "river", "level", "pound", "current", "ford", "mark"],
+      nouns: ["water", "river", "level", "pound", "current", "ford", "mark", "waterline"],
       description: "Held between the gates and steady, two fingers over the top line of the lettered course.",
     },
     {
