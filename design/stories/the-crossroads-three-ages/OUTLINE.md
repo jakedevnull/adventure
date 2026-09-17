@@ -313,7 +313,22 @@ Two rules on those edits:
 
 ## Rooms
 
-- [ ] crossroads-yard · 2099 BA (the High Masonry) — step OUT; the crossing new-laid, the well open, the roads carrying everything
+- [x] crossroads-yard · 2099 BA (the High Masonry) — step OUT; the crossing new-laid, the well open, the roads carrying everything
+      as built: `src/content/crossroads-yard-2099-ba.ts`, id `crossroads-yard:2099-ba`.
+      `time: { past: false, future: true }`; exits `in → turning-house`. The `east`
+      exit is added in the next commit, with the room it points at, so that every
+      commit leaves the world valid (the engine rejects an exit to a missing room).
+      No items. Scenery: the well (open, a rope, cold water), the new-laid roads,
+      the carts that do not stop, the unbarred door, the House's east wall, the
+      light out east, and the cold. Sets up the milestone by not naming it: from
+      here it is a light and somebody bent over beside it.
+      `turning-house.ts` edited: gains `exits: { out: "crossroads-yard:2099-ba" }`,
+      the `look` clause "A barred door holds off the night" becomes "The door is
+      unbarred tonight", and — one change, not two, since it is the same fact — the
+      `door` scenery's single sentence stops saying the door is barred tonight.
+      Deviation, recorded: `test/engine.test.ts` wraps this face as a one-room world,
+      which `validateWorld` now rejects (an exit pointing at a room that world has
+      not got). The test helper drops exits for the wrapper; no assertion changed.
 - [ ] high-crossing · 2099 BA (the High Masonry) — the milestone new-cut, and a mason who reads it out as a distance
 - [ ] crossroads-yard · 1099 BA (the Long Noon) — the same ground fat with traffic, a windlass on the well, a carter with a wrong map
 - [ ] crossroads-yard · 99 BA (the Hush) — both roads empty, no lights anywhere, the bucket left in the well
