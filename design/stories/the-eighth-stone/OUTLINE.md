@@ -662,6 +662,85 @@ entries and added one scenery entry. **No prose was touched** — no `look`, `lo
   only new string in the round, and it is the sixth use of the stone seen from the other side:
   the wall the exhibit was cut out of, with the square of new stone where it was.
 
+## Round 2 — the noun class, swept
+
+Round 1 fixed a list. The re-evaluation found the same construction still standing in three
+more rooms, so this round swept the construction across all eight and fixed every instance,
+including the ones nobody had reported. **No prose was touched and no new entry was added** —
+the whole diff is thirteen `nouns` arrays in five files. The three rooms not in the diff
+(`east-road:2099-ba`, `east-road:99-aa`, `ford:1099-ba`) were swept and had nothing to fix.
+
+The sweep was run through the real engine, not by eye: every word and every adjacent word
+pair the eight rooms print (in `look`, `lookAgain`, every `description`, every `takeRefusal`)
+was put to EXAMINE and the answering entry identified by its description. 437 probes.
+
+**The rule this round applies, so a third reader can check it instead of re-deriving it:**
+
+1. **Possessive sub-parts** — `its <noun>`, `his/her <noun>`, `the <noun> of it`, `<noun> and
+   all`. The part answers off the entry that owns it. Round 1 wrote this principle down for
+   `look`/`lookAgain` only; it holds one surface deeper as well, in an entry's own
+   `description` and `takeRefusal`, which is where `base`, `weed`, `bottom` and three of the
+   five `foot`s live.
+2. **Multi-word noun phrases** must be declared as exact phrases, or the single-word pass
+   reaches whichever entry declares the first word. Checked every adjacent pair in all eight
+   rooms and fixed the three that landed on the wrong thing.
+3. **Any noun in the class answers in every room that names one.** This is the round-1 lesson:
+   `foot`, `face`, `end`, `base`, `bottom` and `line` were chased through all eight rooms
+   rather than the rooms the evaluator happened to name. That is what caught `foot` on the
+   1099 AA ledger and on the 2099 AA plinth-bolt, `face` on the 2099 BA stepping stones and
+   the 2099 AA plinth, and `line` on the 99 BA punt.
+
+Fixed, by room:
+
+- `ford:99-ba` — `foot`, `base`, `weed` onto `ford-stone-99-ba`. The `look` says "foot and
+  all" and the stone's own sentence names the band of weed round the base. Also `line` onto
+  `ford-boat-99-ba`, whose sentence has the ferry line coiled on the thwart; the eel-woman's
+  line at 99 AA is the same noun and was fixed in the same round, which is the point of the
+  rule above.
+- `ford:99-aa` — `end`, `near end`, `far end`, `ends` onto `ford-plank-99-aa`, whose one
+  sentence answers all four ("its near end on the stone and its far end on a bar of silt").
+  `foot` onto `ford-stone-99-aa` (the plank lies across its foot). `line` onto the eel-woman,
+  who takes hers off the plank stone. `silt bar` onto `ford-far-bank-99-aa`, which already
+  carried `bar`: the phrase had been matching on `silt` and answering with the **water**.
+- `ford:1099-aa` — `face` onto `ford-stone-1099-aa`, the noun the `look` hands the player
+  ("letters cut in the face of it"), with `bottom` and `green` from the stone's own sentence
+  in the same array. `stone chamber` onto `ford-gates-1099-aa`: the phrase had been matching
+  on `stone` and answering with the **milestone**, and the gates entry is the lock, the
+  chamber and the gates together. `CHAMBER` alone still answers with it. `chamber wall` and
+  `near wall` onto `ford-wall-1099-aa` — the same wrong-thing match round 1 fixed at the 2099
+  AA face, still standing here, where the `look` says "The near wall of the chamber". `foot`
+  onto `ford-book-1099-aa`, where the ink is wet at the foot of the page.
+- `ford:2099-aa` — `foot` onto `ford-stone-2099-aa` (dowelled to the plinth at the foot).
+  `face`, `faces` onto `ford-plinth-2099-aa`, dressed on four of them with the label glazed
+  into one.
+- `ford:2099-ba` — `face`, `upstream face` onto `ford-stones-2099-ba`, squared off on it.
+
+**Declined, and why.** A word in the prose is not an object. Measurements: `mile`, `half
+mile`, `feet`, `yards`, and `foot` at `east-road:99-aa`, where the path holds the line of the
+paving "to within a foot" — the one place in the story where `foot` is a unit and not a part.
+Positions: `head` (of the line, of the stones, of the pegs), `side`, `middle`, `length`,
+`direction`. Counts: `sets`, `intervals`. Readings, not things: `level`, `top line` at
+1099 AA, and `line` where it means an alignment rather than a rope (`line of the paving`,
+which answers with the paving anyway). `boat` at `ford:2099-aa`, which is a rate of one a
+week and not a boat in the room. `season`, and `hair` in "they shut on a hair", which is a
+tolerance and not a thing. And `mason` at `east-road:2099-ba`, who is a mile
+west at the crossing; his lamp answers there, he does not.
+
+**Named but left, one bounded class, for a human to rule on.** Bare detail nouns that appear
+only inside an entry's own `description` and name a fitting or material rather than a part
+surfaced by a possessive: `bed` and `strap` (2099 BA), `seals`, `folds`, `ink`, `nail`
+singular (1099 BA), `band`, `thwart` (99 BA), `brick` (99 AA), `joints`, `waste` (east road
+2099 BA), `loft`, `page` (1099 AA), `cill`, `grain`, `corner` (2099 AA). Neither
+evaluation flagged any of them; the rooms already declare nouns of this kind where the author
+chose to (`elm`, `withies`, `grit`, `dowels`, `slot`, `lid`, `nails`), so the omissions are a
+coverage question and not a bug, and answering them all would be a wider change than a fix
+round. Singular/plural pairs (`nail`/`nails`, `side`/`sides`) are the same question. The
+shipped `high-crossing`, `crossroads-yard` and `turning-house` faces have the round-1 sub-part
+gap too — `EXAMINE FOOT` at `high-crossing:2099-ba` misses — and are out of this story's scope.
+
+Nothing shadowed: all 425 nouns declared across the eight rooms were put to EXAMINE through
+the engine and every one answers with the entry that declares it.
+
 ## Blockers
 
 _None._
