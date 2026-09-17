@@ -70,5 +70,6 @@ export const crossroadsYard2099Ba: Room = {
   ],
   exits: {
     in: "turning-house",
+    east: "high-crossing:2099-ba",
   },
 };
