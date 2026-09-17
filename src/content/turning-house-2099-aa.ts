@@ -89,4 +89,7 @@ export const turningHouse2099Aa: Room = {
       description: "The high roads are studied now, and are still the roads.",
     },
   ],
+  exits: {
+    out: "crossroads-yard:2099-aa",
+  },
 };
