@@ -533,9 +533,21 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
     put it, a separate cut meeting the river below the lock, and the word canal is never used
     for the river. The keeper's `talk` is rate, level and gates, in that order; the level is
     taken off the top line of the lettered course and the wall is never mentioned.
-- [ ] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
+- [x] ford · 2099 AA (the Lettered Age) — the stone on a plinth by the towpath under a label that dates it by the wall it came out of
+  - as built: `src/content/ford-2099-aa.ts`, `time { past: true, future: false }`, no `exits`.
+    Imports `EIGHTH_STONE_LETTERS`. Items: `ford-stone-2099-aa`, upright and scrubbed with
+    every letter legible, and `ford-label-2099-aa`, whose `read` takes the shape the plan set
+    out — found in the lock wall, dated with the wall on the canal company's records at 1104,
+    ELLERMARK transcribed as a place-name of uncertain application, the second line filed as an
+    uninterpreted mason's tally, the stone read as a lock gauge. It does not quote the second
+    line, does not mention the crossing, and does not mention a sequence. Nobody is in the room.
+    The price of the crossing has come off the water and onto the stone: the lock is free and
+    `ford-box-2099-aa` holds about a coin's weight.
 
 ## Through-lines
+
+_As built: all eight rooms are written and every through-line below held without a
+deviation worth the name. `npm run eval:reach` reports 22 of 22._
 
 - **The eighth stone's letters** (all six `ford` faces) — `ELLERMARK` / `EIGHT`, on two lines,
   the same string in every age. Written **once** as
@@ -544,6 +556,13 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
   `src/content/high-crossing-2099-ba.ts` and imported by the faces that show the ninth. Six
   uses, none of them reading: bollard, depth gauge, nothing at all, plank-rest, course of
   masonry, exhibit. The word "eight" is never spoken by anybody in any age.
+  - as built: the constant is declared once at `src/content/ford-2099-ba.ts:25` and imported
+    by the other five faces; `grep -rn "EIGHTH_STONE_LETTERS" src/` shows one export and five
+    imports, and `grep -rno "EIGHT\b" src/` returns exactly one line in the whole of `src/`.
+    The six uses came out as planned. Each face carries its age's condition in the item's
+    `description` and never in the `read`: pale along the cuts with its foot under water,
+    green to the waterline, a band of weed round the base, letters up and clear of the mud,
+    green along the bottom of them at the waterline, scrubbed back to the grain.
 - **The eighth stone against the ninth** (`ford:*` against the shipped
   `high-crossing:2099-ba`, `high-crossing:99-aa` and `crossroads-yard:2099-aa`) — the ninth
   stone's placard in the Lettered Age already tells visitors the sequence's other eight
@@ -552,33 +571,63 @@ After room 8 the world has 22 rooms and `npm run eval:reach` must report 22 of 2
   the same sentence. The mason's shipped line at the crossing, *"Nine miles, and the last two
   of them are mine,"* is the only thread between them, and it is a thousand years and one
   mile from the label that misses it.
+  - as built: the label at `ford:2099-aa` gets its answer wrong in a new way — it dates the
+    stone by the wall it came out of, on a source it names, and files the second line away
+    uninterpreted rather than glossing it. It never quotes that line, never says crossing and
+    never says series. `ford:2099-aa` is empty, so the story ends on printed text with no
+    reader, against the previous story's student at a placard.
 - **The price of the crossing** (all six `ford` faces) — toll-board, lease, empty box, no
   toll at all, lock-keeper's rate, exhibit contribution. One or two sentences per face, always
   a stated figure or a stated arrangement, never a mood. It never becomes a puzzle and the
   player never needs a coin. The Rekindling's rate is the same money as the canal tolls
   already chalked up daily at `turning-house:1099-aa`.
+  - as built: the figures run four / two / one on the 2099 BA toll-board, twelve / six / three
+    on the 1099 BA lease, nothing at all in 99 BA with the box open and empty on the post,
+    nothing in 99 AA, six a boat and twelve a lockful on the 1099 AA slate, and a contribution
+    box on the plinth in 2099 AA. The Long Noon rate is three times the High Masonry rate at
+    every line of it, so the through-line does its arithmetic where the player can see it. The
+    1099 AA slate closes on "set to the same table as the canal below, and entered in the book
+    the same evening", which is the link to the House's chalked tolls. No coin is ever wanted.
 - **The water** (all six `ford` faces) — high in the Long Noon, lowest in living memory in the
   Hush, silted in the Morning Country, held by gates in the Rekindling, on a gauge board in
   the Lettered Age. Always a measurement or a fact about passage. The stone is what several
   ages measure it against, which is the two through-lines meeting: an instrument with a scale
   nobody reads.
+  - as built: over the last three stepping stones in 2099 BA, a hand's breadth below the mark
+    on the stone in 1099 BA, a channel two feet across in 99 BA, narrow and brown between two
+    banks of silt in 99 AA, two fingers over the top line of the lettered course in 1099 AA,
+    four tenths on the gauge board in 2099 AA. Three of the six take their figure off the
+    stone. No face describes the water as weather.
 - **The far bank** (all six `ford` faces) — one piece of scenery per face, one sentence, and
   that sentence is the refusal, in that age's own terms. No ford face has an `east` exit in
   any age and no face describes a way over that a player could reasonably expect to take.
+  - as built: `ford-far-bank-<landing>` in all six faces, one sentence each, matching the
+    plan's table age for age. No ford face has an `east` exit, and none of the six `look`
+    bodies offers the far bank as a direction.
 - **The ford's stride chain** (all six `ford` faces) — the PAST/FUTURE pairs that must line
   up: `2099 BA {false,true}` · `1099 BA {true,true}` · `99 BA {true,true}` ·
   `99 AA {true,true}` · `1099 AA {true,true}` · `2099 AA {true,false}`. Every open side has a
   face waiting; the only closed sides are the world's two ends. Removing any ford face breaks
   the chain, so all six are load-bearing for the requirement that the years run from the ford
   as they run from the yard.
+  - as built: the flags shipped exactly as tabled, and the chain walks both ways. `OUT, EAST,
+    EAST, EAST` then five `FUTURE` reaches `ford:2099-aa`; five `PAST` then `WEST, WEST, WEST,
+    IN` is back in the common room. `npm run eval:reach` finds the ford at every landing and
+    the engine's "nothing of this place stands in that age" reply is unreachable in this story.
 - **Both `east-road` faces are strideless** (`{ past: false, future: false }`) — reached by
   walking EAST from the crossing and left by walking WEST, exactly like the two
   `high-crossing` faces. The engine prints no time line when both sides are closed, so
   nothing needs explaining and nothing should be explained.
+  - as built: both faces shipped `{ past: false, future: false }`, and playing into either of
+    them prints no time line. Neither face remarks on it. The 2099 BA face gives the fall as
+    forty feet and the 99 AA face gives the same forty, so the mile is one mile in both ages.
 - **The place keeps its name** — **The Ford** in all six ford faces, including the three
   ages in which nobody has forded anything for a thousand years. That is the persistence
   theme doing its own work in the room heading, and it is not to be softened to "The Lock" in
   1099 AA.
+  - as built: `title: "The Ford"` in all six faces and `title: "East Road"` in both road
+    faces. The 1099 AA heading reads **The Ford · 1099 AA** over a room with a lock in it,
+    and nothing in the prose apologises for that.
 
 ## Blockers
 
