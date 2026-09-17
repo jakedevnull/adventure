@@ -400,34 +400,79 @@ Two rules on those edits:
       and grazed around, and the propped door. Carries the well through-line's
       fifth gear and leaves the milestone lying, so that standing it up in 2099 AA is
       something the Lettered Age did.
-- [ ] crossroads-yard · 2099 AA (the Lettered Age) — survey pegs, the well capped in iron, and a placard that quotes the stone and gets it wrong
+- [x] crossroads-yard · 2099 AA (the Lettered Age) — survey pegs, the well capped in iron, and a placard that quotes the stone and gets it wrong
+      as built: `src/content/crossroads-yard-2099-aa.ts`, id `crossroads-yard:2099-aa`.
+      `time: { past: true, future: false }` — the far end of the world. Exits
+      `in → turning-house:2099-aa`, and `turning-house-2099-aa.ts` gains `out`, which
+      closes the walk on the fire and the one empty hook. Item `placard-2099-aa`
+      (`takeable: false`), whose `read` is museum prose around `MILESTONE_LETTERS`
+      spliced in verbatim: ELLERMARK glossed as an administrative district otherwise
+      unattested, NINE as an ordinal in a series whose other eight stones have not
+      been found, and a closing request that visitors not sit on the stone. The
+      milestone itself is one sentence of scenery, upright and scrubbed and legible.
+      Scenery: the milestone, the student (`talk` — one dry line about the sequence),
+      the well under its bolted iron cap with the depth cut into it, the survey pegs
+      and string, the strip of road cleared back to the paving, and the House with
+      its lamps. Pays off all three readings and adjudicates none of them.
 
 ## Through-lines
+
+> As built, all six hold. `npm run eval:reach` reports 14 of 14 rooms reachable and
+> `npm run eval:voice` reports 0 findings over the whole world.
 
 - **The milestone's letters** (`high-crossing:2099-ba` → `high-crossing:99-aa` →
   `crossroads-yard:2099-aa`) — the `read` string `ELLERMARK / NINE` is **identical** in the
   first two rooms and quoted verbatim inside the placard's `read` in the third. Write it once
   and copy it. Three readers: the mason who knows, the girl who cannot read, the University
   that can read and is wrong. The narrator never adjudicates.
+  - as built: written once as `export const MILESTONE_LETTERS = "ELLERMARK\nNINE"` in
+    `src/content/high-crossing-2099-ba.ts`, and **imported** by the other two rooms
+    rather than retyped, so the three cannot drift. Byte-identity is a fact about the
+    module graph now, not about anyone's proofreading. Weathering and cleaning live in
+    the `description` fields, which is the only place they can live if the `read`
+    strings are to stay the same string.
 - **The well** (all six `crossroads-yard` faces) — scenery, one sentence each, against the
   House's east wall in every age. What changes is the gear on it: rope, windlass, coiled rope,
   bare drystone head, pump-handle, bolted iron cap. It is the reason there is a village in
   99 AA and it never becomes a puzzle.
+  - as built: all six faces carry it, one sentence each, as `well-2099-ba`,
+    `well-1099-ba`, `well-99-ba`, `well-99-aa`, `well-1099-aa` and `well-2099-aa`.
+    Nothing reacts to it and no verb could draw from it, which is the plan.
 - **The roads** (all eight rooms) — the High Roads are a fixed point laid in 2099 BA. Each
   face shows them doing something, and no face repeats the road line the matching
   `turning-house` face already carries: carrying everything (2099 BA), fat with traffic
   (1099 BA), empty (99 BA), under the grass and still fastest (99 AA), outrun by canals
   (1099 AA), surveyed and still the roads (2099 AA).
+  - as built: every yard and crossing face has its own road scenery and none of them
+    repeats the matching `turning-house` line. The 1099 AA face went further than the
+    plan: the roads are outrun by a canal that had to go around three hills, which is
+    the age's joke and the roads' argument in one sentence.
 - **The yard's stride chain** (all six `crossroads-yard` faces) — the PAST/FUTURE pairs that
   must line up. Every open stride has a face waiting at the adjacent landing; the only closed
   sides are the world's two ends (`past` at 2099 BA, `future` at 2099 AA). Removing any yard
   face breaks the chain, so all six are load-bearing for the requirement that the yard open
   both ways.
+  - as built: `2099 BA {false,true}` · `1099 BA {true,true}` · `99 BA {true,true}` ·
+    `99 AA {true,true}` · `1099 AA {true,true}` · `2099 AA {true,false}`. Every open
+    side has a face waiting, so the engine's "nothing of this place stands in that age"
+    reply is unreachable from the yard. `npm run eval:reach` walks the whole chain.
 - **The `high-crossing` faces are strideless** (`{ past: false, future: false }`) — reached by
   walking EAST and left by walking WEST. The engine prints no time line when both are closed,
   so nothing needs explaining and nothing should be explained.
+  - as built: confirmed in play. `node scripts/play.ts --expect high-crossing:2099-ba
+    OUT EAST` prints the room with no time line under it.
 - **Ellermark** — a new town name, nine miles east in 2099 BA, absent from every later age.
   Referenced only on the stone and in the mason's `talk`. Never explained, never revisited.
+  - as built: held. The name appears in `MILESTONE_LETTERS`, in the mason's `talk`
+    ("Ellermark, nine ... nine miles"), and in the placard's gloss, where the Lettered
+    Age takes it for a district rather than a town. Nothing anywhere says what became
+    of it.
+
+- **What changed outside `src/content/`, as built.** One test helper, and nothing else.
+  `test/engine.test.ts` wrapped `turning-house.ts` as a one-room world; once that face
+  gained `out`, `validateWorld` rejected the wrapper, because the dooryard is not in it.
+  The helper now spreads the room with `exits: {}`. No assertion was touched, and the
+  engine was not touched.
 
 ## Blockers
 
